@@ -1,0 +1,350 @@
+---
+#.BOOL: &BOOL
+#- True
+#- False
+#
+#Sources:
+#- Checklist VER: .81 - www.discerningspecialist.com
+
+categories:
+  - name: sex
+    kinds:
+      - name: vaginal
+      - name: anal
+      - name: oral
+      - name: breast
+      - name: genital stroking/rubbing
+      - name: Fingering
+      - name: Fisting
+      - name: Kissing
+      - name: Licking
+      - name: Rimming / Anal Licking
+      - name: Vaginal Toys
+      - name: Anal Toys
+      - name: Teasing
+      - name: Massage
+      - name: Petting / Stroking Hair
+      - name: Sexual Body Fluids
+        variants:
+          - name: Wearing
+          - name: Consuming
+      - name: Spitting
+        variants:
+          - name: external
+          - name: In mouth
+      - name: Double Penetration
+        variants:
+          - name: Human
+          - name: Toys
+      - name: Triple Penetration
+        variants:
+          - name: Human
+          - name: Toys
+      - name: Threesome
+        variants:
+          - name: M, F, F
+          - name: M, M, F
+          - name: All same Sex
+      - name: Gang Bang
+
+  - name: bondage
+    kinds:
+      - name: Full Body
+      - name: Mental
+      - name: Restraint
+        variants:
+          - name: 0-1 hour
+          - name: 3+ hours
+          - name: full day or overnight
+      - name: Leather Restraints
+      - name: Metal Restraints
+      - name: Rope
+      - name: Intricate Rope / Shibari
+      - name: Suspension
+        variants:
+          - name: Upright
+          - name: Horizontal
+          - name: Inverted
+      - name: Genital Bondage
+      - name: Mummification
+      - name: Containment (Caging / Cells)
+      - name: Predicament
+      - name: Gags
+      - name: Sensory Deprivation
+      - name: Chastity Devices
+
+  - name: sm
+    kinds:
+
+      - name: Spanking
+      - name: Face Slapping
+      - name: Biting
+      - name: Nipple Torture
+      - name: Genital Torture
+      - name: Punching / Beating
+      - name: Bruising
+      - name: Scratching
+      - name: Hair Pulling
+      - name: Pinching
+      - name: Choking
+        variants:
+        - name: Windpipe
+        - name: Arterial
+      - name: Breath Play
+      - name: Water Torture
+      - name: Smothering
+      - name: Trampling
+      - name: Fire Play
+      - name: Bastinado (feet torture)
+      - name: Abrasion
+      - name: Cupping / Suction
+      - name: Needle Play
+      - name: Piercing
+      - name: Knife Play (non-cutting)
+      - name: Cutting
+      - name: Electric Play
+      - name: Ice / Cold Play
+      - name: Hot Wax Play
+      - name: Tickling
+      - name: Wrestling
+      - name: Humiliation
+        variants:
+          - name: (private)
+          - name: Public
+      - name: Dilation
+        variants:
+        - name: Vaginal
+        - name: Anal
+      - name: Verbal Abuse
+      - name: Branding
+      - name: Cell Popping / Micro Branding
+      - name: Injections
+      - name: Scarification
+      - name: Tattooing
+      - name: Enemas
+      - name: Catheterization
+      - name: Urethral play (includes sounding)
+      - name: Gagging
+        variants:
+          - name: (fingers or similar means)
+          - name: During Oral
+
+  - name: powerexchange
+    kinds:
+    - name: Begging
+    - name: Housework
+    - name: Orders
+    - name: Body Pose / Position Protocol
+    - name: Behavior Restriction
+    - name: Eye Contact Restriction
+    - name: Speech Restriction / Protocol
+    - name: Bathroom Use Control
+    - name: Crawling
+    - name: Forced Exercise
+    - name: Forced Masturbation
+    - name: Forced Orgasms
+    - name: Clothing Chosen
+    - name: Forced Nudity
+    - name: Food Chosen
+    - name: Collar and Leash
+    - name: Dirty Talk
+    - name: Lecturing
+    - name: Hypnosis
+    - name: Boot Blacking
+    - name: Public Play
+    - name: Discreet Public Play (less obvious to others)
+    - name: Orgasm Control / Denial
+    - name: Struggling / Resistance
+    - name: Feet / Leg Worship
+    - name: Genital Worship
+    - name: Manicures
+    - name: Competition
+    - name: Journal / Blogging Duty
+    - name: Body Weight Control
+    - name: Serving as Furniture
+    - name: Serving as Art
+    - name: Serving as Ashtray
+    - name: Serving as Toilet
+    - name: Forced Bi-Sexuality
+    - name: Symbolic Jewelry
+    - name: Sleeping Conditions Chosen
+    - name: Chauffeuring
+
+
+  - name: roleplay
+    kinds:
+
+    - name: Boss / Secretary - (Employee)
+    - name: Teacher / Student
+    - name: Damsel In Distress
+    - name: Kidnapping
+    - name: Doctor - Nurse / Patient
+    - name: "Parent / Child (Ex: Daddy / Daughter)"
+    - name: Interrogation
+    - name: Age Regression
+    - name: Adult Baby
+    - name: Prison Scenes
+    - name: Serving as Maid
+    - name: Prostitution / Given Away
+    - name: Initiation / Ritual
+    - name: Punishment Scenes
+    - name: Religious Scenes
+    - name: Vampire Scenes
+    - name: Rape Scenes
+    - name: Puppy  Play
+    - name: Cat Play
+    - name: Pony Play
+    - name: Furries
+    - name: Cosplay
+    - name: Living Doll
+    - name: Cuckold Scenes
+    - name: Auction Scenes
+    - name: Breeding / Impregnation
+
+
+  - name: fetish
+    kinds:
+
+    - name: Leather
+    - name: Latex / Rubber
+    - name: PVC
+    - name: Lingerie
+    - name: Feet / Shoes
+    - name: Boots
+    - name: Gloves
+    - name: Smoking
+    - name: Oral Fixation
+    - name: Uniforms
+    - name: Voyeurism
+    - name: Corsets
+    - name: Medical
+    - name: Cross Dressing
+    - name: Forced Feminization
+    - name: Strap-On Play
+    - name: Lolita
+    - name: Mature
+    - name: Fur
+    - name: Lactation
+    - name: Food Play
+    - name: Menstruation
+    - name: Being Recorded
+    - name: Exhibitionism
+    - name: Fear / Threatening Play
+    - name: Crying / Being Brought to Tears
+    - name: Abandonment
+    - name: Acrotomophilia (amputees)
+    - name: Barosmia (smells)
+    - name: Shaving
+    - name: Shibari
+    - name: Erotic Dancing
+    - name: Piercings
+    - name: Tattoos
+    - name: Body Modification
+    - name: BodyBuilding
+    - name: Bukake
+    - name: Zentai
+    - name: Diapers
+    - name: Golden Showers (urine)
+    - name: Blood Play
+    - name: Vomit
+    - name: Scat (bowel movements)
+
+  - name: gear
+    subcategories:
+    - name: restraints
+      kinds:
+      - name: Belts / Leather Straps
+      - name: Hemp Rope
+      - name: Nylon Rope
+      - name: Cotton Rope
+      - name: Chains
+      - name: Collars
+      - name: Posture Collars
+      - name: Leather Cuffs
+      - name: Handcuffs
+      - name: Metal Shackles
+      - name: Thumb Cuffs
+      - name: Toe Cuffs
+      - name: Stocks
+      - name: Spreader Bars
+      - name: Locks
+      - name: Blindfolds
+      - name: Hoods
+      - name: Masks
+      - name: Earplugs / Ear-muffs
+      - name: Gas Masks
+      - name: Body Bags / Sleepsacks
+      - name: Vacuum Beds
+      - name: Chastity Belts / Devices
+      - name: Harnesses
+      - name: Plastic Wrap
+      - name: Bandage / Medical Wrap
+      - name: Casts
+      - name: Single Armbinder
+      - name: Bondage Opera Gloves
+      - name: Cockrings
+      - name: Sex Slings
+      - name: Leashes
+      - name: Straight Jackets
+      - name: Cages / Cells
+      - name: Gags - Ballgag
+      - name: Gags - Cloth
+      - name: Gags - Tape / Bandage
+      - name: Gags - Bit
+      - name: Gags - Penis
+      - name: Gags - Open Mouth / Ring
+      - name: Gags - Inflatable
+      - name: Gags - Dildo
+      - name: Gags - Muzzle
+      - name: Nose Leashes
+      - name: Nose Hooks
+
+    - name: impact/sensation
+      kinds:
+      - name: Clothespins
+      - name: Canes
+      - name: Paddles
+      - name: Slappers / Straps
+      - name: Crops
+      - name: Floggers
+      - name: Single Tail Whips
+      - name: Cat-O-Nine-Tails
+      - name: Dragon Tails
+      - name: Clubs
+      - name: Violet Wands
+      - name: E-Stim Kits
+      - name: Nipple Clamps - Adjustable
+      - name: Nipple Clamps - Clover
+      - name: Nipple Weights
+      - name: Labia Clamps
+      - name: Genital Weights
+      - name: Ball Crushers
+      - name: Scrotum Parachutes / Stretchers
+      - name: Anal Hook
+      - name: Vaginal Hook
+      - name: Vibrators
+        variants:
+          - name: Insertable
+          - name: Wands
+      - name: Dildos
+      - name: Anal Plugs
+      - name: Animal Tail Anal Plugs
+      - name: Anal Beads / Balls
+      - name: Speculums
+      - name: Urethral Sounds
+      - name: Wartenberg Pinwheels
+      - name: Bells
+      - name: Strap-On Harnesses
+      - name: Feathers / Ticklers
+      - name: Guns
+      - name: Knives
+      - name: Claws
+      - name: Mirrors
+      - name: Sex Machines
+        variants:
+          - name: Handheld
+          - name: Stationary
+
+  - name: others
+    kinds:
+      - name: playfights
