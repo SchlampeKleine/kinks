@@ -1,23 +1,53 @@
 <template>
-  <h4>{{ sub_category.name }}</h4>
+  <h4>{{ name }}</h4>
   <Kink
-    v-for="kink in sub_category.kinds"
-    v-bind:key="kink.name"
-    :kink="kink"
+    v-for="kink in kinds"
+    :key="kink.name"
+    :name="kink.name"
+    :variants="kink.variants"
+    @update:kink="updateKink"
   />
 </template>
 
 <script>
-console.log("create sub category");
 import Kink from '@/components/Kink.vue'
 export default {
   name: 'KinkSubCategory',
   props: {
-    sub_category: Object,
+    subcategory: {
+      type: Object,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    kinds: {
+      type: Array,
+      default() {
+        return [];
+      },
+    }
+  },
+  methods: {
+    updateKink(newVal) {
+      this.localSubCategory.kinds[this.localCategory.kinds.findIndex(element => element.name === newVal.name)]=newVal;
+      this.$emit("update:subcategory",this.localCategory);
+    },
   },
   components: {
     Kink,
-    }
+    },
+    computed: {
+      localSubCategory: {
+        get() { return this.subcategory ? this.subcategory : {}; },
+        set(newVal) {
+          this.$emit("update:subcategory",newVal);
+
+        },
+
+      },
+
+    },
 }
 </script>
 

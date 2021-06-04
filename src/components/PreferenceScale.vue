@@ -1,15 +1,19 @@
 <template>
+<div
+class="preference-role-identifier"
+>
+{{ localRole.name }}
+</div>
 <div>
 <template
 v-for="preferencelevel in preferences"
 v-bind:key="preferencelevel"
->
+  >
 <input
 type="radio"
 label="preferencelevel"
 v-model="localpreference"
 :value="preferencelevel"
-@change="$emit('update:preference',$event.target.value)"
 />
 <label
 for="preferencelevel"
@@ -20,26 +24,70 @@ for="preferencelevel"
 </template>
 
 <script>
+import { preferenceLevels } from '@/assets/template_limits.yaml';
 export default {
   name: 'PreferenceScale',
   emits: [
-    'update:preference'
+    'update:preference',
+    'update:role'
     ],
   data() {
     return {
+      preferences: preferenceLevels,
       localpreference: '',
-      preferences: [
-        "hardlimit",
-        "softlimit",
-        "dontcare",
-        "curious",
-        "loveit"
-        ],
-    };
-
+      };
   },
   props: {
-    preference: null,
+    role: {
+      type: Object,
+    },
+    preference: {
+      type: String,
+      default: "",
+    },
+    name: {
+      type: String,
+    },
+  },
+  watch: {
+    localpreference: {
+      handler(newPreference) {
+        this.localPreference=newPreference;
+
+      },
+
+    },
+    localRole: {
+      handler(localRole) {
+        this.$emit('update:role', localRole);
+      },
+      deep: true,
+    },
+  },
+  computed: {
+
+    localRole: {
+      get() {
+        var tmpRole = this.role ? this.role : {};
+        if( tmpRole.preference) return tmpRole;
+        tmpRole.preference = '';
+        return tmpRole;
+      },
+      set(localRole) {
+        this.$emit('update:role', localRole);
+      },
+    },
+    localPreference: {
+
+      get() { return this.localRole.preference ? this.localRole.preference : '';},
+      set(localPreference) {
+        this.localRole.preference=localPreference;
+        this.$emit('update:role', this.localRole);
+      },
+
+
+    },
+
   }
 }
 </script>

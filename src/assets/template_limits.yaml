@@ -5,6 +5,18 @@
 #
 #Sources:
 #- Checklist VER: .81 - www.discerningspecialist.com
+#
+defaultRoles:
+  - name: active
+  - name: passive
+
+preferenceLevels:
+  - "hardlimit"
+  - "softlimit"
+  - "dontcare"
+  - "curious"
+  - "loveit"
+  - "notavailable"
 
 categories:
   - name: sex
