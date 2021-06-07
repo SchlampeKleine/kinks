@@ -9,7 +9,7 @@ v-for="role in localRoles"
 
 <script>
 import PreferenceScale from '@/components/PreferenceScale.vue'
-import { defaultRoles } from '@/assets/template_limits.yaml'
+import { defaultRoles } from '@/assets/kinks.yaml'
 
 export default {
   name: 'PreferenceScales',

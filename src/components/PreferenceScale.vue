@@ -24,7 +24,7 @@ for="preferencelevel"
 </template>
 
 <script>
-import { preferenceLevels } from '@/assets/template_limits.yaml';
+import { preferenceLevels } from '@/assets/kinks.yaml';
 export default {
   name: 'PreferenceScale',
   emits: [

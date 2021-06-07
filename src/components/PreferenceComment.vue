@@ -6,7 +6,7 @@ placeholder="Comment"
 </template>
 
 <script>
-import { defaultRoles } from '@/assets/template_limits.yaml';
+import { defaultRoles } from '@/assets/kinks.yaml';
 
 
 export default {
