@@ -14,6 +14,9 @@ import Kink from '@/components/Kink.vue'
 export default {
   name: 'KinkSubCategory',
   props: {
+    key: {
+      type: String,
+    },
     subcategory: {
       type: Object,
     },
@@ -29,9 +32,15 @@ export default {
     }
   },
   methods: {
+
     updateKink(newVal) {
-      this.localSubCategory.kinds[this.localCategory.kinds.findIndex(element => element.name === newVal.name)]=newVal;
-      this.$emit("update:subcategory",this.localCategory);
+      this.localSubCategory.kinds[
+        this.localSubCategory.kinds.findIndex(
+          element => element.name === newVal.name
+        )
+      ]=newVal;
+      // console.log({"KinkSubCategory: updated Kink":newVal})
+      //this.$emit("update:subcategory",this.localSubCategory);
     },
   },
   components: {

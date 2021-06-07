@@ -1,50 +1,44 @@
 <template>
 <PreferenceScales
-:roles="preferences.roles"
-@update:roles="updateRoles"
+v-model:roles="localPreferences.roles"
+:key="key+'-'+'preference-scales'"
 />
 <PreferenceComment
-:comment="preferences.comment"
-@update:comment="updateComment"
+v-model:comment="localPreferences.comment"
+:key="key+'-'+'preference-comment'"
 />
 </template>
 
 <script>
 import PreferenceScales from '@/components/PreferenceScales.vue'
 import PreferenceComment from '@/components/PreferenceComment.vue'
-import { defaultRoles } from '@/assets/template_limits.yaml';
 
 export default {
   name: 'KinkPreference',
   props: {
+    key: {
+      type: String,
+    },
     preferences: {
       type: Object,
+      required: true,
       default() {
-        return {
-          comment: "",
-          roles: defaultRoles,
-        };
+        return {};
+
       },
     },
   },
 
   computed: {
+
     localPreferences: {
       get() { return this.preferences; },
       set(newVal) {
+        // console.log({"KinkPreference: Emit Update preferences":newVal})
         this.$emit('update:preferences', newVal);
       },
     },
-    localComment: {
-      get() { return this.comment },
-      set(localComment) { this.$emit('update:comment', localComment); },
-    },
-    localRoles: {
-      get() { return this.preference.roles ? this.preference.roles : defaultRoles; },
-      set(localRoles) {
-        this.$emit('update:roles', localRoles);
-        },
-      },
+
   },
   emits: [
     'update:preferences'
@@ -56,14 +50,10 @@ export default {
   methods: {
     updateComment(newVal) {
       this.localPreferences.comment=newVal;
-      this.$emit('update:preferences',this.localPreferences);
     },
-    updateRoles(newRoles){
-      this.localPreferences.roles=newRoles;
-      this.$emit("update:preferences",this.localPreferences);
-    },
-    updatePreference(preference){
-      this.$emit("update:kink","preference",preference);
+
+    updateRoles(newVal){
+      this.localPreferences.roles=newVal;
     },
 
   },

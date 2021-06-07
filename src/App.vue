@@ -1,74 +1,78 @@
 <template>
-  <div
-  class="user-field"
-  >
-  <input
-  placeholder="Name"
-  v-model="user"
-  @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
+  <UserOptions
+    v-model:user="user"
+    v-model:allKinks="allKinks"
+    v-model:myKinks="myKinks"
   />
-  <button v-on:click="saveMyKinks">Save my kinks</button>
-  <button v-on:click="loadMyKinks">Load my kinks</button>
-  <button v-on:click="resetMyKinks">Reset my kinks</button>
-  </div>
-  <KinkCategory
-  v-for="category in myKinks.categories"
-  :key="category.name"
-  :category=category
-  :name="category.name"
-  :subcategories="category.subcategories"
-  :kinds="category.kinds"
-  @update:category="updateCategory"
-  />
+  <router-link to="/">Go to Home</router-link>
+  <router-view
+    v-model:myKinks="myKinks"
+  ></router-view>
 
 </template>
 
 <script>
+import {
+  // useRoute,useRouter,
+  RouterView,
+  RouterLink
+} from 'vue-router'
 
-const STORAGE_KEY = "all-my-kinks";
-const kinkStorage = {
-  fetch() {
-    const allKinks = JSON.parse(localStorage.getItem(STORAGE_KEY) || "['users': {}]");
-    return allKinks;
-  },
-  save(allKinks) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(allKinks));
-  }
-};
-
-import defaultKinks from '@/assets/template_limits.yaml';
-
-import KinkCategory from '@/components/KinkCategory.vue'
+import UserOptions from '@/components/UserOptions.vue'
 
 export default {
-  setup() {
-
-  },
   name: 'App',
- components: {
-    KinkCategory,
+  components: {
+     RouterLink,
+     RouterView,
+     UserOptions,
   },
   data() {
     return {
-      user: null,
-      allKinks: kinkStorage.fetch(),
-      myKinks: ((this.allKinks || [] ) ["users"] || [] )[this.user] || defaultKinks,
-      };
+      user: "",
+      myKinks: Object(),
+      allKinks: this.getJSONFromLocalStorage('allKinks'),
+    };
+  },
+
+  watch: {
+
+    allKinks: {
+      deep: true,
+      handler(newVal) {
+        console.log({ 'change allKinks': newVal});
+        this.saveToLocalStorage('allKinks',this.allKinks);
+      },
+      immediate: true,
+    },
+
+
   },
 
   methods: {
-    loadMyKinks() {
-      this.allKinks=kinkStorage.fetch();
-      this.myKinks=kinkStorage["users"][this.user||"default"]||defaultKinks;
+
+    saveToLocalStorage(key,data) {
+      var parsedData = JSON.stringify(data);
+      localStorage.setItem(key,parsedData);
+      console.log({
+        "Saved to localStorage": {
+          key: data
+          }
+          });
+
     },
-    saveMyKinks() {
-      console.log(this.myKinks);
-      if(!(this.allKinks["users"])) this.allKinks["users"] = {};
-      this.allKinks["users"][this.user||"default"]=this.myKinks;
-      kinkStorage.save(this.allKinks);
-    },
-    resetMyKinks() {
-      this.myKinks = defaultKinks;
+
+    getJSONFromLocalStorage(key) {
+      var localList = {};
+      if (localStorage.getItem(key)){
+        try {
+          localList = JSON.parse(localStorage.getItem(key));
+        } catch(e) {
+          console.log(e);
+          localStorage.remove(key);
+        }
+      }
+      return localList;
     },
 
     updateCategory(newVal) {

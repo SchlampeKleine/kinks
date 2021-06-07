@@ -1,17 +1,15 @@
 <template>
 <p>{{ localKink.name }}</p>
 <template
-v-if="localVariants.length>0"
+v-if="localKink.variants"
 >
 <ul
 class="kink-variants"
 >
 <KinkVariant
-v-for="variant in localVariants"
-:key="variant.name"
+v-for="variant in localKink.variants"
+:key="key+'-'+variant.name"
 :variant=variant
-v-model:name="variant.name"
-v-model:roles="variant.roles"
 @update:variant="updateVariant"
 />
 </ul>
@@ -20,8 +18,7 @@ v-model:roles="variant.roles"
 v-else
 >
 <KinkPreference
-:preferences="localPreferences"
-@update:preferences="updatePreferences"
+v-model:preferences="localKink.preferences"
 />
 </template>
 </template>
@@ -33,6 +30,9 @@ import KinkPreference from '@/components/KinkPreference.vue'
 export default {
   name: 'Kink',
   props: {
+    key: {
+      type: String,
+    },
     kink: {
       type: Object,
     },
@@ -54,7 +54,12 @@ export default {
       default: "",
     },
   },
-  emits: ['update:kink','update:roles'],
+
+  emits:
+    [
+      'update:kink',
+      'update:roles'
+    ],
   components: {
     KinkVariant,
     KinkPreference,
@@ -62,14 +67,16 @@ export default {
   methods: {
     updatePreferences(newVal) {
       this.localKink.preferences=newVal;
-      this.$emit("update:kink",this.localKink);
     },
     updateRoles(newRoles){
       this.localRoles=newRoles;
-      this.$emit("update:roles",this.localRoles);
     },
     updateVariant(newVal){
-      this.localVariants[this.localVariants.findIndex(element => element.name === newVal.name)]=newVal;
+      this.localVariants[
+        this.localVariants.findIndex(
+          element => element.name === newVal.name
+        )
+      ]=newVal;
     },
   },
   computed: {

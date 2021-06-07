@@ -6,13 +6,13 @@ class="preference-role-identifier"
 </div>
 <div>
 <template
-v-for="preferencelevel in preferences"
-v-bind:key="preferencelevel"
+v-for="preferencelevel in getPreferenceLevels()"
+v-bind:key="key+'-'+preferencelevel"
   >
 <input
 type="radio"
 label="preferencelevel"
-v-model="localpreference"
+v-model="localPreference"
 :value="preferencelevel"
 />
 <label
@@ -24,71 +24,83 @@ for="preferencelevel"
 </template>
 
 <script>
-import { preferenceLevels } from '@/assets/kinks.yaml';
+import { preferenceLevels } from '@/assets/kinks.yaml'; // is used in v-for
+
 export default {
   name: 'PreferenceScale',
   emits: [
-    'update:preference',
+  //  'update:preference',
     'update:role'
     ],
-  data() {
+  data(){
     return {
-      preferences: preferenceLevels,
-      localpreference: '',
-      };
+      'localPreference': null,
+    };
+
   },
+
+  methods: {
+    getPreferenceLevels(){
+      return preferenceLevels;
+    },
+
+  },
+
   props: {
+    key: {
+      type: String,
+    },
     role: {
       type: Object,
+      required: true,
+      default(){
+        return {
+          "preference": null,
+          };
+      }
     },
-    preference: {
-      type: String,
-      default: "",
-    },
-    name: {
-      type: String,
-    },
+
   },
   watch: {
-    localpreference: {
-      handler(newPreference) {
-        this.localPreference=newPreference;
 
+    role: {
+      deep: true,
+      immediate: true,
+      handler(newVal) {
+        // console.log({"PreferenceScale: role changed": newVal});
+        this.localRole=newVal;
       },
-
     },
+
     localRole: {
-      handler(localRole) {
-        this.$emit('update:role', localRole);
+      handler(newVal) {
+        // console.log({"PreferenceScale: localRole changed": newVal })
+        this.localPreference=newVal.preference;
+        this.$emit('update:role', newVal);
       },
       deep: true,
+      immediate: true,
+    },
+
+    localPreference: {
+      handler(newVal){
+        this.localRole.preference=newVal
+      },
+      immediate: true,
     },
   },
   computed: {
 
     localRole: {
       get() {
-        var tmpRole = this.role ? this.role : {};
-        if( tmpRole.preference) return tmpRole;
-        tmpRole.preference = '';
-        return tmpRole;
+        return this.role
       },
-      set(localRole) {
-        this.$emit('update:role', localRole);
+      set(newVal) {
+        this.$emit('update:role', newVal);
       },
     },
-    localPreference: {
 
-      get() { return this.localRole.preference ? this.localRole.preference : '';},
-      set(localPreference) {
-        this.localRole.preference=localPreference;
-        this.$emit('update:role', this.localRole);
-      },
-
-
-    },
-
-  }
+  },
 }
 </script>
 

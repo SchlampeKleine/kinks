@@ -1,7 +1,7 @@
 <template>
 <PreferenceScale
 v-for="role in localRoles"
-:key="role.name"
+:key="key+'-'+role.name"
 :role=role
 @update:role="updateLocalRole"
 />
@@ -17,19 +17,48 @@ export default {
     'update:roles'
     ],
   props: {
+    key: {
+      type: String,
+    },
     roles: {
       type: Array,
+      default() {
+        return defaultRoles;
+
+      },
     },
   },
   methods: {
+
     updateLocalRole(newRole) {
-      this.localRoles[this.localRoles.findIndex(element => element.name === newRole.name)]=newRole;
+      this.localRoles[
+        this.localRoles.findIndex(
+          element => element.name === newRole.name
+        )
+      ]=newRole;
       this.$emit('update:roles',this.localRoles);
     },
 
   },
   components: {
     PreferenceScale
+  },
+  watch: {
+    roles: {
+      deep: true,
+      immediate: false,
+      handler(newVal) {
+        console.log({"PreferenceScales: roles changed" : newVal} );
+      },
+    },
+    localRoles: {
+      deep: true,
+      immediate: false,
+      handler(newVal) {
+        console.log({"PreferenceScales: localRoles changed" : newVal} );
+      },
+    },
+
   },
   computed: {
     localRoles: {

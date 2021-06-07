@@ -28,7 +28,7 @@ export default {
   },
 methods: {
            updateComment(newVal) {
-             this.$emit('update:comment',newVal);
+             this.$emit('update:comment',newVal.target.value);
            }
          },
   components: {

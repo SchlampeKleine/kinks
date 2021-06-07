@@ -1,7 +1,8 @@
 <template>
 <li>{{ variant.name }}
 <KinkPreference
-v-model:preferences="localPreferences"
+v-model:preferences="localVariant.preferences"
+:key="key"
 @update:preferences="updatePreferences"
 />
 </li>
@@ -13,50 +14,38 @@ import KinkPreference from '@/components/KinkPreference.vue'
 export default {
   name: 'KinkVariant',
   emits: [
-  'update:variant'
+    'update:variant'
   ],
   props: {
+    key: {
+      type: String,
+    },
     variant: {
       type: Object,
       },
-    name: {
-      type: String,
-      required: true,
-    },
-    comment: {
-      type: String,
-    },
-    roles: {
-      type: Array,
-    },
   },
   components: {
     KinkPreference,
+  },
+
+  watch: {
+    localVariant: {
+      deep: true,
+      immediate: true,
+      handler(newVal) {
+        // console.log({"KinkVariant: change localVariant": newVal.name})
+        this.localVariant=newVal
+      },
+    },
+
   },
   computed: {
     localVariant: {
       get() { return this.variant;},
       set(newVal) {
+        // console.log({"KinkVariant: Update Variant":newVal})
         this.$emit("update:variant",newVal);
         },
-    },
-    localPreferences: {
-      get() { return { "comment": this.localComment, "roles": this.localRoles}; },
-      set(newVal) {
-        this.localVariant.roles=newVal.roles;
-        this.localVariant.comment=newVal.comment;
-        this.$emit('update:variant',this.localVariant);
-      },
-    },
-    localRoles: {
-      get() { return this.roles; },
-      set(localRoles) {
-        this.$emit('update:roles', localRoles);
-        },
-      },
-    localComment: {
-      get() { return this.comment; },
-      set(localComment) { this.$emit('update:comment', localComment); },
     },
   },
   methods: {

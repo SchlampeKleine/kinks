@@ -2,7 +2,7 @@
   <h3>{{ category.name }}</h3>
   <KinkSubCategory
     v-for="subcategory in localCategory.subcategories"
-    v-bind:key="subcategory.name"
+    :key="subcategory.name"
     :subcategory="subcategory"
     :name="subcategory.name"
     :kinds="subcategory.kinds"
@@ -10,7 +10,7 @@
   />
   <Kink
     v-for="kink in localCategory.kinds"
-    v-bind:key="kink.name"
+    :key="kink.name"
     :kink="kink"
     :name="kink.name"
     :variants="kink.variants"
@@ -56,15 +56,19 @@ export default {
         return tmpCategory;
       },
       set(newVal) {
-        this.localCategory=newVal;
-        this.$emit("update:category",this.localCategory);
+        this.$emit("update:category",newVal);
         },
       },
 
   },
   methods: {
+
     updateSubcategory(newVal) {
-      this.localCategory.subcategories[this.localCategory.subcategories.findIndex(element => element.name === newVal.name)]=newVal;
+      this.localCategory.subcategories[
+        this.localCategory.subcategories.findIndex(
+          element => element.name === newVal.name
+        )
+      ]=newVal;
       this.$emit("update:category",this.localCategory);
     },
     updateKink(newVal) {
