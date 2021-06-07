@@ -16,6 +16,16 @@ const router = createRouter({
   ],
 })
 
+// i18n
+import { createI18n } from 'vue-i18n'
+
+const i18n = createI18n({
+  locale: 'de',
+  fallbackLocale: 'en',
+  // something vue-i18n options here ...
+})
+
 createApp(App)
   .use(router)
+  .use(i18n)
   .mount('#app')
