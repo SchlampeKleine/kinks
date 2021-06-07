@@ -1,0 +1,71 @@
+---
+#.BOOL: &BOOL
+#- True
+#- False
+#
+#Sources:
+#- Checklist VER: .81 - www.discerningspecialist.com
+#
+defaultRoles:
+  - name: active
+  - name: passive
+
+preferenceLevels:
+  - "hardlimit"
+  - "softlimit"
+  - "dontcare"
+  - "curious"
+  - "loveit"
+  - "notavailable"
+
+categories:
+  - name: sex
+    kinds:
+      - name: vaginal
+      - name: Sexual Body Fluids
+        variants:
+          - name: Wearing
+          - name: Consuming
+
+  - name: bondage
+    kinds:
+      - name: Restraint
+        variants:
+          - name: 0-1 hour
+      - name: Genital Bondage
+
+  - name: sm
+    kinds:
+
+      - name: Spanking
+      - name: Choking
+        variants:
+        - name: Windpipe
+      - name: Gagging
+        variants:
+          - name: (fingers or similar means)
+          - name: During Oral
+
+  - name: powerexchange
+    kinds:
+    - name: Begging
+
+  - name: roleplay
+    kinds:
+
+    - name: Boss / Secretary - (Employee)
+
+  - name: fetish
+    kinds:
+
+    - name: Leather
+
+  - name: gear
+    subcategories:
+    - name: restraints
+      kinds:
+      - name: Nylon Rope
+
+  - name: others
+    kinds:
+      - name: playfights
