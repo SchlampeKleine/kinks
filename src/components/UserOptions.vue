@@ -7,13 +7,36 @@
     v-model="localUser"
     @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
   />
-  <button v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">Save my kinks</button>
+  <button v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
+  {{ $t('button_save') }}
+  </button>
   <button v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
-  >Load my kinks</button>
-  <button v-on:click="resetMyKinks(user)">Reset my kinks</button>
-  <button v-on:click="dumpMyKinks">Dump my kinks</button>
+  >
+  {{ $t('button_dump') }}
+  </button>
+  <button v-on:click="resetMyKinks(user)">
+  {{ $t('button_dump') }}
+  </button>
+  <button v-on:click="dumpMyKinks">
+  {{ $t('button_dump') }}
+  </button>
   </div>
 </template>
+
+<i18n lang="yaml">
+
+de:
+  button_dump: "Kinks dumpen"
+  button_reset: "Standard wiederherstellen"
+  button_load: "Kinks laden"
+  button_save: "Kinks speichern"
+en:
+  button_dump: "Dump my kinks"
+  button_reset: "Reset my kinks"
+  button_load: "Load my kinks"
+  button_save: "Save my kinks"
+
+</i18n>
 
 <script>
 
