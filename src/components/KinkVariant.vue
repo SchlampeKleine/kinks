@@ -1,5 +1,5 @@
 <template>
-<li>{{ variant.name }}
+<li>{{ t('variant') }}
 <KinkPreference
 v-model:preferences="localVariant.preferences"
 :key="key"
@@ -10,6 +10,7 @@ v-model:preferences="localVariant.preferences"
 
 <script>
 import KinkPreference from '@/components/KinkPreference.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'KinkVariant',
@@ -22,7 +23,16 @@ export default {
     },
     variant: {
       type: Object,
+      required: true,
     },
+  },
+  setup(props) {
+    const { t } = useI18n({
+      messages: props.variant.messages || { en: { variant: props.variant.name } },
+    });
+    return {
+      t,
+    };
   },
   components: {
     KinkPreference,
