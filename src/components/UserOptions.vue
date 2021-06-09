@@ -8,17 +8,17 @@
     @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
   />
   <button v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
-  {{ $t('button_save') }}
+  {{ t('button_save') }}
   </button>
   <button v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
   >
-  {{ $t('button_load') }}
+  {{ t('button_load') }}
   </button>
   <button v-on:click="resetMyKinks(user)">
-  {{ $t('button_reset') }}
+  {{ t('button_reset') }}
   </button>
   <button v-on:click="dumpMyKinks">
-  {{ $t('button_dump') }}
+  {{ t('button_dump') }}
   </button>
   </div>
 </template>
@@ -42,6 +42,7 @@ en:
 
 // import defaultKinks from '@/assets/kinks.yaml';
 import defaultKinks from '@/assets/kinks_reduced.yaml';
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'UserOptions',
@@ -64,6 +65,12 @@ export default {
     'update:myKinks',
     'update:allKinks',
   ],
+  setup() {
+    const { t } = useI18n();
+    return {
+      t,
+    };
+  },
   mounted() {
     this.localMyKinks = this.getKinksForUser(this.user);
   },

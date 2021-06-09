@@ -26,6 +26,7 @@ v-model:preferences="localKink.preferences"
 <script>
 import KinkVariant from '@/components/KinkVariant.vue';
 import KinkPreference from '@/components/KinkPreference.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'Kink',
@@ -60,6 +61,12 @@ export default {
       'update:kink',
       'update:roles',
     ],
+  setup() {
+    const { t } = useI18n();
+    return {
+      t,
+    };
+  },
   components: {
     KinkVariant,
     KinkPreference,
