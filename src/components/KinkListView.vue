@@ -12,7 +12,7 @@
 
 <script>
 
-import KinkCategory from '@/components/KinkCategory.vue'
+import KinkCategory from '@/components/KinkCategory.vue';
 
 export default {
   name: 'KinkListView',
@@ -29,13 +29,13 @@ export default {
   methods: {
 
     updateCategory(newVal) {
-      var msg ={"updateCategory":newVal};
+      const msg = { updateCategory: newVal };
       console.log(msg);
       this.localMyKinks.categories[
         this.localMyKinks.categories.findIndex(
-          element => element.name === newVal.name
+          (element) => element.name === newVal.name,
         )
-      ]=newVal;
+      ] = newVal;
     },
 
   },
@@ -46,13 +46,12 @@ export default {
         return this.myKinks;
       },
       set(newVal) {
-        this.$emit('update:myKinks',newVal);
+        this.$emit('update:myKinks', newVal);
       },
     },
   },
 
-
-}
+};
 
 </script>
 

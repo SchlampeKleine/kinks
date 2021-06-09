@@ -24,8 +24,8 @@ v-model:preferences="localKink.preferences"
 </template>
 
 <script>
-import KinkVariant from '@/components/KinkVariant.vue'
-import KinkPreference from '@/components/KinkPreference.vue'
+import KinkVariant from '@/components/KinkVariant.vue';
+import KinkPreference from '@/components/KinkPreference.vue';
 
 export default {
   name: 'Kink',
@@ -51,14 +51,14 @@ export default {
     },
     comment: {
       type: String,
-      default: "",
+      default: '',
     },
   },
 
   emits:
     [
       'update:kink',
-      'update:roles'
+      'update:roles',
     ],
   components: {
     KinkVariant,
@@ -66,51 +66,50 @@ export default {
   },
   methods: {
     updatePreferences(newVal) {
-      this.localKink.preferences=newVal;
+      this.localKink.preferences = newVal;
     },
-    updateRoles(newRoles){
-      this.localRoles=newRoles;
+    updateRoles(newRoles) {
+      this.localRoles = newRoles;
     },
-    updateVariant(newVal){
+    updateVariant(newVal) {
       this.localVariants[
         this.localVariants.findIndex(
-          element => element.name === newVal.name
+          (element) => element.name === newVal.name,
         )
-      ]=newVal;
+      ] = newVal;
     },
   },
   computed: {
     localKink: {
-      get(){
+      get() {
         return this.kink ? this.kink : {
-          "roles": this.roles ? this.roles : null,
-          "variants": this.variants ? this.variants : null,
-          "name": this.name ? this.name : "",
-          "comment": this.comment ? this.comment : null
-          };
-        },
+          roles: this.roles ? this.roles : null,
+          variants: this.variants ? this.variants : null,
+          name: this.name ? this.name : '',
+          comment: this.comment ? this.comment : null,
+        };
+      },
       set(newVal) {
-        this.$emit('update:kink',newVal);
+        this.$emit('update:kink', newVal);
       },
 
     },
     localPreferences: {
-      get() { return { "comment": this.localComment, "roles": this.localRoles};},
+      get() { return { comment: this.localComment, roles: this.localRoles }; },
       set(newVal) {
-        this.localKink.roles=newVal.roles;
-        this.localKink.comment=newVal.comment;
-        this.$emit('update:kink',this.localKink);
-
+        this.localKink.roles = newVal.roles;
+        this.localKink.comment = newVal.comment;
+        this.$emit('update:kink', this.localKink);
       },
     },
     localComment: {
-      get() { return this.comment },
+      get() { return this.comment; },
       set(localComment) { this.$emit('update:comment', localComment); },
     },
     localVariants: {
-      get(){return this.variants;},
-      set(localVariants){
-        this.$emit('update:variants',localVariants);
+      get() { return this.variants; },
+      set(localVariants) {
+        this.$emit('update:variants', localVariants);
       },
     },
     localRoles: {
@@ -118,7 +117,7 @@ export default {
       set(localRoles) { this.$emit('update:roles', localRoles); },
     },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

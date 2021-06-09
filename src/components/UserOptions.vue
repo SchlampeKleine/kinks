@@ -69,64 +69,57 @@ export default {
   },
   methods: {
 
-   canLoadKinks(user) {
+    canLoadKinks(user) {
+      const users = this.getUsers();
+      return !(users.includes(user));
+    },
 
-     var users=this.getUsers()
-     return !(users.includes(user));
-   },
+    getUsers() {
+      const users = Object.keys(this.allKinks);
+      return users;
+    },
 
-   getUsers() {
-    var users = Object.keys(this.allKinks)
-    return users;
-   },
+    canSaveKinks(user) {
+      return user.length === 0;
+    },
 
-   canSaveKinks(user) {
-    return user.length==0;
-   },
-
-   getKinksForUser(user) {
-     if(user===''){
-        user = 'default' ;
-        console.log({"UserOptions: Fallback to default user": user})
+    getKinksForUser(user) {
+      let localUser = user;
+      if (user === '') localUser = 'default';
+      const kinks = this.allKinks[localUser];
+      if (kinks) {
+        // console.log({"UserOptions: Found kinks for user":kinks})
+        return kinks;
       }
-     try {
-       var kinks = this.allKinks[user]
-         if(kinks) {
-          // console.log({"UserOptions: Found kinks for user":kinks})
-          return kinks;
-          }
       // console.log({"UserOptions: Return defaultKinks": defaultKinks})
-       return defaultKinks;
-     } catch(e) {
-       console.log(e)
-     }
-   },
+      return defaultKinks;
+    },
 
-   loadMyKinks(user) {
-    this.localMyKinks=this.getKinksForUser(user);
-   },
+    loadMyKinks(user) {
+      this.localMyKinks = this.getKinksForUser(user);
+    },
 
-   dumpMyKinks() {
-     console.log(this.myKinks);
-   },
+    dumpMyKinks() {
+      console.log(this.myKinks);
+    },
 
-   saveMyKinks(user) {
-    console.log({"Saving for user": user});
-     this.localAllKinks[user]=this.myKinks;
-   },
+    saveMyKinks(user) {
+      console.log({ 'Saving for user': user });
+      this.localAllKinks[user] = this.myKinks;
+    },
 
-   resetMyKinks() {
-     this.localMyKinks = defaultKinks;
-   },
+    resetMyKinks() {
+      this.localMyKinks = defaultKinks;
+    },
 
- },
+  },
   computed: {
     localUser: {
       get() {
         return this.user;
       },
       set(newVal) {
-        this.$emit('update:user',newVal);
+        this.$emit('update:user', newVal);
       },
     },
     localAllKinks: {
@@ -134,7 +127,7 @@ export default {
         return this.allKinks;
       },
       set(newVal) {
-        this.$emit('update:allKinks',newVal);
+        this.$emit('update:allKinks', newVal);
       },
     },
     localMyKinks: {
@@ -143,12 +136,11 @@ export default {
       },
       set(newVal) {
         // console.log({"UserOptions: Setting new myKinks":newVal})
-        this.$emit('update:myKinks',newVal);
+        this.$emit('update:myKinks', newVal);
       },
     },
   },
 
-}
-
+};
 
 </script>

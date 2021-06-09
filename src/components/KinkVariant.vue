@@ -9,12 +9,12 @@ v-model:preferences="localVariant.preferences"
 </template>
 
 <script>
-import KinkPreference from '@/components/KinkPreference.vue'
+import KinkPreference from '@/components/KinkPreference.vue';
 
 export default {
   name: 'KinkVariant',
   emits: [
-    'update:variant'
+    'update:variant',
   ],
   props: {
     key: {
@@ -22,7 +22,7 @@ export default {
     },
     variant: {
       type: Object,
-      },
+    },
   },
   components: {
     KinkPreference,
@@ -34,27 +34,27 @@ export default {
       immediate: true,
       handler(newVal) {
         // console.log({"KinkVariant: change localVariant": newVal.name})
-        this.localVariant=newVal
+        this.localVariant = newVal;
       },
     },
 
   },
   computed: {
     localVariant: {
-      get() { return this.variant;},
+      get() { return this.variant; },
       set(newVal) {
         // console.log({"KinkVariant: Update Variant":newVal})
-        this.$emit("update:variant",newVal);
-        },
+        this.$emit('update:variant', newVal);
+      },
     },
   },
   methods: {
     updatePreferences(newVal) {
-      this.localVariant.preferences=newVal;
-      this.$emit("update:variant",this.localVariant);
+      this.localVariant.preferences = newVal;
+      this.$emit('update:variant', this.localVariant);
     },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

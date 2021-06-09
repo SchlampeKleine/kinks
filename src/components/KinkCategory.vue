@@ -19,8 +19,9 @@
 </template>
 
 <script>
-import Kink from '@/components/Kink.vue'
-import KinkSubCategory from '@/components/KinkSubCategory.vue'
+import Kink from '@/components/Kink.vue';
+import KinkSubCategory from '@/components/KinkSubCategory.vue';
+
 export default {
   name: 'KinkCategory',
   props: {
@@ -50,15 +51,15 @@ export default {
   computed: {
     localCategory: {
       get() {
-        var tmpCategory = this.category ? this.category : {};
-        if(!(tmpCategory.subcategories) ) tmpCategory.subcategories=[];
-        if(!(tmpCategory.kinds) ) tmpCategory.kinds=[];
+        const tmpCategory = this.category ? this.category : {};
+        if (!(tmpCategory.subcategories)) tmpCategory.subcategories = [];
+        if (!(tmpCategory.kinds)) tmpCategory.kinds = [];
         return tmpCategory;
       },
       set(newVal) {
-        this.$emit("update:category",newVal);
-        },
+        this.$emit('update:category', newVal);
       },
+    },
 
   },
   methods: {
@@ -66,22 +67,24 @@ export default {
     updateSubcategory(newVal) {
       this.localCategory.subcategories[
         this.localCategory.subcategories.findIndex(
-          element => element.name === newVal.name
+          (element) => element.name === newVal.name,
         )
-      ]=newVal;
-      this.$emit("update:category",this.localCategory);
+      ] = newVal;
+      this.$emit('update:category', this.localCategory);
     },
     updateKink(newVal) {
-      console.log({"updateKink":newVal});
-      this.localCategory.kinds[this.localCategory.kinds.findIndex(element => element.name === newVal.name)]=newVal;
-      this.$emit("update:category",this.localCategory);
+      console.log({ updateKink: newVal });
+      this.localCategory.kinds[
+        this.localCategory.kinds.findIndex((element) => element.name === newVal.name)
+      ] = newVal;
+      this.$emit('update:category', this.localCategory);
     },
   },
   components: {
     Kink,
     KinkSubCategory,
-    }
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

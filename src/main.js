@@ -1,9 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
 
 // Router Settings
-import { createRouter,createWebHashHistory } from 'vue-router'
-import KinkListView from '@/components/KinkListView.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import KinkListView from '@/components/KinkListView.vue';
+
+import App from './App.vue';
+import i18n from './i18n';
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -14,18 +16,8 @@ const router = createRouter({
     },
 
   ],
-})
+});
 
-// i18n
-import { createI18n } from 'vue-i18n'
-
-const i18n = createI18n({
-  locale: 'de',
-  fallbackLocale: 'en',
-  // something vue-i18n options here ...
-})
-
-createApp(App)
+createApp(App).use(i18n)
   .use(router)
-  .use(i18n)
-  .mount('#app')
+  .mount('#app');

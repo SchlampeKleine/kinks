@@ -8,12 +8,11 @@ placeholder="Comment"
 <script>
 import { defaultRoles } from '@/assets/kinks.yaml';
 
-
 export default {
   name: 'PreferenceComment',
   emits: [
     'update:comment',
-    ],
+  ],
   props: {
     roles: {
       type: Array,
@@ -26,14 +25,12 @@ export default {
       },
     },
   },
-methods: {
-           updateComment(newVal) {
-             this.$emit('update:comment',newVal.target.value);
-           }
-         },
-  components: {
+  methods: {
+    updateComment(newVal) {
+      this.$emit('update:comment', newVal.target.value);
+    },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

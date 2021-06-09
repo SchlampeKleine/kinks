@@ -30,17 +30,16 @@ export default {
   name: 'PreferenceScale',
   emits: [
   //  'update:preference',
-    'update:role'
-    ],
-  data(){
+    'update:role',
+  ],
+  data() {
     return {
-      'localPreference': null,
+      localPreference: null,
     };
-
   },
 
   methods: {
-    getPreferenceLevels(){
+    getPreferenceLevels() {
       return preferenceLevels;
     },
 
@@ -53,11 +52,11 @@ export default {
     role: {
       type: Object,
       required: true,
-      default(){
+      default() {
         return {
-          "preference": null,
-          };
-      }
+          preference: null,
+        };
+      },
     },
 
   },
@@ -68,14 +67,14 @@ export default {
       immediate: true,
       handler(newVal) {
         // console.log({"PreferenceScale: role changed": newVal});
-        this.localRole=newVal;
+        this.localRole = newVal;
       },
     },
 
     localRole: {
       handler(newVal) {
         // console.log({"PreferenceScale: localRole changed": newVal })
-        this.localPreference=newVal.preference;
+        this.localPreference = newVal.preference;
         this.$emit('update:role', newVal);
       },
       deep: true,
@@ -83,8 +82,8 @@ export default {
     },
 
     localPreference: {
-      handler(newVal){
-        this.localRole.preference=newVal
+      handler(newVal) {
+        this.localRole.preference = newVal;
       },
       immediate: true,
     },
@@ -93,7 +92,7 @@ export default {
 
     localRole: {
       get() {
-        return this.role
+        return this.role;
       },
       set(newVal) {
         this.$emit('update:role', newVal);
@@ -101,7 +100,7 @@ export default {
     },
 
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

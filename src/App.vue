@@ -14,21 +14,19 @@
 import {
   // useRoute,useRouter,
   RouterView,
-  RouterLink
-} from 'vue-router'
+} from 'vue-router';
 
-import UserOptions from '@/components/UserOptions.vue'
+import UserOptions from '@/components/UserOptions.vue';
 
 export default {
   name: 'App',
   components: {
-     RouterLink,
-     RouterView,
-     UserOptions,
+    RouterView,
+    UserOptions,
   },
   data() {
     return {
-      user: "",
+      user: '',
       myKinks: Object(),
       allKinks: this.getJSONFromLocalStorage('allKinks'),
     };
@@ -39,34 +37,32 @@ export default {
     allKinks: {
       deep: true,
       handler(newVal) {
-        console.log({ 'change allKinks': newVal});
-        this.saveToLocalStorage('allKinks',this.allKinks);
+        console.log({ 'change allKinks': newVal });
+        this.saveToLocalStorage('allKinks', this.allKinks);
       },
       immediate: true,
     },
-
 
   },
 
   methods: {
 
-    saveToLocalStorage(key,data) {
-      var parsedData = JSON.stringify(data);
-      localStorage.setItem(key,parsedData);
+    saveToLocalStorage(key, data) {
+      const parsedData = JSON.stringify(data);
+      localStorage.setItem(key, parsedData);
       console.log({
-        "Saved to localStorage": {
-          key: data
-          }
-          });
-
+        'Saved to localStorage': {
+          key: data,
+        },
+      });
     },
 
     getJSONFromLocalStorage(key) {
-      var localList = {};
-      if (localStorage.getItem(key)){
+      let localList = {};
+      if (localStorage.getItem(key)) {
         try {
           localList = JSON.parse(localStorage.getItem(key));
-        } catch(e) {
+        } catch (e) {
           console.log(e);
           localStorage.remove(key);
         }
@@ -75,13 +71,15 @@ export default {
     },
 
     updateCategory(newVal) {
-      var msg ={"new":newVal};
+      const msg = { new: newVal };
       console.log(msg);
-      this.myKinks.categories[this.myKinks.categories.findIndex(element => element.name === newVal.name)]=newVal;
+      this.myKinks.categories[
+        this.myKinks.categories.findIndex((element) => element.name === newVal.name)
+      ] = newVal;
     },
 
   },
-}
+};
 </script>
 
 <style>

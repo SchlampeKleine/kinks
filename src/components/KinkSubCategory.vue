@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import Kink from '@/components/Kink.vue'
+import Kink from '@/components/Kink.vue';
+
 export default {
   name: 'KinkSubCategory',
   props: {
@@ -29,35 +30,34 @@ export default {
       default() {
         return [];
       },
-    }
+    },
   },
   methods: {
 
     updateKink(newVal) {
       this.localSubCategory.kinds[
         this.localSubCategory.kinds.findIndex(
-          element => element.name === newVal.name
+          (element) => element.name === newVal.name,
         )
-      ]=newVal;
+      ] = newVal;
       // console.log({"KinkSubCategory: updated Kink":newVal})
-      //this.$emit("update:subcategory",this.localSubCategory);
+      // this.$emit("update:subcategory",this.localSubCategory);
     },
   },
   components: {
     Kink,
-    },
-    computed: {
-      localSubCategory: {
-        get() { return this.subcategory ? this.subcategory : {}; },
-        set(newVal) {
-          this.$emit("update:subcategory",newVal);
-
-        },
-
+  },
+  computed: {
+    localSubCategory: {
+      get() { return this.subcategory ? this.subcategory : {}; },
+      set(newVal) {
+        this.$emit('update:subcategory', newVal);
       },
 
     },
-}
+
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

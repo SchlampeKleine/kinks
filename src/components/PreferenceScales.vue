@@ -8,14 +8,14 @@ v-for="role in localRoles"
 </template>
 
 <script>
-import PreferenceScale from '@/components/PreferenceScale.vue'
-import { defaultRoles } from '@/assets/kinks.yaml'
+import PreferenceScale from '@/components/PreferenceScale.vue';
+import { defaultRoles } from '@/assets/kinks.yaml';
 
 export default {
   name: 'PreferenceScales',
   emits: [
-    'update:roles'
-    ],
+    'update:roles',
+  ],
   props: {
     key: {
       type: String,
@@ -24,7 +24,6 @@ export default {
       type: Array,
       default() {
         return defaultRoles;
-
       },
     },
   },
@@ -33,42 +32,42 @@ export default {
     updateLocalRole(newRole) {
       this.localRoles[
         this.localRoles.findIndex(
-          element => element.name === newRole.name
+          (element) => element.name === newRole.name,
         )
-      ]=newRole;
-      this.$emit('update:roles',this.localRoles);
+      ] = newRole;
+      this.$emit('update:roles', this.localRoles);
     },
 
   },
   components: {
-    PreferenceScale
+    PreferenceScale,
   },
   watch: {
     roles: {
       deep: true,
       immediate: false,
       handler(newVal) {
-        console.log({"PreferenceScales: roles changed" : newVal} );
+        console.log({ 'PreferenceScales: roles changed': newVal });
       },
     },
     localRoles: {
       deep: true,
       immediate: false,
       handler(newVal) {
-        console.log({"PreferenceScales: localRoles changed" : newVal} );
+        console.log({ 'PreferenceScales: localRoles changed': newVal });
       },
     },
 
   },
   computed: {
     localRoles: {
-      get() { return this.roles? this.roles : defaultRoles;},
+      get() { return this.roles ? this.roles : defaultRoles; },
       set(localRoles) {
         this.$emit('update:roles', localRoles);
       },
     },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

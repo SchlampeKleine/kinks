@@ -10,8 +10,8 @@ v-model:comment="localPreferences.comment"
 </template>
 
 <script>
-import PreferenceScales from '@/components/PreferenceScales.vue'
-import PreferenceComment from '@/components/PreferenceComment.vue'
+import PreferenceScales from '@/components/PreferenceScales.vue';
+import PreferenceComment from '@/components/PreferenceComment.vue';
 
 export default {
   name: 'KinkPreference',
@@ -24,7 +24,6 @@ export default {
       required: true,
       default() {
         return {};
-
       },
     },
   },
@@ -41,7 +40,7 @@ export default {
 
   },
   emits: [
-    'update:preferences'
+    'update:preferences',
   ],
   components: {
     PreferenceScales,
@@ -49,15 +48,15 @@ export default {
   },
   methods: {
     updateComment(newVal) {
-      this.localPreferences.comment=newVal;
+      this.localPreferences.comment = newVal;
     },
 
-    updateRoles(newVal){
-      this.localPreferences.roles=newVal;
+    updateRoles(newVal) {
+      this.localPreferences.roles = newVal;
     },
 
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
