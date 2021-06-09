@@ -22,7 +22,18 @@ categories:
   - name: sex
     kinds:
       - name: vaginal
+        messages:
+          de:
+            kink: Vaginalverker
+          en:
+            kink: vaginal sex
+
       - name: Sexual Body Fluids
+        messages:
+          de:
+            kink: Sexuelle Koerperfluessigkeiten
+          en:
+            kink: Sexual Body fluids
         variants:
           - name: Wearing
           - name: Consuming
