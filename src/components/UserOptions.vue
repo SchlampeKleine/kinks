@@ -41,8 +41,8 @@ en:
 
 <script>
 
-// import defaultKinks from '@/assets/kinks.yaml';
-import defaultKinks from '@/assets/kinks_reduced.yaml';
+import defaultKinks from '@/assets/kinks.yaml';
+// import defaultKinks from '@/assets/kinks_reduced.yaml';
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 
