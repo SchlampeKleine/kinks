@@ -20,6 +20,12 @@ preferenceLevels:
 
 categories:
   - name: sex
+    messages:
+      de:
+        category: Sex
+      en:
+        category: sex
+
     kinds:
       - name: vaginal
         messages:
@@ -55,6 +61,11 @@ categories:
       - name: Gagging
         variants:
           - name: (fingers or similar means)
+            messages:
+              de:
+                variant: "Durch Finger oder aehnliches"
+              en:
+                variant: "finger or similar means"
           - name: During Oral
 
   - name: powerexchange
@@ -74,6 +85,11 @@ categories:
   - name: gear
     subcategories:
     - name: restraints
+      messages:
+        de:
+          subcategory: Fesseln
+        en:
+          subcategory: restraints
       kinds:
       - name: Nylon Rope
 
