@@ -40,8 +40,8 @@ en:
 
 <script>
 
-import defaultKinks from '@/assets/kinks.yaml';
-// import defaultKinks from '@/assets/kinks_reduced.yaml';
+// import defaultKinks from '@/assets/kinks.yaml';
+import defaultKinks from '@/assets/kinks_reduced.yaml';
 
 export default {
   name: 'UserOptions',
