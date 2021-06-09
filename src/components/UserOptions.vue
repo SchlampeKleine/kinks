@@ -21,6 +21,7 @@
   {{ t('button_dump') }}
   </button>
   </div>
+  <LocaleSwitcher />
 </template>
 
 <i18n lang="yaml">
@@ -42,6 +43,7 @@ en:
 
 // import defaultKinks from '@/assets/kinks.yaml';
 import defaultKinks from '@/assets/kinks_reduced.yaml';
+import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 
 export default {
@@ -70,6 +72,9 @@ export default {
     return {
       t,
     };
+  },
+  components: {
+    LocaleSwitcher,
   },
   mounted() {
     this.localMyKinks = this.getKinksForUser(this.user);
