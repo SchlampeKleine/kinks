@@ -12,10 +12,10 @@
   </button>
   <button v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
   >
-  {{ $t('button_dump') }}
+  {{ $t('button_load') }}
   </button>
   <button v-on:click="resetMyKinks(user)">
-  {{ $t('button_dump') }}
+  {{ $t('button_reset') }}
   </button>
   <button v-on:click="dumpMyKinks">
   {{ $t('button_dump') }}
