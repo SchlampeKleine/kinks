@@ -4,7 +4,6 @@
     v-model:allKinks="allKinks"
     v-model:myKinks="myKinks"
   />
-  <router-link to="/">Go to Home</router-link>
   <router-view
     v-model:myKinks="myKinks"
   ></router-view>
