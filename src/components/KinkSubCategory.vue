@@ -1,9 +1,9 @@
 <template>
-  <h4>{{ name }}</h4>
+  <h4>{{ t('subcategory') }}</h4>
   <Kink
     v-for="kink in kinds"
     :key="kink.name"
-    :name="kink.name"
+    :kink=kink
     :variants="kink.variants"
     @update:kink="updateKink"
   />
@@ -11,6 +11,7 @@
 
 <script>
 import Kink from '@/components/Kink.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'KinkSubCategory',
@@ -20,10 +21,10 @@ export default {
     },
     subcategory: {
       type: Object,
+      required: true,
     },
     name: {
       type: String,
-      required: true,
     },
     kinds: {
       type: Array,
@@ -31,6 +32,14 @@ export default {
         return [];
       },
     },
+  },
+  setup(props) {
+    const { t } = useI18n({
+      messages: props.subcategory.messages || { en: { subcategory: props.subcategory.name } },
+    });
+    return {
+      t,
+    };
   },
   methods: {
 
