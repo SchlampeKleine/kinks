@@ -1,5 +1,11 @@
 <template>
+<div class="kink">
+<div class="kink name">
 <p>{{ t('name') }}</p>
+</div>
+<div class="kink description" v-if="te('description')">
+{{ t('description') }}
+</div>
 <template
 v-if="localKink.variants"
 >
@@ -21,6 +27,7 @@ v-else
 v-model:preferences="localKink.preferences"
 />
 </template>
+</div>
 </template>
 
 <script>
@@ -63,11 +70,12 @@ export default {
       'update:roles',
     ],
   setup(props) {
-    const { t } = useI18n({
+    const { t, te } = useI18n({
       messages: props.kink.messages || { en: { name: props.kink.name } },
     });
     return {
       t,
+      te,
     };
   },
   components: {
