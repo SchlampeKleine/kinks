@@ -20,44 +20,260 @@ preferenceLevels:
 
 categories:
   - name: sex
+    messages:
+      de:
+        name: Sexuelles
+      en:
+        name: sex
     kinds:
       - name: vaginal
+        messages:
+          de:
+            name: Vaginalpenetration
+          en:
+            name: vaginal sex
+        variants: &penis_or_finger_or_toys
+          - name: penis
+            messages:
+              de:
+                name: Penis
+                description: mit einem oder mehreren Penissen
+              en:
+                name: penis
+                description: with one or more penises
+          - name: fingers
+            messages:
+              de:
+                name: Finger
+              en:
+                name: fingers
+          - name: toys
+            messages:
+              de:
+                name: Spielzeuge
+              en:
+                name: toys
       - name: anal
+        messages:
+          de:
+            name: Analverkehr
+          en:
+            name: anal sex
+        variants: *penis_or_finger_or_toys
       - name: oral
+        messages:
+          de:
+            name: Oralverkehr
+          en:
+            name: oral sex
+        variants:
+          - name: Licking
+            messages:
+              de:
+                name: Lecken
+              en:
+                name: Licking
+          - name: Rimming / Anal Licking
+            messages:
+              de:
+                name: Rimmen
+              en:
+                name: Rimming
+          - name: Blowjob
+            messages:
+              de:
+                name: Blasen
+              en:
+                name: blow job
+
       - name: breast
+        messages:
+          de:
+            name: Mammalverkehr
+          en:
+            name: breast sex
+
       - name: genital stroking/rubbing
+        messages:
+          de:
+            name: Streicheln/Reiben der Genitalien
+          en:
+            name: genital stroking/rubbing
       - name: Fingering
+        messages:
+          de:
+            name: Fingern
+          en:
+            name: Fingering
       - name: Fisting
+        messages:
+          de:
+            name: Fisten
+          en:
+            name: Fisting
       - name: Kissing
-      - name: Licking
-      - name: Rimming / Anal Licking
-      - name: Vaginal Toys
-      - name: Anal Toys
+        messages:
+          de:
+            name: Kuessen
+          en:
+            name: Kissing
       - name: Teasing
+        messages:
+          de:
+            name: Teasen
+          en:
+            name: Teasing
       - name: Massage
-      - name: Petting / Stroking Hair
+        messages:
+          de:
+            name: Massage
+          en:
+            name: Massage
+      - name: Petting
+        messages:
+          de:
+            name: Petting/Streicheln
+          en:
+            name: Petting
+      - name: Stroking Hair
+        messages:
+          de:
+            name: Haare Streicheln
+          en:
+            name: Stroking Hair
       - name: Sexual Body Fluids
+        messages:
+          de:
+            name: Sexuelle Koerperfluessigkeiten
+          en:
+            name: Sexual Body Fluids
         variants:
           - name: Wearing
+            messages:
+              de:
+                name: Tragen
+                description: Auf den Koerper bekommen bzw. auf der Haut oder Klamotten lassen
+              en:
+                name: Wearing
+                description: Wear on skin or clothes
           - name: Consuming
+            messages:
+              de:
+                name: Schlucken
+              en:
+                name: Consuming
       - name: Spitting
+        messages:
+          de:
+            name: Spucken
+          en:
+            name: Spitting
         variants:
           - name: external
+            messages:
+              de:
+                name: aussen
+                description: auf den Koerper
+              en:
+                name: external
+                description: on to the body
           - name: In mouth
+            messages:
+              de:
+                name: Mund
+                description: in den Mund
+              en:
+                name: mouth
+                description: into the mouth
       - name: Double Penetration
-        variants:
-          - name: Human
-          - name: Toys
+        messages:
+          de:
+            name: Doppelte Penetration
+          en:
+            name: Double Penetration
+        variants: *penis_or_finger_or_toys
       - name: Triple Penetration
-        variants:
-          - name: Human
-          - name: Toys
+        messages:
+          de:
+            name: Dreifache Penetration
+          en:
+            name: Triple Penetration
+        variants: *penis_or_finger_or_toys
       - name: Threesome
+        messages:
+          de:
+            name: Dreier
+          en:
+            name: Threesome
         variants:
           - name: M, F, F
+            messages:
+              de:
+                name: MFF
+                description: >
+                  Dreier mit zwei weiblichen Partnern
+                  von denen eine "in der Mitte" ist
+              en:
+                name: MFF
+                description: >
+                  Threesome with two female partners
+                  where one is in the middle
           - name: M, M, F
-          - name: All same Sex
+            messages:
+              de:
+                name: MMF
+                description: >
+                  Dreier mit zwei maennlichen Partnern, von denen einer "in der Mitte" ist
+              en:
+                name: MMF
+                description: >
+                  Threesome with two male partners where one is in the middle
+          - name: MMM
+            messages:
+              de:
+                name: MMM
+                description: >
+                  Dreier mit drei maennlichen Partnern
+              en:
+                name: MMM
+                description: >
+                  Threesome with three male partners
+          - name: FFF
+            messages:
+              de:
+                name: FFF
+                description: >
+                  Dreier mit drei weiblichen Partnern
+              en:
+                name: FFF
+                description: >
+                  Threesome with three female partners
+          - name: me in the middle
+            messages:
+              de:
+                name: Ich in der Mitte
+                description: >
+                  Dreier, bei dem ich im Focus stehe
+              en:
+                name: me in the middle
+                description: >
+                  Threesome with me as the main focus of the others
+          - name: me on the outside
+            messages:
+              de:
+                name: ich dabei
+                description: >
+                  Dreier, bei dem einer der anderen Partner im Focus steht
+              en:
+                name: me on the outside
+                description: >
+                  Threesome with one of the others as the focus
       - name: Gang Bang
+        messages:
+          de:
+            name: Rudelbums
+          en:
+            name: Gang Bang
 
   - name: bondage
     kinds:
