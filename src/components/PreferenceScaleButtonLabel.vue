@@ -1,7 +1,7 @@
 <template>
-<label
+<label class="radio"
 for="preferenceLevel.name"
->{{ t('name') }}</label>
+>{{ preferenceName }}</label>
 </template>
 
 <script>
@@ -26,8 +26,9 @@ export default {
     const { t } = useI18n({
       messages: props.preferenceLevel.messages || { en: { name: props.preferenceLevel.name } },
     });
+    const preferenceName = t('name');
     return {
-      t,
+      preferenceName,
     };
   },
 };

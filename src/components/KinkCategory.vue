@@ -1,6 +1,8 @@
 <template>
+<section class="section">
   <h3>{{ t('name') }}</h3>
   <KinkSubCategory
+    class="columns"
     v-for="subcategory in localCategory.subcategories"
     :key="subcategory.name"
     :subcategory="subcategory"
@@ -8,12 +10,14 @@
     @update:subcategory="updateSubcategory"
   />
   <Kink
+    class="columns"
     v-for="kink in localCategory.kinds"
     :key="kink.name"
     :kink="kink"
     :variants="kink.variants"
     @update:kink="updateKink"
   />
+</section>
 </template>
 
 <script>

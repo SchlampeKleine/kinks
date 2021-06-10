@@ -1,0 +1,10 @@
+/*
+ * Source
+ * https://stackoverflow.com/questions/13335544/how-to-alias-class-name-in-css-or-sass
+ */
+
+.columns {
+
+  @extend kink !optional
+
+}

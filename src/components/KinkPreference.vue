@@ -1,4 +1,5 @@
 <template>
+<div class="preference">
 <PreferenceScales
 v-model:roles="localPreferences.roles"
 :key="key+'-'+'preference-scales'"
@@ -7,6 +8,7 @@ v-model:roles="localPreferences.roles"
 v-model:comment="localPreferences.comment"
 :key="key+'-'+'preference-comment'"
 />
+</div>
 </template>
 
 <script>

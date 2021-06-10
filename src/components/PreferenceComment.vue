@@ -2,6 +2,7 @@
 <div class="preference comment">
 <input
 placeholder="Comment"
+class="input is-rounded"
 @change="updateComment"
 />
 </div>

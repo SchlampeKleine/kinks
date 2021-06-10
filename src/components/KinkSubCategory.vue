@@ -1,12 +1,15 @@
 <template>
+<div class="column">
   <h4>{{ t('name') }}</h4>
   <Kink
+    class="columns"
     v-for="kink in kinds"
     :key="kink.name"
     :kink=kink
     :variants="kink.variants"
     @update:kink="updateKink"
   />
+</div>
 </template>
 
 <script>

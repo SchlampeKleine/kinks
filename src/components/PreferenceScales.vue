@@ -1,10 +1,12 @@
 <template>
+<div class="columns">
 <PreferenceScale
 v-for="role in localRoles"
 :key="key+'-'+role.name"
 :role=role
 @update:role="updateLocalRole"
 />
+</div>
 </template>
 
 <script>

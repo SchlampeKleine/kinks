@@ -4,36 +4,42 @@
 #
 preferenceLevels:
   - name: "hardlimit"
+    color: red
     messages:
       de:
         name: Hardlimit
       en:
         name: hardlimit
   - name: "softlimit"
+    color: orange
     messages:
       de:
         name: "softlimit"
       en:
         name: "softlimit"
   - name: "dontcare"
+    color: yellow
     messages:
       de:
-        name: "ega;"
+        name: "egal"
       en:
         name: "dontcare"
   - name: "curious"
+    color: green
     messages:
       de:
         name: Neugierig
       en:
         name: curious
   - name: "loveit"
+    color: blue
     messages:
       de:
         name: Favorit
       en:
         name: loveit
   - name: "notavailable"
+    color: grey
     messages:
       de:
         name: Nicht Anwendbar

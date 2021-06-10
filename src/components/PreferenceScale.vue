@@ -1,24 +1,31 @@
 <template>
+<div class="column">
 <div
 class="preference-role-identifier"
 >
 {{ localRole.name }}
 </div>
-<div class="preference buttons">
+<div class="columns is-gapless control preference buttons">
 <template
 v-for="preferencelevel in getPreferenceLevels()"
 v-bind:key="key+'-'+preferencelevel"
   >
+<div class="column">
 <input
 type="radio"
 label="preferencelevel.name"
 v-model="localPreference"
 :value="preferencelevel.name"
+:style="{
+'color': preferencelevel.color
+}"
 />
 <PreferenceScaleButtonLabel
 :preferenceLevel="preferencelevel"
 />
+</div>
 </template>
+</div>
 </div>
 </template>
 
