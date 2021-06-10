@@ -18,6 +18,7 @@ export default {
     comment: {
       type: String,
       required: true,
+      default: '',
     },
   },
   methods: {
