@@ -1,0 +1,7 @@
+---
+#Sources:
+#- Checklist VER: .81 - www.discerningspecialist.com
+#
+defaultRoles:
+  - name: active
+  - name: passive

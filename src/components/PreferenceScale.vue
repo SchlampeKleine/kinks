@@ -4,27 +4,27 @@ class="preference-role-identifier"
 >
 {{ localRole.name }}
 </div>
-<div>
+<div class="preference buttons">
 <template
 v-for="preferencelevel in getPreferenceLevels()"
 v-bind:key="key+'-'+preferencelevel"
   >
 <input
 type="radio"
-label="preferencelevel"
+label="preferencelevel.name"
 v-model="localPreference"
-:value="preferencelevel"
+:value="preferencelevel.name"
 />
-<label
-for="preferencelevel"
->{{ preferencelevel }}</label>
+<PreferenceScaleButtonLabel
+:preferenceLevel="preferencelevel"
+/>
 </template>
 </div>
-
 </template>
 
 <script>
-import { preferenceLevels } from '@/assets/kinks.yaml'; // is used in v-for
+import { preferenceLevels } from '@/assets/levels.yaml'; // is used in v-for
+import PreferenceScaleButtonLabel from '@/components/PreferenceScaleButtonLabel.vue';
 
 export default {
   name: 'PreferenceScale',
@@ -87,6 +87,9 @@ export default {
       },
       immediate: true,
     },
+  },
+  components: {
+    PreferenceScaleButtonLabel,
   },
   computed: {
 

@@ -1,0 +1,41 @@
+---
+#Sources:
+#- Checklist VER: .81 - www.discerningspecialist.com
+#
+preferenceLevels:
+  - name: "hardlimit"
+    messages:
+      de:
+        name: Hardlimit
+      en:
+        name: hardlimit
+  - name: "softlimit"
+    messages:
+      de:
+        name: "softlimit"
+      en:
+        name: "softlimit"
+  - name: "dontcare"
+    messages:
+      de:
+        name: "ega;"
+      en:
+        name: "dontcare"
+  - name: "curious"
+    messages:
+      de:
+        name: Neugierig
+      en:
+        name: curious
+  - name: "loveit"
+    messages:
+      de:
+        name: Favorit
+      en:
+        name: loveit
+  - name: "notavailable"
+    messages:
+      de:
+        name: Nicht Anwendbar
+      en:
+        name: notavailable
