@@ -91,8 +91,7 @@ export default {
 
     return {
       t,
-      createShareLink: (myKinks) =>
-      router
+      createShareLink: (myKinks) => router
         .replace({ params: { objectString: JSON.stringify(myKinks) } })
         .catch(() => {}),
     };
@@ -106,10 +105,9 @@ export default {
   methods: {
 
     downloadMyKinks(kinks) {
-
       function download(filename, text) {
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        const element = document.createElement('a');
+        element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
         element.setAttribute('download', filename);
 
         element.style.display = 'none';

@@ -50,10 +50,10 @@ export default createRouter({
           /* eslint-ignore-next-line */
           beforeEnter(to, from, next) {
             const { objectString } = to.params;
-            console.log({ objectString: objectString });
+            console.log({ objectString });
             try {
               const loadedObject = JSON.parse(Base64.decode(objectString));
-              console.log({ loadedObject: loadedObject });
+              console.log({ loadedObject });
             } catch (e) {
               console.warn(e);
             }
