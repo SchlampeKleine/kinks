@@ -24,30 +24,30 @@ function loadLocaleMessages() {
  * https://blog.logrocket.com/advanced-localization-techniques-vue-js/
  */
 function checkDefaultLanguage() {
-  let matched = null
-  let languages = Object.getOwnPropertyNames(loadLocaleMessages())
-  languages.forEach(lang => {
+  let matched = null;
+  const languages = Object.getOwnPropertyNames(loadLocaleMessages());
+  languages.forEach((lang) => {
     if (lang === navigator.language) {
-      matched = lang
+      matched = lang;
     }
-  })
+  });
   if (!matched) {
-    languages.forEach(lang => {
-      let languagePartials = navigator.language.split('-')[0]
+    languages.forEach((lang) => {
+      const languagePartials = navigator.language.split('-')[0];
       if (lang === languagePartials) {
-        matched = lang
+        matched = lang;
       }
-    })
+    });
   }
   if (!matched) {
-    languages.forEach(lang => {
-      let languagePartials = navigator.language.split('-')[0]
+    languages.forEach((lang) => {
+      const languagePartials = navigator.language.split('-')[0];
       if (lang.split('-')[0] === languagePartials) {
-        matched = lang
+        matched = lang;
       }
-    })
+    });
   }
-  return matched
+  return matched;
 }
 
 export default createI18n({

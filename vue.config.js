@@ -7,16 +7,16 @@ module.exports = {
   pluginOptions: {
 
     css: {
-        loaderOptions: {
-          sass: {
-            additionalData: `
+      loaderOptions: {
+        sass: {
+          additionalData: `
               @import "@/assets/main.scss";
-            `
-          }
-        }
+            `,
+        },
       },
+    },
 
-        i18n: {
+    i18n: {
       locale: 'de',
       fallbackLocale: 'en',
       enableInSFC: true,
@@ -56,7 +56,6 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@intlify/vue-i18n-loader');
-
   },
 
 };
