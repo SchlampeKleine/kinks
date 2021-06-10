@@ -1,12 +1,13 @@
 <template>
+<div class="preference comment">
 <input
 placeholder="Comment"
 @change="updateComment"
 />
+</div>
 </template>
 
 <script>
-import { defaultRoles } from '@/assets/kinks.yaml';
 
 export default {
   name: 'PreferenceComment',
@@ -14,15 +15,9 @@ export default {
     'update:comment',
   ],
   props: {
-    roles: {
-      type: Array,
-      default() {
-        return defaultRoles;
-      },
-      comment: {
-        type: String,
-        required: true,
-      },
+    comment: {
+      type: String,
+      required: true,
     },
   },
   methods: {
