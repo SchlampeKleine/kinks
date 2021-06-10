@@ -1,10 +1,16 @@
 <template>
-<li>{{ t('name') }}
+<li>
+<div class="variant">
+<div class="variant name" >{{ t('name') }}</div>
+<div class="variant description" v-if="te('description')" >
+{{ t('description') }}
+</div>
 <KinkPreference
 v-model:preferences="localVariant.preferences"
 :key="key"
 @update:preferences="updatePreferences"
 />
+</div>
 </li>
 </template>
 
@@ -27,11 +33,12 @@ export default {
     },
   },
   setup(props) {
-    const { t } = useI18n({
+    const { t, te } = useI18n({
       messages: props.variant.messages || { en: { name: props.variant.name } },
     });
     return {
       t,
+      te,
     };
   },
   components: {
