@@ -50,8 +50,10 @@ function checkDefaultLanguage() {
   return matched;
 }
 
+export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en';
+export const languages = Object.getOwnPropertyNames(loadLocaleMessages());
 export default createI18n({
-  locale: checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en',
+  locale: selectedLocale,
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages(),
   legacy: false,
