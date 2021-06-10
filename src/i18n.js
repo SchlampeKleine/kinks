@@ -19,9 +19,39 @@ function loadLocaleMessages() {
   });
   return messages;
 }
+/*
+ * Source:
+ * https://blog.logrocket.com/advanced-localization-techniques-vue-js/
+ */
+function checkDefaultLanguage() {
+  let matched = null
+  let languages = Object.getOwnPropertyNames(loadLocaleMessages())
+  languages.forEach(lang => {
+    if (lang === navigator.language) {
+      matched = lang
+    }
+  })
+  if (!matched) {
+    languages.forEach(lang => {
+      let languagePartials = navigator.language.split('-')[0]
+      if (lang === languagePartials) {
+        matched = lang
+      }
+    })
+  }
+  if (!matched) {
+    languages.forEach(lang => {
+      let languagePartials = navigator.language.split('-')[0]
+      if (lang.split('-')[0] === languagePartials) {
+        matched = lang
+      }
+    })
+  }
+  return matched
+}
 
 export default createI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
+  locale: checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en',
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages(),
   legacy: false,
