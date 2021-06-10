@@ -1,20 +1,58 @@
 <template>
-<select v-model="locale">
-  <option value="en">en</option>
+<div class="lang-dropdown">
+<select class="select" v-model="locale">
+<option
+v-for="(lang, i) in languageArray"
+:key="`lang${i}`"
+:value="lang"
+>{{ lang }}</option>
   <option value="de">de</option>
 </select>
+</div>
 </template>
 
 <script>
-import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
+import { languages } from '@/i18n';
+import store from '@/store';
+
+import {
+  useRouter,
+} from 'vue-router';
 
 export default {
   name: 'LocaleSwitcher',
-  setup() {
-    const { locale } = useI18n({ useScope: 'global' });
+  data() {
     return {
-      locale,
+      languageArray: languages,
     };
+  },
+  setup() {
+    const router = useRouter();
+    /*
+     * Source
+     * https://next.vuex.vuejs.org/guide/composition-api.html#accessing-state-and-getters
+     * https://blog.logrocket.com/advanced-localization-techniques-vue-js/
+     */
+
+    return {
+      // locale,
+      // store,
+      lang: computed(() => store.state.locale),
+      setLang: (newVal) => store.dispatch('changeLocale', newVal),
+      updateRoute: (newLocale) => router.replace({ params: { lang: newLocale } }).catch(() => {}),
+    };
+  },
+  computed: {
+    locale: {
+      get() {
+        return this.lang;
+      },
+      set(newVal) {
+        this.setLang(newVal);
+        this.updateRoute(newVal);
+      },
+    },
   },
 };
 </script>

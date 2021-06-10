@@ -1,28 +1,26 @@
 <template>
-  <UserOptions
+  <router-view
+    name="UserOptions"
     v-model:user="user"
     v-model:allKinks="allKinks"
     v-model:myKinks="myKinks"
-  />
+  ></router-view>
   <router-view
     v-model:myKinks="myKinks"
   ></router-view>
-
 </template>
 
 <script>
 import {
-  // useRoute,useRouter,
+  // useRoute,
+  // useRouter,
   RouterView,
 } from 'vue-router';
-
-import UserOptions from '@/components/UserOptions.vue';
 
 export default {
   name: 'App',
   components: {
     RouterView,
-    UserOptions,
   },
   data() {
     return {
@@ -63,7 +61,7 @@ export default {
         try {
           localList = JSON.parse(localStorage.getItem(key));
         } catch (e) {
-          console.log(e);
+          console.warn(e);
           localStorage.remove(key);
         }
       }

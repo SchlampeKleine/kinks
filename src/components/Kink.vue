@@ -1,5 +1,5 @@
 <template>
-<div class="kink">
+<div class="column">
 <div class="kink name">
 <p>{{ t('name') }}</p>
 </div>
@@ -13,6 +13,7 @@ v-if="localKink.variants"
 class="kink-variants"
 >
 <KinkVariant
+class="columns"
 v-for="variant in localKink.variants"
 :key="key+'-'+variant.name"
 :variant=variant

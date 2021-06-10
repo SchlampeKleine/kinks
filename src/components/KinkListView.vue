@@ -1,5 +1,6 @@
 <template>
   <KinkCategory
+  class="columns"
   v-for="category in localMyKinks.categories"
   :key="category.name"
   :category=category

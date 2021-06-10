@@ -1,4 +1,5 @@
 <template>
+  <div class="control">
   <div
   class="user-field"
   >
@@ -7,21 +8,30 @@
     v-model="localUser"
     @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
   />
-  <button v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
+  <button class="button" v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
   {{ t('button_save') }}
   </button>
-  <button v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
+  <button class="button" v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
   >
   {{ t('button_load') }}
   </button>
-  <button v-on:click="resetMyKinks(user)">
+  <button class="button" v-on:click="resetMyKinks(user)">
   {{ t('button_reset') }}
   </button>
-  <button v-on:click="dumpMyKinks">
+  <button class="button" v-on:click="dumpMyKinks">
   {{ t('button_dump') }}
+  </button>
+  <button class="button" v-on:click="shareMyKinks(getKinksForUser(user))">
+  {{ t('button_share') }}
+  </button>
+  <button class="button" v-on:click="downloadMyKinks(myKinks)">
+  {{ t('button_download') }}
   </button>
   </div>
   <LocaleSwitcher />
+  </div>
+  <div>
+  </div>
 </template>
 
 <i18n lang="yaml">
@@ -31,20 +41,28 @@ de:
   button_reset: "Standard wiederherstellen"
   button_load: "Kinks laden"
   button_save: "Kinks speichern"
+  button_share: "Kinks teilen"
+  button_download: "Kinks runterladen"
 en:
   button_dump: "Dump my kinks"
   button_reset: "Reset my kinks"
   button_load: "Load my kinks"
   button_save: "Save my kinks"
+  button_share: "Share my kinks"
+  button_download: "Download my kinks"
 
 </i18n>
 
 <script>
 
 import defaultKinks from '@/assets/kinks.yaml';
+import { useRouter } from 'vue-router';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
+import { Base64 } from 'js-base64';
+
+import yaml from 'js-yaml';
 
 export default {
   name: 'UserOptions',
@@ -69,8 +87,14 @@ export default {
   ],
   setup() {
     const { t } = useI18n();
+    const router = useRouter();
+
     return {
       t,
+      createShareLink: (myKinks) =>
+      router
+        .replace({ params: { objectString: JSON.stringify(myKinks) } })
+        .catch(() => {}),
     };
   },
   components: {
@@ -80,6 +104,30 @@ export default {
     this.localMyKinks = this.getKinksForUser(this.user);
   },
   methods: {
+
+    downloadMyKinks(kinks) {
+
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      }
+
+      const encodedKinks = yaml.dump(kinks);
+      // Start file download.
+      download('kinks.txt', encodedKinks);
+    },
+
+    b64Encode(val) {
+      return Base64.encodeURI(val);
+    },
 
     canLoadKinks(user) {
       const users = this.getUsers();

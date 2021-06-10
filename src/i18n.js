@@ -1,5 +1,7 @@
 import { createI18n } from 'vue-i18n';
 
+const languages = ['de', 'en'];
+
 /**
  * Load locale messages
  *
@@ -25,7 +27,7 @@ function loadLocaleMessages() {
  */
 function checkDefaultLanguage() {
   let matched = null;
-  const languages = Object.getOwnPropertyNames(loadLocaleMessages());
+  // const languages = Object.getOwnPropertyNames(loadLocaleMessages());
   languages.forEach((lang) => {
     if (lang === navigator.language) {
       matched = lang;
@@ -51,7 +53,8 @@ function checkDefaultLanguage() {
 }
 
 export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en';
-export const languages = Object.getOwnPropertyNames(loadLocaleMessages());
+export { languages };
+// Object.getOwnPropertyNames(loadLocaleMessages());
 export default createI18n({
   locale: selectedLocale,
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',

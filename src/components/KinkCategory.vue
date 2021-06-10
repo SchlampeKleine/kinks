@@ -1,5 +1,5 @@
 <template>
-<section class="section">
+<section class="column is-centered">
   <h3>{{ t('name') }}</h3>
   <KinkSubCategory
     class="columns"
