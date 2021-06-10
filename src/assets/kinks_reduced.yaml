@@ -22,24 +22,24 @@ categories:
   - name: sex
     messages:
       de:
-        category: Sex
+        name: Sex
       en:
-        category: sex
+        name: sex
 
     kinds:
       - name: vaginal
         messages:
           de:
-            kink: Vaginalverker
+            name: Vaginalverker
           en:
-            kink: vaginal sex
+            name: vaginal sex
 
       - name: Sexual Body Fluids
         messages:
           de:
-            kink: Sexuelle Koerperfluessigkeiten
+            name: Sexuelle Koerperfluessigkeiten
           en:
-            kink: Sexual Body fluids
+            name: Sexual Body fluids
         variants:
           - name: Wearing
           - name: Consuming
@@ -63,9 +63,9 @@ categories:
           - name: (fingers or similar means)
             messages:
               de:
-                variant: "Durch Finger oder aehnliches"
+                name: "Durch Finger oder aehnliches"
               en:
-                variant: "finger or similar means"
+                name: "finger or similar means"
           - name: During Oral
 
   - name: powerexchange
@@ -87,9 +87,9 @@ categories:
     - name: restraints
       messages:
         de:
-          subcategory: Fesseln
+          name: Fesseln
         en:
-          subcategory: restraints
+          name: restraints
       kinds:
       - name: Nylon Rope
 

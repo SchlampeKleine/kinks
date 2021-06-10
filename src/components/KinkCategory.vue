@@ -1,5 +1,5 @@
 <template>
-  <h3>{{ t('category') }}</h3>
+  <h3>{{ t('name') }}</h3>
   <KinkSubCategory
     v-for="subcategory in localCategory.subcategories"
     :key="subcategory.name"
@@ -48,7 +48,7 @@ export default {
   },
   setup(props) {
     const { t } = useI18n({
-      messages: props.category.messages || { en: { category: props.category.name } },
+      messages: props.category.messages || { en: { name: props.category.name } },
     });
     return {
       t,

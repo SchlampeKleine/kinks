@@ -1,5 +1,5 @@
 <template>
-<p>{{ t('kink') }}</p>
+<p>{{ t('name') }}</p>
 <template
 v-if="localKink.variants"
 >
@@ -64,7 +64,7 @@ export default {
     ],
   setup(props) {
     const { t } = useI18n({
-      messages: props.kink.messages || { en: { kink: props.kink.name } },
+      messages: props.kink.messages || { en: { name: props.kink.name } },
     });
     return {
       t,

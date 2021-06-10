@@ -1,5 +1,5 @@
 <template>
-  <h4>{{ t('subcategory') }}</h4>
+  <h4>{{ t('name') }}</h4>
   <Kink
     v-for="kink in kinds"
     :key="kink.name"
@@ -35,7 +35,7 @@ export default {
   },
   setup(props) {
     const { t } = useI18n({
-      messages: props.subcategory.messages || { en: { subcategory: props.subcategory.name } },
+      messages: props.subcategory.messages || { en: { name: props.subcategory.name } },
     });
     return {
       t,

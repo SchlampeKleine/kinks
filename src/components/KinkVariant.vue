@@ -1,5 +1,5 @@
 <template>
-<li>{{ t('variant') }}
+<li>{{ t('name') }}
 <KinkPreference
 v-model:preferences="localVariant.preferences"
 :key="key"
@@ -28,7 +28,7 @@ export default {
   },
   setup(props) {
     const { t } = useI18n({
-      messages: props.variant.messages || { en: { variant: props.variant.name } },
+      messages: props.variant.messages || { en: { name: props.variant.name } },
     });
     return {
       t,
