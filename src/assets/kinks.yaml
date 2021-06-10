@@ -6,18 +6,6 @@
 #Sources:
 #- Checklist VER: .81 - www.discerningspecialist.com
 #
-defaultRoles:
-  - name: active
-  - name: passive
-
-preferenceLevels:
-  - "hardlimit"
-  - "softlimit"
-  - "dontcare"
-  - "curious"
-  - "loveit"
-  - "notavailable"
-
 categories:
   - name: sex
     messages:
@@ -276,86 +264,467 @@ categories:
             name: Gang Bang
 
   - name: bondage
+    messages:
+      en:
+        name: bondage
+      de:
+        name: Bondage
     kinds:
       - name: Full Body
+        messages:
+          de:
+            name: Ganzkoerperfesselungen
+          en:
+            name: Full Body
       - name: Mental
+        messages:
+          de:
+            name: Geistige Fesseln
+          en:
+            name: Mental
       - name: Restraint
+        messages:
+          de:
+            name: Fesselungszeitraeume
+          en:
+            name: Restraining timescales
         variants:
           - name: 0-1 hour
+            messages:
+              de:
+                name: kurz
+                description: Fesselungen fuer bis zu eine Stunde
+              en:
+                name: short
+                description: Restraining for up to one hour
           - name: 3+ hours
-          - name: full day or overnight
+            messages:
+              de:
+                name: mittel
+                description: Fesselungen fuer ueber drei Stunden
+              en:
+                name: medium
+                description: Restraining for more than three hours
+          - name: full day
+            messages:
+              de:
+                name: ganzer Tag
+                description: Fesselungen fuer einen ganzen Tag
+              en:
+                name: full day
+                description: Restraining for a full day
+          - name: overnight
+            messages:
+              de:
+                name: ueber Nacht
+                description: Fesselungen ueber Nacht
+              en:
+                name: overnight
+                description: Restraining overnight
       - name: Leather Restraints
+        messages:
+          de:
+            name: Lederfesseln
+          en:
+            name: Leather Restraints
       - name: Metal Restraints
+        messages:
+          de:
+            name: Metalfesseln
+          en:
+            name: Metal Restraints
       - name: Rope
+        messages:
+          de:
+            name: Seil
+            description: Fesselungen mit Seil fuer praktische Gruende
+          en:
+            name: Rope
+            description: Restraining with rope for practical purposes
       - name: Intricate Rope / Shibari
+        messages:
+          de:
+            name: Seilkunst/Shibari
+            description: Seil zu kuenstlerischen Zwecken
+          en:
+            name: Intricate Rope/Shibari
+            description: Using rope for aesthetics
       - name: Suspension
+        messages:
+          de:
+            name: Haegefesselungen
+          en:
+            name: Suspension
         variants:
           - name: Upright
+            messages:
+              de:
+                name: Aufrecht
+              en:
+                name: Upright
           - name: Horizontal
+            messages:
+              de:
+                name: Waagrecht
+              en:
+                name: Horizontal
           - name: Inverted
+            messages:
+              de:
+                name: Kopfueber
+              en:
+                name: Inverted
       - name: Genital Bondage
+        messages:
+          de:
+            name: Fesseln im Genitalbereich
+          en:
+            name: Genital Bondage
       - name: Mummification
-      - name: Containment (Caging / Cells)
+        messages:
+          de:
+            name: Mumifikation
+            description: Einwickeln des ganzen Koerpers
+          en:
+            name: Mummification
+            description: Enveloping the whole body
+      - name: Containment
+        messages:
+          de:
+            name: Einsperren
+          en:
+            name: Containment
+          variants:
+            - name: Cell
+              messages:
+                de:
+                  name: Zelle
+                  description: Einsperren in eine (Gefaengnis-) Zelle
+                en:
+                  name: Cell
+                  description: Contain inside a (jail) cell
+            - name: Cage
+              messages:
+                de:
+                  name: Kaefig
+                  description: Einsperren in einen Kaefig
+                en:
+                  name: Cage
+                  description: Contain inside a cage
       - name: Predicament
+        messages:
+          de:
+            name: Zwangslagen
+            description: Eine Situation, in der alle Moeglichen Handlungen nachteilig sind
+          en:
+            name: Predicament
+            description: A situation in which all possible acts are bad
       - name: Gags
+        messages:
+          de:
+            name: Knebel
+          en:
+            name: Gag
+        variants:
+          - name: spider gag
+          - name: bit gag
+            messages:
+              de:
+                name: Beissknebel
+              en:
+                name: bit gag
       - name: Sensory Deprivation
+        messages:
+          de:
+            name: Sinnesentzug
+          en:
+            name: Sensory Deprivation
       - name: Chastity Devices
+        messages:
+          de:
+            name: Keuschheitsguertel/-Kaefig
+          en:
+            name: Chastity Devices
 
   - name: sm
+    messages:
+      de:
+        name: Sadismus und Masochismus
+      en:
+        name: Sadism and Masochism
     kinds:
 
       - name: Spanking
       - name: Face Slapping
+        messages:
+          de:
+            name: Backpfeifen
+          en:
+            name: Face Slapping
       - name: Biting
+        messages:
+          de:
+            name: Beissen
+          en:
+            name: Biting
       - name: Nipple Torture
+        messages:
+          de:
+            name: Nippelfolter
+          en:
+            name: Nipple Torture
       - name: Genital Torture
+        messages:
+          de:
+            name: Genitalfolter
+          en:
+            name: Genital Torture
       - name: Punching / Beating
+        messages:
+          de:
+            name: Faustschlaege
+          en:
+            name: Punching / Beating
       - name: Bruising
+        messages:
+          de:
+            name: Blaue Flecken
+          en:
+            name: Bruising
       - name: Scratching
+        messages:
+          de:
+            name: Kratzen
+          en:
+            name: Scratching
       - name: Hair Pulling
+        messages:
+          de:
+            name: Haare ziehen
+          en:
+            name: Hair Pulling
       - name: Pinching
+        messages:
+          de:
+            name: Zwicken
+          en:
+            name: Pinching
       - name: Choking
+        messages:
+          de:
+            name: Wuergen
+          en:
+            name: Choking
         variants:
         - name: Windpipe
+          messages:
+            de:
+              name: Luftwuergen
+              description: Unterbrechung der Luftversorgung durch Wuergen
+            en:
+              name: Windpipe Choking
+              description: Choking by blocking the windpipe
         - name: Arterial
+          messages:
+            de:
+              name: Blutwuergen
+              description: Unterbrechung der Blutversorgung zum Gehirn durch Wuergen
+            en:
+              name: Arterial Choking
+              description: Choking by blocking the arterial bloodvessels
       - name: Breath Play
+        messages:
+          de:
+            name: Atemkontrolle
+          en:
+            name: Breath Play
       - name: Water Torture
+        messages:
+          de:
+            name: Wasserfolter
+          en:
+            name: Water Torture
       - name: Smothering
+        messages:
+          de:
+            name: Ersticken
+            description: Ersticken mit Koerperteilen, z.B. Bruesten
+          en:
+            name: Smothering
+            description: Smothering someone with bodyparts, eg Breasts
       - name: Trampling
+        messages:
+          de:
+            name: Trampeln
+          en:
+            name: Trampling
       - name: Fire Play
       - name: Bastinado (feet torture)
+        messages:
+          de:
+            name: Bastinado
+            description: Fussfolter
+          en:
+            name: Bastinado
+            description: feet torture
       - name: Abrasion
+        messages:
+          de:
+            name: Abschuerfungen
+          en:
+            name: Abrasion
       - name: Cupping / Suction
+        messages:
+          de:
+            name: Schroepfen
+          en:
+            name: Cupping
       - name: Needle Play
+        messages:
+          de:
+            name: Nadeln
+          en:
+            name: Needle Play
       - name: Piercing
+        messages:
+          de:
+            name: Piercings
+          en:
+            name: Piercings
       - name: Knife Play (non-cutting)
+        messages:
+          de:
+            name: Messer (nicht schneidend)
+          en:
+            name: Knife Play (non-cutting)
       - name: Cutting
       - name: Electric Play
-      - name: Ice / Cold Play
-      - name: Hot Wax Play
+        messages:
+          de:
+            name: Strom
+          en:
+            name: Electric Play
+      - name: Temperature Play
+        messages:
+          de:
+            name: Temperaturspiele
+          en:
+            name: Temperature Play
+        variants:
+          - name: Ice Play
+            messages:
+              de:
+                name: Eis
+              en:
+                name: Ice Play
+          - name: Hot Wax Play
+            messages:
+              de:
+                name: Wachsspiele
+              en:
+                name: Hot Wax Play
       - name: Tickling
+        messages:
+          de:
+            name: Kitzeln
+          en:
+            name: Tickling
       - name: Wrestling
       - name: Humiliation
+        messages:
+          de:
+            name: Demuetigung
+          en:
+            name: Humiliation
         variants:
-          - name: (private)
+          - name: Private
+            messages:
+              de:
+                name: Privat
+                description: Demuetigung ohne Zuschauer
+              en:
+                name: Private
+                description: humiltion without spectators
+
           - name: Public
+            messages:
+              de:
+                name: Oeffentlich
+                description: Demuetigung mit Zuschauern
+              en:
+                name: Public
+                description: humiltion with spectators
       - name: Dilation
+        messages:
+          de:
+            name: Dehnung
+          en:
+            name: Dilation
         variants:
-        - name: Vaginal
-        - name: Anal
+          - name: Vaginal
+          - name: Anal
+          - name: Urethral
       - name: Verbal Abuse
+        messages:
+          de:
+            name: Beleidigungen
+          en:
+            name: Verbal Abuse
       - name: Branding
       - name: Cell Popping / Micro Branding
       - name: Injections
+        messages:
+          de:
+            name: Injektionen
+          en:
+            name: Injections
       - name: Scarification
       - name: Tattooing
+        messages:
+          de:
+            name: Taetowieren
+          en:
+            name: Tattooing
       - name: Enemas
+        messages:
+          de:
+            name: Einlaeufe
+          en:
+            name: Enemas
       - name: Catheterization
       - name: Urethral play (includes sounding)
+        messages:
+          de:
+            name: Harnroehrenspiele
+            description: z.B. Sounding
+          en:
+            name: Urethral Play
+            description: e.g. Sounding
       - name: Gagging
+        messages:
+          de:
+            name: Zum Wuergen bringen
+          en:
+            name: Gagging
         variants:
           - name: (fingers or similar means)
+            messages:
+              de:
+                name: mit Fingern oder aehnlichem
+              en:
+                name: with fingers or similar means
           - name: During Oral
+            messages:
+              de:
+                name: Beim Blasen
+              en:
+                name: during a blow job
+      - name: playfights
+        messages:
+          de:
+            name: Spielerische Kaempfe
+          en:
+            name: Playfights
 
   - name: powerexchange
     kinds:
@@ -572,7 +941,3 @@ categories:
         variants:
           - name: Handheld
           - name: Stationary
-
-  - name: others
-    kinds:
-      - name: playfights
