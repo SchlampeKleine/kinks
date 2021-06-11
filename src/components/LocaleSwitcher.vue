@@ -6,7 +6,6 @@ v-for="(lang, i) in languageArray"
 :key="`lang${i}`"
 :value="lang"
 >{{ lang }}</option>
-  <option value="de">de</option>
 </select>
 </div>
 </template>
