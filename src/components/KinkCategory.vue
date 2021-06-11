@@ -1,11 +1,15 @@
 <template>
-  <section class="section is-centered">
+  <section class="section
+                  is-centered"
+           >
     <h2
       class="title"
       >{{ t('name',category.name) }}</h2>
     <div
-    class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
-           is-one-quarter-desktop is-multiline"
+    class=" columns
+            is-align-items-stretch
+            is-variable
+            is-tablet"
     >
       <KinkSubCategory
         v-for="subcategory in localCategory.subcategories"

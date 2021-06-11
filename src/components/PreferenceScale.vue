@@ -1,6 +1,7 @@
 <template>
   <div
-    class="field is-horizontal preference-role-identifier"
+    class=" field
+            preference-role-identifier"
     >
     <div class="field-label">
       <label class="label">
@@ -8,7 +9,9 @@
       </label>
     </div>
     <div
-      class="field-body control preference buttons"
+      class=" field-body control
+              reference
+              buttons"
       :style="labelStyle"
       >
       <template
@@ -16,7 +19,9 @@
         v-bind:key="key+'-'+preferencelevel"
         >
         <div
-          class="control is-expanded is-justify-content-space-between"
+          class=" control
+                  is-expanded
+                  is-justify-content-space-between"
           :style="labelStyle"
           >
           <label class="radio">

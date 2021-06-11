@@ -1,5 +1,7 @@
 <template>
-  <div class="column box is-align-items-stretch">
+  <div class="column
+              box"
+       >
     <div class="box name">
       <h4
         class="title"
@@ -9,8 +11,9 @@
     {{ t('description') }}
     </p>
     <div
-      class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
-             is-one-quarter-desktop is-multiline"
+      class=" columns
+              is-align-items-stretch
+              is-desktop"
       >
       <template
         v-if="localKink.variants"
