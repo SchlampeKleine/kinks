@@ -1,7 +1,17 @@
 ---
-#Sources:
-#- Checklist VER: .81 - www.discerningspecialist.com
+# Sources:
+# - Checklist VER: .81 - www.discerningspecialist.com
 #
 defaultRoles:
   - name: active
+    messages:
+      de:
+        active: als aktiver Part
+      en:
+        active: active
   - name: passive
+    messages:
+      de:
+        passive: als passiver Part
+      en:
+        passive: passive
