@@ -1,13 +1,13 @@
 <template>
-<div class="lang-dropdown">
-<select class="select" v-model="locale">
-<option
-v-for="(lang, i) in languageArray"
-:key="`lang${i}`"
-:value="lang"
->{{ lang }}</option>
-</select>
-</div>
+  <div class="lang-dropdown">
+    <select class="select" v-model="locale">
+      <option
+        v-for="(lang, i) in languageArray"
+        :key="`lang${i}`"
+        :value="lang"
+        >{{ lang }}</option>
+    </select>
+  </div>
 </template>
 
 <script>
