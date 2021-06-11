@@ -1,47 +1,64 @@
 <template>
-<div class="column">
-<div
-class="preference-role-identifier"
->
-{{ localRole.name }}
-</div>
-<div class="columns is-gapless control preference buttons">
-<template
-v-for="preferencelevel in getPreferenceLevels()"
-v-bind:key="key+'-'+preferencelevel"
-  >
-<div class="column">
-<input
-type="radio"
-label="preferencelevel.name"
-v-model="localPreference"
-:value="preferencelevel.name"
-:style="{
-'color': preferencelevel.color
-}"
-/>
-<PreferenceScaleButtonLabel
-:preferenceLevel="preferencelevel"
-/>
-</div>
-</template>
-</div>
-</div>
+  <div
+    class="field is-horizontal preference-role-identifier"
+    >
+    <div class="field-label">
+      <label class="label">
+        {{ t(localRole.name,localRole.name) }}
+      </label>
+    </div>
+    <div
+      class="field-body control preference buttons"
+      :style="labelStyle"
+      >
+      <template
+        v-for="preferencelevel in getPreferenceLevels()"
+        v-bind:key="key+'-'+preferencelevel"
+        >
+        <div
+          class="control is-expanded is-justify-content-space-between"
+          :style="labelStyle"
+          >
+          <label class="radio">
+            <input
+              type="radio"
+              label="preferencelevel.name"
+              v-model="localPreference"
+              :value="preferencelevel.name"
+              />
+            <PreferenceScaleButtonLabel
+              :preferenceLevel="preferencelevel"
+              />
+          </label>
+        </div>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n';
 import { preferenceLevels } from '@/assets/levels.yaml'; // is used in v-for
 import PreferenceScaleButtonLabel from '@/components/PreferenceScaleButtonLabel.vue';
 
 export default {
   name: 'PreferenceScale',
   emits: [
-  //  'update:preference',
+    //  'update:preference',
     'update:role',
   ],
   data() {
     return {
       localPreference: null,
+    };
+  },
+  setup(props) {
+    const { t } = useI18n({
+      useScope: 'global',
+      messages: props.role.messages,
+    });
+    return {
+      t,
     };
   },
 
@@ -50,6 +67,11 @@ export default {
       return preferenceLevels;
     },
 
+    labelStyle(preferenceLevel) {
+      return {
+        'background-color': preferenceLevel.color,
+      };
+    },
   },
 
   props: {
@@ -59,11 +81,13 @@ export default {
     role: {
       type: Object,
       required: true,
+      /*
       default() {
         return {
           preference: null,
         };
       },
+      */
     },
 
   },
@@ -73,14 +97,14 @@ export default {
       deep: true,
       immediate: true,
       handler(newVal) {
-        // console.log({"PreferenceScale: role changed": newVal});
+        // console.log({ 'PreferenceScale: role changed': newVal});
         this.localRole = newVal;
       },
     },
 
     localRole: {
       handler(newVal) {
-        // console.log({"PreferenceScale: localRole changed": newVal })
+        // console.log({ 'PreferenceScale: localRole changed': newVal });
         this.localPreference = newVal.preference;
         this.$emit('update:role', newVal);
       },
@@ -115,18 +139,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

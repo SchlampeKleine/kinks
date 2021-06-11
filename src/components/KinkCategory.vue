@@ -1,23 +1,28 @@
 <template>
-<section class="column is-centered">
-  <h3>{{ t('name') }}</h3>
-  <KinkSubCategory
-    class="columns"
-    v-for="subcategory in localCategory.subcategories"
-    :key="subcategory.name"
-    :subcategory="subcategory"
-    :kinds="subcategory.kinds"
-    @update:subcategory="updateSubcategory"
-  />
-  <Kink
-    class="columns"
-    v-for="kink in localCategory.kinds"
-    :key="kink.name"
-    :kink="kink"
-    :variants="kink.variants"
-    @update:kink="updateKink"
-  />
-</section>
+  <section class="section is-centered">
+    <h2
+      class="title"
+      >{{ t('name',category.name) }}</h2>
+    <div
+    class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
+           is-one-quarter-desktop is-multiline"
+    >
+      <KinkSubCategory
+        v-for="subcategory in localCategory.subcategories"
+        :key="subcategory.name"
+        :subcategory="subcategory"
+        :kinds="subcategory.kinds"
+        @update:subcategory="updateSubcategory"
+        />
+      <Kink
+        v-for="kink in localCategory.kinds"
+        :key="kink.name"
+        :kink="kink"
+        :variants="kink.variants"
+        @update:kink="updateKink"
+        />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -100,18 +105,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

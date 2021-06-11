@@ -5,6 +5,7 @@
 
 .columns {
 
-  @extend kink !optional
+  @extend kink !optional;
+  // min-width: 400px;
 
 }

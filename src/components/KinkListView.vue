@@ -1,14 +1,18 @@
 <template>
-  <KinkCategory
-  class="columns"
-  v-for="category in localMyKinks.categories"
-  :key="category.name"
-  :category=category
-  :name="category.name"
-  :subcategories="category.subcategories"
-  :kinds="category.kinds"
-  @update:category="updateCategory"
-  />
+  <div
+    class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
+           is-one-quarter-desktop is-multiline"
+    >
+    <KinkCategory
+      v-for="category in localMyKinks.categories"
+      :key="category.name"
+      :category=category
+      :name="category.name"
+      :subcategories="category.subcategories"
+      :kinds="category.kinds"
+      @update:category="updateCategory"
+      />
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,10 @@
 <template>
-<div class="columns">
-<PreferenceScale
-v-for="role in localRoles"
-:key="key+'-'+role.name"
-:role=role
-@update:role="updateLocalRole"
-/>
-</div>
+  <PreferenceScale
+    v-for="role in localRoles"
+    :key="key+'-'+role.name"
+    :role=role
+    @update:role="updateLocalRole"
+    />
 </template>
 
 <script>
@@ -32,10 +30,11 @@ export default {
   methods: {
 
     updateLocalRole(newRole) {
+      // console.log({ 'updateLocalRole in PreferenceScales': newRole });
       this.localRoles[
         this.localRoles.findIndex(
           (element) => element.name === newRole.name,
-        )
+        ) || -1
       ] = newRole;
       this.$emit('update:roles', this.localRoles);
     },
@@ -74,18 +73,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

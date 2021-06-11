@@ -1,34 +1,36 @@
 <template>
-<div class="column">
-<div class="kink name">
-<p>{{ t('name') }}</p>
-</div>
-<div class="kink description" v-if="te('description')">
-{{ t('description') }}
-</div>
-<template
-v-if="localKink.variants"
->
-<ul
-class="kink-variants"
->
-<KinkVariant
-class="columns"
-v-for="variant in localKink.variants"
-:key="key+'-'+variant.name"
-:variant=variant
-@update:variant="updateVariant"
-/>
-</ul>
-</template>
-<template
-v-else
->
-<KinkPreference
-v-model:preferences="localKink.preferences"
-/>
-</template>
-</div>
+  <div class="column box is-align-items-stretch">
+    <div class="box name">
+      <h4
+        class="title"
+        >{{ t('name',kink.name) }}</h4>
+    </div>
+    <p class="block kink description" v-if="te('description')">
+    {{ t('description') }}
+    </p>
+    <div
+      class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
+             is-one-quarter-desktop is-multiline"
+      >
+      <template
+        v-if="localKink.variants"
+        >
+        <KinkVariant
+          v-for="variant in localKink.variants"
+          :key="key+'-'+variant.name"
+          :variant=variant
+          @update:variant="updateVariant"
+          />
+      </template>
+        <template
+          v-else
+          >
+          <KinkPreference
+            v-model:preferences="localKink.preferences"
+            />
+        </template>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -66,10 +68,10 @@ export default {
   },
 
   emits:
-    [
-      'update:kink',
-      'update:roles',
-    ],
+  [
+    'update:kink',
+    'update:roles',
+  ],
   setup(props) {
     const { t, te } = useI18n({
       messages: props.kink.messages || { en: { name: props.kink.name } },
@@ -104,7 +106,7 @@ export default {
         return this.kink ? this.kink : {
           roles: this.roles ? this.roles : null,
           variants: this.variants ? this.variants : null,
-          name: this.name ? this.name : '',
+          name: this.name,
           comment: this.comment ? this.comment : null,
         };
       },
@@ -113,27 +115,11 @@ export default {
       },
 
     },
-    localPreferences: {
-      get() { return { comment: this.localComment, roles: this.localRoles }; },
-      set(newVal) {
-        this.localKink.roles = newVal.roles;
-        this.localKink.comment = newVal.comment;
-        this.$emit('update:kink', this.localKink);
-      },
-    },
-    localComment: {
-      get() { return this.comment; },
-      set(localComment) { this.$emit('update:comment', localComment); },
-    },
     localVariants: {
       get() { return this.variants; },
       set(localVariants) {
         this.$emit('update:variants', localVariants);
       },
-    },
-    localRoles: {
-      get() { return this.roles; },
-      set(localRoles) { this.$emit('update:roles', localRoles); },
     },
   },
 };
@@ -141,18 +127,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

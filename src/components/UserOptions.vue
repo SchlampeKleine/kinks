@@ -1,40 +1,52 @@
 <template>
-  <div class="control">
-  <div
-  class="user-field"
-  >
-  <input
-    placeholder="Name"
-    v-model="localUser"
-    @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
-  />
-  <button class="button" v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
-  {{ t('button_save') }}
-  </button>
-  <button class="button" v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
-  >
-  {{ t('button_load') }}
-  </button>
-  <button class="button" v-on:click="resetMyKinks(user)">
-  {{ t('button_reset') }}
-  </button>
-  <button class="button" v-on:click="dumpMyKinks">
-  {{ t('button_dump') }}
-  </button>
-  <button class="button" v-on:click="shareMyKinks(getKinksForUser(user))">
-  {{ t('button_share') }}
-  </button>
-  <button class="button" v-on:click="downloadMyKinks(myKinks)">
-  {{ t('button_download') }}
-  </button>
-  </div>
-  <LocaleSwitcher />
-  </div>
-  <div>
-  </div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <div class="control">
+          <div
+            class="field"
+            >
+            <input
+              placeholder="Name"
+              v-model="localUser"
+              @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
+              type="text"
+              class="input is-expanded"
+              />
+          </div>
+          <div class="buttons has-addons">
+            <button class="button" v-on:click="saveMyKinks(user)" :disabled="canSaveKinks(user)">
+              {{ t('button_save') }}
+            </button>
+            <button class="button" v-on:click="loadMyKinks(user)" :disabled="canLoadKinks(user)"
+                    >
+                    {{ t('button_load') }}
+            </button>
+              <button class="button" v-on:click="resetMyKinks(user)">
+                {{ t('button_reset') }}
+              </button>
+              <button class="button" v-on:click="dumpMyKinks">
+                {{ t('button_dump') }}
+              </button>
+              <button class="button" v-on:click="shareMyKinks(getKinksForUser(user))">
+                {{ t('button_share') }}
+              </button>
+              <button class="button" v-on:click="downloadMyKinks(myKinks)">
+                {{ t('button_download') }}
+              </button>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <LocaleSwitcher />
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </nav>
 </template>
 
-<i18n lang="yaml">
+<i18n lang="yaml" global>
 
 de:
   button_dump: "Kinks dumpen"

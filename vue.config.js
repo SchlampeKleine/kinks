@@ -1,11 +1,14 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: '/kinks/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/kinks/'
+    : '/',
   lintOnSave: process.env.NODE_ENV !== 'production',
 
   pluginOptions: {
 
+    devtools: process.env.NODE_ENV !== 'production',
     css: {
       loaderOptions: {
         sass: {

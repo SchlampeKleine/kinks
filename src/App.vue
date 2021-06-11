@@ -69,7 +69,7 @@ export default {
     },
 
     updateCategory(newVal) {
-      const msg = { new: newVal };
+      const msg = { updateCategory: newVal };
       console.log(msg);
       this.myKinks.categories[
         this.myKinks.categories.findIndex((element) => element.name === newVal.name)
@@ -82,11 +82,13 @@ export default {
 
 <style>
 #app {
+  /*
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  */
 }
 </style>

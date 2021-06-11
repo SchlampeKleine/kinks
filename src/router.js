@@ -47,7 +47,7 @@ export default createRouter({
               template: 'LOADING',
             },
           },
-          /* eslint-ignore-next-line */
+          /* eslint-disable-next-line */
           beforeEnter(to, from, next) {
             const { objectString } = to.params;
             console.log({ objectString });

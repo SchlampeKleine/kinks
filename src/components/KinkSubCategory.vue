@@ -1,15 +1,21 @@
 <template>
-<div class="column">
-  <h4>{{ t('name') }}</h4>
-  <Kink
-    class="columns"
-    v-for="kink in kinds"
-    :key="kink.name"
-    :kink=kink
-    :variants="kink.variants"
-    @update:kink="updateKink"
-  />
-</div>
+  <div class="column">
+    <h3
+      class="title"
+      >{{ t('name',subcategory.name) }}</h3>
+    <div
+      class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
+             is-one-quarter-desktop is-multiline"
+      >
+      <Kink
+        v-for="kink in kinds"
+        :key="kink.name"
+        :kink=kink
+        :variants="kink.variants"
+        @update:kink="updateKink"
+        />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -74,18 +80,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

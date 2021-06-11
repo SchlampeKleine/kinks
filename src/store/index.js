@@ -37,9 +37,9 @@ if (module.hot) {
   ], () => {
     store.hotUpdate({
       // getters: require('./getters'),
-      /* eslint-ignore-next-line */
+      /* eslint-disable-next-line */
       actions: require('./actions'),
-      /* eslint-ignore-next-line */
+      /* eslint-disable-next-line */
       mutations: require('./mutations'),
     });
   });

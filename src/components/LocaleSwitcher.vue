@@ -1,18 +1,24 @@
 <template>
-  <div class="lang-dropdown">
-    <select class="select" v-model="locale">
-      <option
-        v-for="(lang, i) in languageArray"
-        :key="`lang${i}`"
-        :value="lang"
-        >{{ lang }}</option>
-    </select>
+  <div class="control has-icons-left">
+    <div class="select">
+      <select v-model="locale">
+        <option
+          v-for="(lang, i) in languageArray"
+          :key="`lang${i}`"
+          :value="lang"
+          >{{ lang }}</option>
+      </select>
+      <span class="icon is-left">
+        <i class="fas fa-globe"></i>
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed } from 'vue';
 import { languages } from '@/i18n';
+import { useI18n } from 'vue-i18n';
 import store from '@/store';
 
 import {
@@ -28,6 +34,10 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const i18n = useI18n({
+      useScope: global,
+    });
+
     /*
      * Source
      * https://next.vuex.vuejs.org/guide/composition-api.html#accessing-state-and-getters
@@ -38,7 +48,8 @@ export default {
       // locale,
       // store,
       lang: computed(() => store.state.locale),
-      setLang: (newVal) => store.dispatch('changeLocale', newVal),
+      i18n,
+      setStoredLang: (newVal) => store.dispatch('changeLocale', newVal),
       updateRoute: (newLocale) => router.replace({ params: { lang: newLocale } }).catch(() => {}),
     };
   },
@@ -48,6 +59,7 @@ export default {
         return this.lang;
       },
       set(newVal) {
+        this.i18n.locale = newVal;
         this.setLang(newVal);
         this.updateRoute(newVal);
       },

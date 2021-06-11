@@ -1,14 +1,16 @@
 <template>
-<div class="preference">
-<PreferenceScales
-v-model:roles="localPreferences.roles"
-:key="key+'-'+'preference-scales'"
-/>
-<PreferenceComment
-v-model:comment="localPreferences.comment"
-:key="key+'-'+'preference-comment'"
-/>
-</div>
+  <div class="box preference">
+    <div class="field">
+      <PreferenceScales
+        v-model:roles="localPreferences.roles"
+        :key="key+'-'+'preference-scales'"
+        />
+      <PreferenceComment
+        v-model:comment="localPreferences.comment"
+        :key="key+'-'+'preference-comment'"
+        />
+    </div>
+  </div>
 </template>
 
 <script>

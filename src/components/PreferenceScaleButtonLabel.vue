@@ -1,35 +1,32 @@
 <template>
-<label class="radio"
-for="preferenceLevel.name"
->{{ preferenceName }}</label>
+  {{ t(preferenceLevel.name,preferenceLevel.name) }}
 </template>
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { languages } from '@/i18n';
 
 export default {
+
   name: 'PreferenceScaleButtonLabel',
-  emits: [
-  ],
+
   props: {
-    localPreference: {
-      type: String,
-      required: false,
-    },
     preferenceLevel: {
       type: Object,
       required: true,
     },
-
   },
+
   setup(props) {
     const { t } = useI18n({
-      messages: props.preferenceLevel.messages || { en: { name: props.preferenceLevel.name } },
+      useScope: global,
+      messages: props.preferenceLevel.messages,
     });
-    const preferenceName = t('name');
+
     return {
-      preferenceName,
+      t,
     };
   },
+
 };
 </script>

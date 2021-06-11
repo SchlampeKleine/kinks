@@ -1,17 +1,15 @@
 <template>
-<li>
-<div class="variant">
-<div class="variant name" >{{ t('name') }}</div>
-<div class="variant description" v-if="te('description')" >
-{{ t('description') }}
-</div>
-<KinkPreference
-v-model:preferences="localVariant.preferences"
-:key="key"
-@update:preferences="updatePreferences"
-/>
-</div>
-</li>
+  <div class="column box variant is-align-items-space-between">
+    <h5 class="title variant name" >{{ t('name',variant.name) }}</h5>
+    <p class="block variant description" v-if="te('description')">
+    {{ t('description') }}
+    </p>
+    <KinkPreference
+      v-model:preferences="localVariant.preferences"
+      :key="key"
+      @update:preferences="updatePreferences"
+      />
+  </div>
 </template>
 
 <script>
@@ -76,18 +74,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
