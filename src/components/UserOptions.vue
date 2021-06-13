@@ -1,7 +1,31 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-menu">
-      <div class="navbar-start">
+  <nav
+    class="navbar"
+    role="navigation"
+    aria-label="main navigation"
+    >
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="@/assets/logo.png">
+      </a>
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        v-on:click="isOpen = !isOpen"
+        v-bind:class="{'is-active': isOpen}"
+        >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+   </div>
+    <div class="navbar-menu"
+        v-bind:class="{'is-active': isOpen}"
+      >
+      <div class="navbar-start"
+        >
         <div class="control">
           <div
             class="field"
@@ -113,6 +137,11 @@ export default {
   },
   mounted() {
     this.localMyKinks = this.getKinksForUser(this.user);
+  },
+  data() {
+    return {
+      isOpen: null,
+    };
   },
   methods: {
 
