@@ -1,5 +1,7 @@
 <template>
-  <div class="column">
+  <div
+    class="column"
+    >
     <h3
       class="title"
       >{{ t('name',subcategory.name) }}</h3>
