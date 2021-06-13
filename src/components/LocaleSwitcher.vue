@@ -60,7 +60,7 @@ export default {
       },
       set(newVal) {
         this.i18n.locale = newVal;
-        this.setLang(newVal);
+        this.setStoredLang(newVal);
         this.updateRoute(newVal);
       },
     },

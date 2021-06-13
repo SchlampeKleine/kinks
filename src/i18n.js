@@ -52,12 +52,16 @@ function checkDefaultLanguage() {
   return matched;
 }
 
-export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en';
+export const selectedLocale = checkDefaultLanguage()
+  || process.env.VUE_APP_I18N_LOCALE
+  || 'en';
+
 export { languages };
 // Object.getOwnPropertyNames(loadLocaleMessages());
 export default createI18n({
   locale: selectedLocale,
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE
+    || 'en',
   messages: loadLocaleMessages(),
   legacy: false,
 });
