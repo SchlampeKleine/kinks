@@ -220,6 +220,7 @@ de:
   loadUser_choice: >
     Bitte waehle den Nutzer aus,
     dessen Praeferenzen du laden moechtest.
+  help_field_loadUser: Kennzeichnug der Praeferenzen, die geladen werden sollen
   button_upload: "Kinks hochladen"
   button_kinkmanagement: "Kinks verwalten"
   button_dump: "Kinks dumpen"
@@ -238,6 +239,7 @@ en:
   loadUser_choice: >
     Please select the user
     to load the preferences for
+  help_field_loadUser: Identifier of the saved preferences to load
   button_upload: "Upload kinks"
   button_kinkmanagement: "Manage kinks"
   button_dump: "Dump my kinks"
