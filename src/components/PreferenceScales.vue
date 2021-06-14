@@ -44,6 +44,7 @@ export default {
     PreferenceScale,
   },
   watch: {
+    /*
     roles: {
       deep: true,
       immediate: false,
@@ -51,6 +52,8 @@ export default {
         console.log({ 'PreferenceScales: roles changed': newVal });
       },
     },
+    */
+    /*
     localRoles: {
       deep: true,
       immediate: false,
@@ -58,6 +61,7 @@ export default {
         console.log({ 'PreferenceScales: localRoles changed': newVal });
       },
     },
+    */
 
   },
   computed: {
