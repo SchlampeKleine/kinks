@@ -103,7 +103,7 @@ export default {
   computed: {
     localKink: {
       get() {
-        return { preferences: {}, ...this.kink }
+        return { preferences: {}, ...this.kink };
       },
       set(newVal) {
         this.$emit('update:kink', newVal);
