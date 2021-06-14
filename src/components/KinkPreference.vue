@@ -24,20 +24,26 @@ export default {
       type: String,
     },
     preferences: {
-      type: Object,
       required: true,
-      default() {
-        return {};
-      },
     },
   },
-
+  watch: {
+    /*
+    preferences: {
+      deep: true,
+      immediate: true,
+      handler(newVal) {
+        this.$emit('update:preferences', newVal);
+      },
+    },
+    */
+  },
   computed: {
 
     localPreferences: {
-      get() { return this.preferences; },
+      get() { return this.preferences ? this.preferences : {}; },
       set(newVal) {
-        // console.log({"KinkPreference: Emit Update preferences":newVal})
+        console.log({ "KinkPreference: Emit Update preferences": newVal })
         this.$emit('update:preferences', newVal);
       },
     },
@@ -53,10 +59,12 @@ export default {
   methods: {
     updateComment(newVal) {
       this.localPreferences.comment = newVal;
+      this.$emit('update:preferences', this.localPreferences);
     },
 
     updateRoles(newVal) {
       this.localPreferences.roles = newVal;
+      this.$emit('update:preferences', this.localPreferences);
     },
 
   },

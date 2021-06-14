@@ -48,21 +48,26 @@ export default {
   },
 
   watch: {
+    /*
     localVariant: {
       deep: true,
       immediate: true,
       handler(newVal) {
         // console.log({"KinkVariant: change localVariant": newVal.name})
         this.localVariant = newVal;
+        this.$emit('update:variant', this.localVariant);
       },
     },
+    */
 
   },
   computed: {
     localVariant: {
-      get() { return this.variant; },
+      get() {
+        return { preferences: {}, ...this.variant };
+        },
       set(newVal) {
-        // console.log({"KinkVariant: Update Variant":newVal})
+        console.log({ "KinkVariant: Update Variant": newVal })
         this.$emit('update:variant', newVal);
       },
     },

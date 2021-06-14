@@ -12,7 +12,6 @@
       class=" field-body control
               reference
               buttons"
-      :style="labelStyle"
       >
       <template
         v-for="preferencelevel in getPreferenceLevels()"
@@ -22,9 +21,12 @@
           class=" control
                   is-expanded
                   is-justify-content-space-between"
-          :style="labelStyle"
+          :style="labelStyle(preferencelevel)"
           >
-          <label class="radio">
+          <label
+            class="radio"
+            :style="labelStyle"
+            >
             <input
               type="radio"
               label="preferencelevel.name"
@@ -144,4 +146,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.field-body {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
 </style>

@@ -30,6 +30,7 @@
           >
           <KinkPreference
             v-model:preferences="localKink.preferences"
+            @update:preferences="updatePreferences"
             />
         </template>
     </div>
@@ -73,7 +74,6 @@ export default {
   emits:
   [
     'update:kink',
-    'update:roles',
   ],
   setup(props) {
     const { t, te } = useI18n({
@@ -92,9 +92,6 @@ export default {
     updatePreferences(newVal) {
       this.localKink.preferences = newVal;
     },
-    updateRoles(newRoles) {
-      this.localRoles = newRoles;
-    },
     updateVariant(newVal) {
       this.localVariants[
         this.localVariants.findIndex(
@@ -106,12 +103,7 @@ export default {
   computed: {
     localKink: {
       get() {
-        return this.kink ? this.kink : {
-          roles: this.roles ? this.roles : null,
-          variants: this.variants ? this.variants : null,
-          name: this.name,
-          comment: this.comment ? this.comment : null,
-        };
+        return { preferences: {}, ...this.kink }
       },
       set(newVal) {
         this.$emit('update:kink', newVal);
