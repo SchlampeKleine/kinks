@@ -5,7 +5,17 @@
 
 .columns {
 
-  @extend kink !optional;
-  // min-width: 400px;
+  //@extend kink !optional;
+  //min-width: content-width;
 
+}
+
+.box {
+  //min-width: content-width;
+}
+
+.title {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
