@@ -61,7 +61,7 @@ export default {
         )
       ] = newVal;
       // console.log({"KinkSubCategory: updated Kink":newVal})
-      // this.$emit("update:subcategory",this.localSubCategory);
+      this.$emit('update:subcategory', this.localSubCategory);
     },
   },
   components: {

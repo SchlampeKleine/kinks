@@ -43,7 +43,7 @@ export default {
     localPreferences: {
       get() { return this.preferences ? this.preferences : {}; },
       set(newVal) {
-        console.log({ "KinkPreference: Emit Update preferences": newVal })
+        console.log({ 'KinkPreference: Emit Update preferences': newVal });
         this.$emit('update:preferences', newVal);
       },
     },

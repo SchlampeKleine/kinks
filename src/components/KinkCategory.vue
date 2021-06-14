@@ -92,6 +92,7 @@ export default {
       ] = newVal;
       this.$emit('update:category', this.localCategory);
     },
+
     updateKink(newVal) {
       console.log({ updateKink: newVal });
       this.localCategory.kinds[

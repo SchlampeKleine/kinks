@@ -91,6 +91,7 @@ export default {
   methods: {
     updatePreferences(newVal) {
       this.localKink.preferences = newVal;
+      this.$emit('update:kink', this.localKink);
     },
     updateVariant(newVal) {
       this.localVariants[
@@ -98,6 +99,8 @@ export default {
           (element) => element.name === newVal.name,
         )
       ] = newVal;
+      this.localKink.variants = this.localVariants;
+      this.$emit('update:kink', this.localKink);
     },
   },
   computed: {

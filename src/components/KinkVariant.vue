@@ -65,9 +65,9 @@ export default {
     localVariant: {
       get() {
         return { preferences: {}, ...this.variant };
-        },
+      },
       set(newVal) {
-        console.log({ "KinkVariant: Update Variant": newVal })
+        console.log({ 'KinkVariant: Update Variant': newVal });
         this.$emit('update:variant', newVal);
       },
     },
