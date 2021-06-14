@@ -32,7 +32,7 @@ module.exports = {
       fallbackLocale: 'en',
       enableInSFC: true,
       localeDir: 'locales',
-      enableLegacy: true,
+      enableLegacy: false,
       runtimeOnly: false,
       compositionOnly: true,
       fullInstall: true,
