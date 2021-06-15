@@ -21,6 +21,7 @@ const store = createStore({
   state,
   mutations,
   actions,
+  strict: process.env.NODE_ENV !== 'production',
   plugins: debug ? [
     createLogger(),
     createPersistedState(),
