@@ -8,6 +8,8 @@
 /* Custom Variables and Functions*/
 // @import 'variables';
 @import 'extends';
+// Theming
+@import '~bulmaswatch/nuclear/_variables';
 
 /* Uncomment to import the entire Bulma framework */
 @import '~bulma/bulma';
@@ -24,3 +26,5 @@
 @import "~bulma/sass/layout/section.sass";
 @import "~bulma/sass/components/card.sass";
 */
+
+@import '~bulmaswatch/nuclear/_overrides';
