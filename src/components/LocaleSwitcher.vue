@@ -19,7 +19,8 @@
 import { computed } from 'vue';
 import { languages } from '@/i18n';
 import { useI18n } from 'vue-i18n';
-import store from '@/store';
+import { useStore } from 'vuex';
+// import store from '@/store';
 
 import {
   useRouter,
@@ -35,8 +36,9 @@ export default {
   setup() {
     const router = useRouter();
     const i18n = useI18n({
-      useScope: global,
+      useScope: 'global',
     });
+    const store = useStore();
 
     /*
      * Source

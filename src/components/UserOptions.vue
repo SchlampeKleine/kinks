@@ -254,8 +254,8 @@ en:
 <script>
 
 import defaultKinks from '@/assets/kinks.yaml';
-import { useRouter } from 'vue-router';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
+import { useRouter } from 'vue-router';
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 import { Base64 } from 'js-base64';

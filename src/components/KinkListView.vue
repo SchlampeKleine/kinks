@@ -5,7 +5,8 @@
     >
     <KinkCategory
       v-for="category in localMyKinks.categories"
-      :key="category.name"
+      :id="category.name"
+      :key="'category-'+category.name"
       :category=category
       :name="category.name"
       :subcategories="category.subcategories"
@@ -31,11 +32,19 @@ export default {
     },
 
   },
+  data() {
+    return {
+      debug: false,
+
+    };
+  },
   methods: {
 
     updateCategory(newVal) {
-      const msg = { updateCategory: newVal };
-      console.log(msg);
+      const msg = { 'KinkListView updateCategory': newVal };
+      if (this.debug) {
+        console.log(msg);
+      }
       this.localMyKinks.categories[
         this.localMyKinks.categories.findIndex(
           (element) => element.name === newVal.name,

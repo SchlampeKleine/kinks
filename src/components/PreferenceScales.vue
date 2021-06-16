@@ -1,8 +1,10 @@
 <template>
   <PreferenceScale
     v-for="role in localRoles"
-    :key="key+'-'+role.name"
+    :id="id+'-'+role.name"
+    :key="id+'-'+role.name"
     :role=role
+    :preference="role.preference"
     @update:role="updateLocalRole"
     />
 </template>
@@ -13,28 +15,48 @@ import { defaultRoles } from '@/assets/roles.yaml';
 
 export default {
   name: 'PreferenceScales',
-  emits: [
-    'update:roles',
-  ],
-  props: {
-    key: {
-      type: String,
+  emits: {
+    'update:roles': (newVal) => {
+      const debug = true;
+      if (debug) {
+        console.log({ 'PreferenceScales emit update:roles': newVal });
+      }
+      return true;
     },
+  },
+
+  data() {
+    return {
+      debug: false,
+    };
+  },
+  props: {
+
+    id: {
+      type: String,
+      required: true,
+    },
+
     roles: {
       type: Array,
       default() {
-        return defaultRoles;
+        // This forces a real copy of the default roles to be created
+        return Array.from(defaultRoles, (o) => ({ ...o }));
       },
     },
+
   },
+
   methods: {
 
     updateLocalRole(newRole) {
-      // console.log({ 'updateLocalRole in PreferenceScales': newRole });
+      if (this.debug) {
+        console.log({ 'PreferenceScales updateLocalRole': newRole });
+      }
       this.localRoles[
         this.localRoles.findIndex(
           (element) => element.name === newRole.name,
-        ) || -1
+        )
       ] = newRole;
       this.$emit('update:roles', this.localRoles);
     },
@@ -43,34 +65,19 @@ export default {
   components: {
     PreferenceScale,
   },
-  watch: {
-    /*
-    roles: {
-      deep: true,
-      immediate: false,
-      handler(newVal) {
-        console.log({ 'PreferenceScales: roles changed': newVal });
-      },
-    },
-    */
-    /*
-    localRoles: {
-      deep: true,
-      immediate: false,
-      handler(newVal) {
-        console.log({ 'PreferenceScales: localRoles changed': newVal });
-      },
-    },
-    */
 
-  },
   computed: {
+
     localRoles: {
-      get() { return this.roles ? this.roles : defaultRoles; },
-      set(localRoles) {
-        this.$emit('update:roles', localRoles);
+      get() { return this.roles; },
+      set(newVal) {
+        if (this.debug) {
+          console.log({ 'PreferenceScales localRoles set': newVal });
+        }
+        this.$emit('update:roles', { ...newVal });
       },
     },
+
   },
 };
 </script>

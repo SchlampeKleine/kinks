@@ -1,14 +1,23 @@
 <template>
   <div class=" comment">
     <input
-      placeholder="Comment"
+      :key="id+'-'+'input'"
+      :placeholder="t('placeholder-comment')"
       class="input is-rounded"
-      @change="updateComment"
+      v-model.lazy="computedComment"
       />
   </div>
 </template>
 
+<i18n lang="yaml">
+en:
+  placeholder-comment: Comment
+de:
+  placeholder-comment: Kommentar
+</i18n>
+
 <script>
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'PreferenceComment',
@@ -16,34 +25,51 @@ export default {
     'update:comment',
   ],
   props: {
+
+    id: {
+      type: String,
+      required: true,
+    },
+
     comment: {
       type: String,
       required: true,
       default: '',
     },
   },
+
+  setup() {
+    const { t } = useI18n({
+      useScope: global,
+    });
+
+    return {
+      t,
+    };
+  },
+
   methods: {
+
     updateComment(newVal) {
-      this.$emit('update:comment', newVal.target.value);
+      this.$emit('update:comment', newVal);
     },
+
+  },
+  computed: {
+
+    computedComment: {
+      get() {
+        return this.comment;
+      },
+      set(newVal) {
+        this.updateComment(newVal);
+      },
+    },
+
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

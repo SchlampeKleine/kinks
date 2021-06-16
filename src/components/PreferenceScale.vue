@@ -15,7 +15,7 @@
       >
       <template
         v-for="preferencelevel in getPreferenceLevels()"
-        v-bind:key="key+'-'+preferencelevel"
+        :key="id+'-'+preferencelevel"
         >
         <div
           class=" control
@@ -29,8 +29,10 @@
             >
             <input
               type="radio"
+              :name="id"
+              :key="id+'-'+preferencelevel.name"
               label="preferencelevel.name"
-              v-model="localPreference"
+              v-model="computedPreference"
               :value="preferencelevel.name"
               />
             <PreferenceScaleButtonLabel
@@ -50,15 +52,17 @@ import PreferenceScaleButtonLabel from '@/components/PreferenceScaleButtonLabel.
 
 export default {
   name: 'PreferenceScale',
+
   emits: [
-    //  'update:preference',
     'update:role',
   ],
+
   data() {
     return {
       localPreference: null,
     };
   },
+
   setup(props) {
     const { t } = useI18n({
       useScope: 'global',
@@ -70,6 +74,7 @@ export default {
   },
 
   methods: {
+
     getPreferenceLevels() {
       return preferenceLevels;
     },
@@ -79,57 +84,43 @@ export default {
         'background-color': preferenceLevel.color,
       };
     },
+
   },
 
   props: {
-    key: {
+    id: {
       type: String,
+      required: true,
+    },
+    preference: {
+      type: String,
+      default: '',
     },
     role: {
       type: Object,
       required: true,
-      /*
-      default() {
-        return {
-          preference: null,
-        };
-      },
-      */
     },
 
   },
-  watch: {
 
-    role: {
-      deep: true,
-      immediate: true,
-      handler(newVal) {
-        // console.log({ 'PreferenceScale: role changed': newVal});
-        this.localRole = newVal;
-      },
-    },
-
-    localRole: {
-      handler(newVal) {
-        // console.log({ 'PreferenceScale: localRole changed': newVal });
-        this.localPreference = newVal.preference;
-        this.$emit('update:role', newVal);
-      },
-      deep: true,
-      immediate: true,
-    },
-
-    localPreference: {
-      handler(newVal) {
-        this.localRole.preference = newVal;
-      },
-      immediate: true,
-    },
-  },
   components: {
     PreferenceScaleButtonLabel,
   },
+
   computed: {
+
+    computedPreference: {
+      get() {
+        return this.role.preference;
+      },
+      set(newVal) {
+        if (this.debug) {
+          console.log({ 'PreferenceScale computedPreference set': newVal });
+        }
+        this.$emit('update:role', { ...this.role, preference: newVal });
+      },
+
+    },
 
     localRole: {
       get() {

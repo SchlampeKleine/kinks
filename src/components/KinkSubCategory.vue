@@ -11,7 +11,8 @@
       >
       <Kink
         v-for="kink in kinds"
-        :key="kink.name"
+        :id="id+'-'+kink.name"
+        :key="'kink-'+kink.name"
         :kink=kink
         :variants="kink.variants"
         @update:kink="updateKink"
@@ -27,6 +28,10 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'KinkSubCategory',
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     key: {
       type: String,
     },
@@ -60,18 +65,21 @@ export default {
           (element) => element.name === newVal.name,
         )
       ] = newVal;
-      // console.log({"KinkSubCategory: updated Kink":newVal})
+      console.log({ 'KinkSubCategory: updated Kink': newVal });
       this.$emit('update:subcategory', this.localSubCategory);
     },
+
   },
   components: {
     Kink,
   },
   computed: {
     localSubCategory: {
+      debug: false,
       get() { return this.subcategory ? this.subcategory : {}; },
       set(newVal) {
-        this.$emit('update:subcategory', newVal);
+        if (this.debug) { console.log({ 'KinkSubCategory emit update:subcategory': newVal }); }
+        this.$emit('update:subcategory', this.localSubCategory);
       },
 
     },

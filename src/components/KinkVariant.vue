@@ -9,9 +9,10 @@
     {{ t('description') }}
     </p>
     <KinkPreference
-      v-model:preferences="localVariant.preferences"
-      :key="key"
-      @update:preferences="updatePreferences"
+      :id="id+'-'+'preferences'"
+      :key="id+'-'+'preferences'"
+      v-bind:object="localVariant"
+      v-model:preferences="localPreferences"
       />
   </div>
 </template>
@@ -22,18 +23,31 @@ import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'KinkVariant',
+
   emits: [
     'update:variant',
   ],
+
   props: {
-    key: {
+
+    id: {
       type: String,
+      required: true,
     },
+
     variant: {
       type: Object,
       required: true,
     },
+
   },
+
+  data() {
+    return {
+      debug: false,
+    };
+  },
+
   setup(props) {
     const { t, te } = useI18n({
       messages: props.variant.messages || { en: { name: props.variant.name } },
@@ -43,39 +57,51 @@ export default {
       te,
     };
   },
+
   components: {
     KinkPreference,
   },
 
-  watch: {
-    /*
-    localVariant: {
-      deep: true,
-      immediate: true,
-      handler(newVal) {
-        // console.log({"KinkVariant: change localVariant": newVal.name})
-        this.localVariant = newVal;
-        this.$emit('update:variant', this.localVariant);
-      },
-    },
-    */
-
-  },
   computed: {
+
     localVariant: {
       get() {
         return { preferences: {}, ...this.variant };
       },
       set(newVal) {
-        console.log({ 'KinkVariant: Update Variant': newVal });
-        this.$emit('update:variant', newVal);
+        if (this.debug) {
+          console.log({ 'KinkVariant: Update Variant': newVal });
+        }
+        this.$emit('update:variant', { ...newVal });
       },
     },
+
+    localPreferences: {
+      get() {
+        return this.variant.preferences || {};
+      },
+      set(newVal) {
+        if (this.debug) {
+          console.log({ 'KinkVariant localPreferences set': newVal });
+        }
+        this.localVariant = { ...this.variant, preferences: newVal };
+        this.$emit('update:variant', { ...this.localVariant, preferences: newVal });
+      },
+    },
+
   },
+
   methods: {
+
+    updateVariant(newVal) {
+      if (this.debug) {
+        console.log({ 'KinkVariant updateVariant': newVal });
+      }
+      this.$emit('update:variant', { ...newVal });
+    },
+
     updatePreferences(newVal) {
       this.localVariant.preferences = newVal;
-      this.$emit('update:variant', this.localVariant);
     },
   },
 };

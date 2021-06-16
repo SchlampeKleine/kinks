@@ -1,5 +1,5 @@
 <template>
-  {{ t(preferenceLevel.name,preferenceLevel.name) }}
+  {{ t(preferenceLevel.name, preferenceLevel.name) }}
 </template>
 
 <script>
