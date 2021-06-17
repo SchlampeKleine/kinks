@@ -15,7 +15,14 @@
 }
 
 .title {
+  /*
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
+  */
+
+  word-break: keep-all;
+  line-break: strict;
+  min-width: 200px;
+  max-width: max-content;
 }

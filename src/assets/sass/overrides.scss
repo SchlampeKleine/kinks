@@ -1,0 +1,9 @@
+/*
+ * Source:
+ * https://css-tricks.com/where-lines-break-is-complicated-heres-all-the-related-css-and-html/
+ */
+
+.title {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}

@@ -9,8 +9,9 @@
       </label>
     </div>
     <div
-      class=" field-body control
-              reference
+      class=" field-body
+              preference
+              level
               buttons"
       >
       <template
@@ -18,9 +19,12 @@
         :key="id+'-'+preferencelevel"
         >
         <div
-          class=" control
-                  is-expanded
-                  is-justify-content-space-between"
+          class="
+                 control
+                 is-expanded
+                 expanded-radio
+                 level-item
+                 is-justify-content-space-between"
           :style="labelStyle(preferencelevel)"
           >
           <label
@@ -49,6 +53,7 @@
 import { useI18n } from 'vue-i18n';
 import { preferenceLevels } from '@/assets/levels.yaml'; // is used in v-for
 import PreferenceScaleButtonLabel from '@/components/PreferenceScaleButtonLabel.vue';
+import Color from 'color-js';
 
 export default {
   name: 'PreferenceScale',
@@ -79,9 +84,21 @@ export default {
       return preferenceLevels;
     },
 
+    /*
+     * Source
+     * https://bulma.io/documentation/overview/functions/
+     */
+    findColorInvert(color) {
+      if (Color(color).getLuminance() > 0.55) {
+        return 'rgba(0,0,0,0.7)';
+      }
+      return '#fff';
+    },
+
     labelStyle(preferenceLevel) {
       return {
         'background-color': preferenceLevel.color,
+        color: this.findColorInvert(preferenceLevel.color),
       };
     },
 
@@ -138,8 +155,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .field-body {
+  /*
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
+  */
+}
+/*
+ * Source
+ * https://stackoverflow.com/questions/26275982/putting-moz-available-and-webkit-fill-available-in-one-width-css-property
+ */
+.expanded-radio {
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: stretch;
 }
 </style>
