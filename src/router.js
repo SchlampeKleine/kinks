@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import KinkListView from '@/components/KinkListView.vue';
+import KinkListView from '@/views/KinkList.vue';
 import UserOptions from '@/components/UserOptions.vue';
 import App from '@/App.vue';
 import { languages } from '@/i18n';
