@@ -6,6 +6,7 @@ import router from './router';
 import store from './store';
 
 import './assets/sass/main.scss';
+import './registerServiceWorker';
 
 createApp(App)
   .use(i18n)
