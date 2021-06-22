@@ -4,7 +4,9 @@
               variant
               is-align-items-space-between"
        >
-    <h5 class="title variant name" >{{ t('name',variant.name) }}</h5>
+    <h5
+       class="title variant name has-text-primary has-text-centered"
+      >{{ t('name',variant.name) }}</h5>
     <p class="block variant description" v-if="te('description')">
     {{ t('description') }}
     </p>

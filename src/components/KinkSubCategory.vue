@@ -3,7 +3,7 @@
     class="column"
     >
     <h3
-      class="title"
+      class="title is-primary has-text-centered has-text-primary"
       >{{ t('name',subcategory.name) }}</h3>
     <div
       class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet

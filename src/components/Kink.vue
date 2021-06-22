@@ -4,7 +4,7 @@
        >
     <div class="box name">
       <h4
-        class="title"
+        class="title has-text-primary has-text-centered"
         >{{ t('name',kink.name) }}</h4>
     </div>
     <p

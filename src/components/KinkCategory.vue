@@ -3,7 +3,7 @@
                   is-centered"
            >
     <h2
-      class="title"
+      class="title has-text-primary has-text-centered"
       >{{ t('name',category.name) }}</h2>
     <div
     class=" columns
