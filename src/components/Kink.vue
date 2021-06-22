@@ -13,7 +13,9 @@
     <div class="box name">
       <h4
         class="title has-text-primary has-text-centered"
-        >{{ t('name',kink.name) }}</h4>
+        >{{ t('name',kink.name) }}
+    <LocaleEditor v-model:messages="localKink.messages"/>
+      </h4>
     </div>
     <p
         class="block kink description has-text-justified"
@@ -58,6 +60,7 @@ import { toRefs, ref, toRef } from 'vue';
 import KinkVariant from '@/components/KinkVariant.vue';
 import KinkPreference from '@/components/KinkPreference.vue';
 import { useI18n } from 'vue-i18n';
+import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
   name: 'Kink',
@@ -110,6 +113,7 @@ export default {
   components: {
     KinkVariant,
     KinkPreference,
+    LocaleEditor,
   },
 
   watch: {

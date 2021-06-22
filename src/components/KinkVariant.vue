@@ -7,7 +7,9 @@
        >
     <h5
        class="title variant name has-text-primary has-text-centered"
-      >{{ t('name',variant.name) }}</h5>
+      >{{ t('name',variant.name) }}
+    <LocaleEditor v-model:messages="localVariant.messages"/>
+    </h5>
     <p class="block variant description" v-if="te('description')">
     {{ t('description') }}
     </p>
@@ -23,6 +25,7 @@
 <script>
 import KinkPreference from '@/components/KinkPreference.vue';
 import { useI18n } from 'vue-i18n';
+import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
   name: 'KinkVariant',
@@ -63,6 +66,7 @@ export default {
 
   components: {
     KinkPreference,
+    LocaleEditor,
   },
 
   computed: {

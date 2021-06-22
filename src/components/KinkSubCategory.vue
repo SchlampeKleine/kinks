@@ -6,6 +6,7 @@
             is-full
             "
     >
+    <LocaleEditor v-model:messages="localSubCategory.messages"/>
     <h3
       class="title is-primary has-text-centered has-text-primary"
       >{{ t('name',subcategory.name) }}</h3>
@@ -31,6 +32,7 @@
 <script>
 import Kink from '@/components/Kink.vue';
 import { useI18n } from 'vue-i18n';
+import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
   name: 'KinkSubCategory',
@@ -79,6 +81,7 @@ export default {
   },
   components: {
     Kink,
+    LocaleEditor,
   },
   computed: {
     localSubCategory: {

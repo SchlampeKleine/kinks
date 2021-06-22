@@ -4,7 +4,9 @@
            >
     <h2
       class="title has-text-primary has-text-centered"
-      >{{ t('name',category.name) }}</h2>
+      >{{ t('name',category.name) }}
+    <LocaleEditor v-model:messages="localCategory.messages"/>
+    </h2>
     <div
     class=" columns
             is-multiline
@@ -34,6 +36,7 @@
 import Kink from '@/components/Kink.vue';
 import KinkSubCategory from '@/components/KinkSubCategory.vue';
 import { useI18n } from 'vue-i18n';
+import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
   name: 'KinkCategory',
@@ -116,6 +119,7 @@ export default {
   components: {
     Kink,
     KinkSubCategory,
+    LocaleEditor,
   },
 };
 </script>
