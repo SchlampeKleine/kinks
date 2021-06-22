@@ -7,9 +7,8 @@
       >{{ t('name',category.name) }}</h2>
     <div
     class=" columns
-            is-align-items-stretch
-            is-variable
-            is-tablet"
+            is-multiline
+            is-desktop"
     >
       <KinkSubCategory
         v-for="subcategory in localCategory.subcategories"

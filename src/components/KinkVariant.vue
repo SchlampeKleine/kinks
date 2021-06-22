@@ -2,7 +2,8 @@
   <div class="column
               box
               variant
-              is-align-items-space-between"
+              is-narrow
+              "
        >
     <h5
        class="title variant name has-text-primary has-text-centered"

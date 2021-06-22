@@ -81,6 +81,12 @@ export default {
 </script>
 
 <style>
+/*
+ * https://github.com/jgthms/bulma/issues/2616
+ */
+.columns {
+  overflow:hidden;
+}
 #app {
   /*
   font-family: Avenir, Helvetica, Arial, sans-serif;

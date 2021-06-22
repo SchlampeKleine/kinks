@@ -1,13 +1,20 @@
 <template>
   <div
-    class="column"
+    class="
+           column
+            is-variable
+            is-full
+            "
     >
     <h3
       class="title is-primary has-text-centered has-text-primary"
       >{{ t('name',subcategory.name) }}</h3>
     <div
-      class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
-             is-one-quarter-desktop is-multiline"
+      class="
+             columns
+             is-variable
+             is-multiline
+              "
       >
       <Kink
         v-for="kink in kinds"

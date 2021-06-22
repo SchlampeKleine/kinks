@@ -1,5 +1,8 @@
 <template>
-  <div class="box preference">
+  <div class="
+              box
+              preference
+              ">
     <div class="field">
       <PreferenceScales
         :id="id+'-'+'roles'"

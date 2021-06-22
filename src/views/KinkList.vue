@@ -1,7 +1,7 @@
 <template>
   <div
-    class="columns is-align-items-stretch is-variable is-full-mobile is-half-tablet
-           is-one-quarter-desktop is-multiline"
+    class="
+           "
     >
     <KinkCategory
       v-for="category in localMyKinks.categories"

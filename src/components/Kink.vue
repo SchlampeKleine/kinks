@@ -1,6 +1,14 @@
 <template>
   <div class="column
-              box"
+              is-full-mobile
+              box
+              "
+       :class="{
+               'is-full': kink.variants,
+               'is-narrow': !kink.variants,
+               'is-half-tablet': !kink.variants,
+               'is-one-quarter-desktop': !kink.variants,
+               }"
        >
     <div class="box name">
       <h4
@@ -8,15 +16,17 @@
         >{{ t('name',kink.name) }}</h4>
     </div>
     <p
-        class="block kink description"
+        class="block kink description has-text-justified"
         v-if="te('description')"
         >
     {{ t('description') }}
     </p>
     <div
       class=" columns
+              is-multiline
+              is-gapless
               is-align-items-stretch
-              is-desktop"
+              "
       >
       <template
         v-if="localKink.variants"
