@@ -1316,8 +1316,10 @@ categories:
       messages:
         de:
           name: Natursekt
+          description: Spiele mit Urin
         en:
-          name: Golden Showers (urine)
+          name: Golden Showers
+          description: playing with urine
     - name: Blood Play
       messages:
         de:
@@ -1331,6 +1333,13 @@ categories:
         en:
           name: Vomit
     - name: Scat (bowel movements)
+      messages:
+        de:
+          name: Kot
+          description: Spiele mit Exkrementen
+        en:
+          name: Scat
+          description: Play with bowel movements
 
   - name: gear
     messages:
