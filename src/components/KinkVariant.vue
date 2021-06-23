@@ -1,8 +1,10 @@
 <template>
   <div class="column
-              box
-              variant
               is-narrow
+              is-full-mobile
+              is-half-tablet
+              is-one-quarter-desktop
+              box
               "
        >
     <h5
