@@ -1643,245 +1643,245 @@ categories:
         en:
           name: impact/sensation
       kinds:
-      - name: Clothespins
-        messages:
-          de:
-            name: Waescheklammern
-          en:
-            name: Clothespins
-      - name: Canes
-        messages:
-          de:
-            name: (Rohr-) Stoecke
-          en:
-            name: Canes
-      - name: Paddles
-        messages:
-          de:
-            name: Paddle
-          en:
-            name: Paddles
-      - name: Slappers / Straps
-        messages:
-          de:
-            name: Riemen
-          en:
-            name: Slappers / Straps
-      - name: Crops
-        messages:
-          de:
-            name: Gerten
-          en:
-            name: Crops
-      - name: Floggers
-        messages:
-          de:
-            name: Flogger
-          en:
-            name: Floggers
-      - name: Single Tail Whips
-        messages:
-          de:
-            name: Single Tail
-          en:
-            name: Single Tail Whips
-      - name: Cat-O-Nine-Tails
-        messages:
-          de:
-            name: Neunschwaenzige Katze
-          en:
-            name: Cat-O-Nine-Tails
-      - name: Dragon Tails
-      - name: Clubs
-        messages:
-          de:
-            name: Schlagstoecke / Knueppel
-          en:
-            name: Clubs
-      - name: Violet Wands
-      - name: E-Stim Kits
-      - name: Nipple Clamps
-        messages:
-          de:
-            name: Nippelklemmen
-          en:
-            name: Nipple Clamps
-        variants:
-          - name: Nipple Clamps - Adjustable
-            messages:
-              de:
-                name: Einstellbare Nippelklemmen
-              en:
-                name: Nipple Clamps - Adjustable
-          - name: Nipple Clamps - Clover
-            messages:
-              de:
-                name: Clover Clamps
-                description: Schliessen sich unter Zug
-              en:
-                name: Nipple Clamps - Clover
-                description: Close further on pull
-      - name: Nipple Weights
-        messages:
-          de:
-            name: Gewichte an den Nippeln
-          en:
-            name: Nipple Weights
-      - name: Labia Clamps
-        messages:
-          de:
-            name: Gewichte an den Schamlippen
-          en:
-            name: Labia Clamps
-      - name: Genital Weights
-        messages:
-          de:
-            name: Gewichte an den Genitalien
-          en:
-            name: Genital Weights
-      - name: Ball Crushers
-        messages:
-          de:
-            name: Ball Crusher
-          en:
-            name: Ball Crushers
-      - name: Scrotum Parachutes / Stretchers
-        messages:
-          de:
-            name: Hodenfallschirme
-          en:
-            name: Scrotum Parachutes / Stretchers
-      - name: Anal Hook
-        messages:
-          de:
-            name: Analhaken
-          en:
-            name: Anal Hook
-      - name: Vaginal Hook
-        messages:
-          de:
-            name: Vaginalhaken
-          en:
-            name: Vaginal Hook
-      - name: Vibrators
-        messages:
-          de:
-            name: Vibratoren
-          en:
-            name: Vibrators
-        variants:
-          - name: Insertable
-            messages:
-              de:
-                name: Einfuehrbar
-              en:
-                name: Insertable
-          - name: Wands
-            messages:
-              de:
-                name: Auflegevibratoren
-              en:
-                name: Wands
-      - name: Dildos
-        messages:
-          de:
-            name: Dildos
-          en:
-            name: Dildos
-      - name: Anal Plugs
-        messages:
-          de:
-            name: Analplugs
-          en:
-            name: Anal Plugs
-      - name: Animal Tail Anal Plugs
-        messages:
-          de:
-            name: Analplugs mit Schwanz
-          en:
-            name: Animal Tail Anal Plugs
-      - name: Anal Beads / Balls
-        messages:
-          de:
-            name: Analkugeln
-          en:
-            name: Anal Beads / Balls
-      - name: Speculums
-        messages:
-          de:
-            name: Spekulum
-          en:
-            name: Speculums
-      - name: Urethral Sounds
-        messages:
-          de:
-            name: Sounds
-          en:
-            name: Urethral Sounds
-      - name: Wartenberg Pinwheels
-        messages:
-          de:
-            name: Wartenbergrad
-          en:
-            name: Wartenberg Pinwheels
-      - name: Bells
-        messages:
-          de:
-            name: Gloeckchen
-          en:
-            name: Bells
-      - name: Strap-On Harnesses
-        messages:
-          de:
-            name: Strap-On Harness
-          en:
-            name: Strap-On Harnesses
-      - name: Feathers / Ticklers
-        messages:
-          de:
-            name: Federn / Kitzler
-          en:
-            name: Feathers / Ticklers
-      - name: Guns
-        messages:
-          de:
-            name: Pistolen
-          en:
-            name: Guns
-      - name: Knives
-        messages:
-          de:
-            name: Messer
-          en:
-            name: Knives
-      - name: Claws
-        messages:
-          de:
-            name: Krallen
-          en:
-            name: Claws
-      - name: Mirrors
-        messages:
-          de:
-            name: Spiegel
-          en:
-            name: Mirrors
-      - name: Sex Machines
-        messages:
-          de:
-            name: Sexmaschinen
-          en:
-            name: Sex Machines
-        variants:
-          - name: Handheld
-            messages:
-              de:
-                name: Gehalten
-              en:
-                name: Handheld
-          - name: Stationary
-            messages:
-              de:
-                name: Stationaer
-              en:
-                name: Stationary
+        - name: Clothespins
+          messages:
+            de:
+              name: Waescheklammern
+            en:
+              name: Clothespins
+        - name: Canes
+          messages:
+            de:
+              name: (Rohr-) Stoecke
+            en:
+              name: Canes
+        - name: Paddles
+          messages:
+            de:
+              name: Paddle
+            en:
+              name: Paddles
+        - name: Slappers / Straps
+          messages:
+            de:
+              name: Riemen
+            en:
+              name: Slappers / Straps
+        - name: Crops
+          messages:
+            de:
+              name: Gerten
+            en:
+              name: Crops
+        - name: Floggers
+          messages:
+            de:
+              name: Flogger
+            en:
+              name: Floggers
+        - name: Single Tail Whips
+          messages:
+            de:
+              name: Single Tail
+            en:
+              name: Single Tail Whips
+        - name: Cat-O-Nine-Tails
+          messages:
+            de:
+              name: Neunschwaenzige Katze
+            en:
+              name: Cat-O-Nine-Tails
+        - name: Dragon Tails
+        - name: Clubs
+          messages:
+            de:
+              name: Schlagstoecke / Knueppel
+            en:
+              name: Clubs
+        - name: Violet Wands
+        - name: E-Stim Kits
+        - name: Nipple Clamps
+          messages:
+            de:
+              name: Nippelklemmen
+            en:
+              name: Nipple Clamps
+          variants:
+            - name: Nipple Clamps - Adjustable
+              messages:
+                de:
+                  name: Einstellbare Nippelklemmen
+                en:
+                  name: Nipple Clamps - Adjustable
+            - name: Nipple Clamps - Clover
+              messages:
+                de:
+                  name: Clover Clamps
+                  description: Schliessen sich unter Zug
+                en:
+                  name: Nipple Clamps - Clover
+                  description: Close further on pull
+        - name: Nipple Weights
+          messages:
+            de:
+              name: Gewichte an den Nippeln
+            en:
+              name: Nipple Weights
+        - name: Labia Clamps
+          messages:
+            de:
+              name: Gewichte an den Schamlippen
+            en:
+              name: Labia Clamps
+        - name: Genital Weights
+          messages:
+            de:
+              name: Gewichte an den Genitalien
+            en:
+              name: Genital Weights
+        - name: Ball Crushers
+          messages:
+            de:
+              name: Ball Crusher
+            en:
+              name: Ball Crushers
+        - name: Scrotum Parachutes / Stretchers
+          messages:
+            de:
+              name: Hodenfallschirme
+            en:
+              name: Scrotum Parachutes / Stretchers
+        - name: Anal Hook
+          messages:
+            de:
+              name: Analhaken
+            en:
+              name: Anal Hook
+        - name: Vaginal Hook
+          messages:
+            de:
+              name: Vaginalhaken
+            en:
+              name: Vaginal Hook
+        - name: Vibrators
+          messages:
+            de:
+              name: Vibratoren
+            en:
+              name: Vibrators
+          variants:
+            - name: Insertable
+              messages:
+                de:
+                  name: Einfuehrbar
+                en:
+                  name: Insertable
+            - name: Wands
+              messages:
+                de:
+                  name: Auflegevibratoren
+                en:
+                  name: Wands
+        - name: Dildos
+          messages:
+            de:
+              name: Dildos
+            en:
+              name: Dildos
+        - name: Anal Plugs
+          messages:
+            de:
+              name: Analplugs
+            en:
+              name: Anal Plugs
+        - name: Animal Tail Anal Plugs
+          messages:
+            de:
+              name: Analplugs mit Schwanz
+            en:
+              name: Animal Tail Anal Plugs
+        - name: Anal Beads / Balls
+          messages:
+            de:
+              name: Analkugeln
+            en:
+              name: Anal Beads / Balls
+        - name: Speculums
+          messages:
+            de:
+              name: Spekulum
+            en:
+              name: Speculums
+        - name: Urethral Sounds
+          messages:
+            de:
+              name: Sounds
+            en:
+              name: Urethral Sounds
+        - name: Wartenberg Pinwheels
+          messages:
+            de:
+              name: Wartenbergrad
+            en:
+              name: Wartenberg Pinwheels
+        - name: Bells
+          messages:
+            de:
+              name: Gloeckchen
+            en:
+              name: Bells
+        - name: Strap-On Harnesses
+          messages:
+            de:
+              name: Strap-On Harness
+            en:
+              name: Strap-On Harnesses
+        - name: Feathers / Ticklers
+          messages:
+            de:
+              name: Federn / Kitzler
+            en:
+              name: Feathers / Ticklers
+        - name: Guns
+          messages:
+            de:
+              name: Pistolen
+            en:
+              name: Guns
+        - name: Knives
+          messages:
+            de:
+              name: Messer
+            en:
+              name: Knives
+        - name: Claws
+          messages:
+            de:
+              name: Krallen
+            en:
+              name: Claws
+        - name: Mirrors
+          messages:
+            de:
+              name: Spiegel
+            en:
+              name: Mirrors
+        - name: Sex Machines
+          messages:
+            de:
+              name: Sexmaschinen
+            en:
+              name: Sex Machines
+          variants:
+            - name: Handheld
+              messages:
+                de:
+                  name: Gehalten
+                en:
+                  name: Handheld
+            - name: Stationary
+              messages:
+                de:
+                  name: Stationaer
+                en:
+                  name: Stationary
