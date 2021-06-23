@@ -1030,8 +1030,10 @@ categories:
       messages:
         de:
           name: Eltern / Kind
+          description: z.B. Vater / Tochter oder Mutter / Sohn
         en:
-          name: "Parent / Child (Ex: Daddy / Daughter)"
+          name: "Parent / Child"
+          description: eg Daddy / Daughter or Mother / Son
     - name: Interrogation
       messages:
         de:
