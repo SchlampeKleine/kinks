@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import KinkListView from '@/views/KinkList.vue';
 import UserOptions from '@/components/UserOptions.vue';
 import App from '@/App.vue';
 import { languages } from '@/i18n';
@@ -35,7 +34,23 @@ export default createRouter({
           name: 'home',
           components: {
             UserOptions,
-            default: KinkListView,
+            default: () => import('@/views/KinkList.vue'),
+          },
+        },
+        {
+          name: 'credits',
+          path: 'credits',
+          components: {
+            UserOptions,
+            default: () => import('@/views/Credits.vue'),
+          },
+        },
+        {
+          name: 'privacy',
+          path: 'privacy',
+          components: {
+            UserOptions,
+            default: () => import('@/views/Privacy.vue'),
           },
         },
         {

@@ -28,6 +28,21 @@
       <div
         class="navbar-start"
         >
+      <div class="navbar-item">
+        <RouterLink :to="{ name: 'home', }">
+          Home
+        </RouterLink>
+      </div>
+      <div class="navbar-item">
+        <RouterLink :to="{ name: 'credits', }">
+          Credits
+        </RouterLink>
+      </div>
+      <div class="navbar-item">
+        <RouterLink :to="{ name: 'privacy', }">
+          Privacy
+        </RouterLink>
+      </div>
         <div class="navbar-item has-dropdown"
              v-bind:class="{ 'is-active': isKinksOpen }">
           <a class="navbar-link"
@@ -254,7 +269,7 @@ en:
 <script>
 import defaultKinks from '@/assets/kinks.yaml';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
-import { useRouter } from 'vue-router';
+import { useRouter, RouterLink } from 'vue-router';
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 import { Base64 } from 'js-base64';
@@ -295,6 +310,7 @@ export default {
   },
   components: {
     LocaleSwitcher,
+    RouterLink,
   },
   mounted() {
     this.localMyKinks = this.getKinksForUser(this.user);
