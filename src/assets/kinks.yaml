@@ -142,7 +142,9 @@ categories:
             messages:
               de:
                 name: Tragen
-                description: Auf den Koerper bekommen bzw. auf der Haut oder Klamotten lassen
+                description: >
+                  Auf den Koerper bekommen
+                  bzw. auf der Haut oder Klamotten lassen
               en:
                 name: Wearing
                 description: Wear on skin or clothes
@@ -213,7 +215,8 @@ categories:
               de:
                 name: MMF
                 description: >
-                  Dreier mit zwei maennlichen Partnern, von denen einer "in der Mitte" ist
+                  Dreier mit zwei maennlichen Partnern,
+                  von denen einer "in der Mitte" ist
               en:
                 name: MMF
                 description: >
@@ -417,7 +420,8 @@ categories:
         messages:
           de:
             name: Zwangslagen
-            description: Eine Situation, in der alle Moeglichen Handlungen nachteilig sind
+            description: >
+              Eine Situation, in der alle Moeglichen Handlungen nachteilig sind
           en:
             name: Predicament
             description: A situation in which all possible acts are bad
@@ -518,22 +522,24 @@ categories:
           en:
             name: Choking
         variants:
-        - name: Windpipe
-          messages:
-            de:
-              name: Luftwuergen
-              description: Unterbrechung der Luftversorgung durch Wuergen
-            en:
-              name: Windpipe Choking
-              description: Choking by blocking the windpipe
-        - name: Arterial
-          messages:
-            de:
-              name: Blutwuergen
-              description: Unterbrechung der Blutversorgung zum Gehirn durch Wuergen
-            en:
-              name: Arterial Choking
-              description: Choking by blocking the arterial bloodvessels
+          - name: Windpipe
+            messages:
+              de:
+                name: Luftwuergen
+                description: >
+                  Unterbrechung der Luftversorgung durch Wuergen
+              en:
+                name: Windpipe Choking
+                description: Choking by blocking the windpipe
+          - name: Arterial
+            messages:
+              de:
+                name: Blutwuergen
+                description: >
+                  Unterbrechung der Blutversorgung zum Gehirn durch Wuergen
+              en:
+                name: Arterial Choking
+                description: Choking by blocking the arterial bloodvessels
       - name: Breath Play
         messages:
           de:
@@ -735,259 +741,259 @@ categories:
       en:
         name: Power Exchange
     kinds:
-    - name: Begging
-      messages:
-        de:
-          name: Betteln
-        en:
-          name: Begging
-    - name: Housework
-      messages:
-        de:
-          name: Hausarbeit
-        en:
-          name: Housework
-    - name: Orders
-      messages:
-        de:
-          name: Befehle
-        en:
-          name: Orders
-    - name: Body Pose / Position Protocol
-      messages:
-        de:
-          name: Positionstrainig/Protokoll
-        en:
-          name: Body Pose / Position Protocol
-    - name: Behavior Restriction
-      messages:
-        de:
-          name: Einschraenkungen von Verhaltensweisen
-        en:
-          name: Behavior Restriction
-    - name: Eye Contact Restriction
-      messages:
-        de:
-          name: Einschraenkungen des Blickkontaktes
-        en:
-          name: Eye Contact Restriction
-    - name: Speech Restriction / Protocol
-      messages:
-        de:
-          name: Sprecheinschraekungen/Protokoll
-        en:
-          name: Speech Restriction / Protocol
-    - name: Bathroom Use Control
-      messages:
-        de:
-          name: Klokontrolle
-        en:
-          name: Bathroom Use Control
-    - name: Crawling
-      messages:
-        de:
-          name: Krabbeln
-        en:
-          name: Crawling
-    - name: Forced Exercise
-      messages:
-        de:
-          name: Trainingszwang
-        en:
-          name: Forced Exercise
-    - name: Forced Masturbation
-      messages:
-        de:
-          name: Masturbationszwang
-        en:
-          name: Forced Masturbation
-    - name: Forced Orgasms
-      messages:
-        de:
-          name: Erzwungene Orgasmen
-        en:
-          name: Forced Orgasms
-    - name: Clothing Chosen
-      messages:
-        de:
-          name: Kleidungskotrolle
-        en:
-          name: Clothing Chosen
-    - name: Forced Nudity
-      messages:
-        de:
-          name: Nacktheitszwang
-        en:
-          name: Forced Nudity
-    - name: Food Chosen
-      messages:
-        de:
-          name: Essenskontrolle
-        en:
-          name: Food Chosen
-    - name: Collar and Leash
-      messages:
-        de:
-          name: Halsband und Leine
-        en:
-          name: Collar and Leash
-    - name: Dirty Talk
-      messages:
-        de:
-          name: Dirty Talk
-        en:
-          name: Dirty Talk
-    - name: Lecturing
-      messages:
-        de:
-          name: Vortraege
-        en:
-          name: Lecturing
-    - name: Hypnosis
-      messages:
-        de:
-          name: Hypnose
-        en:
-          name: Hypnosis
-    - name: Boot Blacking
-      messages:
-        de:
-          name: Schuhe putzen
-        en:
-          name: Boot Blacking
-    - name: Public Play
-      messages:
-        de:
-          name: Spielen in der Oeffentlichkeit
-        en:
-          name: Public Play
-    - name: Discreet Public Play (less obvious to others)
-      messages:
-        de:
-          name: unauffaelliges Spielen in der Oeffentlichkeit
-        en:
-          name: Discreet Public Play (less obvious to others)
-    - name: Orgasm Control / Denial
-      messages:
-        de:
-          name: Orgasmuskontrolle
-        en:
-          name: Orgasm Control / Denial
-    - name: Struggling / Resistance
-      messages:
-        de:
-          name: Widerstand leisten
-        en:
-          name: Struggling / Resistance
-    - name: Worship
-      messages:
-        de:
-          name: Worship
-        en:
-          name: Worship
-        variants:
-          - name: Feet
-            messages:
-              de:
-                name: Fuesse
-              en:
-                name: Feet
-          - name: legs
-            messages:
-              de:
-                name: Beine
-              en:
-                name: Legs
-          - name: breasts
-            messages:
-              de:
-                name: Brueste
-              en:
-                name: Breasts
-          - name: genitals
-            messages:
-              de:
-                name: Genitalien
-              en:
-                name: Genitals
-          - name: ass
-            messages:
-              de:
-                name: Hintern
-              en:
-                name: Add
-    - name: Manicures
-      messages:
-        de:
-          name: Manikuere
-        en:
-          name: Manicures
-    - name: Competition
-      messages:
-        de:
-          name: Wettbewerbe
-        en:
-          name: Competition
-    - name: Journal / Blogging Duty
-      messages:
-        de:
-          name: Tagebuch- / Blog-Zwang
-        en:
-          name: Journal / Blogging Duty
-    - name: Body Weight Control
-      messages:
-        de:
-          name: Gewichtskontrolle
-        en:
-          name: Body Weight Control
-    - name: Serving as Furniture
-      messages:
-        de:
-          name: Menschliches Moebelstueck
-        en:
-          name: Serving as Furniture
-    - name: Serving as Art
-      messages:
-        de:
-          name: Menschliches Kunstwerk
-        en:
-          name: Serving as Art
-    - name: Serving as Ashtray
-      messages:
-        de:
-          name: Menschlicher Aschenbecher
-        en:
-          name: Serving as Ashtray
-    - name: Serving as Toilet
-      messages:
-        de:
-          name: Menschliche Toilette
-        en:
-          name: Serving as Toilet
-    - name: Forced Bi-Sexuality
-      messages:
-        de:
-          name: Erzwungene Bi-Sexualitaet
-        en:
-          name: Forced Bi-Sexuality
-    - name: Symbolic Jewelry
-      messages:
-        de:
-          name: Symbolische Schmuckstuecke
-        en:
-          name: Symbolic Jewelry
-    - name: Sleeping Conditions Chosen
-      messages:
-        de:
-          name: Bestimmung der Schlafensumstaende
-        en:
-          name: Sleeping Conditions Chosen
-    - name: Chauffeuring
-      messages:
-        de:
-          name: Fahrdienst
-        en:
-          name: Chauffeuring
+      - name: Begging
+        messages:
+          de:
+            name: Betteln
+          en:
+            name: Begging
+      - name: Housework
+        messages:
+          de:
+            name: Hausarbeit
+          en:
+            name: Housework
+      - name: Orders
+        messages:
+          de:
+            name: Befehle
+          en:
+            name: Orders
+      - name: Body Pose / Position Protocol
+        messages:
+          de:
+            name: Positionstrainig/Protokoll
+          en:
+            name: Body Pose / Position Protocol
+      - name: Behavior Restriction
+        messages:
+          de:
+            name: Einschraenkungen von Verhaltensweisen
+          en:
+            name: Behavior Restriction
+      - name: Eye Contact Restriction
+        messages:
+          de:
+            name: Einschraenkungen des Blickkontaktes
+          en:
+            name: Eye Contact Restriction
+      - name: Speech Restriction / Protocol
+        messages:
+          de:
+            name: Sprecheinschraekungen/Protokoll
+          en:
+            name: Speech Restriction / Protocol
+      - name: Bathroom Use Control
+        messages:
+          de:
+            name: Klokontrolle
+          en:
+            name: Bathroom Use Control
+      - name: Crawling
+        messages:
+          de:
+            name: Krabbeln
+          en:
+            name: Crawling
+      - name: Forced Exercise
+        messages:
+          de:
+            name: Trainingszwang
+          en:
+            name: Forced Exercise
+      - name: Forced Masturbation
+        messages:
+          de:
+            name: Masturbationszwang
+          en:
+            name: Forced Masturbation
+      - name: Forced Orgasms
+        messages:
+          de:
+            name: Erzwungene Orgasmen
+          en:
+            name: Forced Orgasms
+      - name: Clothing Chosen
+        messages:
+          de:
+            name: Kleidungskotrolle
+          en:
+            name: Clothing Chosen
+      - name: Forced Nudity
+        messages:
+          de:
+            name: Nacktheitszwang
+          en:
+            name: Forced Nudity
+      - name: Food Chosen
+        messages:
+          de:
+            name: Essenskontrolle
+          en:
+            name: Food Chosen
+      - name: Collar and Leash
+        messages:
+          de:
+            name: Halsband und Leine
+          en:
+            name: Collar and Leash
+      - name: Dirty Talk
+        messages:
+          de:
+            name: Dirty Talk
+          en:
+            name: Dirty Talk
+      - name: Lecturing
+        messages:
+          de:
+            name: Vortraege
+          en:
+            name: Lecturing
+      - name: Hypnosis
+        messages:
+          de:
+            name: Hypnose
+          en:
+            name: Hypnosis
+      - name: Boot Blacking
+        messages:
+          de:
+            name: Schuhe putzen
+          en:
+            name: Boot Blacking
+      - name: Public Play
+        messages:
+          de:
+            name: Spielen in der Oeffentlichkeit
+          en:
+            name: Public Play
+      - name: Discreet Public Play (less obvious to others)
+        messages:
+          de:
+            name: unauffaelliges Spielen in der Oeffentlichkeit
+          en:
+            name: Discreet Public Play (less obvious to others)
+      - name: Orgasm Control / Denial
+        messages:
+          de:
+            name: Orgasmuskontrolle
+          en:
+            name: Orgasm Control / Denial
+      - name: Struggling / Resistance
+        messages:
+          de:
+            name: Widerstand leisten
+          en:
+            name: Struggling / Resistance
+      - name: Worship
+        messages:
+          de:
+            name: Worship
+          en:
+            name: Worship
+          variants:
+            - name: Feet
+              messages:
+                de:
+                  name: Fuesse
+                en:
+                  name: Feet
+            - name: legs
+              messages:
+                de:
+                  name: Beine
+                en:
+                  name: Legs
+            - name: breasts
+              messages:
+                de:
+                  name: Brueste
+                en:
+                  name: Breasts
+            - name: genitals
+              messages:
+                de:
+                  name: Genitalien
+                en:
+                  name: Genitals
+            - name: ass
+              messages:
+                de:
+                  name: Hintern
+                en:
+                  name: Add
+      - name: Manicures
+        messages:
+          de:
+            name: Manikuere
+          en:
+            name: Manicures
+      - name: Competition
+        messages:
+          de:
+            name: Wettbewerbe
+          en:
+            name: Competition
+      - name: Journal / Blogging Duty
+        messages:
+          de:
+            name: Tagebuch- / Blog-Zwang
+          en:
+            name: Journal / Blogging Duty
+      - name: Body Weight Control
+        messages:
+          de:
+            name: Gewichtskontrolle
+          en:
+            name: Body Weight Control
+      - name: Serving as Furniture
+        messages:
+          de:
+            name: Menschliches Moebelstueck
+          en:
+            name: Serving as Furniture
+      - name: Serving as Art
+        messages:
+          de:
+            name: Menschliches Kunstwerk
+          en:
+            name: Serving as Art
+      - name: Serving as Ashtray
+        messages:
+          de:
+            name: Menschlicher Aschenbecher
+          en:
+            name: Serving as Ashtray
+      - name: Serving as Toilet
+        messages:
+          de:
+            name: Menschliche Toilette
+          en:
+            name: Serving as Toilet
+      - name: Forced Bi-Sexuality
+        messages:
+          de:
+            name: Erzwungene Bi-Sexualitaet
+          en:
+            name: Forced Bi-Sexuality
+      - name: Symbolic Jewelry
+        messages:
+          de:
+            name: Symbolische Schmuckstuecke
+          en:
+            name: Symbolic Jewelry
+      - name: Sleeping Conditions Chosen
+        messages:
+          de:
+            name: Bestimmung der Schlafensumstaende
+          en:
+            name: Sleeping Conditions Chosen
+      - name: Chauffeuring
+        messages:
+          de:
+            name: Fahrdienst
+          en:
+            name: Chauffeuring
 
 
   - name: roleplay
@@ -998,129 +1004,129 @@ categories:
         name: roleplay
     kinds:
 
-    - name: Boss / Secretary - (Employee)
-      messages:
-        de:
-          name: Chef / Sekretaer:in
-        en:
-          name: Boss / Secretary - (Employee)
-    - name: Teacher / Student
-      messages:
-        de:
-          name: Lehrer / Schueler
-        en:
-          name: Teacher / Student
-    - name: Damsel In Distress
-      messages:
-        de:
-          name: Dame in Noeten
-        en:
-          name: Damsel In Distress
-    - name: Kidnapping
-      messages:
-        de:
-          name: Entfuehrung
-        en:
-          name: Kidnapping
-    - name: Doctor - Nurse / Patient
-      messages:
-        de:
-          name: Arzt - Krankenschwester / Patient
-        en:
-          name: Doctor - Nurse / Patient
-    - name: "Parent / Child (Ex: Daddy / Daughter)"
-      messages:
-        de:
-          name: Eltern / Kind
-          description: z.B. Vater / Tochter oder Mutter / Sohn
-        en:
-          name: "Parent / Child"
-          description: eg Daddy / Daughter or Mother / Son
-    - name: Interrogation
-      messages:
-        de:
-          name: Verhoer
-        en:
-          name: Interrogation
-    - name: Age Regression
-    - name: Adult Baby
-    - name: Prison Scenes
-      messages:
-        de:
-          name: Gefaengnisszenen
-        en:
-          name: Prison Scenes
-    - name: Serving as Maid
-      messages:
-        de:
-          name: Service als Hausmaedchen
-        en:
-          name: Serving as Maid
-    - name: Prostitution / Given Away
-      messages:
-        de:
-          name: Prostitution / Verleih
-        en:
-          name: Prostitution / Given Away
-    - name: Initiation / Ritual
-      messages:
-        de:
-          name: Rituale
-        en:
-          name: Initiation / Ritual
-    - name: Punishment Scenes
-      messages:
-        de:
-          name: Bestrafungsszenen
-        en:
-          name: Punishment Scenes
-    - name: Religious Scenes
-      messages:
-        de:
-          name: Religioese Szenen
-        en:
-          name: Religious Scenes
-    - name: Vampire Scenes
-      messages:
-        de:
-          name: Vampirszenen
-        en:
-          name: Vampire Scenes
-    - name: Rape Scenes
-      messages:
-        de:
-          name: Vergewaltigungsszenen
-        en:
-          name: Rape Scenes
-    - name: Puppy  Play
-    - name: Cat Play
-    - name: Pony Play
-    - name: Furries
-    - name: Cosplay
-    - name: Living Doll
-      messages:
-        de:
-          name: Lebende Puppe
-        en:
-          name: Living Doll
-    - name: Cuckold Scenes
-      messages:
-        de:
-          name: Cuckold Szenen
-        en:
-          name: Cuckold Scenes
-    - name: Auction Scenes
-      messages:
-        de:
-          name: Versteigerungsszenen
-        en:
-          name: Auction Scenes
-    - name: Breeding / Impregnation
-      messages:
-        de:
-          name: Breeding / Schwaengern
-        en:
-          name: Breeding / Impregnation
+      - name: Boss / Secretary - (Employee)
+        messages:
+          de:
+            name: Chef / Sekretaer:in
+          en:
+            name: Boss / Secretary - (Employee)
+      - name: Teacher / Student
+        messages:
+          de:
+            name: Lehrer / Schueler
+          en:
+            name: Teacher / Student
+      - name: Damsel In Distress
+        messages:
+          de:
+            name: Dame in Noeten
+          en:
+            name: Damsel In Distress
+      - name: Kidnapping
+        messages:
+          de:
+            name: Entfuehrung
+          en:
+            name: Kidnapping
+      - name: Doctor - Nurse / Patient
+        messages:
+          de:
+            name: Arzt - Krankenschwester / Patient
+          en:
+            name: Doctor - Nurse / Patient
+      - name: "Parent / Child (Ex: Daddy / Daughter)"
+        messages:
+          de:
+            name: Eltern / Kind
+            description: z.B. Vater / Tochter oder Mutter / Sohn
+          en:
+            name: "Parent / Child"
+            description: eg Daddy / Daughter or Mother / Son
+      - name: Interrogation
+        messages:
+          de:
+            name: Verhoer
+          en:
+            name: Interrogation
+      - name: Age Regression
+      - name: Adult Baby
+      - name: Prison Scenes
+        messages:
+          de:
+            name: Gefaengnisszenen
+          en:
+            name: Prison Scenes
+      - name: Serving as Maid
+        messages:
+          de:
+            name: Service als Hausmaedchen
+          en:
+            name: Serving as Maid
+      - name: Prostitution / Given Away
+        messages:
+          de:
+            name: Prostitution / Verleih
+          en:
+            name: Prostitution / Given Away
+      - name: Initiation / Ritual
+        messages:
+          de:
+            name: Rituale
+          en:
+            name: Initiation / Ritual
+      - name: Punishment Scenes
+        messages:
+          de:
+            name: Bestrafungsszenen
+          en:
+            name: Punishment Scenes
+      - name: Religious Scenes
+        messages:
+          de:
+            name: Religioese Szenen
+          en:
+            name: Religious Scenes
+      - name: Vampire Scenes
+        messages:
+          de:
+            name: Vampirszenen
+          en:
+            name: Vampire Scenes
+      - name: Rape Scenes
+        messages:
+          de:
+            name: Vergewaltigungsszenen
+          en:
+            name: Rape Scenes
+      - name: Puppy  Play
+      - name: Cat Play
+      - name: Pony Play
+      - name: Furries
+      - name: Cosplay
+      - name: Living Doll
+        messages:
+          de:
+            name: Lebende Puppe
+          en:
+            name: Living Doll
+      - name: Cuckold Scenes
+        messages:
+          de:
+            name: Cuckold Szenen
+          en:
+            name: Cuckold Scenes
+      - name: Auction Scenes
+        messages:
+          de:
+            name: Versteigerungsszenen
+          en:
+            name: Auction Scenes
+      - name: Breeding / Impregnation
+        messages:
+          de:
+            name: Breeding / Schwaengern
+          en:
+            name: Breeding / Impregnation
 
 
   - name: fetish
@@ -1131,217 +1137,217 @@ categories:
         name: fetish
     kinds:
 
-    - name: Leather
-      messages:
-        de:
-          name: Leder
-        en:
-          name: Leather
-    - name: Latex / Rubber
-      messages:
-        de:
-          name: Latex / Gummi
-        en:
-          name: Latex / Rubber
-    - name: PVC
-      messages:
-        de:
-          name: PVC
-        en:
-          name: PVC
-    - name: Lingerie
-      messages:
-        de:
-          name: Unterwaesche
-        en:
-          name: Lingerie
-    - name: Feet / Shoes
-      messages:
-        de:
-          name: Fuesse / Schuhe
-        en:
-          name: Feet / Shoes
-    - name: Boots
-      messages:
-        de:
-          name: Stiefel
-        en:
-          name: Boots
-    - name: Gloves
-      messages:
-        de:
-          name: Handschuhe
-        en:
-          name: Gloves
-    - name: Smoking
-      messages:
-        de:
-          name: Rauchen
-        en:
-          name: Smoking
-    - name: Oral Fixation
-      messages:
-        de:
-          name: Orale Fixierung
-        en:
-          name: Oral Fixation
-    - name: Uniforms
-      messages:
-        de:
-          name: Uniformen
-        en:
-          name: Uniforms
-    - name: Voyeurism
-      messages:
-        de:
-          name: Voyerismus
-        en:
-          name: Voyeurism
-    - name: Corsets
-      messages:
-        de:
-          name: Korsetts
-        en:
-          name: Corsets
-    - name: Medical
-      messages:
-        de:
-          name: Klinik / Medizin
-        en:
-          name: Medical
-    - name: Cross Dressing
-    - name: Forced Feminization
-      messages:
-        de:
-          name: Erzwungene Feminisierung
-        en:
-          name: Forced Feminization
-    - name: Strap-On Play
-      messages:
-        de:
-          name: Strap-On Spiele
-        en:
-          name: Strap-On Play
-    - name: Lolita
-    - name: Mature
-    - name: Fur
-    - name: Lactation
-    - name: Food Play
-      messages:
-        de:
-          name: Spiele mit Essen
-        en:
-          name: Food Play
-    - name: Menstruation
-      messages:
-        de:
-          name: Menstruation
-        en:
-          name: Menstruation
-    - name: Being Recorded
-      messages:
-        de:
-          name: Aufgenommen werden
-        en:
-          name: Being Recorded
-    - name: Exhibitionism
-      messages:
-        de:
-          name: Exhibitionismus
-        en:
-          name: Exhibitionism
-    - name: Fear / Threatening Play
-      messages:
-        de:
-          name: Angstspiele
-        en:
-          name: Fear / Threatening Play
-    - name: Crying / Being Brought to Tears
-      messages:
-        de:
-          name: Weinen / zum Weinen gebracht werden
-        en:
-          name: Crying / Being Brought to Tears
-    - name: Abandonment
-      messages:
-        de:
-          name: Verlassen werden
-        en:
-          name: Abandonment
-    - name: Acrotomophilia (amputees)
-    - name: Barosmia (smells)
-      messages:
-        de:
-          name: Gerueche
-        en:
-          name: Barosmia (smells)
-    - name: Shaving
-      messages:
-        de:
-          name: Rasieren
-        en:
-          name: Shaving
-    - name: Erotic Dancing
-      messages:
-        de:
-          name: Erotisches Tanzen
-        en:
-          name: Erotic Dancing
-    - name: Piercings
-      messages:
-        de:
-          name: Piercings
-        en:
-          name: Piercings
-    - name: Tattoos
-      messages:
-        de:
-          name: Tattoos
-        en:
-          name: Tattoos
-    - name: Body Modification
-      messages:
-        de:
-          name: Body Modification
-        en:
-          name: Body Modification
-    - name: BodyBuilding
-    - name: Bukake
-    - name: Zentai
-    - name: Diapers
-      messages:
-        de:
-          name: Windeln
-        en:
-          name: Diapers
-    - name: Golden Showers (urine)
-      messages:
-        de:
-          name: Natursekt
-          description: Spiele mit Urin
-        en:
-          name: Golden Showers
-          description: playing with urine
-    - name: Blood Play
-      messages:
-        de:
-          name: Blut
-        en:
-          name: Blood Play
-    - name: Vomit
-      messages:
-        de:
-          name: Erbrochenes
-        en:
-          name: Vomit
-    - name: Scat (bowel movements)
-      messages:
-        de:
-          name: Kot
-          description: Spiele mit Exkrementen
-        en:
-          name: Scat
-          description: Play with bowel movements
+      - name: Leather
+        messages:
+          de:
+            name: Leder
+          en:
+            name: Leather
+      - name: Latex / Rubber
+        messages:
+          de:
+            name: Latex / Gummi
+          en:
+            name: Latex / Rubber
+      - name: PVC
+        messages:
+          de:
+            name: PVC
+          en:
+            name: PVC
+      - name: Lingerie
+        messages:
+          de:
+            name: Unterwaesche
+          en:
+            name: Lingerie
+      - name: Feet / Shoes
+        messages:
+          de:
+            name: Fuesse / Schuhe
+          en:
+            name: Feet / Shoes
+      - name: Boots
+        messages:
+          de:
+            name: Stiefel
+          en:
+            name: Boots
+      - name: Gloves
+        messages:
+          de:
+            name: Handschuhe
+          en:
+            name: Gloves
+      - name: Smoking
+        messages:
+          de:
+            name: Rauchen
+          en:
+            name: Smoking
+      - name: Oral Fixation
+        messages:
+          de:
+            name: Orale Fixierung
+          en:
+            name: Oral Fixation
+      - name: Uniforms
+        messages:
+          de:
+            name: Uniformen
+          en:
+            name: Uniforms
+      - name: Voyeurism
+        messages:
+          de:
+            name: Voyerismus
+          en:
+            name: Voyeurism
+      - name: Corsets
+        messages:
+          de:
+            name: Korsetts
+          en:
+            name: Corsets
+      - name: Medical
+        messages:
+          de:
+            name: Klinik / Medizin
+          en:
+            name: Medical
+      - name: Cross Dressing
+      - name: Forced Feminization
+        messages:
+          de:
+            name: Erzwungene Feminisierung
+          en:
+            name: Forced Feminization
+      - name: Strap-On Play
+        messages:
+          de:
+            name: Strap-On Spiele
+          en:
+            name: Strap-On Play
+      - name: Lolita
+      - name: Mature
+      - name: Fur
+      - name: Lactation
+      - name: Food Play
+        messages:
+          de:
+            name: Spiele mit Essen
+          en:
+            name: Food Play
+      - name: Menstruation
+        messages:
+          de:
+            name: Menstruation
+          en:
+            name: Menstruation
+      - name: Being Recorded
+        messages:
+          de:
+            name: Aufgenommen werden
+          en:
+            name: Being Recorded
+      - name: Exhibitionism
+        messages:
+          de:
+            name: Exhibitionismus
+          en:
+            name: Exhibitionism
+      - name: Fear / Threatening Play
+        messages:
+          de:
+            name: Angstspiele
+          en:
+            name: Fear / Threatening Play
+      - name: Crying / Being Brought to Tears
+        messages:
+          de:
+            name: Weinen / zum Weinen gebracht werden
+          en:
+            name: Crying / Being Brought to Tears
+      - name: Abandonment
+        messages:
+          de:
+            name: Verlassen werden
+          en:
+            name: Abandonment
+      - name: Acrotomophilia (amputees)
+      - name: Barosmia (smells)
+        messages:
+          de:
+            name: Gerueche
+          en:
+            name: Barosmia (smells)
+      - name: Shaving
+        messages:
+          de:
+            name: Rasieren
+          en:
+            name: Shaving
+      - name: Erotic Dancing
+        messages:
+          de:
+            name: Erotisches Tanzen
+          en:
+            name: Erotic Dancing
+      - name: Piercings
+        messages:
+          de:
+            name: Piercings
+          en:
+            name: Piercings
+      - name: Tattoos
+        messages:
+          de:
+            name: Tattoos
+          en:
+            name: Tattoos
+      - name: Body Modification
+        messages:
+          de:
+            name: Body Modification
+          en:
+            name: Body Modification
+      - name: BodyBuilding
+      - name: Bukake
+      - name: Zentai
+      - name: Diapers
+        messages:
+          de:
+            name: Windeln
+          en:
+            name: Diapers
+      - name: Golden Showers (urine)
+        messages:
+          de:
+            name: Natursekt
+            description: Spiele mit Urin
+          en:
+            name: Golden Showers
+            description: playing with urine
+      - name: Blood Play
+        messages:
+          de:
+            name: Blut
+          en:
+            name: Blood Play
+      - name: Vomit
+        messages:
+          de:
+            name: Erbrochenes
+          en:
+            name: Vomit
+      - name: Scat (bowel movements)
+        messages:
+          de:
+            name: Kot
+            description: Spiele mit Exkrementen
+          en:
+            name: Scat
+            description: Play with bowel movements
 
   - name: gear
     messages:
@@ -1350,540 +1356,542 @@ categories:
       en:
         name: gear
     subcategories:
-    - name: restraints
-      messages:
-        de:
-          name: Fesseln
-        en:
-          name: restraints
-      kinds:
-      - name: Belts / Leather Straps
+      - name: restraints
         messages:
           de:
-            name: Guertel / Lederbaender
+            name: Fesseln
           en:
-            name: Belts / Leather Straps
-      - name: Hemp Rope
-        messages:
-          de:
-            name: Hanfseil
-          en:
-            name: Hemp Rope
-      - name: Nylon Rope
-        messages:
-          de:
-            name: Nylonseil
-          en:
-            name: Nylon Rope
-      - name: Cotton Rope
-        messages:
-          de:
-            name: Baumwollseil
-          en:
-            name: Cotton Rope
-      - name: Chains
-        messages:
-          de:
-            name: Ketten
-          en:
-            name: Chains
-      - name: Collars
-        messages:
-          de:
-            name: Halsbaender
-          en:
-            name: Collars
-      - name: Posture Collars
-        messages:
-          de:
-            name: Haltungshalsbaender
-          en:
-            name: Posture Collars
-      - name: Leather Cuffs
-        messages:
-          de:
-            name: Ledermanschetten
-          en:
-            name: Leather Cuffs
-      - name: Handcuffs
-        messages:
-          de:
-            name: Handschellen
-          en:
-            name: Handcuffs
-      - name: Metal Shackles
-        messages:
-          de:
-            name: Metallfesseln
-          en:
-            name: Metal Shackles
-      - name: Thumb Cuffs
-        messages:
-          de:
-            name: Daumenschellen
-          en:
-            name: Thumb Cuffs
-      - name: Toe Cuffs
-        messages:
-          de:
-            name: Zehenfesseln
-          en:
-            name: Toe Cuffs
-      - name: Stocks
-        messages:
-          de:
-            name: Pranger
-          en:
-            name: Stocks
-      - name: Spreader Bars
-        messages:
-          de:
-            name: Spreizstangen
-          en:
-            name: Spreader Bars
-      - name: Locks
-        messages:
-          de:
-            name: Schloesser
-          en:
-            name: Locks
-      - name: Blindfolds
-        messages:
-          de:
-            name: Augenbinden
-          en:
-            name: Blindfolds
-      - name: Hoods
-        messages:
-          de:
-            name: Hauben
-          en:
-            name: Hoods
-      - name: Masks
-        messages:
-          de:
-            name: Masken
-          en:
-            name: Masks
-      - name: Earplugs / Ear-muffs
-        messages:
-          de:
-            name: Ohrstoepsel / Gehoerschutz
-          en:
-            name: Earplugs / Ear-muffs
-      - name: Gas Masks
-        messages:
-          de:
-            name: Gasmasken
-          en:
-            name: Gas Masks
-      - name: Body Bags / Sleepsacks
-        messages:
-          de:
-            name: Leichensaecke / Schlafsaecke
-          en:
-            name: Body Bags / Sleepsacks
-      - name: Vacuum Beds
-        messages:
-          de:
-            name: Vakuumbett
-          en:
-            name: Vacuum Beds
-      - name: Chastity Belts / Devices
-        messages:
-          de:
-            name: Keuschheitsguertel / Kaefige
-          en:
-            name: Chastity Belts / Devices
-      - name: Harnesses
-        messages:
-          de:
-            name: Harnesse
-          en:
-            name: Harnesses
-      - name: Plastic Wrap
-        messages:
-          de:
-            name: Plastikfolie
-          en:
-            name: Plastic Wrap
-      - name: Bandage / Medical Wrap
-        messages:
-          de:
-            name: Bandagen / Medizinische Verbaende
-          en:
-            name: Bandage / Medical Wrap
-      - name: Casts
-        messages:
-          de:
-            name: Gips
-          en:
-            name: Casts
-      - name: Single Armbinder
-        messages:
-          de:
-            name: Mono Handschuh
-          en:
-            name: Single Armbinder
-      - name: Bondage Opera Gloves
-        messages:
-          de:
-            name: Bondage Opera Gloves
-          en:
-            name: Bondage Opera Gloves
-      - name: Cockrings
-        messages:
-          de:
-            name: Penisringe
-          en:
-            name: Cockrings
-      - name: Sex Slings
-        messages:
-          de:
-            name: Sexschaukeln
-          en:
-            name: Sex Slings
-      - name: Leashes
-        messages:
-          de:
-            name: Leinen
-          en:
-            name: Leashes
-      - name: Straight Jackets
-        messages:
-          de:
-            name: Zwangsjacken
-          en:
-            name: Straight Jackets
-      - name: Cages / Cells
-        messages:
-          de:
-            name: Kaefige / Zellen
-          en:
-            name: Cages / Cells
-      - name: Gags
-        messages:
-          de:
-            name: Knebel
-          en:
-            name: Gags
-        variants:
-          - name: Ballgag
+            name: restraints
+        kinds:
+          - name: Belts / Leather Straps
             messages:
               de:
-                name: Ballknebel
+                name: Guertel / Lederbaender
               en:
-                name: Ballgag
-          - name: Cloth
+                name: Belts / Leather Straps
+          - name: Hemp Rope
             messages:
               de:
-                name: Stoffknebel
+                name: Hanfseil
               en:
-                name: Cloth
-          - name: Tape / Bandage
+                name: Hemp Rope
+          - name: Nylon Rope
             messages:
               de:
-                name: Klebeband
+                name: Nylonseil
               en:
-                name: Tape / Bandage
-          - name: Bit
+                name: Nylon Rope
+          - name: Cotton Rope
             messages:
               de:
-                name: Beissknebel
+                name: Baumwollseil
               en:
-                name: Bit
-          - name: Penis
+                name: Cotton Rope
+          - name: Chains
             messages:
               de:
-                name: Penisknebel
+                name: Ketten
               en:
-                name: Penis
-          - name: Open Mouth / Ring
+                name: Chains
+          - name: Collars
             messages:
               de:
-                name: Ringknebel / offene Knebel
+                name: Halsbaender
               en:
-                name: Open Mouth / Ring
-          - name: Inflatable
+                name: Collars
+          - name: Posture Collars
             messages:
               de:
-                name: Aufblasbare Knebel
+                name: Haltungshalsbaender
               en:
-                name: Inflatable
-          - name: Dildo
+                name: Posture Collars
+          - name: Leather Cuffs
             messages:
               de:
-                name: Dildoknebel
+                name: Ledermanschetten
               en:
-                name: Dildo
-          - name: Muzzle
+                name: Leather Cuffs
+          - name: Handcuffs
             messages:
               de:
-                name: Maulkorb
+                name: Handschellen
               en:
-                name: Muzzle
-      - name: Nose Leashes
-        messages:
-          de:
-            name: Nasenleine
-            description: Leine, die an der Nase / einem Nasenring befestigt wird
-          en:
-            name: Nose Leashes
-            description: Leash, which is fastened to the nose / a nose piercing
+                name: Handcuffs
+          - name: Metal Shackles
+            messages:
+              de:
+                name: Metallfesseln
+              en:
+                name: Metal Shackles
+          - name: Thumb Cuffs
+            messages:
+              de:
+                name: Daumenschellen
+              en:
+                name: Thumb Cuffs
+          - name: Toe Cuffs
+            messages:
+              de:
+                name: Zehenfesseln
+              en:
+                name: Toe Cuffs
+          - name: Stocks
+            messages:
+              de:
+                name: Pranger
+              en:
+                name: Stocks
+          - name: Spreader Bars
+            messages:
+              de:
+                name: Spreizstangen
+              en:
+                name: Spreader Bars
+          - name: Locks
+            messages:
+              de:
+                name: Schloesser
+              en:
+                name: Locks
+          - name: Blindfolds
+            messages:
+              de:
+                name: Augenbinden
+              en:
+                name: Blindfolds
+          - name: Hoods
+            messages:
+              de:
+                name: Hauben
+              en:
+                name: Hoods
+          - name: Masks
+            messages:
+              de:
+                name: Masken
+              en:
+                name: Masks
+          - name: Earplugs / Ear-muffs
+            messages:
+              de:
+                name: Ohrstoepsel / Gehoerschutz
+              en:
+                name: Earplugs / Ear-muffs
+          - name: Gas Masks
+            messages:
+              de:
+                name: Gasmasken
+              en:
+                name: Gas Masks
+          - name: Body Bags / Sleepsacks
+            messages:
+              de:
+                name: Leichensaecke / Schlafsaecke
+              en:
+                name: Body Bags / Sleepsacks
+          - name: Vacuum Beds
+            messages:
+              de:
+                name: Vakuumbett
+              en:
+                name: Vacuum Beds
+          - name: Chastity Belts / Devices
+            messages:
+              de:
+                name: Keuschheitsguertel / Kaefige
+              en:
+                name: Chastity Belts / Devices
+          - name: Harnesses
+            messages:
+              de:
+                name: Harnesse
+              en:
+                name: Harnesses
+          - name: Plastic Wrap
+            messages:
+              de:
+                name: Plastikfolie
+              en:
+                name: Plastic Wrap
+          - name: Bandage / Medical Wrap
+            messages:
+              de:
+                name: Bandagen / Medizinische Verbaende
+              en:
+                name: Bandage / Medical Wrap
+          - name: Casts
+            messages:
+              de:
+                name: Gips
+              en:
+                name: Casts
+          - name: Single Armbinder
+            messages:
+              de:
+                name: Mono Handschuh
+              en:
+                name: Single Armbinder
+          - name: Bondage Opera Gloves
+            messages:
+              de:
+                name: Bondage Opera Gloves
+              en:
+                name: Bondage Opera Gloves
+          - name: Cockrings
+            messages:
+              de:
+                name: Penisringe
+              en:
+                name: Cockrings
+          - name: Sex Slings
+            messages:
+              de:
+                name: Sexschaukeln
+              en:
+                name: Sex Slings
+          - name: Leashes
+            messages:
+              de:
+                name: Leinen
+              en:
+                name: Leashes
+          - name: Straight Jackets
+            messages:
+              de:
+                name: Zwangsjacken
+              en:
+                name: Straight Jackets
+          - name: Cages / Cells
+            messages:
+              de:
+                name: Kaefige / Zellen
+              en:
+                name: Cages / Cells
+          - name: Gags
+            messages:
+              de:
+                name: Knebel
+              en:
+                name: Gags
+            variants:
+              - name: Ballgag
+                messages:
+                  de:
+                    name: Ballknebel
+                  en:
+                    name: Ballgag
+              - name: Cloth
+                messages:
+                  de:
+                    name: Stoffknebel
+                  en:
+                    name: Cloth
+              - name: Tape / Bandage
+                messages:
+                  de:
+                    name: Klebeband
+                  en:
+                    name: Tape / Bandage
+              - name: Bit
+                messages:
+                  de:
+                    name: Beissknebel
+                  en:
+                    name: Bit
+              - name: Penis
+                messages:
+                  de:
+                    name: Penisknebel
+                  en:
+                    name: Penis
+              - name: Open Mouth / Ring
+                messages:
+                  de:
+                    name: Ringknebel / offene Knebel
+                  en:
+                    name: Open Mouth / Ring
+              - name: Inflatable
+                messages:
+                  de:
+                    name: Aufblasbare Knebel
+                  en:
+                    name: Inflatable
+              - name: Dildo
+                messages:
+                  de:
+                    name: Dildoknebel
+                  en:
+                    name: Dildo
+              - name: Muzzle
+                messages:
+                  de:
+                    name: Maulkorb
+                  en:
+                    name: Muzzle
+          - name: Nose Leashes
+            messages:
+              de:
+                name: Nasenleine
+                description: >
+                  Leine, die an der Nase / einem Nasenring befestigt wird
+              en:
+                name: Nose Leashes
+                description: >
+                  Leash, which is fastened to the nose / a nose piercing
 
-      - name: Nose Hooks
+          - name: Nose Hooks
+            messages:
+              de:
+                name: Nasenhaken
+              en:
+                name: Nose Hooks
+
+      - name: impact/sensation
         messages:
           de:
-            name: Nasenhaken
+            name: Impact und Sensation Play
           en:
-            name: Nose Hooks
-
-    - name: impact/sensation
-      messages:
-        de:
-          name: Impact und Sensation Play
-        en:
-          name: impact/sensation
-      kinds:
-        - name: Clothespins
-          messages:
-            de:
-              name: Waescheklammern
-            en:
-              name: Clothespins
-        - name: Canes
-          messages:
-            de:
-              name: (Rohr-) Stoecke
-            en:
-              name: Canes
-        - name: Paddles
-          messages:
-            de:
-              name: Paddle
-            en:
-              name: Paddles
-        - name: Slappers / Straps
-          messages:
-            de:
-              name: Riemen
-            en:
-              name: Slappers / Straps
-        - name: Crops
-          messages:
-            de:
-              name: Gerten
-            en:
-              name: Crops
-        - name: Floggers
-          messages:
-            de:
-              name: Flogger
-            en:
-              name: Floggers
-        - name: Single Tail Whips
-          messages:
-            de:
-              name: Single Tail
-            en:
-              name: Single Tail Whips
-        - name: Cat-O-Nine-Tails
-          messages:
-            de:
-              name: Neunschwaenzige Katze
-            en:
-              name: Cat-O-Nine-Tails
-        - name: Dragon Tails
-        - name: Clubs
-          messages:
-            de:
-              name: Schlagstoecke / Knueppel
-            en:
-              name: Clubs
-        - name: Violet Wands
-        - name: E-Stim Kits
-        - name: Nipple Clamps
-          messages:
-            de:
-              name: Nippelklemmen
-            en:
-              name: Nipple Clamps
-          variants:
-            - name: Nipple Clamps - Adjustable
-              messages:
-                de:
-                  name: Einstellbare Nippelklemmen
-                en:
-                  name: Nipple Clamps - Adjustable
-            - name: Nipple Clamps - Clover
-              messages:
-                de:
-                  name: Clover Clamps
-                  description: Schliessen sich unter Zug
-                en:
-                  name: Nipple Clamps - Clover
-                  description: Close further on pull
-        - name: Nipple Weights
-          messages:
-            de:
-              name: Gewichte an den Nippeln
-            en:
-              name: Nipple Weights
-        - name: Labia Clamps
-          messages:
-            de:
-              name: Gewichte an den Schamlippen
-            en:
-              name: Labia Clamps
-        - name: Genital Weights
-          messages:
-            de:
-              name: Gewichte an den Genitalien
-            en:
-              name: Genital Weights
-        - name: Ball Crushers
-          messages:
-            de:
-              name: Ball Crusher
-            en:
-              name: Ball Crushers
-        - name: Scrotum Parachutes / Stretchers
-          messages:
-            de:
-              name: Hodenfallschirme
-            en:
-              name: Scrotum Parachutes / Stretchers
-        - name: Anal Hook
-          messages:
-            de:
-              name: Analhaken
-            en:
-              name: Anal Hook
-        - name: Vaginal Hook
-          messages:
-            de:
-              name: Vaginalhaken
-            en:
-              name: Vaginal Hook
-        - name: Vibrators
-          messages:
-            de:
-              name: Vibratoren
-            en:
-              name: Vibrators
-          variants:
-            - name: Insertable
-              messages:
-                de:
-                  name: Einfuehrbar
-                en:
-                  name: Insertable
-            - name: Wands
-              messages:
-                de:
-                  name: Auflegevibratoren
-                en:
-                  name: Wands
-        - name: Dildos
-          messages:
-            de:
-              name: Dildos
-            en:
-              name: Dildos
-        - name: Anal Plugs
-          messages:
-            de:
-              name: Analplugs
-            en:
-              name: Anal Plugs
-        - name: Animal Tail Anal Plugs
-          messages:
-            de:
-              name: Analplugs mit Schwanz
-            en:
-              name: Animal Tail Anal Plugs
-        - name: Anal Beads / Balls
-          messages:
-            de:
-              name: Analkugeln
-            en:
-              name: Anal Beads / Balls
-        - name: Speculums
-          messages:
-            de:
-              name: Spekulum
-            en:
-              name: Speculums
-        - name: Urethral Sounds
-          messages:
-            de:
-              name: Sounds
-            en:
-              name: Urethral Sounds
-        - name: Wartenberg Pinwheels
-          messages:
-            de:
-              name: Wartenbergrad
-            en:
-              name: Wartenberg Pinwheels
-        - name: Bells
-          messages:
-            de:
-              name: Gloeckchen
-            en:
-              name: Bells
-        - name: Strap-On Harnesses
-          messages:
-            de:
-              name: Strap-On Harness
-            en:
-              name: Strap-On Harnesses
-        - name: Feathers / Ticklers
-          messages:
-            de:
-              name: Federn / Kitzler
-            en:
-              name: Feathers / Ticklers
-        - name: Guns
-          messages:
-            de:
-              name: Pistolen
-            en:
-              name: Guns
-        - name: Knives
-          messages:
-            de:
-              name: Messer
-            en:
-              name: Knives
-        - name: Claws
-          messages:
-            de:
-              name: Krallen
-            en:
-              name: Claws
-        - name: Mirrors
-          messages:
-            de:
-              name: Spiegel
-            en:
-              name: Mirrors
-        - name: Sex Machines
-          messages:
-            de:
-              name: Sexmaschinen
-            en:
-              name: Sex Machines
-          variants:
-            - name: Handheld
-              messages:
-                de:
-                  name: Gehalten
-                en:
-                  name: Handheld
-            - name: Stationary
-              messages:
-                de:
-                  name: Stationaer
-                en:
-                  name: Stationary
+            name: impact/sensation
+        kinds:
+          - name: Clothespins
+            messages:
+              de:
+                name: Waescheklammern
+              en:
+                name: Clothespins
+          - name: Canes
+            messages:
+              de:
+                name: (Rohr-) Stoecke
+              en:
+                name: Canes
+          - name: Paddles
+            messages:
+              de:
+                name: Paddle
+              en:
+                name: Paddles
+          - name: Slappers / Straps
+            messages:
+              de:
+                name: Riemen
+              en:
+                name: Slappers / Straps
+          - name: Crops
+            messages:
+              de:
+                name: Gerten
+              en:
+                name: Crops
+          - name: Floggers
+            messages:
+              de:
+                name: Flogger
+              en:
+                name: Floggers
+          - name: Single Tail Whips
+            messages:
+              de:
+                name: Single Tail
+              en:
+                name: Single Tail Whips
+          - name: Cat-O-Nine-Tails
+            messages:
+              de:
+                name: Neunschwaenzige Katze
+              en:
+                name: Cat-O-Nine-Tails
+          - name: Dragon Tails
+          - name: Clubs
+            messages:
+              de:
+                name: Schlagstoecke / Knueppel
+              en:
+                name: Clubs
+          - name: Violet Wands
+          - name: E-Stim Kits
+          - name: Nipple Clamps
+            messages:
+              de:
+                name: Nippelklemmen
+              en:
+                name: Nipple Clamps
+            variants:
+              - name: Nipple Clamps - Adjustable
+                messages:
+                  de:
+                    name: Einstellbare Nippelklemmen
+                  en:
+                    name: Nipple Clamps - Adjustable
+              - name: Nipple Clamps - Clover
+                messages:
+                  de:
+                    name: Clover Clamps
+                    description: Schliessen sich unter Zug
+                  en:
+                    name: Nipple Clamps - Clover
+                    description: Close further on pull
+          - name: Nipple Weights
+            messages:
+              de:
+                name: Gewichte an den Nippeln
+              en:
+                name: Nipple Weights
+          - name: Labia Clamps
+            messages:
+              de:
+                name: Gewichte an den Schamlippen
+              en:
+                name: Labia Clamps
+          - name: Genital Weights
+            messages:
+              de:
+                name: Gewichte an den Genitalien
+              en:
+                name: Genital Weights
+          - name: Ball Crushers
+            messages:
+              de:
+                name: Ball Crusher
+              en:
+                name: Ball Crushers
+          - name: Scrotum Parachutes / Stretchers
+            messages:
+              de:
+                name: Hodenfallschirme
+              en:
+                name: Scrotum Parachutes / Stretchers
+          - name: Anal Hook
+            messages:
+              de:
+                name: Analhaken
+              en:
+                name: Anal Hook
+          - name: Vaginal Hook
+            messages:
+              de:
+                name: Vaginalhaken
+              en:
+                name: Vaginal Hook
+          - name: Vibrators
+            messages:
+              de:
+                name: Vibratoren
+              en:
+                name: Vibrators
+            variants:
+              - name: Insertable
+                messages:
+                  de:
+                    name: Einfuehrbar
+                  en:
+                    name: Insertable
+              - name: Wands
+                messages:
+                  de:
+                    name: Auflegevibratoren
+                  en:
+                    name: Wands
+          - name: Dildos
+            messages:
+              de:
+                name: Dildos
+              en:
+                name: Dildos
+          - name: Anal Plugs
+            messages:
+              de:
+                name: Analplugs
+              en:
+                name: Anal Plugs
+          - name: Animal Tail Anal Plugs
+            messages:
+              de:
+                name: Analplugs mit Schwanz
+              en:
+                name: Animal Tail Anal Plugs
+          - name: Anal Beads / Balls
+            messages:
+              de:
+                name: Analkugeln
+              en:
+                name: Anal Beads / Balls
+          - name: Speculums
+            messages:
+              de:
+                name: Spekulum
+              en:
+                name: Speculums
+          - name: Urethral Sounds
+            messages:
+              de:
+                name: Sounds
+              en:
+                name: Urethral Sounds
+          - name: Wartenberg Pinwheels
+            messages:
+              de:
+                name: Wartenbergrad
+              en:
+                name: Wartenberg Pinwheels
+          - name: Bells
+            messages:
+              de:
+                name: Gloeckchen
+              en:
+                name: Bells
+          - name: Strap-On Harnesses
+            messages:
+              de:
+                name: Strap-On Harness
+              en:
+                name: Strap-On Harnesses
+          - name: Feathers / Ticklers
+            messages:
+              de:
+                name: Federn / Kitzler
+              en:
+                name: Feathers / Ticklers
+          - name: Guns
+            messages:
+              de:
+                name: Pistolen
+              en:
+                name: Guns
+          - name: Knives
+            messages:
+              de:
+                name: Messer
+              en:
+                name: Knives
+          - name: Claws
+            messages:
+              de:
+                name: Krallen
+              en:
+                name: Claws
+          - name: Mirrors
+            messages:
+              de:
+                name: Spiegel
+              en:
+                name: Mirrors
+          - name: Sex Machines
+            messages:
+              de:
+                name: Sexmaschinen
+              en:
+                name: Sex Machines
+            variants:
+              - name: Handheld
+                messages:
+                  de:
+                    name: Gehalten
+                  en:
+                    name: Handheld
+              - name: Stationary
+                messages:
+                  de:
+                    name: Stationaer
+                  en:
+                    name: Stationary
