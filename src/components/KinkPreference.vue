@@ -19,8 +19,6 @@
 </template>
 
 <script>
-
-import { ref } from 'vue';
 import PreferenceScales from '@/components/PreferenceScales.vue';
 import PreferenceComment from '@/components/PreferenceComment.vue';
 

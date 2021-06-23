@@ -17,13 +17,16 @@
 </template>
 
 <script>
-
-import KinkCategory from '@/components/KinkCategory.vue';
+import { defineAsyncComponent } from 'vue';
+import LoaderBar from '@/components/LoaderBar.vue';
 
 export default {
   name: 'KinkListView',
   components: {
-    KinkCategory,
+    KinkCategory: defineAsyncComponent({
+      loader: () => import('@/components/KinkCategory.vue'),
+      loadingComponent: LoaderBar,
+    }),
   },
   props: {
     myKinks: {

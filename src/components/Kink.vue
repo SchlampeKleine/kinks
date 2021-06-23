@@ -56,10 +56,9 @@
 </template>
 
 <script>
-import { toRefs, ref, toRef } from 'vue';
-import KinkVariant from '@/components/KinkVariant.vue';
-import KinkPreference from '@/components/KinkPreference.vue';
+import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
+import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
@@ -111,8 +110,16 @@ export default {
   },
 
   components: {
-    KinkVariant,
-    KinkPreference,
+    KinkVariant: defineAsyncComponent({
+      loader: () => import('@/components/KinkVariant.vue'),
+      loadingComponent: LoaderBar,
+      delay: 40,
+    }),
+    KinkPreference: defineAsyncComponent({
+      loader: () => import('@/components/KinkPreference.vue'),
+      loadingComponent: LoaderBar,
+      delay: 20,
+    }),
     LocaleEditor,
   },
 

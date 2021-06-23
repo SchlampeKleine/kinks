@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import Kink from '@/components/Kink.vue';
-import KinkSubCategory from '@/components/KinkSubCategory.vue';
 import { useI18n } from 'vue-i18n';
+import { defineAsyncComponent } from 'vue';
+import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
@@ -117,8 +117,14 @@ export default {
     };
   },
   components: {
-    Kink,
-    KinkSubCategory,
+    Kink: defineAsyncComponent({
+      loader: () => import('@/components/Kink.vue'),
+      loadingComponent: LoaderBar,
+    }),
+    KinkSubCategory: defineAsyncComponent({
+      loader: () => import('@/components/KinkSubCategory.vue'),
+      loadingComponent: LoaderBar,
+    }),
     LocaleEditor,
   },
 };

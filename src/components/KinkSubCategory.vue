@@ -30,8 +30,9 @@
 </template>
 
 <script>
-import Kink from '@/components/Kink.vue';
+import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
+import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 
 export default {
@@ -80,7 +81,10 @@ export default {
 
   },
   components: {
-    Kink,
+    Kink: defineAsyncComponent({
+      loader: () => import('@/components/Kink.vue'),
+      loadingComponent: LoaderBar,
+    }),
     LocaleEditor,
   },
   computed: {

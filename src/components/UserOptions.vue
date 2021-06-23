@@ -252,7 +252,6 @@ en:
 </i18n>
 
 <script>
-
 import defaultKinks from '@/assets/kinks.yaml';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
 import { useRouter } from 'vue-router';

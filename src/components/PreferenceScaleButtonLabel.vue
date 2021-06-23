@@ -4,7 +4,6 @@
 
 <script>
 import { useI18n } from 'vue-i18n';
-import { languages } from '@/i18n';
 
 export default {
 
