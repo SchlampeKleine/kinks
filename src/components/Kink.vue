@@ -12,17 +12,18 @@
        >
     <div class="box name">
       <h4
-        class="title has-text-primary has-text-centered"
+        class="title block has-text-primary has-text-centered"
         >{{ t('name',kink.name) }}
-    <LocaleEditor v-model:messages="localKink.messages"/>
       </h4>
+        <div class="block">
+          <LocaleEditor v-model:messages="localKink.messages"/>
+        </div>
     </div>
-    <p
-        class="block kink description has-text-justified"
-        v-if="te('description')"
-        >
-    {{ t('description') }}
-    </p>
+    <div class="block kink description has-text-justified">
+      <p v-if="te('description')" >
+        {{ t('description') }}
+      </p>
+    </div>
     <div
       class=" columns
               is-multiline

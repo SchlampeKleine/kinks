@@ -1,12 +1,21 @@
 <template>
-  <PreferenceScale
-    v-for="role in localRoles"
-    :id="id+'-'+role.name"
-    :key="id+'-'+role.name"
-    :role=role
-    :preference="role.preference"
-    @update:role="updateLocalRole"
-    />
+  <div
+    class="columns
+           is-multiline
+           is-gapless
+           box
+    "
+    >
+    <PreferenceScale
+      v-for="role in localRoles"
+      :id="id+'-'+role.name"
+      :key="id+'-'+role.name"
+      :role=role
+      :preference="role.preference"
+      @update:role="updateLocalRole"
+      class="block"
+      />
+  </div>
 </template>
 
 <script>

@@ -1,20 +1,24 @@
 <template>
   <div class="column
-              is-narrow
-              is-full-mobile
-              is-half-tablet
-              is-one-quarter-desktop
-              box
-              "
+               is-full-mobile
+               is-half-tablet
+               is-one-quarter-desktop
+               box
+               "
        >
-    <h5
-       class="title variant name has-text-primary has-text-centered"
-      >{{ t('name',variant.name) }}
-    <LocaleEditor v-model:messages="localVariant.messages"/>
-    </h5>
-    <p class="block variant description" v-if="te('description')">
-    {{ t('description') }}
-    </p>
+       <h5
+         class="title block variant name has-text-primary has-text-centered"
+         >{{ t('name',variant.name) }}
+       </h5>
+         <div class="block">
+           <LocaleEditor v-model:messages="localVariant.messages"/>
+         </div>
+    <div class="block variant description" >
+      <p
+        v-if="te('description')">
+      {{ t('description') }}
+      </p>
+    </div>
     <KinkPreference
       :id="id+'-'+'preferences'"
       :key="id+'-'+'preferences'"

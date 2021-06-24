@@ -1,21 +1,28 @@
 <template>
-  <div
-    class=" field
-            preference-role-identifier"
-    >
-    <div class="field-label">
-      <label
-        class="label"
-        >{{ t(localRole.name,localRole.name) }}</label>
-    </div>
-    <p v-if="te('description')" class="help">
-      {{ t('description') }}
-    </p>
+  <div class="column
+               is-half-mobile
+               box
+               "
+       >
+       <div
+         class=" field
+                preference-role-identifier
+                block"
+         >
+         <div class="field-label block">
+           <label
+             class="label block"
+             >{{ t(localRole.name,localRole.name) }}</label>
+         </div>
+         <p v-if="te('description')" class="help block">
+         {{ t('description') }}
+         </p>
     <div
       class=" field-body
-              preference
-              level
-              buttons"
+               preference
+               level
+               block
+               buttons"
       >
       <template
         v-for="preferencelevel in getPreferenceLevels()"
@@ -49,6 +56,7 @@
         </div>
       </template>
     </div>
+       </div>
   </div>
 </template>
 
