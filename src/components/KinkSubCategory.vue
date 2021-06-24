@@ -2,20 +2,22 @@
   <div
     class="
            column
-            is-variable
-            is-full
-            "
+           is-variable
+           is-full
+           "
     >
-    <LocaleEditor v-model:messages="localSubCategory.messages"/>
     <h3
-      class="title is-primary has-text-centered has-text-primary"
+      class="title block is-primary has-text-centered has-text-primary"
       >{{ t('name',subcategory.name) }}</h3>
+    <div class="block">
+      <LocaleEditor v-model:messages="localSubCategory.messages"/>
+    </div>
     <div
       class="
              columns
              is-variable
              is-multiline
-              "
+             "
       >
       <Kink
         v-for="kink in kinds"

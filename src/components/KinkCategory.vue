@@ -1,17 +1,22 @@
 <template>
-  <section class="section
-                  is-centered"
-           >
-    <h2
-      class="title has-text-primary has-text-centered"
-      >{{ t('name',category.name) }}
-    <LocaleEditor v-model:messages="localCategory.messages"/>
-    </h2>
-    <div
-    class=" columns
-            is-multiline
-            is-desktop"
+  <section
+    class="
+           section
+           is-centered
+           "
     >
+    <h2
+      class="title block has-text-primary has-text-centered"
+      >{{ t('name',category.name) }}
+    </h2>
+      <div class="block">
+        <LocaleEditor v-model:messages="localCategory.messages"/>
+      </div>
+    <div
+      class=" columns
+               is-multiline
+               is-desktop"
+      >
       <KinkSubCategory
         v-for="subcategory in localCategory.subcategories"
         :id="id+'-'+subcategory.name"
