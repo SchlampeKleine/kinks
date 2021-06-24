@@ -72,12 +72,12 @@ export default {
   },
 
   setup(props) {
-    const { t } = useI18n({
-      useScope: 'global',
+    const { t, te } = useI18n({
       messages: props.role.messages,
     });
     return {
       t,
+      te,
     };
   },
 
