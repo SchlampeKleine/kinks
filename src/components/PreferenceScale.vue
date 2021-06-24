@@ -4,10 +4,13 @@
             preference-role-identifier"
     >
     <div class="field-label">
-      <label class="label">
-        {{ t(localRole.name,localRole.name) }}
-      </label>
+      <label
+        class="label"
+        >{{ t(localRole.name,localRole.name) }}</label>
     </div>
+    <p v-if="te('description')" class="help">
+      {{ t('description') }}
+    </p>
     <div
       class=" field-body
               preference
