@@ -1,11 +1,94 @@
 ---
-#.BOOL: &BOOL
-#- True
-#- False
+# .BOOL: &BOOL
+# - True
+# - False
 #
-#Sources:
-#- Checklist VER: .81 - www.discerningspecialist.com
-#
+# Sources:
+# - Checklist VER: .81 - www.discerningspecialist.com
+
+# Reusable anchors
+.roles_active_passive: &roles_active_passive
+  - name: active
+    messages:
+      de:
+        active: als aktiver Part
+      en:
+        active: active
+  - name: passive
+    messages:
+      de:
+        passive: als passiver Part
+      en:
+        passive: passive
+
+.roles_myself_partner: &roles_myself_partner
+  - name: myself
+    messages:
+      de:
+        myself: an mir selbst
+      en:
+        myself: on myself
+  - name: partner
+    messages:
+      de:
+        partner: an meinem Partner
+      en:
+        partner: on my partner
+
+.penis_or_finger_or_toys: &penis_or_finger_or_toys
+  - name: penis
+    messages:
+      de:
+        name: Penis
+      en:
+        name: penis
+    preferences:
+      roles: *roles_active_passive
+  - name: fingers
+    messages:
+      de:
+        name: Finger
+      en:
+        name: fingers
+    preferences:
+      roles: *roles_active_passive
+  - name: toys
+    messages:
+      de:
+        name: Spielzeuge
+      en:
+        name: toys
+    preferences:
+      roles: *roles_active_passive
+
+.penises_or_finger_or_toys: &penises_or_finger_or_toys
+  - name: penises
+    messages:
+      de:
+        name: mehrere Penisse
+        description: mit mehreren Penissen
+      en:
+        name: penisses
+        description: with multiple penisses
+    preferences:
+      roles: *roles_active_passive
+  - name: fingers
+    messages:
+      de:
+        name: Finger
+      en:
+        name: fingers
+    preferences:
+      roles: *roles_active_passive
+  - name: toys
+    messages:
+      de:
+        name: Spielzeuge
+      en:
+        name: toys
+    preferences:
+      roles: *roles_active_passive
+
 categories:
   - name: sex
     messages:
@@ -20,27 +103,7 @@ categories:
             name: Vaginalpenetration
           en:
             name: vaginal sex
-        variants: &penis_or_finger_or_toys
-          - name: penis
-            messages:
-              de:
-                name: Penis
-                description: mit einem oder mehreren Penissen
-              en:
-                name: penis
-                description: with one or more penises
-          - name: fingers
-            messages:
-              de:
-                name: Finger
-              en:
-                name: fingers
-          - name: toys
-            messages:
-              de:
-                name: Spielzeuge
-              en:
-                name: toys
+        variants: *penis_or_finger_or_toys
       - name: anal
         messages:
           de:
@@ -61,6 +124,8 @@ categories:
                 name: Lecken
               en:
                 name: Licking
+            preferences:
+              roles: *roles_active_passive
           - name: Rimming / Anal Licking
             messages:
               de:
@@ -69,12 +134,16 @@ categories:
               en:
                 name: Rimming
                 description: Anal licking / Pleasuring the anus with the tongue
+            preferences:
+              roles: *roles_active_passive
           - name: Blowjob
             messages:
               de:
                 name: Blasen
               en:
                 name: blow job
+            preferences:
+              roles: *roles_active_passive
 
       - name: breast
         messages:
@@ -82,6 +151,8 @@ categories:
             name: Mammalverkehr
           en:
             name: breast sex
+        preferences:
+          roles: *roles_active_passive
 
       - name: genital stroking/rubbing
         messages:
@@ -89,48 +160,64 @@ categories:
             name: Streicheln/Reiben der Genitalien
           en:
             name: genital stroking/rubbing
+        preferences:
+          roles: *roles_active_passive
       - name: Fingering
         messages:
           de:
             name: Fingern
           en:
             name: Fingering
+        preferences:
+          roles: *roles_active_passive
       - name: Fisting
         messages:
           de:
             name: Fisten
           en:
             name: Fisting
+        preferences:
+          roles: *roles_active_passive
       - name: Kissing
         messages:
           de:
             name: Kuessen
           en:
             name: Kissing
+        preferences:
+          roles: *roles_active_passive
       - name: Teasing
         messages:
           de:
             name: Teasen
           en:
             name: Teasing
+        preferences:
+          roles: *roles_active_passive
       - name: Massage
         messages:
           de:
             name: Massage
           en:
             name: Massage
+        preferences:
+          roles: *roles_active_passive
       - name: Petting
         messages:
           de:
             name: Petting/Streicheln
           en:
             name: Petting
+        preferences:
+          roles: *roles_active_passive
       - name: Stroking Hair
         messages:
           de:
             name: Haare Streicheln
           en:
             name: Stroking Hair
+        preferences:
+          roles: *roles_active_passive
       - name: Sexual Body Fluids
         messages:
           de:
@@ -148,12 +235,16 @@ categories:
               en:
                 name: Wearing
                 description: Wear on skin or clothes
+            preferences:
+              roles: *roles_myself_partner
           - name: Consuming
             messages:
               de:
                 name: Schlucken
               en:
                 name: Consuming
+            preferences:
+              roles: *roles_active_passive
       - name: Spitting
         messages:
           de:
@@ -169,6 +260,8 @@ categories:
               en:
                 name: external
                 description: on to the body
+            preferences:
+              roles: *roles_active_passive
           - name: In mouth
             messages:
               de:
@@ -177,96 +270,102 @@ categories:
               en:
                 name: mouth
                 description: into the mouth
+            preferences:
+              roles: *roles_active_passive
       - name: Double Penetration
         messages:
           de:
             name: Doppelte Penetration
           en:
             name: Double Penetration
-        variants: *penis_or_finger_or_toys
+        variants: *penises_or_finger_or_toys
       - name: Triple Penetration
         messages:
           de:
             name: Dreifache Penetration
           en:
             name: Triple Penetration
-        variants: *penis_or_finger_or_toys
+        variants: *penises_or_finger_or_toys
       - name: Threesome
         messages:
           de:
             name: Dreier
           en:
             name: Threesome
-        variants:
-          - name: M, F, F
-            messages:
-              de:
-                name: MFF
-                description: >
-                  Dreier mit zwei weiblichen Partnern
-                  von denen eine "in der Mitte" ist
-              en:
-                name: MFF
-                description: >
-                  Threesome with two female partners
-                  where one is in the middle
-          - name: M, M, F
-            messages:
-              de:
-                name: MMF
-                description: >
-                  Dreier mit zwei maennlichen Partnern,
-                  von denen einer "in der Mitte" ist
-              en:
-                name: MMF
-                description: >
-                  Threesome with two male partners where one is in the middle
-          - name: MMM
-            messages:
-              de:
-                name: MMM
-                description: >
-                  Dreier mit drei maennlichen Partnern
-              en:
-                name: MMM
-                description: >
-                  Threesome with three male partners
-          - name: FFF
-            messages:
-              de:
-                name: FFF
-                description: >
-                  Dreier mit drei weiblichen Partnern
-              en:
-                name: FFF
-                description: >
-                  Threesome with three female partners
-          - name: me in the middle
-            messages:
-              de:
-                name: Ich in der Mitte
-                description: >
-                  Dreier, bei dem ich im Focus stehe
-              en:
-                name: me in the middle
-                description: >
-                  Threesome with me as the main focus of the others
-          - name: me on the outside
-            messages:
-              de:
-                name: ich dabei
-                description: >
-                  Dreier, bei dem einer der anderen Partner im Focus steht
-              en:
-                name: me on the outside
-                description: >
-                  Threesome with one of the others as the focus
+        preferences:
+          roles:
+            - name: mff
+              messages:
+                de:
+                  mff: MFF
+                  description: >
+                    Dreier mit zwei weiblichen Partnern
+                    von denen eine "in der Mitte" ist
+                en:
+                  mff: MFF
+                  description: >
+                    Threesome with two female partners
+                    where one is in the middle
+            - name: mmf
+              messages:
+                de:
+                  mmf: MMF
+                  description: >
+                    Dreier mit zwei maennlichen Partnern,
+                    von denen einer "in der Mitte" ist
+                en:
+                  mmf: MMF
+                  description: >
+                    Threesome with two male partners where one is in the middle
+            - name: mmm
+              messages:
+                de:
+                  mmm: MMM
+                  description: >
+                    Dreier mit drei maennlichen Partnern
+                en:
+                  mmm: MMM
+                  description: >
+                    Threesome with three male partners
+            - name: fff
+              messages:
+                de:
+                  fff: FFF
+                  description: >
+                    Dreier mit drei weiblichen Partnern
+                en:
+                  fff: FFF
+                  description: >
+                    Threesome with three female partners
+            - name: middle
+              messages:
+                de:
+                  middle: Ich in der Mitte
+                  description: >
+                    Dreier, bei dem ich im Focus stehe
+                en:
+                  middle: me in the middle
+                  description: >
+                    Threesome with me as the main focus of the others
+            - name: outside
+              messages:
+                de:
+                  outside: ich dabei
+                  description: >
+                    Dreier, bei dem einer der anderen Partner im Focus steht
+                en:
+                  outside: me on the outside
+                  description: >
+                    Threesome with one of the others as the focus
+
       - name: Gang Bang
         messages:
           de:
             name: Rudelbums
           en:
             name: Gang Bang
+        preferences:
+          roles: *roles_myself_partner
 
   - name: bondage
     messages:
@@ -1314,6 +1413,8 @@ categories:
       - name: BodyBuilding
       - name: Bukake
       - name: Zentai
+        preferences:
+          roles: *roles_myself_partner
       - name: Diapers
         messages:
           de:
