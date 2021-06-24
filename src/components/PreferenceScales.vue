@@ -2,6 +2,7 @@
   <div
     class="columns
            is-multiline
+           is-mobile
            is-gapless
            box
     "
