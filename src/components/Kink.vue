@@ -15,7 +15,7 @@
         class="title block has-text-primary has-text-centered"
         >{{ t('name',kink.name) }}
       </h4>
-        <div class="block">
+        <div v-if="getEditMode" class="block">
           <LocaleEditor v-model:messages="localKink.messages"/>
         </div>
     </div>
@@ -61,6 +61,7 @@ import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import useEditMode from '@/plugins/EditMode';
 
 export default {
   name: 'Kink',
@@ -103,10 +104,12 @@ export default {
     const { t, te } = useI18n({
       messages: props.kink.messages || { en: { name: props.kink.name } },
     });
+    const { getEditMode } = useEditMode();
 
     return {
       t,
       te,
+      getEditMode,
     };
   },
 

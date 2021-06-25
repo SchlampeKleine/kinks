@@ -9,7 +9,7 @@
       class="title block has-text-primary has-text-centered"
       >{{ t('name',category.name) }}
     </h2>
-      <div class="block">
+      <div v-if="getEditMode" class="block">
         <LocaleEditor v-model:messages="localCategory.messages"/>
       </div>
     <div
@@ -42,6 +42,7 @@ import { useI18n } from 'vue-i18n';
 import { defineAsyncComponent } from 'vue';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import useEditMode from '@/plugins/EditMode';
 
 export default {
   name: 'KinkCategory',
@@ -76,8 +77,11 @@ export default {
     const { t } = useI18n({
       messages: props.category.messages || { en: { name: props.category.name } },
     });
+    const { getEditMode } = useEditMode();
+
     return {
       t,
+      getEditMode,
     };
   },
   emits: ['update:category'],

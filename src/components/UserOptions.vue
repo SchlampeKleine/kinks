@@ -28,27 +28,27 @@
       <div
         class="navbar-start"
         >
-      <div class="navbar-item">
-        <RouterLink :to="{ name: 'home', }">
+        <div class="navbar-item">
+          <RouterLink :to="{ name: 'home', }">
           Home
-        </RouterLink>
-      </div>
+          </RouterLink>
+        </div>
       <div class="navbar-item">
         <RouterLink :to="{ name: 'credits', }">
-          Credits
+        Credits
         </RouterLink>
       </div>
       <div class="navbar-item">
         <RouterLink :to="{ name: 'privacy', }">
-          Privacy
+        Privacy
         </RouterLink>
       </div>
-        <div class="navbar-item has-dropdown"
-             v-bind:class="{ 'is-active': isKinksOpen }">
-          <a class="navbar-link"
-             v-on:click="isKinksOpen = !isKinksOpen">
-            {{ t('button_kinkmanagement') }}
-          </a>
+      <div class="navbar-item has-dropdown"
+           v-bind:class="{ 'is-active': isKinksOpen }">
+        <a class="navbar-link"
+           v-on:click="isKinksOpen = !isKinksOpen">
+          {{ t('button_kinkmanagement') }}
+        </a>
         <div class="navbar-dropdown">
           <!-- Save Menu -->
           <div class="navbar-item">
@@ -192,14 +192,14 @@
                     name="resume"
                     @change="onFilePicked"
                     >
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        {{ t('uploadKinks_field') }}
+                      </span>
                     </span>
-                    <span class="file-label">
-                      {{ t('uploadKinks_field') }}
-                    </span>
-                  </span>
                 </label>
               </div>
               <div class="control">
@@ -216,9 +216,19 @@
         </div>
       </div>
       </div>
-    </div>
-    <div class="navbar-end">
-      <LocaleSwitcher />
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button
+            @click="toggleEditMode"
+            class="button"
+            >
+            {{ t('button_edit_mode') }}
+          </button>
+        </div>
+        <div class="navbar-item">
+          <LocaleSwitcher />
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -244,6 +254,7 @@ de:
   button_save: "Kinks speichern"
   button_share: "Kinks teilen"
   button_download: "Kinks runterladen"
+  button_edit_mode: "Aendern aktivieren"
 en:
   uploadKinks_field: Choose File
   help_field_localUser: >
@@ -263,6 +274,7 @@ en:
   button_save: "Save my kinks"
   button_share: "Share my kinks"
   button_download: "Download my kinks"
+  button_edit_mode: "Toggle edit mode"
 
 </i18n>
 
@@ -273,6 +285,7 @@ import { useRouter, RouterLink } from 'vue-router';
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 import { Base64 } from 'js-base64';
+import useEditMode from '@/plugins/EditMode';
 
 import yaml from 'js-yaml';
 
@@ -300,12 +313,14 @@ export default {
   setup() {
     const { t } = useI18n();
     const router = useRouter();
+    const { toggleEditMode } = useEditMode();
 
     return {
       t,
       createShareLink: (myKinks) => router
         .replace({ params: { objectString: JSON.stringify(myKinks) } })
         .catch(() => {}),
+      toggleEditMode,
     };
   },
   components: {

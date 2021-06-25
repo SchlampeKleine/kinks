@@ -1,18 +1,21 @@
 <template>
-  <div class="column
-               is-full-mobile
-               is-half-tablet
-               is-one-quarter-desktop
-               box
-               "
+  <div class="
+              column
+              is-full-mobile
+              is-half-tablet
+              is-one-quarter-desktop
+              box
+              "
        >
-       <h5
-         class="title block variant name has-text-primary has-text-centered"
-         >{{ t('name',variant.name) }}
-       </h5>
-         <div class="block">
-           <LocaleEditor v-model:messages="localVariant.messages"/>
-         </div>
+       <div class="block name">
+         <h5
+           class="title variant has-text-primary has-text-centered"
+           >{{ t('name',variant.name) }}
+         </h5>
+       </div>
+    <div class="block">
+      <LocaleEditor v-if="getEditMode" v-model:messages="localVariant.messages"/>
+    </div>
     <div class="block variant description" >
       <p
         v-if="te('description')">
@@ -32,6 +35,7 @@
 import KinkPreference from '@/components/KinkPreference.vue';
 import { useI18n } from 'vue-i18n';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import useEditMode from '@/plugins/EditMode';
 
 export default {
   name: 'KinkVariant',
@@ -64,9 +68,11 @@ export default {
     const { t, te } = useI18n({
       messages: props.variant.messages || { en: { name: props.variant.name } },
     });
+    const { getEditMode } = useEditMode();
     return {
       t,
       te,
+      getEditMode,
     };
   },
 
