@@ -1,69 +1,159 @@
 <template>
-  <nav
-    class="navbar"
-    role="navigation"
-    aria-label="main navigation"
-    >
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <img src="@/assets/logo.png">
-      </a>
-    <a
-      role="button"
-      class="navbar-burger"
-      aria-label="menu"
-      aria-expanded="false"
-      v-on:click="isOpen = !isOpen"
-      v-bind:class="{'is-active': isOpen}"
-      >
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-    </div>
+  <section class="section">
+    <h1 class="title">Profiles</h1>
+    <!-- Save Menu -->
     <div
-      class="navbar-menu"
-      v-bind:class="{'is-active': isOpen}"
+      class="field has-addons"
       >
-      <div
-        class="navbar-start"
+      <label class="label">
+        Name
+      </label>
+      <div class="control">
+        <input
+          placeholder="Name"
+          v-model="localUser"
+          @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
+          type="text"
+          class="input is-expanded"
+          />
+        <p class="help">
+        {{ t('help_field_localUser') }}
+        </p>
+      </div>
+    </div>
+    <div class="control">
+      <button
+        class="button"
+        v-on:click="saveMyKinks(user)"
+        :disabled="canSaveKinks(user)"
         >
-        <div class="navbar-item">
-          <RouterLink :to="{ name: 'home', }">
-          Home
-          </RouterLink>
+        {{ t('button_save') }}
+      </button>
+    </div>
+    <!-- Load Menu -->
+
+    <div class="field has-addons">
+
+      <div class="control is-expanded">
+        <div class="select">
+          <select v-model="loadUser">
+            <option disabled value="">
+            {{ t('loadUser_choice') }}
+            </option>
+            <option
+              v-for="user in getUsers"
+              v-bind:key="user"
+              >
+              {{ user }}
+            </option>
+          </select>
+          <div class="help">
+            {{ t('help_field_loadUser') }}
+          </div>
         </div>
-      <div class="navbar-item">
-        <RouterLink :to="{ name: 'credits', }">
-        Credits
-        </RouterLink>
       </div>
-      <div class="navbar-item">
-        <RouterLink :to="{ name: 'privacy', }">
-        Privacy
-        </RouterLink>
+      <div class="control">
+        <button
+          class="button"
+          v-on:click="loadMyKinks(user)"
+          :disabled="canLoadKinks(user)"
+          >
+          {{ t('button_load') }}
+        </button>
       </div>
-      <div class="navbar-item">
-        <RouterLink :to="{ name: 'profiles', }">
-        Profiles
-        </RouterLink>
+    </div>
+
+    <!-- Reset Menu -->
+
+    <div class="field">
+      <div class="control">
+        <button
+          class="button"
+          v-on:click="resetMyKinks(user)"
+          >
+          {{ t('button_reset') }}
+        </button>
       </div>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <button
-            @click="toggleEditMode"
-            class="button"
-            >
-            {{ t('button_edit_mode') }}
-          </button>
-        </div>
-        <div class="navbar-item">
-          <LocaleSwitcher />
+    </div>
+
+    <!-- Debug Menu  -->
+
+    <div
+      v-if="isDebug"
+      >
+      <div class="field">
+        <div class="control"
+             >
+             <button
+               class="button"
+               v-on:click="dumpMyKinks"
+               >
+               {{ t('button_dump') }}
+             </button>
         </div>
       </div>
     </div>
-  </nav>
+
+    <!-- Share Menu -->
+
+    <div class="field">
+      <div class="control">
+        <button
+          class="button"
+          v-on:click="shareMyKinks(getKinksForUser(user))"
+          >
+          {{ t('button_share') }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Download Menu -->
+
+    <div class="field">
+      <div class="control">
+        <button
+          class="button"
+          v-on:click="downloadMyKinks(myKinks,user)"
+          >
+          {{ t('button_download') }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Upload Menu -->
+
+    <div class="field has-addons">
+      <div class="file has-name is-right">
+        <label class="file-label">
+          <input
+            class="file-input"
+            type="file"
+            name="resume"
+            @change="onFilePicked"
+            >
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                {{ t('uploadKinks_field') }}
+              </span>
+            </span>
+        </label>
+      </div>
+      <div class="control">
+        <button
+          class="button"
+          v-on:click="parseUploadedKinks()"
+          :disabled="!upload"
+          >
+          {{ t('button_upload') }}
+        </button>
+      </div>
+    </div>
+
+  </section>
+
 </template>
 
 <i18n lang="yaml" global>
@@ -114,64 +204,32 @@ en:
 <script>
 import defaultKinks from '@/assets/kinks.yaml';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
-import { useRouter, RouterLink } from 'vue-router';
-import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 import { Base64 } from 'js-base64';
-import useEditMode from '@/plugins/EditMode';
 
 import yaml from 'js-yaml';
 
 export default {
-  name: 'UserOptions',
+  name: 'Profiles',
   props: {
-    allKinks: {
-      type: Object,
-      required: true,
-    },
     user: {
       type: String,
       required: true,
+      default: '',
     },
-    myKinks: {
-      type: Object,
-      required: true,
-    },
+  },
+  setup() {
+    const { t } = useI18n({
+    });
+    return {
+      t,
+    };
   },
   emits: [
     'update:user',
     'update:myKinks',
     'update:allKinks',
   ],
-  setup() {
-    const { t } = useI18n();
-    const router = useRouter();
-    const { toggleEditMode } = useEditMode();
-
-    return {
-      t,
-      createShareLink: (myKinks) => router
-        .replace({ params: { objectString: JSON.stringify(myKinks) } })
-        .catch(() => {}),
-      toggleEditMode,
-    };
-  },
-  components: {
-    LocaleSwitcher,
-    RouterLink,
-  },
-  mounted() {
-    this.localMyKinks = this.getKinksForUser(this.user);
-  },
-  data() {
-    return {
-      isOpen: null,
-      isDebug: null,
-      isKinksOpen: null,
-      loadUser: null,
-      upload: null,
-    };
-  },
   methods: {
 
     parseUploadedKinks() {
@@ -237,12 +295,18 @@ export default {
     },
 
     getUsers() {
-      const users = Object.keys(this.allKinks);
-      return users;
+      if (this.allKinks) {
+        const users = Object.keys(this.allKinks);
+        return users;
+      }
+      return [];
     },
 
     canSaveKinks(user) {
-      return user.length === 0;
+      if (user) {
+        return user.length === 0;
+      }
+      return false;
     },
 
     getKinksForUser(user) {
@@ -302,7 +366,5 @@ export default {
       },
     },
   },
-
 };
-
 </script>

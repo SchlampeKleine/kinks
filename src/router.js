@@ -54,6 +54,14 @@ export default createRouter({
           },
         },
         {
+          name: 'profiles',
+          path: 'profiles',
+          components: {
+            UserOptions,
+            default: () => import('@/components/Profiles.vue'),
+          },
+        },
+        {
           path: 'load/:object',
           name: 'load',
           components: {
