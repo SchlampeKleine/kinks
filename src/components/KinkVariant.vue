@@ -9,7 +9,7 @@
        >
        <div class="block name">
          <h5
-           class="title variant has-text-primary has-text-centered"
+           class="title block variant has-text-primary has-text-centered"
            >{{ t('name',variant.name) }}
          </h5>
        </div>

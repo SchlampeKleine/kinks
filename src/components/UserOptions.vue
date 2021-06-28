@@ -168,8 +168,6 @@ export default {
       isOpen: null,
       isDebug: null,
       isKinksOpen: null,
-      loadUser: null,
-      upload: null,
     };
   },
   methods: {

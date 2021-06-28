@@ -7,6 +7,7 @@
   ></router-view>
   <router-view
     v-model:myKinks="myKinks"
+    v-model:allKinks="allKinks"
   ></router-view>
 </template>
 
