@@ -1,5 +1,5 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
@@ -9,9 +9,14 @@ module.exports = {
 
   configureWebpack: {
 
-    plugins: [
-      new BundleAnalyzerPlugin()
-    ],
+    plugins: process.env.NODE_ENV === 'production'
+      ? [
+        /* Production Plugins */
+      ]
+      : [
+        /* Development Plugins */
+        new BundleAnalyzerPlugin(),
+      ],
 
     devtool: process.env.NODE_ENV !== 'production'
       ? 'source-map'
