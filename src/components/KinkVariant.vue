@@ -7,30 +7,28 @@
               box
               "
        >
-       <div class="block name">
-         <h5
-           class="title block variant has-text-primary has-text-centered"
-           >{{ t('name',variant.name) }}
-         </h5>
-       </div>
-    <div class="block">
-        <div class="buttons is-right">
+       <Representation>
+       <template v-slot:title>
+         {{ t('name',variant.name) }}
+       </template>
+       <template v-slot:menu v-if="getEditMode">
           <LocaleEditor v-model:messages="localVariant.messages"/>
           <ModalButtonYamlEdit v-model:dataObject="localVariant" />
-        </div>
-    </div>
-      <div class="block variant description" >
-      <p
-        v-if="te('description')">
-      {{ t('description') }}
-      </p>
-    </div>
+       </template>
+
+       <template v-slot:description v-if="te('description')">
+    {{ t('description') }}
+    </template>
+
+    <template v-slot:preferences>
     <KinkPreference
       :id="id+'-'+'preferences'"
       :key="id+'-'+'preferences'"
       v-bind:object="localVariant"
       v-model:preferences="localPreferences"
       />
+    </template>
+       </Representation>
   </div>
 </template>
 
@@ -39,6 +37,7 @@ import KinkPreference from '@/components/KinkPreference.vue';
 import { useI18n } from 'vue-i18n';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
+import Representation from '@/components/Representation.vue';
 import useEditMode from '@/plugins/EditMode';
 
 export default {
@@ -84,6 +83,7 @@ export default {
     ModalButtonYamlEdit,
     KinkPreference,
     LocaleEditor,
+    Representation,
   },
 
   computed: {

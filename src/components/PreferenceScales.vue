@@ -3,8 +3,6 @@
     class="columns
            is-multiline
            is-mobile
-           is-gapless
-           box
     "
     >
     <PreferenceScale
@@ -14,7 +12,6 @@
       :role=role
       :preference="role.preference"
       @update:role="updateLocalRole"
-      class="block"
       />
   </div>
 </template>

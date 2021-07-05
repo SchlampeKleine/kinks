@@ -1,32 +1,37 @@
 <template>
   <div class="
+              card
               column
               is-half-mobile
-              block
-              box
               "
        >
-       <div
-         class=" field
-                     preference-role-identifier
-                     block"
-         >
+
+       <RepresentationPreferenceRole>
+
+       <template v-slot:title>
          <div class="field-label block">
            <label
              class="label block"
              >{{ t(localRole.name,localRole.name) }}</label>
          </div>
-         <div class="help block">
-           <p v-if="te('description')" >
+       </template>
+
+       <template v-slot:description>
+         <Description v-if="te('description')" >
            {{ t('description') }}
-           </p>
-         </div>
+         </Description>
+       </template>
+
+       <template v-slot:preferencelevel>
     <div
-      class=" field-body
-                   preference
-                   level
-                   block
-                   buttons"
+      class="
+             card
+             field-body
+             preference
+             level
+             block
+             buttons
+             "
       >
       <template
         v-for="preferencelevel in getPreferenceLevels()"
@@ -60,7 +65,8 @@
         </div>
       </template>
     </div>
-       </div>
+       </template>
+    </RepresentationPreferenceRole>
   </div>
 </template>
 
@@ -68,6 +74,8 @@
 import { useI18n } from 'vue-i18n';
 import { preferenceLevels } from '@/assets/levels.yaml'; // is used in v-for
 import PreferenceScaleButtonLabel from '@/components/PreferenceScaleButtonLabel.vue';
+import Description from '@/components/Description.vue';
+import RepresentationPreferenceRole from '@/components/RepresentationPreferenceRole.vue';
 import Color from 'color-js';
 
 export default {
@@ -136,7 +144,9 @@ export default {
   },
 
   components: {
+    RepresentationPreferenceRole,
     PreferenceScaleButtonLabel,
+    Description,
   },
 
   computed: {

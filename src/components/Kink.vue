@@ -4,13 +4,14 @@
               box
               "
        :class="{
-               'is-full': kink.variants,
-               'is-narrow': !kink.variants,
-               'is-half-tablet': !kink.variants,
-               'is-one-quarter-desktop': !kink.variants,
+               'is-full': localKink.variants,
+               'is-narrow': !localKink.variants,
+               'is-half-tablet': !localKink.variants,
+               'is-one-quarter-desktop': !localKink.variants,
                }"
        >
-    <div class="box name">
+       <template v-if="localKink.variants">
+    <div class="box name is-expanded">
       <h4
         class="title block has-text-primary has-text-centered"
         >{{ t('name',kink.name) }}
@@ -22,11 +23,10 @@
         </div>
         </div>
     </div>
-    <div class="block kink description has-text-justified">
-      <p v-if="te('description')" >
-        {{ t('description') }}
-      </p>
-    </div>
+    <Description v-if="te('description')">
+    {{ t('description') }}
+    </Description>
+
     <div
       class=" columns
               is-multiline
@@ -34,9 +34,6 @@
               is-align-items-stretch
               "
       >
-      <template
-        v-if="localKink.variants"
-        >
         <KinkVariant
           v-for="variant in localVariants"
           :id="id+'-'+variant.name"
@@ -44,10 +41,27 @@
           :variant=variant
           @update:variant="updateVariant"
           />
+    </div>
       </template>
         <template
           v-else
           >
+          <Representation>
+          <template v-slot:title>
+        {{ t('name',kink.name) }}
+          </template>
+
+          <template v-slot:menu
+          v-if="getEditMode">
+          <LocaleEditor v-model:messages="localKink.messages"/>
+          <ModalButtonYamlEdit v-model:dataObject="localKink" />
+          </template>
+
+          <template v-slot:description v-if="te('description')">
+            {{ t('description') }}
+          </template>
+
+          <template v-slot:preferences>
           <KinkPreference
             :id="id+'-'+'preferences'"
             :key="id+'-'+'preferences'"
@@ -55,8 +69,9 @@
             v-model:preferences="localPreferences"
             />
         </template>
+          </Representation>
+        </template>
     </div>
-  </div>
 </template>
 
 <script>
@@ -65,6 +80,8 @@ import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
+import Representation from '@/components/Representation.vue';
+import Description from '@/components/Description.vue';
 import useEditMode from '@/plugins/EditMode';
 
 export default {
@@ -118,6 +135,8 @@ export default {
   },
 
   components: {
+    Representation,
+    Description,
     ModalButtonYamlEdit,
     KinkVariant: defineAsyncComponent({
       loader: () => import('@/components/KinkVariant.vue'),
