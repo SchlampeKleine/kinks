@@ -4,10 +4,10 @@
               box
               "
        :class="{
-               'is-full': localKink.variants,
-               'is-narrow': !localKink.variants,
-               'is-half-tablet': !localKink.variants,
-               'is-one-quarter-desktop': !localKink.variants,
+               'is-full': hasVariants,
+               'is-narrow': !hasVariants,
+               'is-half-tablet': !hasVariants,
+               'is-one-quarter-desktop': !hasVariants,
                }"
        >
        <template v-if="localKink.variants">
@@ -215,6 +215,14 @@ export default {
 
   },
   computed: {
+
+    hasVariants: {
+      get() {
+        return this.localKink.variants
+          && this.localKink.variants.length
+          && this.localKink.variants.length > 0;
+      },
+    },
 
     localPreferences: {
       get() {

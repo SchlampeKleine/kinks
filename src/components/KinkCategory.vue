@@ -23,7 +23,7 @@
       <div
         class=" columns
                    is-multiline
-                   is-desktop"
+                   is-tablet"
         >
         <KinkSubCategory
           v-for="subcategory in localCategory.subcategories"
