@@ -5,34 +5,43 @@
            is-centered
            "
     >
-    <h2
-      class="title block has-text-primary has-text-centered"
-      >{{ t('name',category.name) }}
-    </h2>
+    <div class="block">
+      <h2
+        class="title block has-text-primary has-text-centered"
+        >{{ t('name',category.name) }}
+      </h2>
+    </div>
+    <div class="block">
       <div v-if="getEditMode" class="block">
-        <LocaleEditor v-model:messages="localCategory.messages"/>
+        <div class="buttons is-right">
+          <LocaleEditor v-model:messages="localCategory.messages"/>
+          <ModalButtonYamlEdit v-model:dataObject="localCategory" />
+        </div>
       </div>
-    <div
-      class=" columns
-               is-multiline
-               is-desktop"
-      >
-      <KinkSubCategory
-        v-for="subcategory in localCategory.subcategories"
-        :id="id+'-'+subcategory.name"
-        :key="'subcategories-'+subcategory.name"
-        :subcategory="subcategory"
-        :kinds="subcategory.kinds"
-        @update:subcategory="updateSubcategory"
-        />
-      <Kink
-        v-for="kink in localCategory.kinds"
-        :id="id+'-'+kink.name"
-        :key="'kink-'+kink.name"
-        :kink="kink"
-        :variants="kink.variants"
-        @update:kink="updateKink"
-        />
+    </div>
+    <div class="block">
+      <div
+        class=" columns
+                   is-multiline
+                   is-desktop"
+        >
+        <KinkSubCategory
+          v-for="subcategory in localCategory.subcategories"
+          :id="id+'-'+subcategory.name"
+          :key="'subcategories-'+subcategory.name"
+          :subcategory="subcategory"
+          :kinds="subcategory.kinds"
+          @update:subcategory="updateSubcategory"
+          />
+        <Kink
+          v-for="kink in localCategory.kinds"
+          :id="id+'-'+kink.name"
+          :key="'kink-'+kink.name"
+          :kink="kink"
+          :variants="kink.variants"
+          @update:kink="updateKink"
+          />
+      </div>
     </div>
   </section>
 </template>
@@ -43,6 +52,7 @@ import { defineAsyncComponent } from 'vue';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 import useEditMode from '@/plugins/EditMode';
+import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
 
 export default {
   name: 'KinkCategory',
@@ -126,6 +136,7 @@ export default {
     };
   },
   components: {
+    ModalButtonYamlEdit,
     Kink: defineAsyncComponent({
       loader: () => import('@/components/Kink.vue'),
       loadingComponent: LoaderBar,

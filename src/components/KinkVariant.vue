@@ -14,9 +14,12 @@
          </h5>
        </div>
     <div class="block">
-      <LocaleEditor v-if="getEditMode" v-model:messages="localVariant.messages"/>
+        <div class="buttons is-right">
+          <LocaleEditor v-model:messages="localVariant.messages"/>
+          <ModalButtonYamlEdit v-model:dataObject="localVariant" />
+        </div>
     </div>
-    <div class="block variant description" >
+      <div class="block variant description" >
       <p
         v-if="te('description')">
       {{ t('description') }}
@@ -35,6 +38,7 @@
 import KinkPreference from '@/components/KinkPreference.vue';
 import { useI18n } from 'vue-i18n';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
 import useEditMode from '@/plugins/EditMode';
 
 export default {
@@ -77,6 +81,7 @@ export default {
   },
 
   components: {
+    ModalButtonYamlEdit,
     KinkPreference,
     LocaleEditor,
   },

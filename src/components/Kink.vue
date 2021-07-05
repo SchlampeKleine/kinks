@@ -16,7 +16,10 @@
         >{{ t('name',kink.name) }}
       </h4>
         <div v-if="getEditMode" class="block">
+        <div class="buttons is-right">
           <LocaleEditor v-model:messages="localKink.messages"/>
+          <ModalButtonYamlEdit v-model:dataObject="localKink" />
+        </div>
         </div>
     </div>
     <div class="block kink description has-text-justified">
@@ -61,6 +64,7 @@ import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
 import useEditMode from '@/plugins/EditMode';
 
 export default {
@@ -114,6 +118,7 @@ export default {
   },
 
   components: {
+    ModalButtonYamlEdit,
     KinkVariant: defineAsyncComponent({
       loader: () => import('@/components/KinkVariant.vue'),
       loadingComponent: LoaderBar,

@@ -10,7 +10,10 @@
       class="title block is-primary has-text-centered has-text-primary"
       >{{ t('name',subcategory.name) }}</h3>
     <div v-if="getEditMode" class="block">
-      <LocaleEditor v-model:messages="localSubCategory.messages"/>
+        <div class="buttons is-right">
+          <LocaleEditor v-model:messages="localSubCategory.messages"/>
+          <ModalButtonYamlEdit v-model:dataObject="localSubCategory" />
+        </div>
     </div>
     <div
       class="
@@ -36,6 +39,7 @@ import { defineAsyncComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
+import ModalButtonYamlEdit from '@/components/ModalButtonYamlEdit.vue';
 import useEditMode from '@/plugins/EditMode';
 
 export default {
@@ -86,6 +90,7 @@ export default {
 
   },
   components: {
+    ModalButtonYamlEdit,
     Kink: defineAsyncComponent({
       loader: () => import('@/components/Kink.vue'),
       loadingComponent: LoaderBar,
