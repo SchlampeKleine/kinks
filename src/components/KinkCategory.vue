@@ -20,6 +20,9 @@
       </div>
     </div>
     <div class="block">
+      <keep-alive>
+      <suspense>
+      <template #default>
       <div
         class=" columns
                    is-multiline
@@ -42,6 +45,12 @@
           @update:kink="updateKink"
           />
       </div>
+      </template>
+      <template #fallback>
+        <LoaderBar />
+      </template>
+      </suspense>
+      </keep-alive>
     </div>
   </section>
 </template>
@@ -136,6 +145,7 @@ export default {
     };
   },
   components: {
+    LoaderBar,
     ModalButtonYamlEdit,
     Kink: defineAsyncComponent({
       loader: () => import('@/components/Kink.vue'),
