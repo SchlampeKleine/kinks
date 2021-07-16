@@ -1,26 +1,38 @@
 /*
  * Source
  * https://blog.logrocket.com/advanced-localization-techniques-vue-js/
+ * https://next.vuex.vuejs.org/guide/hot-reload.html#dynamic-module-hot-reloading
  */
 
 import { createStore, createLogger } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
-import { selectedLocale } from '@/i18n';
-
-import * as mutations from '@/store/mutations';
-import * as actions from '@/store/actions';
-
 const debug = process.env.NODE_ENV !== 'production';
 
-const state = {
-  locale: selectedLocale,
-};
+// Load all modules.
+function loadModules() {
+  const context = require.context('@/store/modules', true, /index\.js$/);
+
+  const modules = context
+    .keys()
+    .map((key) => (
+      { key, name: key.match(/([a-z_]+)\/index\.js$/i)[1] }))
+    .reduce(
+      /* eslint-disable no-shadow */
+      (modules, { key, name }) => ({
+        ...modules,
+        [name]: context(key).default,
+      }),
+      {},
+    );
+
+  return { context, modules };
+}
+
+const { context, modules } = loadModules();
 
 const store = createStore({
-  state,
-  mutations,
-  actions,
+  modules,
   strict: process.env.NODE_ENV !== 'production',
   plugins: debug ? [
     createLogger(),
@@ -31,19 +43,13 @@ const store = createStore({
 });
 
 if (module.hot) {
-  module.hot.accept([
-    // './getters',
-    './actions',
-    './mutations',
-  ], () => {
+  // Hot reload whenever any module changes.
+  module.hot.accept(context.id, () => {
+    const { modules } = loadModules();
+    console.log(JSON.stringify(modules));
     store.hotUpdate({
-      // getters: require('./getters'),
-      /* eslint-disable-next-line */
-      actions: require('./actions'),
-      /* eslint-disable-next-line */
-      mutations: require('./mutations'),
+      modules,
     });
   });
 }
-
 export default store;
