@@ -62,15 +62,6 @@ export default createRouter({
             default: () => import('@/components/Profiles.vue'),
           },
         },
-        {
-          path: '/load',
-          name: 'load',
-          beforeEnter(to, from, next) {
-            console.log(to);
-            store.dispatch('CurKinks/loadFromString', to.hash.slice(1));
-            return next({ path: 'profiles' });
-          },
-        },
         /*
         {
           path: 'about',
@@ -84,6 +75,14 @@ export default createRouter({
     {
       path: '/',
       component: KinkListView,
+    },
+    {
+      path: '/load',
+      name: 'load',
+      beforeEnter(to, from, next) {
+        store.dispatch('CurKinks/loadFromString', to.hash.slice(1));
+        return next({ path: 'profiles' });
+      },
     },
     */
     {
