@@ -33,7 +33,7 @@ const { context, modules } = loadModules();
 
 const store = createStore({
   modules,
-  strict: process.env.NODE_ENV !== 'production',
+  strict: false, // process.env.NODE_ENV !== 'production',
   plugins: debug ? [
     createLogger(),
     createPersistedState(),
