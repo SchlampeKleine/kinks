@@ -117,10 +117,15 @@ export default {
     };
   },
 
-  emits:
-  [
-    'update:kink',
-  ],
+  emits: {
+    'update:kink': (newVal) => {
+      const debug = true;
+      if (debug) {
+        console.log({ 'Kink emit update:kink': newVal });
+      }
+      return true;
+    },
+  },
   setup(props) {
     const { t, te } = useI18n({
       messages: props.kink.messages || { en: { name: props.kink.name } },

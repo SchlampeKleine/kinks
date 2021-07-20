@@ -1,81 +1,53 @@
 <template>
   <router-view
     name="UserOptions"
-    v-model:user="user"
-    v-model:allKinks="allKinks"
-    v-model:myKinks="myKinks"
   ></router-view>
   <router-view
-    v-model:user="user"
-    v-model:myKinks="myKinks"
-    v-model:allKinks="allKinks"
   ></router-view>
 </template>
 
 <script>
 import {
   // useRoute,
-  // useRouter,
+  useRouter,
   RouterView,
 } from 'vue-router';
+import { mapState, useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
   name: 'App',
   components: {
     RouterView,
   },
-  data() {
+
+  setup() {
+    const store = useStore();
+
+    const router = useRouter();
+
     return {
-      user: '',
-      myKinks: Object(),
-      allKinks: this.getJSONFromLocalStorage('allKinks'),
+
+      router,
+      locale: computed(() => store.state.Locale.locale),
+
     };
   },
 
   watch: {
 
-    allKinks: {
-      deep: true,
-      handler(newVal) {
-        console.log({ 'change allKinks': newVal });
-        this.saveToLocalStorage('allKinks', this.allKinks);
-      },
-      immediate: true,
+    locale() {
+      this.router.replace({ params: { lang: this.locale } }).catch(() => {});
     },
 
   },
 
   methods: {
 
-    saveToLocalStorage(key, data) {
-      const parsedData = JSON.stringify(data);
-      localStorage.setItem(key, parsedData);
-      console.log({
-        'Saved to localStorage': {
-          key: data,
-        },
-      });
-    },
-
-    getJSONFromLocalStorage(key) {
-      let localList = {};
-      if (localStorage.getItem(key)) {
-        try {
-          localList = JSON.parse(localStorage.getItem(key));
-        } catch (e) {
-          console.warn(e);
-          localStorage.remove(key);
-        }
-      }
-      return localList;
-    },
-
     updateCategory(newVal) {
       const msg = { updateCategory: newVal };
       console.log(msg);
-      this.myKinks.categories[
-        this.myKinks.categories.findIndex((element) => element.name === newVal.name)
-      ] = newVal;
+      saveObjectToLocalStorage('curKinks', this.myKinks);
     },
 
   },

@@ -110,7 +110,7 @@ export default {
     'update:object': null,
     'update:preferences':
     (newVal) => {
-      const debug = false;
+      const debug = true;
       if (debug) {
         console.log({ 'KinkPreference emit update:preferences': newVal });
       }

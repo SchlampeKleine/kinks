@@ -59,6 +59,7 @@ export const selectedLocale = checkDefaultLanguage()
 export { languages };
 // Object.getOwnPropertyNames(loadLocaleMessages());
 export default createI18n({
+  scope: 'global',
   locale: selectedLocale,
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE
     || 'en',

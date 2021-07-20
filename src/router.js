@@ -12,21 +12,22 @@ export default createRouter({
       path: '/',
       name: 'root',
       beforeEnter(to, from, next) {
-        next(store.state.locale);
+        next(store.state.Locale.locale);
       },
     },
     {
-      path: '/:lang',
+      path: '/:lang([a-z]{2})',
+      alias: '/:lang([a-z]{2}-[A-Z]{2})',
       component: App,
       beforeEnter(to, from, next) {
         const { lang } = to.params;
         if (languages.includes(lang)) {
-          if (store.state.locale !== lang) {
-            store.dispatch('changeLocale', lang);
+          if (store.state.Locale.locale !== lang) {
+            store.dispatch('Locale/changeLocale', lang);
           }
           return next();
         }
-        return next({ path: store.state.locale });
+        return next({ path: store.state.Locale.locale });
       },
       children: [
         {
@@ -62,24 +63,12 @@ export default createRouter({
           },
         },
         {
-          path: 'load/:object',
+          path: '/load',
           name: 'load',
-          components: {
-            UserOptions,
-            default: {
-              template: 'LOADING',
-            },
-          },
-          /* eslint-disable-next-line */
           beforeEnter(to, from, next) {
-            const { objectString } = to.params;
-            console.log({ objectString });
-            try {
-              const loadedObject = JSON.parse(Base64.decode(objectString));
-              console.log({ loadedObject });
-            } catch (e) {
-              console.warn(e);
-            }
+            console.log(to);
+            store.dispatch('CurKinks/loadFromString', to.hash.slice(1));
+            return next({ path: 'profiles' });
           },
         },
         /*
@@ -97,5 +86,9 @@ export default createRouter({
       component: KinkListView,
     },
     */
+    {
+      path: '/:pathMatch(.*)',
+      component: () => import('@/components/NotFound'),
+    },
   ],
 });

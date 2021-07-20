@@ -34,11 +34,11 @@ export default {
     };
   },
   setup() {
-    const router = useRouter();
-    const i18n = useI18n({
-      useScope: 'global',
-    });
     const store = useStore();
+
+    const i18n = useI18n({
+      scope: 'global',
+    });
 
     /*
      * Source
@@ -47,12 +47,9 @@ export default {
      */
 
     return {
-      // locale,
-      // store,
-      lang: computed(() => store.state.locale),
       i18n,
-      setStoredLang: (newVal) => store.dispatch('changeLocale', newVal),
-      updateRoute: (newLocale) => router.replace({ params: { lang: newLocale } }).catch(() => {}),
+      lang: computed(() => store.state.Locale.locale),
+      setStoredLang: (newVal) => store.dispatch('Locale/changeLocale', newVal),
     };
   },
   computed: {
@@ -63,7 +60,6 @@ export default {
       set(newVal) {
         this.i18n.locale = newVal;
         this.setStoredLang(newVal);
-        this.updateRoute(newVal);
       },
     },
   },

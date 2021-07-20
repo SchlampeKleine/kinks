@@ -29,22 +29,22 @@
         class="navbar-start"
         >
         <div class="navbar-item">
-          <RouterLink :to="{ name: 'home', }">
+          <RouterLink :to="{ name: 'home' }">
           Home
           </RouterLink>
         </div>
       <div class="navbar-item">
-        <RouterLink :to="{ name: 'credits', }">
+        <RouterLink :to="{ name: 'credits' }">
         Credits
         </RouterLink>
       </div>
       <div class="navbar-item">
-        <RouterLink :to="{ name: 'privacy', }">
+        <RouterLink :to="{ name: 'privacy' }">
         Privacy
         </RouterLink>
       </div>
       <div class="navbar-item">
-        <RouterLink :to="{ name: 'profiles', }">
+        <RouterLink :to="{ name: 'profiles' }">
         Profiles
         </RouterLink>
       </div>
@@ -112,32 +112,23 @@ en:
 </i18n>
 
 <script>
-import defaultKinks from '@/assets/kinks.yaml';
-// import defaultKinks from '@/assets/kinks_reduced.yaml';
 import { useRouter, RouterLink } from 'vue-router';
-import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 import { useI18n } from 'vue-i18n';
 import { Base64 } from 'js-base64';
-import useEditMode from '@/plugins/EditMode';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 import yaml from 'js-yaml';
 
+import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
+import defaultKinks from '@/assets/kinks.yaml';
+// import defaultKinks from '@/assets/kinks_reduced.yaml';
+import useEditMode from '@/plugins/EditMode';
+
+import { saveObjectToLocalStorage, getJSONFromLocalStorage } from '@/plugins/LocalStorage';
+
 export default {
   name: 'UserOptions',
-  props: {
-    allKinks: {
-      type: Object,
-      required: true,
-    },
-    user: {
-      type: String,
-      required: true,
-    },
-    myKinks: {
-      type: Object,
-      required: true,
-    },
-  },
   emits: [
     'update:user',
     'update:myKinks',
@@ -148,12 +139,21 @@ export default {
     const router = useRouter();
     const { toggleEditMode } = useEditMode();
 
+    const store = useStore();
+
     return {
       t,
       createShareLink: (myKinks) => router
-        .replace({ params: { objectString: JSON.stringify(myKinks) } })
+        .replace({ params: { objectString: encodeURI(JSON.stringify(myKinks)) } })
         .catch(() => {}),
-      toggleEditMode,
+      toggleEditMode: () => {
+        toggleEditMode();
+        store.dispatch('EditMode/toggleEditMode');
+      },
+
+      myKinks: computed(() => store.state.CurKinks.curKinks),
+
+      getKinksForUser: store.getters['AllKinks/getKinksForUser'],
     };
   },
   components: {
@@ -243,18 +243,6 @@ export default {
       return user.length === 0;
     },
 
-    getKinksForUser(user) {
-      let localUser = user;
-      if (user === '') localUser = 'default';
-      const kinks = this.allKinks[localUser];
-      if (kinks) {
-        // console.log({"UserOptions: Found kinks for user":kinks})
-        return kinks;
-      }
-      // console.log({"UserOptions: Return defaultKinks": defaultKinks})
-      return defaultKinks;
-    },
-
     loadMyKinks(user) {
       this.localMyKinks = this.getKinksForUser(user);
     },
@@ -280,23 +268,6 @@ export default {
       },
       set(newVal) {
         this.$emit('update:user', newVal);
-      },
-    },
-    localAllKinks: {
-      get() {
-        return this.allKinks;
-      },
-      set(newVal) {
-        this.$emit('update:allKinks', newVal);
-      },
-    },
-    localMyKinks: {
-      get() {
-        return this.myKinks;
-      },
-      set(newVal) {
-        // console.log({"UserOptions: Setting new myKinks":newVal})
-        this.$emit('update:myKinks', newVal);
       },
     },
   },
