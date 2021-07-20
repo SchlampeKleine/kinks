@@ -22,8 +22,8 @@
       <div class="control">
         <button
           class="button"
-          v-on:click="saveMyKinks(user)"
-          :disabled="canSaveKinks(user)"
+          v-on:click="saveKinksForUser(user,curKinks)"
+          :disabled="!canSaveKinks(user)"
           >
           {{ t('button_save') }}
         </button>
@@ -53,37 +53,33 @@ en:
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
   name: 'ProfilesSaveMenu',
 
-  props: {
-
-    user: {
-      type: String,
-      required: true,
-    },
-
-  },
-
   setup() {
     const { t } = useI18n({
     });
+
+    const store = useStore();
+
     return {
       t,
+      saveKinksForUser: (username, kinks) => store.dispatch('AllKinks/saveKinksForUser',
+        { username, kinks }),
+      updateCurrentUsername: (newVal) => store.dispatch('User/updateCurrentUsername', newVal),
+      user: computed(() => store.state.User.currentUsername),
+      curKinks: computed(() => store.state.CurKinks.curKinks),
     };
   },
 
   methods: {
 
-    saveMyKinks(user) {
-      console.log({ 'Saving for user': user });
-      this.localAllKinks[user] = this.myKinks;
-    },
-
     canSaveKinks(user) {
-      if (user) {
-        return user.length === 0;
+      if (user && user.length > 0) {
+        return true;
       }
       return false;
     },
@@ -96,7 +92,7 @@ export default {
         return this.user;
       },
       set(newVal) {
-        this.$emit('update:user', newVal);
+        this.updateCurrentUsername(newVal);
       },
     },
 

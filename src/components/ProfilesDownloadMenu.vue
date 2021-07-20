@@ -6,7 +6,7 @@
       <div class="control">
         <button
           class="button"
-          v-on:click="downloadMyKinks(myKinks,user)"
+          v-on:click="downloadCurKinks(encodedKinks, user)"
           >
           {{ t('button_download') }}
         </button>
@@ -23,21 +23,26 @@ en:
 </i18n>
 <script>
 import { useI18n } from 'vue-i18n';
-
-import yaml from 'js-yaml';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
   name: 'ProfilesDownloadMenu',
   setup() {
     const { t } = useI18n({
     });
+
+    const store = useStore();
+
     return {
       t,
+      encodedKinks: computed(() => store.getters['CurKinks/getCurKinksAsYAML']),
+      user: computed(() => store.state.User.currentUsername),
     };
   },
   methods: {
 
-    downloadMyKinks(kinks, user) {
+    downloadCurKinks(encodedKinks, user) {
       function download(filename, text) {
         const element = document.createElement('a');
         element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
@@ -55,7 +60,6 @@ export default {
        *   Add Prompt for which user to use them
        *   Add User to export
        */
-      const encodedKinks = yaml.dump(kinks);
       // Start file download.
       const filenname = `${user || 'kinks'}.yaml`;
       download(filenname, encodedKinks);

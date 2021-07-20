@@ -7,9 +7,9 @@
   <ProfilesDebugMenu
       v-if="isDebug"
       />
-  <ProfilesShareMenu />
-  <ProfilesDownloadMenu />
-  <ProfilesUploadMenu />
+  <ProfilesShareMenu :curKinks="curKinks" />
+  <ProfilesDownloadMenu :curKinks="curKinks" />
+  <ProfilesUploadMenu v-model:curKinks="curKinks" />
   </section>
 
 </template>
@@ -29,6 +29,9 @@ en:
 import defaultKinks from '@/assets/kinks.yaml';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
 import ProfilesSaveMenu from '@/components/ProfilesSaveMenu.vue';
 import ProfilesLoadMenu from '@/components/ProfilesLoadMenu.vue';
 import ProfilesResetMenu from '@/components/ProfilesResetMenu.vue';
@@ -37,19 +40,10 @@ import ProfilesDownloadMenu from '@/components/ProfilesDownloadMenu.vue';
 import ProfilesShareMenu from '@/components/ProfilesShareMenu.vue';
 import ProfilesUploadMenu from '@/components/ProfilesUploadMenu.vue';
 
+import { saveObjectToLocalStorage, getJSONFromLocalStorage } from '@/plugins/LocalStorage';
+
 export default {
   name: 'Profiles',
-  props: {
-    user: {
-      type: String,
-      required: true,
-      default: '',
-    },
-    allKinks: {
-      type: Object,
-      required: true,
-    },
-  },
   data() {
     return {
       defaultKinks,
@@ -59,8 +53,13 @@ export default {
   setup() {
     const { t } = useI18n({
     });
+    const store = useStore();
+
     return {
       t,
+      curKinks: computed(() => store.state.CurKinks.curKinks),
+      allKinks: computed(() => store.state.AllKinks.userKinks),
+      user: computed(() => store.state.User.currentUsername),
     };
   },
   components: {
@@ -72,11 +71,6 @@ export default {
     ProfilesDownloadMenu,
     ProfilesUploadMenu,
   },
-  emits: [
-    'update:user',
-    'update:myKinks',
-    'update:allKinks',
-  ],
   methods: {
 
   },
