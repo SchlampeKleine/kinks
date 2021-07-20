@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import UserOptions from '@/components/UserOptions.vue';
 import App from '@/App.vue';
 import { languages } from '@/i18n';
@@ -6,7 +6,7 @@ import store from '@/store';
 import { Base64 } from 'js-base64';
 
 export default createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
