@@ -3,8 +3,8 @@
  * https://blog.logrocket.com/advanced-localization-techniques-vue-js/
  */
 
-// import defaultKinks from '@/assets/kinks.yaml';
-import defaultKinks from '@/assets/kinks_reduced.yaml';
+import defaultKinks from '@/assets/kinks.yaml';
+// import defaultKinks from '@/assets/kinks_reduced.yaml';
 
 import * as getters from './getters';
 import * as mutations from './mutations';
