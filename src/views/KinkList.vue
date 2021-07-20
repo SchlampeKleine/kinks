@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
+import { useStore } from 'vuex';
+
 import LoaderBar from '@/components/LoaderBar.vue';
 
 export default {
@@ -28,19 +30,22 @@ export default {
       loadingComponent: LoaderBar,
     }),
   },
-  props: {
-    myKinks: {
-      type: Object,
-      required: true,
-    },
 
+  setup() {
+    const store = useStore();
+
+    return {
+      updateCurKinks: (newKinks) => store.dispatch('CurKinks/updateCurKinks', newKinks),
+      curKinks: computed(() => store.state.CurKinks.curKinks),
+    };
   },
+
   data() {
     return {
       debug: false,
-
     };
   },
+
   methods: {
 
     updateCategory(newVal) {
@@ -60,10 +65,13 @@ export default {
   computed: {
     localMyKinks: {
       get() {
-        return this.myKinks;
+        return this.curKinks;
       },
       set(newVal) {
-        this.$emit('update:myKinks', newVal);
+        if (this.debug) {
+          console.log({ 'updating curkinks': newVal });
+        }
+        this.updateCurKinks(newVal);
       },
     },
   },
