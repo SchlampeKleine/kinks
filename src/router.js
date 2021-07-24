@@ -61,6 +61,14 @@ export default createRouter({
             default: () => import('@/components/Profiles.vue'),
           },
         },
+        {
+          name: 'list',
+          path: 'list',
+          components: {
+            UserOptions,
+            default: () => import('@/views/List.vue'),
+          },
+        },
         /*
         {
           path: 'about',
