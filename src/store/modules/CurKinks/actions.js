@@ -13,7 +13,8 @@ export const updateCategory = ({ store, commit }, changedCategory) => {
   ] = changedCategory;
   commit('update_cur_kinks', { ...tmpCurKinks });
 };
-export const loadFromString = ({ store, commit }, kinkString) => {
+
+export const loadFromString = ({ commit }, kinkString) => {
   const decodedKinks = decodeURI(kinkString);
   const tmpCurKinks = yaml.load(decodedKinks);
   commit('update_cur_kinks', { ...tmpCurKinks });
