@@ -10,7 +10,7 @@ export const updateCategory = ({ store, commit }, changedCategory) => {
   const tmpCurKinks = store.curKinks;
   tmpCurKinks.categories[
     tmpCurKinks.categories.findIndex((element) => element.name === changedCategory.name)
-  ] = newVal;
+  ] = changedCategory;
   commit('update_cur_kinks', { ...tmpCurKinks });
 };
 export const loadFromString = ({ store, commit }, kinkString) => {
