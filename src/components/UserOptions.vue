@@ -125,8 +125,6 @@ import defaultKinks from '@/assets/kinks.yaml';
 // import defaultKinks from '@/assets/kinks_reduced.yaml';
 import useEditMode from '@/plugins/EditMode';
 
-import { saveObjectToLocalStorage, getJSONFromLocalStorage } from '@/plugins/LocalStorage';
-
 export default {
   name: 'UserOptions',
   emits: [
