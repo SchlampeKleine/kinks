@@ -86,7 +86,7 @@ export default createRouter({
     */
     {
       path: '/:pathMatch(.*)',
-      component: () => import('@/components/NotFound'),
+      component: () => import('@/components/NotFound.vue'),
     },
   ],
 });
