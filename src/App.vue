@@ -12,7 +12,7 @@ import {
   useRouter,
   RouterView,
 } from 'vue-router';
-import { mapState, useStore } from 'vuex';
+import { useStore } from 'vuex';
 import { computed } from 'vue';
 
 export default {
