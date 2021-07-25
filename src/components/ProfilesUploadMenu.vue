@@ -45,6 +45,7 @@ en:
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
 
 import yaml from 'js-yaml';
 
@@ -52,6 +53,7 @@ export default {
   name: 'ProfilesUploadMenu',
   data() {
     return {
+      debug: false,
       upload: null,
 
     };
@@ -59,19 +61,30 @@ export default {
   setup() {
     const { t } = useI18n({
     });
+    const store = useStore();
+
     return {
       t,
+      loadKinks: (upload) => store.dispatch('AllKinks/saveKinksForUser', {
+        username: `${upload.name}@${upload.lastModified}`,
+        kinks: upload.content,
+      }),
+      /*
+       * TODO
+       * Remove this when loading Kinks from AllKinks works
+       */
+      loadKinksAsCurKinks: (upload) => store.dispatch('CurKinks/updateCurKinks', upload.content),
     };
   },
   methods: {
 
     parseUploadedKinks() {
-      const parsedKinks = yaml.load(this.upload);
+      this.loadKinks(this.upload);
+      this.loadKinksAsCurKinks(this.upload);
       /* TODO
        *   Add Prompt for which user to use them
        *   Add User to export
        */
-      this.localMyKinks = parsedKinks;
     },
 
     uploadKinks(event) {
@@ -90,8 +103,24 @@ export default {
        * this.image = files[0]
        */
       /* TODO Fix THIS */
+      const { files } = event.target;
+      console.log(event.target.files);
+      const filename = files[0].name;
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        if (this.debug) {
+          console.log({ 'fileReader read': fileReader.result });
+        }
+        this.upload = {
+          content: yaml.load(fileReader.result),
+          name: filename,
+          lastModified: files[0].lastModified,
+        };
+      });
+      fileReader.readAsText(files[0]);
+
       /* eslint-disable-next-line */
-      this.upload = event.target.files[0];
+      // this.upload = event.target.files[0];
     },
 
   },
