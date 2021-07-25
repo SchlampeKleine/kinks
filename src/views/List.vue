@@ -18,6 +18,15 @@
       <td>
         {{ entry.variant }}
       </td>
+      <td>
+        {{ entry.comment }}
+      </td>
+      <td>
+        {{ entry.role }}
+      </td>
+      <td>
+        {{ entry.preferenceLevel }}
+      </td>
     </tr>
   </template>
     </tbody>
