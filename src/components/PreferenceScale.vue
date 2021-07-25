@@ -82,14 +82,13 @@ export default {
   name: 'PreferenceScale',
 
   emits: {
-    'update:role': (newVal) =>
-      {
-        const debug = true;
-        if (debug) {
-          console.log({ 'PreferenceScale emit update:role': newVal });
-        }
-        return true;
-      },
+    'update:role': (newVal) => {
+      const debug = true;
+      if (debug) {
+        console.log({ 'PreferenceScale emit update:role': newVal });
+      }
+      return true;
+    },
   },
 
   data() {
