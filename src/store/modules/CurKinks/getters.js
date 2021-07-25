@@ -14,12 +14,39 @@ export const getCurKinksAsYAML = (getters) => yaml.dump(
 export const getCurKinksAsURI = (state, getters) => encodeURI(getters.getCurKinksAsYAML);
 
 export const getCurKinksAsList = (state, getters) => {
-  const debug = true;
-  const curKinks = getters.getCurKinks.categories;
+  const debug = false;
+  const curKinkCategories = getters.getCurKinks.categories;
 
   if (debug) {
-    console.log({ getCurKinksAsList: curKinks });
+    console.log({ getCurKinksAsList: curKinkCategories });
   }
+
+  const parseRole = (prefix, o, p) => {
+    const h = {
+      ...p,
+      role: o.name,
+      preferenceLevel: o.preference || '',
+    };
+    return h;
+  };
+
+  const parsePreferences = (prefix, o = {}, p) => {
+    const h = {
+      ...p,
+      comment: o.comment || '',
+    };
+    return o.roles
+      ? o.roles
+        .map(
+          (r) => parseRole(
+            prefix,
+            r,
+            h,
+          ),
+        )
+        .flat()
+      : [h].flat();
+  };
 
   const parseVariant = (prefix, o, p) => {
     const h = {
@@ -31,7 +58,14 @@ export const getCurKinksAsList = (state, getters) => {
       variant: o.name,
     };
 
-    return h;
+    return o.preferences
+      ? parsePreferences(
+        o.name,
+        o.preferences,
+        h,
+      )
+        .flat()
+      : [h];
   };
 
   const parseKink = (prefix, o, p) => {
@@ -51,7 +85,13 @@ export const getCurKinksAsList = (state, getters) => {
             h,
           ),
         ).flat()
-      : [h];
+      : [
+        parsePreferences(
+          o.name,
+          o.preferences,
+          h,
+        ),
+      ];
   };
 
   const parseSubCategory = (prefix, o, p) => {
@@ -103,10 +143,10 @@ export const getCurKinksAsList = (state, getters) => {
     );
   };
 
-  const tmp = curKinks
+  const tmp = curKinkCategories
     .map(
       (o) => {
-        const tmpCategory = parseCategory(o);
+        const tmpCategory = parseCategory(o).flat();
         if (debug) {
           console.log(tmpCategory);
         }
