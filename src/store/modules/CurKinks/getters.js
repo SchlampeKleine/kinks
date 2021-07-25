@@ -51,6 +51,16 @@ export const getCurKinksAsList = (state, getters) => {
     )
   );
 
+  const getColorFromPreferenceLevel = (k) => {
+    const preferenceLevel =
+      preferenceLevels.find(
+        (el) => (el.name === k)
+      );
+    return preferenceLevel
+    ? preferenceLevel.color
+    : '';
+  };
+
   const getSortKeyFromPreferenceLevel = (k) => {
     const preferenceLevel =
       preferenceLevels.find(
@@ -67,7 +77,7 @@ export const getCurKinksAsList = (state, getters) => {
       role: o.name,
       preferenceLevel: o.preference || '',
       sortKey: o.sortKey || getSortKeyFromPreferenceLevel(o.preference),
-      color: o.color || '',
+      color: o.color || getColorFromPreferenceLevel(o.preference),
     };
     return h;
   };
