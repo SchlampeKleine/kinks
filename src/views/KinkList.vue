@@ -4,7 +4,7 @@
            "
     >
     <KinkCategory
-      v-for="category in localMyKinks.categories"
+      v-for="category in curKinks.categories"
       :id="category.name"
       :key="'category-'+category.name"
       :category=category
@@ -35,8 +35,7 @@ export default {
     const store = useStore();
 
     return {
-      updateCurKinks: (newKinks) => store.dispatch('CurKinks/updateCurKinks', newKinks),
-      curKinks: computed(() => store.state.CurKinks.curKinks),
+      curKinks: computed(() => store.getters['CurKinks/getCurKinks']),
     };
   },
 
@@ -44,36 +43,6 @@ export default {
     return {
       debug: false,
     };
-  },
-
-  methods: {
-
-    updateCategory(newVal) {
-      const msg = { 'KinkListView updateCategory': newVal };
-      if (this.debug) {
-        console.log(msg);
-      }
-      this.localMyKinks.categories[
-        this.localMyKinks.categories.findIndex(
-          (element) => element.name === newVal.name,
-        )
-      ] = newVal;
-    },
-
-  },
-
-  computed: {
-    localMyKinks: {
-      get() {
-        return this.curKinks;
-      },
-      set(newVal) {
-        if (this.debug) {
-          console.log({ 'updating curkinks': newVal });
-        }
-        this.updateCurKinks(newVal);
-      },
-    },
   },
 
 };

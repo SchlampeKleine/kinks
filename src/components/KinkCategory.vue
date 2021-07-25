@@ -51,6 +51,8 @@
 <script>
 import { useI18n } from 'vue-i18n';
 import { defineAsyncComponent } from 'vue';
+import { useStore } from 'vuex';
+
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
 import useEditMode from '@/plugins/EditMode';
@@ -90,8 +92,10 @@ export default {
       messages: props.category.messages || { en: { name: props.category.name } },
     });
     const { getEditMode } = useEditMode();
+    const store = useStore();
 
     return {
+      updateCategory: (newVal) => store.dispatch('CurKinks/updateCategory', newVal),
       t,
       getEditMode,
     };
@@ -114,7 +118,7 @@ export default {
         return tmpCategory;
       },
       set(newVal) {
-        this.$emit('update:category', newVal);
+        this.updateCategory(newVal);
       },
     },
 

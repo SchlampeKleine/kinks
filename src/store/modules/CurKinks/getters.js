@@ -3,12 +3,9 @@ import defaultKinks from '@/assets/kinks.yaml';
 
 import yaml from 'js-yaml';
 
-export const getCurKinks = (state) => {
-  console.log('getCurKinks');
-  return Object.keys(state.curKinks) === 0
-    ? defaultKinks
-    : state.curKinks;
-};
+export const getCurKinks = (state) => (Object.keys(state.curKinks) === 0
+  ? defaultKinks
+  : state.curKinks);
 
 export const getCurKinksAsYAML = (getters) => yaml.dump(
   { categories: getters.getCurKinks.categories },
