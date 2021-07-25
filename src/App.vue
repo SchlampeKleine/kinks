@@ -15,6 +15,8 @@ import {
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
+import { saveObjectToLocalStorage } from '@/plugins/LocalStorage';
+
 export default {
   name: 'App',
   components: {
