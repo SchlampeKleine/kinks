@@ -21,6 +21,35 @@ export const getCurKinksAsList = (state, getters) => {
     console.log({ getCurKinksAsList: curKinkCategories });
   }
 
+  const transformTranslations = (prefix, o) => (
+    // https://stackoverflow.com/questions/62402443/map-on-javascript-object-get-the-object-keys
+    Object.fromEntries(
+      Object
+        .entries(o)
+        .map(
+          ([key, value]) => [ prefix + '-' + key, value ]
+        )
+    )
+  );
+
+  const transformMessages = (prefix, o) => (
+    // https://stackoverflow.com/questions/62402443/map-on-javascript-object-get-the-object-keys
+    Object.fromEntries(
+      Object
+      .entries(o)
+      .map(
+        ([ key, translations]) => [
+          key,
+          transformTranslations(
+            prefix,
+            translations
+          )
+        ]
+      )
+    )
+  );
+
+
   const parseRole = (prefix, o, p) => {
     const h = {
       ...p,
