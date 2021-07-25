@@ -60,7 +60,7 @@ export default {
         'comment',
         'role',
         'preferenceLevel',
-        ],
+      ],
     };
   },
 };

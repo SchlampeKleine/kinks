@@ -27,8 +27,8 @@ export const getCurKinksAsList = (state, getters) => {
       Object
         .entries(o)
         .map(
-          ([key, value]) => [ prefix + '-' + key, value ]
-        )
+          ([key, value]) => [`${prefix}-${key}`, value],
+        ),
     )
   );
 
@@ -36,19 +36,18 @@ export const getCurKinksAsList = (state, getters) => {
     // https://stackoverflow.com/questions/62402443/map-on-javascript-object-get-the-object-keys
     Object.fromEntries(
       Object
-      .entries(o)
-      .map(
-        ([ key, translations]) => [
-          key,
-          transformTranslations(
-            prefix,
-            translations
-          )
-        ]
-      )
+        .entries(o)
+        .map(
+          ([key, translations]) => [
+            key,
+            transformTranslations(
+              prefix,
+              translations,
+            ),
+          ],
+        ),
     )
   );
-
 
   const parseRole = (prefix, o, p) => {
     const h = {
