@@ -13,6 +13,8 @@ export const getCurKinksAsYAML = (_, getters) => yaml.dump(
 
 export const getCurKinksAsURI = (state, getters) => encodeURI(getters.getCurKinksAsYAML);
 
+import { preferenceLevels } from '@/assets/levels.yaml';
+
 export const getCurKinksAsList = (state, getters) => {
   const debug = false;
   const curKinkCategories = getters.getCurKinks.categories;
@@ -49,11 +51,23 @@ export const getCurKinksAsList = (state, getters) => {
     )
   );
 
+  const getSortKeyFromPreferenceLevel = (k) => {
+    const preferenceLevel =
+      preferenceLevels.find(
+        (el) => (el.name === k)
+      );
+    return preferenceLevel
+    ? preferenceLevel.sortKey
+    : '';
+  };
+
   const parseRole = (prefix, o, p) => {
     const h = {
       ...p,
       role: o.name,
       preferenceLevel: o.preference || '',
+      sortKey: o.sortKey || getSortKeyFromPreferenceLevel(o.preference),
+      color: o.color || '',
     };
     return h;
   };

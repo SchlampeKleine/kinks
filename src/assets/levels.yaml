@@ -5,6 +5,7 @@
 preferenceLevels:
   - name: "hardlimit"
     color: red
+    sortKey: 60
     messages:
       de:
         hardlimit: Hardlimit
@@ -12,6 +13,7 @@ preferenceLevels:
         hardlimit: hardlimit
   - name: "softlimit"
     color: orange
+    sortKey: 50
     messages:
       de:
         softlimit: "softlimit"
@@ -19,6 +21,7 @@ preferenceLevels:
         softlimit: "softlimit"
   - name: "dontcare"
     color: yellow
+    sortKey: 40
     messages:
       de:
         dontcare: "egal"
@@ -26,6 +29,7 @@ preferenceLevels:
         dontcare: "dontcare"
   - name: "curious"
     color: green
+    sortKey: 30
     messages:
       de:
         curious: Neugierig
@@ -33,6 +37,7 @@ preferenceLevels:
         curious: curious
   - name: "loveit"
     color: blue
+    sortKey: 20
     messages:
       de:
         loveit: Favorit
@@ -40,6 +45,7 @@ preferenceLevels:
         loveit: loveit
   - name: "notavailable"
     color: grey
+    sortKey: 10
     messages:
       de:
         notavailable: Nicht Anwendbar
