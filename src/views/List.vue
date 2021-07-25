@@ -88,36 +88,36 @@ export default {
   data() {
     return {
       rows: [
-        { name: 'category', show: true, sortMode: "" },
-        { name: 'subcategory', show: true, sortMode: "" },
-        { name: 'kink', show: true, sortMode: "" },
-        { name: 'variant', show: true, sortMode: "" },
-        { name: 'comment', show: true, sortMode: "" },
-        { name: 'role', show: true, sortMode: "" },
-        { name: 'preferenceLevel', show: true, sortMode: "" },
+        { name: 'category', show: true, sortMode: '' },
+        { name: 'subcategory', show: true, sortMode: '' },
+        { name: 'kink', show: true, sortMode: '' },
+        { name: 'variant', show: true, sortMode: '' },
+        { name: 'comment', show: true, sortMode: '' },
+        { name: 'role', show: true, sortMode: '' },
+        { name: 'preferenceLevel', show: true, sortMode: '' },
       ],
-      sortKey: "",
+      sortKey: '',
     };
   },
   methods: {
 
     toggleSort(k) {
-      if (k.sortMode == "") {
+      if (k.sortMode == '') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
-        ].sortMode = "up";
+        ].sortMode = 'up';
       }
-      if (k.sortMode == "up") {
+      if (k.sortMode == 'up') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
-        ].sortMode = "down";
+        ].sortMode = 'down';
       }
-      if (k.sortMode == "down") {
+      if (k.sortMode == 'down') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
-        ].sortMode = "";
+        ].sortMode = '';
       }
-      this.sortKey=k.name;
+      this.sortKey = k.name;
     },
 
     toggleColumnVisibility(k) {
@@ -133,7 +133,7 @@ export default {
     },
 
     sortIcon(k) {
-      if (k.mode === 'up' ) {
+      if (k.mode === 'up') {
         return ['fas', 'fa-sort-up'].join(' ');
       }
       if (k.mode === 'down') {
@@ -157,7 +157,7 @@ export default {
       if (rowEntry.color) {
         return {
           'background-color': rowEntry.color,
-          'color': this.findColorInvert(rowEntry.color),
+          color: this.findColorInvert(rowEntry.color),
         };
       }
       return {};
@@ -166,17 +166,15 @@ export default {
   },
   computed: {
     sortedKinkList: {
-      get()
-        {
-          var tmpList = this.curKinksList;
-          if (this.sortKey === "") {
-            return tmpList;
-           } else if (this.sortKey === 'preferenceLevel') {
-             return tmpList.sort((a,b) => (a['sortKey']<b['sortKey']))
-          } else {
-            return tmpList.sort((a,b) => (a[this.sortKey]<b[this.sortKey]))
-          }
-        },
+      get() {
+        const tmpList = this.curKinksList;
+        if (this.sortKey === '') {
+          return tmpList;
+        } if (this.sortKey === 'preferenceLevel') {
+          return tmpList.sort((a, b) => (a.sortKey < b.sortKey));
+        }
+        return tmpList.sort((a, b) => (a[this.sortKey] < b[this.sortKey]));
+      },
 
     },
 

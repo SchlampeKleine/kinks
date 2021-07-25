@@ -3,6 +3,8 @@ import defaultKinks from '@/assets/kinks.yaml';
 
 import yaml from 'js-yaml';
 
+import { preferenceLevels } from '@/assets/levels.yaml';
+
 export const getCurKinks = (state) => (Object.keys(state.curKinks) === 0
   ? defaultKinks
   : state.curKinks);
@@ -12,8 +14,6 @@ export const getCurKinksAsYAML = (_, getters) => yaml.dump(
 );
 
 export const getCurKinksAsURI = (state, getters) => encodeURI(getters.getCurKinksAsYAML);
-
-import { preferenceLevels } from '@/assets/levels.yaml';
 
 export const getCurKinksAsList = (state, getters) => {
   const debug = false;
@@ -52,23 +52,21 @@ export const getCurKinksAsList = (state, getters) => {
   );
 
   const getColorFromPreferenceLevel = (k) => {
-    const preferenceLevel =
-      preferenceLevels.find(
-        (el) => (el.name === k)
-      );
+    const preferenceLevel = preferenceLevels.find(
+      (el) => (el.name === k),
+    );
     return preferenceLevel
-    ? preferenceLevel.color
-    : '';
+      ? preferenceLevel.color
+      : '';
   };
 
   const getSortKeyFromPreferenceLevel = (k) => {
-    const preferenceLevel =
-      preferenceLevels.find(
-        (el) => (el.name === k)
-      );
+    const preferenceLevel = preferenceLevels.find(
+      (el) => (el.name === k),
+    );
     return preferenceLevel
-    ? preferenceLevel.sortKey
-    : '';
+      ? preferenceLevel.sortKey
+      : '';
   };
 
   const parseRole = (prefix, o, p) => {
