@@ -77,6 +77,13 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@intlify/vue-i18n-loader');
+
+  config.module
+      .rule('babel-plugin-syntax-dynamic-import')
+      .test(/\.(js)$/)
+      .use('@babel/plugin-syntax-dynamic-import')
+      .loader('babel-loader')
+
   },
 
 };
