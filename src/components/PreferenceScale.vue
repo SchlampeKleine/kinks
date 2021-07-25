@@ -81,9 +81,16 @@ import Color from 'color-js';
 export default {
   name: 'PreferenceScale',
 
-  emits: [
-    'update:role',
-  ],
+  emits: {
+    'update:role': (newVal) =>
+      {
+        const debug = true;
+        if (debug) {
+          console.log({ 'PreferenceScale emit update:role': newVal });
+        }
+        return true;
+      },
+  },
 
   data() {
     return {
