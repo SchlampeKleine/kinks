@@ -29,8 +29,6 @@
   </template>
     </tbody>
   </table>
-
-  {{ curKinksList }}
 </template>
 
 <script>
