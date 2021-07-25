@@ -9,7 +9,7 @@
             class="file-input"
             type="file"
             name="resume"
-            @change="onFilePicked"
+            @change="uploadKinks"
             >
             <span class="file-cta">
               <span class="file-icon">
