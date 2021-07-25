@@ -22,8 +22,9 @@
                 <i :class="sortIcon(k)"></i>
               </span>
               </button>
+              <template
+                  :v-if="false">
               <button
-                  :v-if="false"
                     class="button is-small"
                     @click="toggleColumnVisibility(k)"
                     >
@@ -33,6 +34,7 @@
                   ></i>
               </span>
               </button>
+              </template>
             </span>
           </th>
       </template>
