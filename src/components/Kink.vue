@@ -199,7 +199,7 @@ export default {
       if (this.debug) {
         console.log({ 'Kink UpdateKink': newVal });
       }
-      this.$emit('update:kink', { ...this.newVal });
+      this.$emit('update:kink', { ...newVal });
     },
 
     updatePreferences(newVal) {
