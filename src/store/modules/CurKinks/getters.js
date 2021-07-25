@@ -7,7 +7,7 @@ export const getCurKinks = (state) => (Object.keys(state.curKinks) === 0
   ? defaultKinks
   : state.curKinks);
 
-export const getCurKinksAsYAML = ( _, getters) => yaml.dump(
+export const getCurKinksAsYAML = (_, getters) => yaml.dump(
   { categories: getters.getCurKinks.categories },
 );
 
