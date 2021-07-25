@@ -48,6 +48,11 @@
         Profiles
         </RouterLink>
       </div>
+      <div class="navbar-item">
+        <RouterLink :to="{ name: 'list' }">
+        List
+        </RouterLink>
+      </div>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
