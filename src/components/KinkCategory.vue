@@ -96,7 +96,15 @@ export default {
       getEditMode,
     };
   },
-  emits: ['update:category'],
+  emits: {
+    'update:category': (newVal) => {
+      const debug = true;
+      if (debug) {
+        console.log({ 'KinkCategory emit update:category': newVal });
+      }
+      return true;
+    },
+  },
   computed: {
     localCategory: {
       get() {
