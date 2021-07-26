@@ -1,5 +1,15 @@
+/**
+ * Source
+ * https://createapp.dev/webpack
+ */
 const path = require('path');
+// const webpack = require('webpack');
+// const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
@@ -9,14 +19,48 @@ module.exports = {
 
   configureWebpack: {
 
-    plugins: process.env.NODE_ENV === 'production'
-      ? [
+    optimization: {
+      runtimeChunk: 'single',
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
+
+    plugins: [
+      /* Default Plugins */
+      // new VueLoaderPlugin(),
+      /* new CopyPlugin({
+        patterns: [
+          { from: 'public/index.html' }
+        ],
+      }), */
+      /* new HtmlWebpackPlugin({
+        appMountId: 'app',
+        filename: 'index.html'
+      }), */
+      new MiniCssExtractPlugin(),
+      new CleanWebpackPlugin(),
+
+    ].concat(
+      process.env.NODE_ENV === 'production'
+        ? [
         /* Production Plugins */
-      ]
-      : [
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+          }),
+        ]
+        : [
         /* Development Plugins */
-        new BundleAnalyzerPlugin(),
-      ],
+          new BundleAnalyzerPlugin(),
+        ],
+    ),
 
     devtool: process.env.NODE_ENV !== 'production'
       ? 'source-map'
@@ -78,12 +122,11 @@ module.exports = {
       .use('i18n')
       .loader('@intlify/vue-i18n-loader');
 
-  config.module
+    config.module
       .rule('babel-plugin-syntax-dynamic-import')
       .test(/\.(js)$/)
       .use('@babel/plugin-syntax-dynamic-import')
-      .loader('babel-loader')
-
+      .loader('babel-loader');
   },
 
 };
