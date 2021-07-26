@@ -4,7 +4,6 @@ const fs = require('fs');
 
 (async () => {
   try {
-    await execa('git', ['stash', 'push']);
     await execa('git', ['checkout', '--orphan', 'gh-pages']);
     // eslint-disable-next-line no-console
     console.log('Building started...');
@@ -17,7 +16,6 @@ const fs = require('fs');
     await execa('git', ['push', 'origin', 'HEAD:gh-pages', '--force']);
     await execa('rm', ['-r', folderName]);
     await execa('git', ['checkout', '-f', 'main']);
-    await execa('git', ['stash', 'pop']);
     await execa('git', ['branch', '-D', 'gh-pages']);
     console.log('Successfully deployed, check your settings');
   } catch (e) {
