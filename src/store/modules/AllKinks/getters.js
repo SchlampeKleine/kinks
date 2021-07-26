@@ -11,3 +11,9 @@ export const getKinksForUser = (state, getters) => (username) => (
 export const getDefaultUser = (state) => state.userKinks.filter(
   (el) => el.username === 'default',
 );
+
+export const getAvailableUsers = (state) => {
+  return state.userKinks.map(
+    (el) => (el.username)
+  );
+};
