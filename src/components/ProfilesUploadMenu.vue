@@ -69,18 +69,12 @@ export default {
         username: `${upload.name}@${upload.lastModified}`,
         kinks: upload.content,
       }),
-      /*
-       * TODO
-       * Remove this when loading Kinks from AllKinks works
-       */
-      loadKinksAsCurKinks: (upload) => store.dispatch('CurKinks/updateCurKinks', upload.content),
     };
   },
   methods: {
 
     parseUploadedKinks() {
       this.loadKinks(this.upload);
-      this.loadKinksAsCurKinks(this.upload);
       /* TODO
        *   Add Prompt for which user to use them
        *   Add User to export
