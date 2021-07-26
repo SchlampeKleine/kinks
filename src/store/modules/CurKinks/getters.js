@@ -23,22 +23,22 @@ export const getCurKinksAsList = (state, getters) => {
     console.log({ getCurKinksAsList: curKinkCategories });
   }
 
-  const transformTranslations = (prefix, o) => (
+  const transformTranslations = (prefix, translations) => (
     // https://stackoverflow.com/questions/62402443/map-on-javascript-object-get-the-object-keys
     Object.fromEntries(
       Object
-        .entries(o)
+        .entries(translations)
         .map(
           ([key, value]) => [`${prefix}-${key}`, value],
         ),
     )
   );
 
-  const transformMessages = (prefix, o) => (
+  const transformMessages = (prefix, messages) => (
     // https://stackoverflow.com/questions/62402443/map-on-javascript-object-get-the-object-keys
     Object.fromEntries(
       Object
-        .entries(o)
+        .entries(messages)
         .map(
           ([key, translations]) => [
             key,
@@ -215,39 +215,34 @@ export const getCurKinksAsList = (state, getters) => {
 };
 
 export const getCurKinksAsCSV = (_, getters) => {
+  const curKinks = getters.getCurKinksAsList;
 
-  const curKinks = getters['getCurKinksAsList'];
-
-  const sortKeys = (a,b) => (a[0] > b[0]);
-
+  const sortKeys = (a, b) => (a[0] > b[0]);
 
   const header = Object.entries(
-    curKinks[0]
+    curKinks[0],
   )
     .sort(
-      sortKeys
+      sortKeys,
     )
     .map(
-      ([key, value]) => (`'${key}'`)
+      ([key, value]) => (`'${key}'`),
     )
     .join(',');
-
 
   return [header].concat(
     curKinks.map(
       (o) => (
         Object.entries(o)
-        .sort(
-          sortKeys
-        )
-        .map(
-          ([key, value]) => (`'${value}'`)
-        )
-        .join(',')
-      )
-    )
+          .sort(
+            sortKeys,
+          )
+          .map(
+            ([key, value]) => (`'${value}'`),
+          )
+          .join(',')
+      ),
+    ),
   )
-  .join('\n')
-  ;
-
+    .join('\n');
 };
