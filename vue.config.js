@@ -3,7 +3,7 @@
  * https://createapp.dev/webpack
  */
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 // const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const CopyPlugin = require('copy-webpack-plugin');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -44,7 +44,7 @@ module.exports = {
         appMountId: 'app',
         filename: 'index.html'
       }), */
-      new MiniCssExtractPlugin(),
+      // new MiniCssExtractPlugin(),
       new CleanWebpackPlugin(),
 
     ].concat(
