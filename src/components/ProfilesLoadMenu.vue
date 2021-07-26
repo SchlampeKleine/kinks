@@ -26,7 +26,7 @@
       <div class="control">
         <button
           class="button"
-          v-on:click="loadMyKinks(loadUser)"
+          v-on:click="loadKinksForUser(loadUser)"
           :disabled="canLoadKinks(loadUser)"
           >
           {{ t('button_load') }}
@@ -55,6 +55,8 @@ en:
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
   name: 'ProfilesLoadMenu',
@@ -63,59 +65,23 @@ export default {
       loadUser: null,
     };
   },
-  props: {
-
-    defaultKinks: {
-      type: Object,
-      required: true,
-    },
-
-    allKinks: {
-      type: Object,
-      required: true,
-    },
-
-  },
   setup() {
     const { t } = useI18n({
     });
+    const store = useStore();
+
     return {
       t,
+      getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
+      loadKinksForUser: (user) => store.dispatch('AllKinks/loadKinksForUser', { username:
+        user }),
     };
   },
   methods: {
 
     canLoadKinks(user) {
-      const users = this.getUsers();
+      const users = this.getUsers;
       return !(users.includes(user));
-    },
-
-    loadMyKinks(user) {
-      this.localMyKinks = this.getKinksForUser(user);
-    },
-
-    getKinksForUser(user) {
-      let localUser = user;
-      if (user === '') localUser = 'default';
-      const kinks = this.allKinks[localUser];
-      if (kinks) {
-        if (this.debug) {
-          console.log({ 'UserOptions: Found kinks for user': kinks });
-        }
-        return kinks;
-      }
-      if (this.debug) {
-        console.log({ 'UserOptions: Return defaultKinks': this.defaultKinks });
-      }
-      return this.defaultKinks;
-    },
-
-    getUsers() {
-      if (this.allKinks) {
-        const users = Object.keys(this.allKinks);
-        return users;
-      }
-      return [];
     },
 
   },
