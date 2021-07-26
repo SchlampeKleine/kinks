@@ -8,10 +8,12 @@ export const saveKinksForUser = ({ state, commit }, { username, kinks }) => {
 
   if (userIndex > -1) {
     tmpUserKinks[userIndex].kinks = kinks;
+    tmpUserKinks[userIndex].lastUpdated = new Date();
   } else {
     tmpUserKinks.push({
       username,
       kinks,
+      lastUpdated: new Date(),
     });
   }
   commit('updateUserKinks', {
