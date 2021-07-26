@@ -100,11 +100,7 @@ export const getCurKinksAsList = (state, getters) => {
 
   const parseVariant = (prefix, o, p) => {
     const h = {
-      category: p.category,
-      subcategory: p.subcategory
-        ? p.subcategory
-        : '',
-      kink: p.kink,
+      ...p,
       variant: o.name,
     };
 
@@ -120,10 +116,7 @@ export const getCurKinksAsList = (state, getters) => {
 
   const parseKink = (prefix, o, p) => {
     const h = {
-      category: p.category,
-      subcategory: p.subcategory
-        ? p.subcategory
-        : '',
+      ...p,
       kink: o.name,
     };
     return o.variants
@@ -146,7 +139,7 @@ export const getCurKinksAsList = (state, getters) => {
 
   const parseSubCategory = (prefix, o, p) => {
     const h = {
-      category: p.category,
+      ...p,
       subcategory: o.name,
     };
     return o.kinds
