@@ -11,7 +11,6 @@
       :name="category.name"
       :subcategories="category.subcategories"
       :kinds="category.kinds"
-      @update:category="updateCategory"
       />
   </div>
 </template>
