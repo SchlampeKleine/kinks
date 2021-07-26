@@ -102,17 +102,17 @@ export default {
   methods: {
 
     toggleSort(k) {
-      if (k.sortMode == '') {
+      if (k.sortMode === '') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = 'up';
       }
-      if (k.sortMode == 'up') {
+      if (k.sortMode === 'up') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = 'down';
       }
-      if (k.sortMode == 'down') {
+      if (k.sortMode === 'down') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = '';
