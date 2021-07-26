@@ -17,3 +17,13 @@ export const getAvailableUsers = (state) => {
     (el) => (el.username)
   );
 };
+
+export const getLastUpdateForUser = (state) => (username) => (
+  state.userKinks
+    .sort(
+      (a,b) => (a.lastUpdated > b.lastUpdated)
+    )
+    .find(
+      (el) => (el.username === username)
+    ).lastUpdated
+);
