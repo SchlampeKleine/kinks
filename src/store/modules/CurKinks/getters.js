@@ -159,8 +159,20 @@ export const getCurKinksAsList = (state, getters) => {
       ).flat();
   };
 
+  const defaultEntry = {
+    category: '',
+    subcategory: '',
+    kink: '',
+    variant: '',
+    role: '',
+    preferenceLevel: '',
+    sortKey: '',
+    color: '',
+  };
+
   const parseCategory = (o) => {
     const h = {
+      ...defaultEntry,
       category: o.name,
     };
 
