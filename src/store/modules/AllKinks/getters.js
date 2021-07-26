@@ -9,5 +9,5 @@ export const getKinksForUser = (state, getters) => (username) => (
 );
 
 export const getDefaultUser = (state) => state.userKinks.filter(
-  (el) => el.usename === 'default',
+  (el) => el.username === 'default',
 );
