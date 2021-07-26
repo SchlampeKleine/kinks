@@ -18,3 +18,13 @@ export const saveKinksForUser = ({ state, commit }, { username, kinks }) => {
     userKinks: [...tmpUserKinks],
   });
 };
+
+export const loadKinksForUser = ({ dispatch, commit, getters },{ username }) => {
+  /**
+   *  TODO
+   *  Save curKinks if not already done
+   */
+  const tmpKinks = getters.getKinksForUser(username);
+  console.log({ tmpKinks });
+  dispatch('CurKinks/updateCurKinks', { ...tmpKinks }, { root: true });
+};
