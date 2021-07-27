@@ -14,12 +14,14 @@
         active: als aktiver Part
       en:
         active: active
+    sideBySide: passive
   - name: passive
     messages:
       de:
         passive: als passiver Part
       en:
         passive: passive
+    sideBySide: active
 
 .roles_myself_partner: &roles_myself_partner
   - name: myself
@@ -28,12 +30,16 @@
         myself: an mir selbst
       en:
         myself: on myself
+    sideBySide: partner
+    replaces: active
   - name: partner
     messages:
       de:
         partner: an meinem Partner
       en:
         partner: on my partner
+    sideBySide: myself
+    replaces: passive
 
 .penis_or_finger_or_toys: &penis_or_finger_or_toys
   - name: penis
@@ -338,6 +344,7 @@ categories:
                   description: >
                     Threesome with three female partners
             - name: middle
+              sideBySide: outside
               messages:
                 de:
                   middle: Ich in der Mitte
@@ -348,6 +355,7 @@ categories:
                   description: >
                     Threesome with me as the main focus of the others
             - name: outside
+              sideBySide: middle
               messages:
                 de:
                   outside: ich dabei
