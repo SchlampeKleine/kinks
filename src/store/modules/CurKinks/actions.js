@@ -106,7 +106,6 @@ export const patchCurrentProfile = ({ dispatch, commit, getters }) => {
       // special handling for comment
       comment: object.comment.length > 0 ? object.comment : patch.comment,
     };
-
   };
 
   /**
