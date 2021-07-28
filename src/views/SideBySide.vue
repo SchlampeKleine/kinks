@@ -2,73 +2,18 @@
   <h1 class="title">ListView</h1>
 
   <!-- Load Menu -->
-  <div class="box">
-    <div class="block">
-    <div class="field has-addons">
-
-      <div class="control">
-        <div class="select">
-          <select v-model="usernameA">
-            <option disabled value="">
-            {{ t('loadUser_choice') }}
-            </option>
-            <option
-              v-for="user in getUsers"
-              :key="user"
-              >
-              {{ user }}
-            </option>
-          </select>
-          <div class="help">
-            {{ t('help_field_loadUser') }}
-          </div>
+  <div class="block">
+    <div class="columns">
+      <div class="column">
+        <div class="field has-addons">
+          <ProfileChooser v-model="usernameA" />
         </div>
       </div>
-      <div class="control">
-        <button
-          class="button"
-          v-on:click="loadKinksForUser(loadUser)"
-          :disabled="canLoadKinks(loadUser)"
-          >
-          {{ t('button_load') }}
-        </button>
-      </div>
-    </div>
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="block">
-    <div class="field has-addons">
-
-      <div class="control">
-        <div class="select">
-          <select v-model="usernameB">
-            <option disabled value="">
-            {{ t('loadUser_choice') }}
-            </option>
-            <option
-              v-for="user in getUsers"
-              :key="user"
-              >
-              {{ user }}
-            </option>
-          </select>
-          <div class="help">
-            {{ t('help_field_loadUser') }}
-          </div>
+      <div class="column">
+        <div class="field has-addons">
+          <ProfileChooser v-model="usernameB" />
         </div>
       </div>
-      <div class="control">
-        <button
-          class="button"
-          v-on:click="loadKinksForUser(loadUser)"
-          :disabled="canLoadKinks(loadUser)"
-          >
-          {{ t('button_load') }}
-        </button>
-      </div>
-    </div>
     </div>
   </div>
 
