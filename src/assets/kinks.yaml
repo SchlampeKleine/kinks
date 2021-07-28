@@ -5,6 +5,8 @@
 #
 # Sources:
 # - Checklist VER: .81 - www.discerningspecialist.com
+#
+SCHEME_VERSION: 0.1.0
 
 # Reusable anchors
 .roles_active_passive: &roles_active_passive
