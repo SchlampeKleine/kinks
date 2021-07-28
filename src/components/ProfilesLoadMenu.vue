@@ -73,8 +73,10 @@ export default {
     return {
       t,
       getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
-      loadKinksForUser: (user) => store.dispatch('AllKinks/loadKinksForUser', { username:
-        user }),
+      loadKinksForUser: (user) => store.dispatch('AllKinks/loadKinksForUser', {
+        username:
+        user,
+      }),
     };
   },
   methods: {
