@@ -5,24 +5,7 @@
     <div class="block">
     <div class="field has-addons">
 
-      <div class="control">
-        <div class="select">
-          <select v-model="loadUser">
-            <option disabled value="">
-            {{ t('loadUser_choice') }}
-            </option>
-            <option
-              v-for="user in getUsers"
-              :key="user"
-              >
-              {{ user }}
-            </option>
-          </select>
-          <div class="help">
-            {{ t('help_field_loadUser') }}
-          </div>
-        </div>
-      </div>
+      <ProfileChooser v-model="loadUser" />
       <div class="control">
         <button
           class="button"
@@ -58,6 +41,8 @@ import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
+import ProfileChooser from '@/components/ProfileChooser.vue';
+
 export default {
   name: 'ProfilesLoadMenu',
   data() {
@@ -86,6 +71,9 @@ export default {
       return !(users.includes(user));
     },
 
+  },
+  components: {
+    ProfileChooser,
   },
 
 };
