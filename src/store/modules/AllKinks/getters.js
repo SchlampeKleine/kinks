@@ -236,13 +236,22 @@ export const getKinksAsListForUser = (state, getters) => (username) => {
  * @param {string} usernameB - username of user b
  * @return {Object[]}
  */
-export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => {
-  if (usernameA === '' || usernameB === '') {
+export const getKinksSideBySide = (state, getters, rootState, rootGetters) => (usernameA, usernameB) => {
+  const kinksA = usernameA
+    ? getters.getKinksForUser(usernameA)
+    : rootGetters['CurKinks/getCurKinks'];
+  const kinksB = usernameB
+    ? getters.getKinksForUser(usernameB)
+    : rootGetters['CurKinks/getCurKinks'];
+
+  if (kinksA.SCHEME_VERSION !== kinksB.SCHEME_VERSION) {
+    console.warn({
+      msg: 'Incompatible SCHEME_VERSION',
+      kinksA,
+      kinksB,
+    });
     return [];
   }
-
-  const kinksA = getters.getKinksForUser(usernameA);
-  const kinksB = getters.getKinksForUser(usernameB);
 
   const getColorFromPreferenceLevel = (k) => {
     const preferenceLevel = preferenceLevels.find(
@@ -269,19 +278,21 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
    * @param {Object[]} d - Default entry
    * @return {Object[]}
    */
-  const mergeRole = (a, b, d) => (
-    {
+  const mergeRole = (a, b, d) => {
+    const tmpRole = {
       ...d,
       roleA: a.name,
-      preferenceLevelA: a.preference,
-      sortKeyA: getSortKeyFromPreferenceLevel(a.preference),
-      colorA: getColorFromPreferenceLevel(a.preference),
-      roleB: b.name,
-      preferenceLevelB: b.preference,
-      sortKeyB: getSortKeyFromPreferenceLevel(b.preference),
-      colorB: getColorFromPreferenceLevel(b.preference),
-    }
-  );
+      preferenceLevelA: a.preference || '',
+      sortKeyA: a.sortKey || getSortKeyFromPreferenceLevel(a.preference),
+      colorA: a.color || getColorFromPreferenceLevel(a.preference),
+      roleB: b.name || a.name,
+      preferenceLevelB: b.preference || '',
+      sortKeyB: b.color || getSortKeyFromPreferenceLevel(b.preference),
+      colorB: b.color || getColorFromPreferenceLevel(b.preference),
+    };
+    // console.log({tmpRole,a,b});
+    return tmpRole;
+  };
 
   /**
    * returns a list of two merged preference objects
@@ -292,32 +303,36 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
    */
   const mergePreferences = (a, b, d) => (
     (
-      a.roles
-      ? a.roles
-      : defaultRoles
+      (a && a.roles)
+        ? a.roles
+        : defaultRoles
     )
-    .map(
-      (role)=> mergeRole(
-        role,
-        (
-          b.roles
-          ? b.roles
-          : defaultRoles
-        )
-        .find(
-          (el) => (
-            role.sideBySide
-            ? el.name === role.sideBySide
-            : el.name === role.name
+      .map(
+        (role) => mergeRole(
+          role,
+          (
+            (b && b.roles)
+              ? b.roles
+              : defaultRoles
           )
+            .find(
+              (el) => (
+                role.sideBySide
+                  ? (
+                    el.name === role.sideBySide
+                  )
+                  : (
+                    el.name === role.name
+                  )
+              ),
+            ) || {},
+          {
+            ...d,
+            commentA: (a && a.comment) ? a.comment : '',
+            commentB: (b && b.comment) ? b.comment : '',
+          },
         ),
-        {
-          ...d,
-          commentA: a.comment,
-          commentB: b.comment,
-        }
-      )
-    )
+      ).flat()
   );
 
   /**
@@ -329,15 +344,14 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
    */
   const mergeVariant = (a, b, d) => (
     (
-      [mergePreferences(
-        a,
-        b,
-          {
-            ...d,
-            variant: a.name,
-          }
-        )
-      ]
+      mergePreferences(
+        a.preferences,
+        b.preferences,
+        {
+          ...d,
+          variant: a.name,
+        },
+      )
     ).flat()
   );
 
@@ -351,19 +365,28 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
   const mergeKind = (a, b, d) => (
     (
       a.variants
-      ? a.variants.map(
-        (variant) => mergeVariant(
-          variant,
-          b.variants.find(
-            (el) => el.name === variant.name
+        ? a.variants.map(
+          (variant) => mergeVariant(
+            variant,
+            b.variants.find(
+              (el) => el.name === variant.name,
+            ),
+            {
+              ...d,
+              kink: a.name,
+            },
           ),
-          {
-            ...d,
-            kink: a.name,
-          }
         )
-      )
-      : [mergePreferences(a, b, {...d, kink: a.name, })]
+        : [
+          mergePreferences(
+            a.preferences,
+            b.preferences,
+            {
+              ...d,
+              kink: a.name,
+            },
+          ),
+        ]
     ).flat()
   );
 
@@ -377,18 +400,19 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
   const mergeSubCategory = (a, b, d) => (
     (
       a.kinds
-      ? a.kinds.map(
-        (kind) => mergeKind(
-          kind,
-          b.kinds.find(
-            (el) => el.name === kind.name
+        ? a.kinds.map(
+          (kind) => mergeKind(
+            kind,
+            b.kinds.find(
+              (el) => el.name === kind.name,
+            ),
+            {
+              ...d,
+              subcategory: a.name,
+            },
           ),
-          { ...d,
-            subcategory: a.name,
-          }
         )
-      )
-      : []
+        : []
     ).flat()
   );
 
@@ -401,32 +425,32 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
    */
   const mergeCategory = (a, b, d) => (
     (
-    a.subcategories
-    ? a.subcategories.map(
-      (subcategory) => mergeSubCategory(
-        subcategory,
-        b.subcategories.find(
-          (el) => el.name === subcategory.name
-        ),
-        d
-      )
-    ).flat()
-    : []
+      a.subcategories
+        ? a.subcategories.map(
+          (subcategory) => mergeSubCategory(
+            subcategory,
+            b.subcategories.find(
+              (el) => el.name === subcategory.name,
+            ),
+            d,
+          ),
+        ).flat()
+        : []
     ).concat(
       a.kinds
-      ? a.kinds.map(
-        (kind) => mergeKind(
-          kind,
-          b.kinds.find(
-            (el) => el.name === kind.name
+        ? a.kinds.map(
+          (kind) => mergeKind(
+            kind,
+            b.kinds.find(
+              (el) => el.name === kind.name,
+            ),
+            {
+              ...d,
+              category: a.name,
+            },
           ),
-          {
-            ...d,
-            category: a.name,
-          }
         )
-      )
-      : []
+        : [],
     ).flat()
   );
 
@@ -451,17 +475,15 @@ export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => 
     commentB: '',
   };
 
-  const mergedKinks =
-    kinksA.categories.map(
-      (category) => mergeCategory(
-        category,
-        kinksB.categories.find(
-          (el) => el.name === category.name
-        ),
-        defaultEntry
-      )
-    ).flat();
+  const mergedKinks = kinksA.categories.map(
+    (category) => mergeCategory(
+      category,
+      kinksB.categories.find(
+        (el) => el.name === category.name,
+      ),
+      defaultEntry,
+    ),
+  ).flat();
 
   return mergedKinks;
-
 };
