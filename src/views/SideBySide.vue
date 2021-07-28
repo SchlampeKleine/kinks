@@ -18,45 +18,45 @@
   </div>
 
   <div class="table-container">
-  <table class="table">
-    <thead>
-      <tr>
-      <template
-          v-for="k in rows"
-          :key="'head-' + k.name"
-          >
-          <th>
-            <span class="icon-text">
-              <button
-                  :v-if="k.show"
-                  class="button is-small"
-                  @click="toggleSort(k)"
-                >
-              <span>
-                <abbr :title="t(k.name,k.name)">{{ k.name }}</abbr>
-              </span>
-              <span class="icon">
-                <i :class="sortIcon(k)"></i>
-              </span>
-              </button>
-              <template
-                  :v-if="false">
-              <button
-                    class="button is-small"
-                    @click="toggleColumnVisibility(k)"
-                    >
-              <span class="icon">
-                <i
-                    :class="showIcon(k)"
-                  ></i>
-              </span>
-              </button>
-              </template>
+    <table class="table">
+      <thead>
+        <tr>
+          <template
+              v-for="k in rows"
+              :key="'head-' + k.name"
+              >
+              <th>
+                <span class="icon-text">
+                  <button
+                      :v-if="k.show"
+                      class="button is-small"
+                      @click="toggleSort(k)"
+                      >
+                      <span>
+                        <abbr :title="t(k.name,k.name)">{{ k.name }}</abbr>
+                      </span>
+            <span class="icon">
+              <i :class="sortIcon(k)"></i>
             </span>
-          </th>
-      </template>
-      </tr>
-    </thead>
+                  </button>
+                  <template
+                      :v-if="false">
+                    <button
+                        class="button is-small"
+                        @click="toggleColumnVisibility(k)"
+                        >
+                        <span class="icon">
+                          <i
+                              :class="showIcon(k)"
+                              ></i>
+                        </span>
+                    </button>
+                  </template>
+                </span>
+              </th>
+          </template>
+        </tr>
+      </thead>
 
       <tbody>
         <template
@@ -88,6 +88,8 @@ import { useI18n } from 'vue-i18n';
 
 import Color from 'color-js';
 
+import ProfileChooser from '@/components/ProfileChooser.vue';
+
 export default {
   name: 'ListView',
   setup() {
@@ -106,21 +108,44 @@ export default {
       ),
     };
   },
+  components: {
+    ProfileChooser,
+  },
   data() {
     return {
       usernameA: '',
       usernameB: '',
       rows: [
-        { name: 'category', show: true, sortMode: '' },
-        { name: 'subcategory', show: true, sortMode: '' },
-        { name: 'kink', show: true, sortMode: '' },
-        { name: 'variant', show: true, sortMode: '' },
-        { name: 'commentA', show: true, sortMode: '' },
-        { name: 'preferenceLevelA', show: true, sortMode: '' },
-        { name: 'roleA', show: true, sortMode: '' },
-        { name: 'roleB', show: true, sortMode: '' },
-        { name: 'commentB', show: true, sortMode: '' },
-        { name: 'preferenceLevelB', show: true, sortMode: '' },
+        {
+          name: 'category', show: true, sortMode: '',
+        },
+        {
+          name: 'subcategory', show: true, sortMode: '',
+        },
+        {
+          name: 'kink', show: true, sortMode: '',
+        },
+        {
+          name: 'variant', show: true, sortMode: '',
+        },
+        {
+          name: 'roleA', show: true, sortMode: '',
+        },
+        {
+          name: 'commentA', show: true, sortMode: '',
+        },
+        {
+          name: 'preferenceLevelA', show: true, sortMode: '',
+        },
+        {
+          name: 'roleB', show: true, sortMode: '',
+        },
+        {
+          name: 'commentB', show: true, sortMode: '',
+        },
+        {
+          name: 'preferenceLevelB', show: true, sortMode: '',
+        },
       ],
       sortKey: '',
     };
@@ -161,16 +186,19 @@ export default {
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = 'up';
       }
+
       if (k.sortMode === 'up') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = 'down';
       }
+
       if (k.sortMode === 'down') {
         this.rows[
           this.rows.findIndex((element) => element.name === k.name)
         ].sortMode = '';
       }
+
       this.sortKey = k.name;
     },
 
@@ -216,13 +244,18 @@ export default {
       },
 
     },
+
     sortedKinkList: {
       get() {
         const tmpList = this.curKinksList;
         if (this.sortKey === '') {
           return tmpList;
-        } if (this.sortKey === 'preferenceLevel') {
-          return tmpList.sort((a, b) => (a.sortKey < b.sortKey));
+        }
+        if (this.sortKey === 'preferenceLevelA') {
+          return tmpList.sort((a, b) => (a.sortKeyA < b.sortKeyA));
+        }
+        if (this.sortKey === 'preferenceLevelB') {
+          return tmpList.sort((a, b) => (a.sortKeyB < b.sortKeyB));
         }
         return tmpList.sort((a, b) => (a[this.sortKey] < b[this.sortKey]));
       },
