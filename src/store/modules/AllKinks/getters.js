@@ -3,6 +3,8 @@
 import defaultKinks from '@/assets/kinks.yaml';
 import { preferenceLevels } from '@/assets/levels.yaml';
 
+import { defaultRoles } from '@/assets/roles.yaml';
+
 export const getKinksForUser = (state, getters) => (username) => (
   (
     state.userKinks.filter(
@@ -228,13 +230,238 @@ export const getKinksAsListForUser = (state, getters) => (username) => {
   return tmp;
 };
 
+/**
+ * creates a List containing limits from two profiles
+ * @param {string} usernameA - username of user a
+ * @param {string} usernameB - username of user b
+ * @return {Object[]}
+ */
 export const getKinksSideBySide = (state, getters) => (usernameA, usernameB) => {
   if (usernameA === '' || usernameB === '') {
     return [];
   }
 
-  const kinksA = getters.getKinksAsListForUser(usernameA);
-  const kinksB = getters.getKinksAsListForUser(usernameB);
+  const kinksA = getters.getKinksForUser(usernameA);
+  const kinksB = getters.getKinksForUser(usernameB);
 
-  return { kinksA, kinksB };
+  const getColorFromPreferenceLevel = (k) => {
+    const preferenceLevel = preferenceLevels.find(
+      (el) => (el.name === k),
+    );
+    return preferenceLevel
+      ? preferenceLevel.color
+      : '';
+  };
+
+  const getSortKeyFromPreferenceLevel = (k) => {
+    const preferenceLevel = preferenceLevels.find(
+      (el) => (el.name === k),
+    );
+    return preferenceLevel
+      ? preferenceLevel.sortKey
+      : '';
+  };
+
+  /**
+   * returns a list of two merged role objects
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergeRole = (a, b, d) => (
+    {
+      ...d,
+      roleA: a.name,
+      preferenceLevelA: a.preference,
+      sortKeyA: getSortKeyFromPreferenceLevel(a.preference),
+      colorA: getColorFromPreferenceLevel(a.preference),
+      roleB: b.name,
+      preferenceLevelB: b.preference,
+      sortKeyB: getSortKeyFromPreferenceLevel(b.preference),
+      colorB: getColorFromPreferenceLevel(b.preference),
+    }
+  );
+
+  /**
+   * returns a list of two merged preference objects
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergePreferences = (a, b, d) => (
+    (
+      a.roles
+      ? a.roles
+      : defaultRoles
+    )
+    .map(
+      (role)=> mergeRole(
+        role,
+        (
+          b.roles
+          ? b.roles
+          : defaultRoles
+        )
+        .find(
+          (el) => (
+            role.sideBySide
+            ? el.name === role.sideBySide
+            : el.name === role.name
+          )
+        ),
+        {
+          ...d,
+          commentA: a.comment,
+          commentB: b.comment,
+        }
+      )
+    )
+  );
+
+  /**
+   * returns a list of two merged variants
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergeVariant = (a, b, d) => (
+    (
+      [mergePreferences(
+        a,
+        b,
+          {
+            ...d,
+            variant: a.name,
+          }
+        )
+      ]
+    ).flat()
+  );
+
+  /**
+   * returns a list of two merged kinds
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergeKind = (a, b, d) => (
+    (
+      a.variants
+      ? a.variants.map(
+        (variant) => mergeVariant(
+          variant,
+          b.variants.find(
+            (el) => el.name === variant.name
+          ),
+          {
+            ...d,
+            kink: a.name,
+          }
+        )
+      )
+      : [mergePreferences(a, b, {...d, kink: a.name, })]
+    ).flat()
+  );
+
+  /**
+   * returns a list of two merged subcategories
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergeSubCategory = (a, b, d) => (
+    (
+      a.kinds
+      ? a.kinds.map(
+        (kind) => mergeKind(
+          kind,
+          b.kinds.find(
+            (el) => el.name === kind.name
+          ),
+          { ...d,
+            subcategory: a.name,
+          }
+        )
+      )
+      : []
+    ).flat()
+  );
+
+  /**
+   * returns a list of two merged categories
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @param {Object[]} d - Default entry
+   * @return {Object[]}
+   */
+  const mergeCategory = (a, b, d) => (
+    (
+    a.subcategories
+    ? a.subcategories.map(
+      (subcategory) => mergeSubCategory(
+        subcategory,
+        b.subcategories.find(
+          (el) => el.name === subcategory.name
+        ),
+        d
+      )
+    ).flat()
+    : []
+    ).concat(
+      a.kinds
+      ? a.kinds.map(
+        (kind) => mergeKind(
+          kind,
+          b.kinds.find(
+            (el) => el.name === kind.name
+          ),
+          {
+            ...d,
+            category: a.name,
+          }
+        )
+      )
+      : []
+    ).flat()
+  );
+
+  /**
+   * @const
+   * @type {Object} - Default entry for sideBySide list
+   */
+  const defaultEntry = {
+    category: '',
+    subcategory: '',
+    kink: '',
+    variant: '',
+    roleA: '',
+    preferenceLevelA: '',
+    sortKeyA: '',
+    colorA: '',
+    commentA: '',
+    roleB: '',
+    preferenceLevelB: '',
+    sortKeyB: '',
+    colorB: '',
+    commentB: '',
+  };
+
+  const mergedKinks =
+    kinksA.categories.map(
+      (category) => mergeCategory(
+        category,
+        kinksB.categories.find(
+          (el) => el.name === category.name
+        ),
+        defaultEntry
+      )
+    ).flat();
+
+  return mergedKinks;
+
 };
