@@ -3,12 +3,12 @@
  * https://createapp.dev/webpack
  */
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 // const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const CopyPlugin = require('copy-webpack-plugin');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
