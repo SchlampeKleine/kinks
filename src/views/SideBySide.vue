@@ -1,7 +1,7 @@
 <template>
   <h1 class="title">ListView</h1>
-  {{ curKinksList }}
-    <!-- Load Menu -->
+
+  <!-- Load Menu -->
   <div class="box">
     <div class="block">
     <div class="field has-addons">
