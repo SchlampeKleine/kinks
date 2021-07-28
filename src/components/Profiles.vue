@@ -4,6 +4,7 @@
   <ProfilesSaveMenu :defaultKinks="defaultKinks" v-model:user="localUser" />
   <ProfilesLoadMenu :defaultKinks="defaultKinks" v-model:allKinks="localAllKinks"/>
   <ProfilesResetMenu :defaultKinks="defaultKinks" />
+  <ProfilesPatchMenu />
   <ProfilesDebugMenu
       v-if="isDebug"
       />
@@ -35,6 +36,7 @@ import { computed } from 'vue';
 import ProfilesSaveMenu from '@/components/ProfilesSaveMenu.vue';
 import ProfilesLoadMenu from '@/components/ProfilesLoadMenu.vue';
 import ProfilesResetMenu from '@/components/ProfilesResetMenu.vue';
+import ProfilesPatchMenu from '@/components/ProfilesPatchMenu.vue';
 import ProfilesDebugMenu from '@/components/ProfilesDebugMenu.vue';
 import ProfilesDownloadMenu from '@/components/ProfilesDownloadMenu.vue';
 import ProfilesShareMenu from '@/components/ProfilesShareMenu.vue';
@@ -66,6 +68,7 @@ export default {
     ProfilesSaveMenu,
     ProfilesLoadMenu,
     ProfilesResetMenu,
+    ProfilesPatchMenu,
     ProfilesDebugMenu,
     ProfilesShareMenu,
     ProfilesDownloadMenu,
