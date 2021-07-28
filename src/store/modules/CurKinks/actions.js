@@ -86,7 +86,7 @@ export const patchCurrentProfile = ({ dispatch, commit, getters }) => {
       ...p,
     };
 
-    return tmpPreferences = {
+    return {
       ...patch,
       ...object,
       roles: [
@@ -106,7 +106,22 @@ export const patchCurrentProfile = ({ dispatch, commit, getters }) => {
       // special handling for comment
       comment: object.comment.length > 0 ? object.comment : patch.comment,
     };
+
   };
+
+  /**
+   * Patch a kind (and its variants)
+   * @param {Object} o - Object to be patched
+   * @param {Object} p - Object to use as patch
+   * @return {Object} - patched Object
+   */
+  const patchVariant = (o, p) => (
+    {
+      ...p,
+      ...o,
+      preferences: patchPreferences(o.preferences, p.preferences),
+    }
+  );
 
   /**
    * Patch or replace a variant
@@ -115,12 +130,9 @@ export const patchCurrentProfile = ({ dispatch, commit, getters }) => {
    * @return {Object} - patched Object
    */
   const patchOrReplaceVariant = (o, p) => (
-    {
-      preferences:
     o.name === p.replaces
-      ? patchPreferences(p.preferences, o.preferences)
-      : patchPreferences(o.preferences, p.preferences),
-    }
+      ? patchKind(p, o)
+      : patchKind(o, p)
   );
 
   /**
