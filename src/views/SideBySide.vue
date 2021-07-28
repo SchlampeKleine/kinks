@@ -113,25 +113,25 @@
       </tr>
     </thead>
 
-    <tbody>
-  <template
-      v-for="(entry, idx) in sortedKinkList"
-      :key="idx">
-    <tr :style="rowStyle(entry)">
-      <template
-          v-for="k in rows"
-          :key="'body-' + idx + '-' + k.name"
-          >
-          <td>
-            <span :v-if="k.show">
-            {{ entry[k.name] }}
-            </span>
-          </td>
-      </template>
-    </tr>
-  </template>
-    </tbody>
-  </table>
+      <tbody>
+        <template
+            v-for="(entry, idx) in sortedKinkList"
+            :key="idx">
+          <tr>
+            <template
+                v-for="k in rows"
+                :key="'body-' + idx + '-' + k.name"
+                >
+                <td :style="cellStyle(entry, k.name)">
+                  <span :v-if="k.show">
+                    {{ entry[k.name] }}
+                  </span>
+                </td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+    </table>
   </div>
 
 </template>
@@ -181,6 +181,29 @@ export default {
     };
   },
   methods: {
+
+    /**
+     * gets the style for a cell
+     * @param {Object} entry
+     * @param {string} column
+     * @return {Object} - Style object
+     */
+    cellStyle(entry, column) {
+      const lastLetter = column.slice(-1);
+
+      if ((['A', 'B']).includes(lastLetter)) {
+        const color = entry[
+          `color${lastLetter}`
+        ];
+        if (color) {
+          return {
+            'background-color': color,
+            color: this.findColorInvert(color),
+          };
+        }
+      }
+      return {};
+    },
 
     canLoadKinks(user) {
       const users = this.getUsers;
@@ -237,16 +260,6 @@ export default {
         return 'rgba(0,0,0,0.7)';
       }
       return '#fff';
-    },
-
-    rowStyle(rowEntry) {
-      if (rowEntry.color) {
-        return {
-          'background-color': rowEntry.color,
-          color: this.findColorInvert(rowEntry.color),
-        };
-      }
-      return {};
     },
 
   },
