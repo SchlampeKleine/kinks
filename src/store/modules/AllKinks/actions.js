@@ -21,7 +21,7 @@ export const saveKinksForUser = ({ state, commit }, { username, kinks }) => {
   });
 };
 
-export const loadKinksForUser = ({ dispatch, commit, getters },{ username }) => {
+export const loadKinksForUser = ({ dispatch, commit, getters }, { username }) => {
   /**
    *  TODO
    *  Save curKinks if not already done

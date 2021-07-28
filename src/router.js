@@ -69,6 +69,14 @@ export default createRouter({
             default: () => import('@/views/List.vue'),
           },
         },
+        {
+          name: 'sidebyside',
+          path: 'sidebyside',
+          components: {
+            UserOptions,
+            default: () => import('@/views/SideBySide.vue'),
+          },
+        },
         /*
         {
           path: 'about',

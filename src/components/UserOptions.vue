@@ -53,6 +53,11 @@
         List
         </RouterLink>
       </div>
+      <div class="navbar-item">
+        <RouterLink :to="{ name: 'sidebyside' }">
+        Side By Side
+        </RouterLink>
+      </div>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
