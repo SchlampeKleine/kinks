@@ -5,12 +5,24 @@
     <div class="block">
     <div class="field has-addons">
 
-      <ProfileChooser v-model="loadUser" />
+      <ProfileChooser v-model="selectedProfile">
+      <template
+          v-if="alreadyLoaded"
+          v-slot:help
+          >
+          <div class="help">
+            {{ t('warn_already_loaded') }}
+          </div>
+      </template>
+      </ProfileChooser>
       <div class="control">
         <button
           class="button"
-          v-on:click="loadKinksForUser(loadUser)"
-          :disabled="canLoadKinks(loadUser)"
+          v-on:click="loadKinksForUser(selectedProfile
+          )"
+          :disabled="!canLoadProfile(
+                      selectedProfile
+          )"
           >
           {{ t('button_load') }}
         </button>
@@ -22,12 +34,16 @@
 
 <i18n lang="yaml" global>
 de:
+  warn_already_loaded: >
+    Dieses Profil ist bereits geladen
   loadUser_choice: >
     Bitte waehle den Nutzer aus,
     dessen Praeferenzen du laden moechtest.
   help_field_loadUser: Kennzeichnug der Praeferenzen, die geladen werden sollen
   button_load: "Kinks laden"
 en:
+  warn_already_loaded: >
+    This profile is already loaded
   loadUser_choice: >
     Please select the user
     to load the preferences for
@@ -47,7 +63,7 @@ export default {
   name: 'ProfilesLoadMenu',
   data() {
     return {
-      loadUser: '',
+      selectedProfile: 'CURRENT',
     };
   },
   setup() {
@@ -57,23 +73,55 @@ export default {
 
     return {
       t,
-      getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
+      curKinks: computed(
+        () => store.getters['AllKinks/getCurKinks']
+        ),
+      existsUsersname: store.getters['AllKinks/existsUsersname'],
+      getKinksForUser: store.getters['AllKinks/getKinksForUser'],
       loadKinksForUser: (user) => store.dispatch('AllKinks/loadKinksForUser', {
-        username:
-        user,
+        username: user,
       }),
     };
   },
   methods: {
 
-    canLoadKinks(user) {
-      const users = this.getUsers;
-      return !(users.includes(user));
+    canLoadProfile(profile) {
+      return (
+        this.existsUsersname(profile)
+        &&
+        !this.alreadyLoaded
+      );
     },
 
   },
   components: {
     ProfileChooser,
+  },
+  computed: {
+
+    userKinks() {
+      return this.getKinksForUser(this.selectedProfile);
+    },
+
+    stringifiedUserProfile() {
+      return JSON.stringify(this.userKinks);
+    },
+
+    stringifiedCurrent() {
+      return JSON.stringify(this.curKinks);
+    },
+
+    /**
+     * Is the CURRENT profile the same as the selected profile
+     * @return {bool}
+     */
+    alreadyLoaded(){
+      return (
+        this.stringifiedUserProfile
+        ===
+        this.stringifiedCurrent
+      );
+    },
   },
 
 };
