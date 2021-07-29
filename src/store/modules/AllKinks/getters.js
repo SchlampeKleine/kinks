@@ -240,7 +240,7 @@ export const getKinksAsListForUser = (state, getters) => (username) => {
     )
     .flat();
 
-  console.log({ 'getCurKinksAsList tmp': tmp });
+  console.log({ 'getKinksAsListForUser tmp': tmp });
   return tmp;
 };
 
