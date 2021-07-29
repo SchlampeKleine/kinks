@@ -12,6 +12,7 @@
   <ProfilesShareMenu />
   <ProfilesDownloadMenu />
   <ProfilesUploadMenu />
+  <ProfilesImportMenu />
   </section>
 
 </template>
@@ -45,6 +46,7 @@ import ProfilesDebugMenu from '@/components/ProfilesDebugMenu.vue';
 import ProfilesDownloadMenu from '@/components/ProfilesDownloadMenu.vue';
 import ProfilesShareMenu from '@/components/ProfilesShareMenu.vue';
 import ProfilesUploadMenu from '@/components/ProfilesUploadMenu.vue';
+import ProfilesImportMenu from '@/components/ProfilesImportMenu.vue';
 
 export default {
   name: 'Profiles',
@@ -76,6 +78,7 @@ export default {
     ProfilesShareMenu,
     ProfilesDownloadMenu,
     ProfilesUploadMenu,
+    ProfilesImportMenu,
   },
   methods: {
 
