@@ -46,8 +46,6 @@ import ProfilesDownloadMenu from '@/components/ProfilesDownloadMenu.vue';
 import ProfilesShareMenu from '@/components/ProfilesShareMenu.vue';
 import ProfilesUploadMenu from '@/components/ProfilesUploadMenu.vue';
 
-import { saveObjectToLocalStorage, getJSONFromLocalStorage } from '@/plugins/LocalStorage';
-
 export default {
   name: 'Profiles',
   data() {
