@@ -2,31 +2,35 @@
   <div class="box">
     <!-- Save Menu -->
     <div
-      class="field has-addons"
-      >
-      <label class="label">
-        Name
-      </label>
-      <div class="control">
-        <input
-          placeholder="Name"
-          v-model="localUser"
-          @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
-          type="text"
-          class="input is-expanded"
-          />
-        <p class="help">
-        {{ t('help_field_localUser') }}
-        </p>
-      </div>
-      <div class="control">
-        <button
-          class="button"
-          v-on:click="saveKinksForUser(user,curKinks)"
-          :disabled="!canSaveKinks(user)"
-          >
-          {{ t('button_save') }}
-        </button>
+        class="field"
+        >
+        <label class="field-label is-normal">
+          {{ t('name_label') }}
+        </label>
+      <div class="field-body">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input
+                placeholder="Name"
+                v-model="localUser"
+                @update="localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user))"
+                type="text"
+                class="input is-expanded"
+                />
+            <p class="help">
+            {{ t('help_field_localUser') }}
+            </p>
+          </div>
+          <div class="control">
+            <button
+                class="button"
+                v-on:click="saveKinksForUser(user,curKinks)"
+                :disabled="!canSaveKinks(user)"
+                >
+                {{ t('button_save') }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,6 +39,7 @@
 <i18n lang="yaml" global>
 
 de:
+  name_label: Name
   help_field_localUser: >
     Ein Name oder eine Rolle,
     um diese Praeferenzen
@@ -42,6 +47,7 @@ de:
     oder beim Teilen zuordnen zukoennen
   button_save: "Kinks speichern"
 en:
+  name_label: Name
   help_field_localUser: >
     A name or role to identify
     these preferences
