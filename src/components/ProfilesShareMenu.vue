@@ -50,7 +50,7 @@ export default {
       t,
       shareLink: computed(
         () => {
-          const objectString = store.getters['CurKinks/getCurKinksAsURI'];
+          const objectString = store.getters['AllKinks/getCurKinksAsURI'];
           return `${window.location.origin}/load/${encodeURIComponent(objectString)}`;
         },
       )
