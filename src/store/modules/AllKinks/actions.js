@@ -37,7 +37,7 @@ export const loadKinksForUser = ({ dispatch, commit, getters }, { username }) =>
 /**
  * Patches a profile using the default profiles as source
  */
-export const patchProfileForUser = ({ dispatch, commit, getters }) => (username) => {
+export const patchProfileForUser = ({ dispatch, commit, getters }, { username }) => {
   const curKinks = getters.getKinksForUser(username);
 
   /**
