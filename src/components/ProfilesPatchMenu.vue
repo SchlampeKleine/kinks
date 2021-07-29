@@ -37,7 +37,7 @@ export default {
   name: 'ProfilesPatchMenu',
   data() {
     return {
-      selectedProfile: "",
+      selectedProfile: '',
     };
   },
   setup() {
@@ -50,7 +50,7 @@ export default {
       getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
       patchProfileForUser: (username) => store.dispatch(
         'AllKinks/patchProfileForUser',
-        {username}
+        { username },
       ),
     };
   },

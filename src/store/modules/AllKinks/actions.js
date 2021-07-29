@@ -288,7 +288,7 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
               )
           ),
         ],
-        SCHEME_VERSION: patchKinks['SCHEME_VERSION'] || "",
+        SCHEME_VERSION: patchKinks.SCHEME_VERSION || '',
       },
     });
 };
