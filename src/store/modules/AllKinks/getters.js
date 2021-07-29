@@ -27,7 +27,7 @@ export const getCurKinks = (_, getters) => (
   getters.getKinksForUser('CURRENT')
 );
 
-export const getKinksForDefaultUser = (state) => (
+export const getKinksForDefaultUser = (_, getters) => (
   getters.getKinksForUser('default')
 );
 
