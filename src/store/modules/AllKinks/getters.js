@@ -253,10 +253,10 @@ export const getKinksAsListForUser = (state, getters) => (username) => {
 export const getKinksSideBySide = (state, getters, rootState, rootGetters) => (usernameA, usernameB) => {
   const kinksA = usernameA
     ? getters.getKinksForUser(usernameA)
-    : rootGetters['CurKinks/getCurKinks'];
+    : rootGetters['AllKinks/getCurKinks'];
   const kinksB = usernameB
     ? getters.getKinksForUser(usernameB)
-    : rootGetters['CurKinks/getCurKinks'];
+    : rootGetters['AllKinks/getCurKinks'];
 
   if (kinksA.SCHEME_VERSION !== kinksB.SCHEME_VERSION) {
     console.warn({
