@@ -34,7 +34,7 @@ export default {
     const store = useStore();
 
     return {
-      curKinks: computed(() => store.getters['CurKinks/getCurKinks']),
+      curKinks: computed(() => store.getters['AllKinks/getCurKinks']),
     };
   },
 
