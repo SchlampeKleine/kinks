@@ -1,17 +1,37 @@
 <template>
   <h1 class="title">ListView</h1>
 
-  <!-- Load Menu -->
-  <div class="block">
-    <div class="columns">
-      <div class="column">
-        <div class="field has-addons">
-          <ProfileChooser v-model="usernameA" />
+  <!-- Selection Menu -->
+  <div class="columns">
+    <div class="column">
+      <div class="box">
+        <div class="field is-horizontal">
+          <label
+            class="field-label is-normal"
+            >{{ t('profile_a_label') }}</label>
+          <div class="field-body">
+            <div class="field">
+              <ProfileChooser
+                  v-model="usernameA"
+                  />
+            </div>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="field has-addons">
-          <ProfileChooser v-model="usernameB" />
+    </div>
+    <div class="column">
+      <div class="box">
+        <div class="field is-horizontal">
+          <label
+            class="field-label is-normal"
+            >{{ t('profile_b_label') }}</label>
+          <div class="field-body">
+            <div class="field">
+              <ProfileChooser
+                  v-model="usernameB"
+                  />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +100,16 @@
   </div>
 
 </template>
+
+<i18n lang="yaml" global>
+de:
+  profile_a_label: Profil A
+  profile_b_label: Profil B
+en:
+  profile_a_label: Profile A
+  profile_b_label: Profile B
+
+</i18n>
 
 <script>
 import { useStore } from 'vuex';
