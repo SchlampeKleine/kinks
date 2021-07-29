@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-  <h1 class="title">Profiles</h1>
+    <h1 class="title">{{ t('profiles_title') }}</h1>
   <ProfilesSaveMenu />
   <ProfilesLoadMenu />
   <ProfilesResetMenu :defaultKinks="defaultKinks" />
@@ -18,9 +18,11 @@
 <i18n lang="yaml" global>
 
 de:
+  profiles_title: "Profile"
   button_kinkmanagement: "Kinks verwalten"
   button_edit_mode: "Aendern aktivieren"
 en:
+  profiles_title: "Profiles"
   button_kinkmanagement: "Manage kinks"
   button_edit_mode: "Toggle edit mode"
 
