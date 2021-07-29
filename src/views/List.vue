@@ -76,12 +76,11 @@ export default {
   setup() {
     const store = useStore();
 
-    const curKinksList = computed(() => store.getters['CurKinks/getCurKinksAsList']);
-    console.log({ 'setup curKinksList': curKinksList });
 
     const { t } = useI18n();
     return {
-      curKinksList,
+      curKinksList: computed(() =>
+        store.getters['AllKinks/getKinksAsListForUser']('CURRENT')),
       t,
     };
   },
