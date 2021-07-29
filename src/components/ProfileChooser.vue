@@ -1,6 +1,6 @@
 <template>
-    <div class="control">
-      <div class="select">
+    <div class="control is-expanded">
+      <div class="select is-fullwidth">
         <select v-model="value">
           <option disabled value="">
           {{ t('profile_select_choice') }}
