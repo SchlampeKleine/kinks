@@ -501,3 +501,18 @@ export const getKinksSideBySide = (state, getters, rootState, rootGetters) => (u
 
   return mergedKinks;
 };
+
+// https://stackoverflow.com/questions/30012043/how-to-document-a-function-returned-by-a-function-using-jsdoc
+/**
+ * Creates a function to check whether a username is valid
+ * @return {isUsernameValid~inner}
+ */
+export const existsUsersname = (_, getters) =>
+  /**
+   * Check whether a username exists
+   * @param {string} username
+   * @return {bool}
+   */
+  (username) => {
+      return getters.getAvailableUsers.includes(username)
+  };
