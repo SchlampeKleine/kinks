@@ -47,7 +47,7 @@ export default {
   name: 'ProfilesLoadMenu',
   data() {
     return {
-      loadUser: null,
+      loadUser: "",
     };
   },
   setup() {

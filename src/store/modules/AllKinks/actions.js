@@ -93,7 +93,7 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
       ...p,
     };
 
-    return tmpPreferences = {
+    return {
       ...patch,
       ...object,
       roles: [
