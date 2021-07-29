@@ -1,16 +1,16 @@
 <template>
   <section class="section">
   <h1 class="title">Profiles</h1>
-  <ProfilesSaveMenu :defaultKinks="defaultKinks" v-model:user="localUser" />
-  <ProfilesLoadMenu :defaultKinks="defaultKinks" v-model:allKinks="localAllKinks"/>
+  <ProfilesSaveMenu />
+  <ProfilesLoadMenu />
   <ProfilesResetMenu :defaultKinks="defaultKinks" />
   <ProfilesPatchMenu />
   <ProfilesDebugMenu
       v-if="isDebug"
       />
-  <ProfilesShareMenu :curKinks="curKinks" />
-  <ProfilesDownloadMenu :curKinks="curKinks" />
-  <ProfilesUploadMenu v-model:curKinks="curKinks" />
+  <ProfilesShareMenu />
+  <ProfilesDownloadMenu />
+  <ProfilesUploadMenu />
   </section>
 
 </template>
