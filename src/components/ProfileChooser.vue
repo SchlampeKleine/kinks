@@ -12,9 +12,13 @@
               {{ user }}
           </option>
         </select>
-        <div class="help">
-          {{ t('profile_select_help') }}
-        </div>
+        <slot name="help">
+          <div
+            class="help"
+            >
+            {{ t('profile_select_help') }}
+          </div>
+        </slot>
       </div>
   </div>
 </template>
