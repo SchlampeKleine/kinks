@@ -18,7 +18,7 @@ export const getCurKinks = (state, _, __, rootGetters) => {
     return state.curKinks;
   } else {
     console.warn('curKinks have been imported. Please use "AllKinks/getCurKinks"');
-    return () => rootGetters['AllKinks/getKinksForUserOrDefault']('CURRENT2');
+    return rootGetters['AllKinks/getKinksForUserOrDefault']('CURRENT');
   }
 };
 
