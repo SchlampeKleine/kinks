@@ -2,11 +2,13 @@
   <div class="box">
     <!-- Patch Menu -->
 
-    <div class="field">
+    <div class="field has-addons">
+      <ProfileChooser v-model="selectedProfile" />
       <div class="control">
         <button
           class="button"
-          v-on:click="patchProfile"
+          v-on:click="patchProfileForUser(selectedProfile)"
+          :disabled="canPatchProfile(selectedProfile)"
           >
           {{ t('button_patch') }}
         </button>
@@ -27,9 +29,17 @@ en:
 <script>
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import { computed } from 'vue';
+
+import ProfileChooser from '@/components/ProfileChooser.vue';
 
 export default {
   name: 'ProfilesPatchMenu',
+  data() {
+    return {
+      selectedProfile: "",
+    };
+  },
   setup() {
     const { t } = useI18n({
     });
@@ -37,8 +47,24 @@ export default {
 
     return {
       t,
-      patchProfile: () => store.dispatch('CurKinks/patchCurrentProfile'),
+      getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
+      patchProfileForUser: (username) => store.dispatch(
+        'AllKinks/patchProfileForUser',
+        {username}
+      ),
     };
+  },
+
+  methods: {
+
+    canPatchProfile(user) {
+      const users = this.getUsers;
+      return !(users.includes(user));
+    },
+
+  },
+  components: {
+    ProfileChooser,
   },
 };
 </script>

@@ -5,6 +5,7 @@
   <ProfilesLoadMenu />
   <ProfilesResetMenu :defaultKinks="defaultKinks" />
   <ProfilesPatchMenu />
+  <ProfilesPatchCurrentMenu />
   <ProfilesDebugMenu
       v-if="isDebug"
       />
@@ -39,6 +40,7 @@ import ProfilesSaveMenu from '@/components/ProfilesSaveMenu.vue';
 import ProfilesLoadMenu from '@/components/ProfilesLoadMenu.vue';
 import ProfilesResetMenu from '@/components/ProfilesResetMenu.vue';
 import ProfilesPatchMenu from '@/components/ProfilesPatchMenu.vue';
+import ProfilesPatchCurrentMenu from '@/components/ProfilesPatchCurrentMenu.vue';
 import ProfilesDebugMenu from '@/components/ProfilesDebugMenu.vue';
 import ProfilesDownloadMenu from '@/components/ProfilesDownloadMenu.vue';
 import ProfilesShareMenu from '@/components/ProfilesShareMenu.vue';
@@ -71,6 +73,7 @@ export default {
     ProfilesLoadMenu,
     ProfilesResetMenu,
     ProfilesPatchMenu,
+    ProfilesPatchCurrentMenu,
     ProfilesDebugMenu,
     ProfilesShareMenu,
     ProfilesDownloadMenu,
