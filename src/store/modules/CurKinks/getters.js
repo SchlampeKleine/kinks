@@ -5,9 +5,31 @@ import yaml from 'js-yaml';
 
 import { preferenceLevels } from '@/assets/levels.yaml';
 
-export const getCurKinks = (state) => (Object.keys(state.curKinks) === 0
-  ? defaultKinks
-  : state.curKinks);
+/**
+ * get the currently active kinks
+ * @deprecated This will be replaced by a 'CURRENT' entry in the global kinks object
+ * @return {Object}
+ */
+export const getCurKinks = (state, _, __, rootGetters) => {
+  console.warn('getCurKinks will be deprecated');
+
+  if (state.curKinks && !state.imported) {
+    console.warn('curKinks have not been imported yet!');
+    return state.curKinks;
+  } else {
+    console.warn('curKinks have been imported. Please use "AllKinks/getCurKinks"');
+    return () => rootGetters['AllKinks/getKinksForUserOrDefault']('CURRENT2');
+  }
+};
+
+/**
+ * @return {bool} - import state
+ */
+export const getImportStatus = (state) => (
+  state.imported
+  ? true
+  : false
+);
 
 export const getCurKinksAsYAML = (_, getters) => yaml.dump(
   { categories: getters.getCurKinks.categories },

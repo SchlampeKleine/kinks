@@ -7,3 +7,8 @@ export const updateCurKinks = (state, { curKinks }) => {
   }
   state.curKinks = { ...curKinks };
 };
+
+/**
+ * mark curKinks as imported
+ */
+export const markAsImported = (state) => state.imported = true;

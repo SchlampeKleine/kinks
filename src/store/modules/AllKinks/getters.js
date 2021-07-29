@@ -5,16 +5,30 @@ import { preferenceLevels } from '@/assets/levels.yaml';
 
 import { defaultRoles } from '@/assets/roles.yaml';
 
-export const getKinksForUser = (state, getters) => (username) => (
-  (
-    state.userKinks.filter(
+export const getKinksForUser = (state, getters) => (username, o={}) => {
+  if (!username) {
+    console.warn('getKinksForUser called without username argument');
+  }
+  console.log({ username, state, getters, o});
+  return (
+    state.userKinks.find(
       (el) => (el.username === username),
-    )[0] || getters.getKinksForDefaultUser
-  ).kinks
+    ) || { }
+  ).kinks;
+};
+
+export const getKinksForUserOrDefault = (state, getters) => (username) => {
+  console.log({ method: 'getKinksForUserOrDefault', state, getters });
+  getters.getKinksForUser(username, { caller: 'getKinksForUserOrDefault', })
+    || getters.getKinksForDefaultUser
+};
+
+export const getCurKinks = (_, getters) => (
+  getters.getKinksForUser('CURRENT')
 );
 
-export const getKinksForDefaultUser = (state) => state.userKinks.filter(
-  (el) => el.username === 'default',
+export const getKinksForDefaultUser = (state) => (
+  getters.getKinksForUser('default')
 );
 
 export const getAvailableUsers = (state) => state.userKinks.map(

@@ -5,11 +5,32 @@ import yaml from 'js-yaml';
 import defaultKinks from '@/assets/kinks.yaml';
 import { defaultRoles } from '@/assets/roles.yaml';
 
-export const updateCurKinks = ({ commit }, kinks) => {
+/**
+ * @deprecated This will be removed
+ */
+export const updateCurKinks = (
+  { commit, dispatch },
+  kinks,
+) => {
+  console.warn('updateCurKinks will be deprecated');
   commit('updateCurKinks', { curKinks: { ...kinks } });
+  dispatch(
+    'AllKinks/saveKinksForUser',
+    {
+      username: 'CURRENT',
+      kinks,
+    },
+    {
+      root: true,
+    },
+  );
 };
 
+/**
+ * @deprecated This will be removed
+ */
 export const updateCategory = ({ commit, getters }, changedCategory) => {
+  console.warn('CurKinks/updateCategory will be removed');
   const tmpCurKinks = { ...getters.getCurKinks };
   const debug = false;
   if (debug) {

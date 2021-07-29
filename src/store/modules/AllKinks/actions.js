@@ -292,3 +292,39 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
       },
     });
 };
+
+export const importCurKinks = ({ dispatch, commit, rootGetters }) => (
+  dispatch(
+    'saveKinksForUser',
+    {
+      username: 'CURRENT',
+      kinks: {
+        ...rootGetters['CurKinks/getCurKinks']
+      },
+    }
+  ).then(
+    () => {
+      const curKinks =
+        rootGetters['CurKinks/getCurKinks'];
+
+
+      const curKinksAllKinks =
+        rootGetters['AllKinks/getCurKinks'];
+
+
+      if (
+        JSON.stringify(curKinks)
+        ===
+        JSON.stringify(curKinksAllKinks)
+      ) {
+        console.log('Correctly imported');
+        commit('CurKinks/markAsImported', null, { root: true });
+      } else {
+        console.log({ msg: "import error",
+          curKinks,
+          curKinksAllKinks
+        });
+      }
+    }
+  )
+);
