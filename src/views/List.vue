@@ -79,8 +79,7 @@ export default {
 
     const { t } = useI18n();
     return {
-      curKinksList: computed(() =>
-        store.getters['AllKinks/getKinksAsListForUser']('CURRENT')),
+      curKinksList: store.getters['AllKinks/getKinksAsListForUser']('CURRENT'),
       t,
     };
   },
