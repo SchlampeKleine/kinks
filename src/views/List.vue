@@ -76,7 +76,6 @@ export default {
   setup() {
     const store = useStore();
 
-
     const { t } = useI18n();
     return {
       curKinksList: store.getters['AllKinks/getKinksAsListForUser']('CURRENT'),

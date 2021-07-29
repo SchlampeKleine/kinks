@@ -66,16 +66,16 @@ export default {
     return {
       debug: false,
       upload: {
-        name: "",
+        name: '',
         content: null,
         lastModified: null,
-        type: "",
+        type: '',
         warnings: [],
       },
       filename: this.t('filename_placeholder'),
       validTypes: [
         'application/x-yaml',
-        ],
+      ],
     };
   },
   setup() {
@@ -143,7 +143,7 @@ export default {
             // filename
             files[0].name,
             // onWarning
-            (e) => this.upload.push(e)
+            (e) => this.upload.push(e),
           ),
           name: this.filename,
           lastModified: files[0].lastModified,

@@ -46,19 +46,17 @@ export default {
 
     return {
       t,
-      curKinks: computed( () => store.state.CurKinks.curKinks),
+      curKinks: computed(() => store.state.CurKinks.curKinks),
       curKinksAreEqal: computed(
-        () => curKinksStore === curKinks
-        ),
-      importCurKinks: () =>
-        store.dispatch('AllKinks/importCurKinks'),
+        () => curKinksStore === curKinks,
+      ),
+      importCurKinks: () => store.dispatch('AllKinks/importCurKinks'),
       curKinksStore: computed(
-        () => store.getters['AllKinks/getCurKinks']
-        ),
+        () => store.getters['AllKinks/getCurKinks'],
+      ),
       canImportKinks: computed(
-        () => store.getters['CurKinks/getImportStatus']
-        ),
-
+        () => store.getters['CurKinks/getImportStatus'],
+      ),
 
     };
   },

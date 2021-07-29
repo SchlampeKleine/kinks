@@ -299,32 +299,28 @@ export const importCurKinks = ({ dispatch, commit, rootGetters }) => (
     {
       username: 'CURRENT',
       kinks: {
-        ...rootGetters['CurKinks/getCurKinks']
+        ...rootGetters['CurKinks/getCurKinks'],
       },
-    }
+    },
   ).then(
     () => {
-      const curKinks =
-        rootGetters['CurKinks/getCurKinks'];
+      const curKinks = rootGetters['CurKinks/getCurKinks'];
 
-
-      const curKinksAllKinks =
-        rootGetters['AllKinks/getCurKinks'];
-
+      const curKinksAllKinks = rootGetters['AllKinks/getCurKinks'];
 
       if (
         JSON.stringify(curKinks)
-        ===
-        JSON.stringify(curKinksAllKinks)
+        === JSON.stringify(curKinksAllKinks)
       ) {
         console.log('Correctly imported');
         commit('CurKinks/markAsImported', null, { root: true });
       } else {
-        console.log({ msg: "import error",
+        console.log({
+          msg: 'import error',
           curKinks,
-          curKinksAllKinks
+          curKinksAllKinks,
         });
       }
-    }
+    },
   )
 );

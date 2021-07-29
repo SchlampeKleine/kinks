@@ -74,8 +74,8 @@ export default {
     return {
       t,
       curKinks: computed(
-        () => store.getters['AllKinks/getCurKinks']
-        ),
+        () => store.getters['AllKinks/getCurKinks'],
+      ),
       existsUsersname: store.getters['AllKinks/existsUsersname'],
       getKinksForUser: store.getters['AllKinks/getKinksForUser'],
       loadKinksForUser: (user) => store.dispatch('AllKinks/loadKinksForUser', {
@@ -88,8 +88,7 @@ export default {
     canLoadProfile(profile) {
       return (
         this.existsUsersname(profile)
-        &&
-        !this.alreadyLoaded
+        && !this.alreadyLoaded
       );
     },
 
@@ -115,11 +114,10 @@ export default {
      * Is the CURRENT profile the same as the selected profile
      * @return {bool}
      */
-    alreadyLoaded(){
+    alreadyLoaded() {
       return (
         this.stringifiedUserProfile
-        ===
-        this.stringifiedCurrent
+        === this.stringifiedCurrent
       );
     },
   },

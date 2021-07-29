@@ -5,11 +5,13 @@ import { preferenceLevels } from '@/assets/levels.yaml';
 
 import { defaultRoles } from '@/assets/roles.yaml';
 
-export const getKinksForUser = (state, getters) => (username, o={}) => {
+export const getKinksForUser = (state, getters) => (username, o = {}) => {
   if (!username) {
     console.warn('getKinksForUser called without username argument');
   }
-  console.log({ username, state, getters, o});
+  console.log({
+    username, state, getters, o,
+  });
   return (
     state.userKinks.find(
       (el) => (el.username === username),
@@ -19,8 +21,8 @@ export const getKinksForUser = (state, getters) => (username, o={}) => {
 
 export const getKinksForUserOrDefault = (state, getters) => (username) => {
   console.log({ method: 'getKinksForUserOrDefault', state, getters });
-  getters.getKinksForUser(username, { caller: 'getKinksForUserOrDefault', })
-    || getters.getKinksForDefaultUser
+  getters.getKinksForUser(username, { caller: 'getKinksForUserOrDefault' })
+    || getters.getKinksForDefaultUser;
 };
 
 export const getCurKinks = (_, getters) => (
@@ -513,6 +515,4 @@ export const existsUsersname = (_, getters) =>
    * @param {string} username
    * @return {bool}
    */
-  (username) => {
-      return getters.getAvailableUsers.includes(username)
-  };
+  (username) => getters.getAvailableUsers.includes(username);

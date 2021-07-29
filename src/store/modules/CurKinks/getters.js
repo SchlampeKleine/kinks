@@ -16,19 +16,16 @@ export const getCurKinks = (state, _, __, rootGetters) => {
   if (state.curKinks && !state.imported) {
     console.warn('curKinks have not been imported yet!');
     return state.curKinks;
-  } else {
-    console.warn('curKinks have been imported. Please use "AllKinks/getCurKinks"');
-    return rootGetters['AllKinks/getKinksForUserOrDefault']('CURRENT');
   }
+  console.warn('curKinks have been imported. Please use "AllKinks/getCurKinks"');
+  return rootGetters['AllKinks/getKinksForUserOrDefault']('CURRENT');
 };
 
 /**
  * @return {bool} - import state
  */
 export const getImportStatus = (state) => (
-  state.imported
-  ? true
-  : false
+  !!state.imported
 );
 
 export const getCurKinksAsYAML = (_, getters) => yaml.dump(
