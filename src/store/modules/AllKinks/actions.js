@@ -40,6 +40,8 @@ export const loadKinksForUser = ({ dispatch, commit, getters }, { username }) =>
 export const patchProfileForUser = ({ dispatch, commit, getters }, { username }) => {
   const curKinks = getters.getKinksForUser(username);
 
+  const patchKinks = { ...defaultKinks };
+
   /**
    * Patch a role
    * @param {Object} o - Object to be patched
@@ -268,6 +270,7 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
       username,
       kinks:
       {
+        ...patchKinks,
         ...curKinks,
         categories: [
           ...(
@@ -275,7 +278,7 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
               .map(
                 (category) => patchOrReplaceCategory(
                   category,
-                  defaultKinks.categories.find(
+                  patchKinks.categories.find(
                     (el) => (
                       el.name === category.name
                     || el.replaces === category.name
@@ -285,6 +288,7 @@ export const patchProfileForUser = ({ dispatch, commit, getters }, { username })
               )
           ),
         ],
+        SCHEME_VERSION: patchKinks['SCHEME_VERSION'] || "",
       },
     });
 };
