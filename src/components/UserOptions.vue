@@ -168,9 +168,6 @@ export default {
     LocaleSwitcher,
     RouterLink,
   },
-  mounted() {
-    this.localMyKinks = this.getKinksForUser(this.user);
-  },
   data() {
     return {
       isOpen: null,
