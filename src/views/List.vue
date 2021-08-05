@@ -45,7 +45,7 @@
   <template
       v-for="(entry, idx) in sortedKinkList"
       :key="idx">
-    <tr :style="rowStyle(entry)">
+    <tr v-if="entry" style="rowStyle(entry)">
       <template
           v-for="k in rows"
           :key="'body-' + idx + '-' + k.name"
