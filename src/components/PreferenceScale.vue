@@ -184,14 +184,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.field-body {
-  /*
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-  */
-}
+<style>
 /*
  * Source
  * https://stackoverflow.com/questions/26275982/putting-moz-available-and-webkit-fill-available-in-one-width-css-property
