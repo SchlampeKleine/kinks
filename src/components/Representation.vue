@@ -7,7 +7,7 @@
   </Description>
   <div class="column card">
     <div class="buttons is-right">
-      <slot name="menu">MENU</slot>
+      <slot name="menu"><!--MENU--></slot>
     </div>
   </div>
   <slot name="preferences"><!--PREFERENCES--></slot>
