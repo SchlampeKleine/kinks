@@ -47,10 +47,7 @@ export default {
 
     roles: {
       type: Array,
-      default() {
-        // This forces a real copy of the default roles to be created
-        return Array.from(defaultRoles, (o) => ({ ...o }));
-      },
+      required: true,
     },
 
   },
