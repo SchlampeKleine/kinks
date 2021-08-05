@@ -18,6 +18,7 @@
 
 <script>
 import PreferenceScale from '@/components/PreferenceScale.vue';
+import Role from '@/store/modules/AllKinks/classes/Role';
 import { defaultRoles } from '@/assets/roles.yaml';
 
 export default {
@@ -60,10 +61,22 @@ export default {
       if (this.debug) {
         console.log({ 'PreferenceScales updateLocalRole': newRole });
       }
+      const tmpRole = new Role(newRole);
+
+      const idRole = this.localRoles
+        .findIndex(
+          (element) => (element.name === tmpRole.name),
+        );
+      if (!(idRole > -1)) {
+        throw new Error(JSON.stringify({
+          msg: 'could not find role',
+          newRole,
+          roles: this.roles,
+        }));
+      }
+
       this.localRoles[
-        this.localRoles.findIndex(
-          (element) => element.name === newRole.name,
-        )
+        idRole
       ] = newRole;
       this.$emit('update:roles', this.localRoles);
     },
@@ -76,7 +89,12 @@ export default {
   computed: {
 
     localRoles: {
-      get() { return this.roles; },
+      get() {
+        return this.roles
+          .map(
+            (el) => new Role(el),
+          );
+      },
       set(newVal) {
         if (this.debug) {
           console.log({ 'PreferenceScales localRoles set': newVal });
