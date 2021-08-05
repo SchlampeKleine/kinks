@@ -150,6 +150,9 @@ export default {
       return '#fff';
     },
 
+    /**
+    * @param {Object} rowEntry
+    */
     rowStyle(rowEntry) {
       if (rowEntry.color) {
         return {
