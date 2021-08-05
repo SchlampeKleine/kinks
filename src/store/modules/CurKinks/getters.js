@@ -25,7 +25,7 @@ export const getCurKinks = (state, _, __, rootGetters) => {
  * @return {bool} - import state
  */
 export const getImportStatus = (state) => (
-  !!state.imported
+  !state.imported
 );
 
 export const getCurKinksAsYAML = (_, getters) => yaml.dump(
