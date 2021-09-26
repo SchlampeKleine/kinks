@@ -2,11 +2,13 @@
   <div class="box">
     <!-- Reset Menu -->
 
-    <div class="field">
+    <div class="field has-addons">
+      <ProfileChooser v-model="selectedProfile" />
       <div class="control">
         <button
           class="button"
-          v-on:click="resetMyKinks(user)"
+          v-on:click="resetProfileForUser(selectedProfile)"
+          :disabled="canResetProfile(selectedProfile)"
           >
           {{ t('button_reset') }}
         </button>
@@ -18,49 +20,53 @@
 <i18n lang="yaml" global>
 
 de:
-  button_reset: "Standard wiederherstellen"
+  button_reset: "Zuruecksetzen"
 en:
-  button_reset: "Reset my kinks"
+  button_reset: "Reset"
 
 </i18n>
 
 <script>
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
+import ProfileChooser from '@/components/ProfileChooser.vue';
+
+import defaultKinks from '@/assets/kinks.yaml';
 
 export default {
-  name: 'ProfilesResetMenu',
-  props: {
-    defaultKinks: {
-      type: Object,
-      required: true,
-    },
+  name: 'ProfilesDeleteMenu',
+  data() {
+    return {
+      selectedProfile: 'CURRENT',
+    };
   },
   setup() {
     const { t } = useI18n({
     });
+    const store = useStore();
+
     return {
       t,
+      getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
+      resetProfileForUser: (username) => store.dispatch(
+        'AllKinks/resetKinksForUser',
+        { username },
+      ),
     };
   },
+
   methods: {
 
-    resetMyKinks() {
-      this.localMyKinks = this.defaultKinks;
+    canResetProfile(user) {
+      const users = this.getUsers;
+      return !(users.includes(user));
     },
 
   },
-  computed: {
-
-    localMyKinks: {
-      get() {
-        return this.myKinks;
-      },
-      set(newVal) {
-        // console.log({"UserOptions: Setting new myKinks":newVal})
-        this.$emit('update:myKinks', newVal);
-      },
-    },
-
+  components: {
+    ProfileChooser,
   },
 };
 </script>

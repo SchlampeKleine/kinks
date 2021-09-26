@@ -27,20 +27,20 @@
                    is-tablet"
         >
         <KinkSubCategory
-          v-for="subcategory in localCategory.subcategories"
-          :id="id+'-'+subcategory.name"
-          :key="'subcategories-'+subcategory.name"
-          :subcategory="subcategory"
-          :kinds="subcategory.kinds"
-          @update:subcategory="updateSubcategory"
+          v-for="subcategoryName in subcategoryNames"
+          :id="id+'-'+subcategoryName"
+          :key="'subcategories-'+subcategoryName"
+          :categoryName="categoryName"
+          :selectedProfile="selectedProfile"
+          :subcategoryName="subcategoryName"
           />
         <Kink
-          v-for="kink in localCategory.kinds"
-          :id="id+'-'+kink.name"
-          :key="'kink-'+kink.name"
-          :kink="kink"
-          :variants="kink.variants"
-          @update:kink="updateKink"
+          v-for="kinkName in kinkNames"
+          :id="id+'-'+kinkName"
+          :key="'kink-'+kinkName"
+          :kinkName="kinkName"
+          :categoryName="categoryName"
+          :selectedProfile="selectedProfile"
           />
       </div>
       </keep-alive>
@@ -50,7 +50,7 @@
 
 <script>
 import { useI18n } from 'vue-i18n';
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 
 import LoaderBar from '@/components/LoaderBar.vue';
@@ -63,38 +63,48 @@ export default {
   props: {
     id: {
       type: String,
-      required: true,
-    },
-    category: {
-      type: Object,
-      required: true,
-    },
-    subcategories: {
-      kind: Array,
-      default() {
-        return [];
-      },
-    },
-    kinds: {
-      kind: Array,
-      default() {
-        return [];
-      },
     },
     name: {
       type: String,
-      required: true,
-
     },
+    categoryName: {
+      type: String,
+      required: true,
+    },
+    selectedProfile: {
+      type: String,
+      required: true,
+    },
+
   },
   setup(props) {
+    const store = useStore();
+    const category = computed(
+      () => store.getters['AllKinks/getCategoryForUser']({
+        username: props.selectedProfile,
+        categoryName: props.categoryName,
+        debug: true,
+      }),
+    );
+
+    const subcategoryNames = computed(() => category.value.subcategoryNames);
+    const kinkNames = computed(() => category.value.kinkNames);
+
+    console.log({
+      props,
+      category,
+      subcategoryNames,
+      kinkNames,
+    });
     const { t } = useI18n({
-      messages: props.category.messages || { en: { name: props.category.name } },
+      messages: category.value.messages || { en: { name: props.categoryName } },
     });
     const { getEditMode } = useEditMode();
-    const store = useStore();
 
     return {
+      category,
+      subcategoryNames,
+      kinkNames,
       updateCategory: (newVal) => store.dispatch('CurKinks/updateCategory', newVal),
       t,
       getEditMode,
@@ -112,7 +122,7 @@ export default {
   computed: {
     localCategory: {
       get() {
-        const tmpCategory = this.category ? this.category : {};
+        const tmpCategory = this.category;
         if (!(tmpCategory.subcategories)) tmpCategory.subcategories = [];
         if (!(tmpCategory.kinds)) tmpCategory.kinds = [];
         return tmpCategory;

@@ -85,7 +85,7 @@ export default {
 
     return {
       t,
-      loadKinks: (upload) => store.dispatch('AllKinks/saveKinksForUser', {
+      loadKinks: (upload) => store.dispatch('AllKinks/saveOrCreateKinksForUser', {
         username: `${upload.name}@${upload.lastModified}`,
         kinks: upload.content,
       }),

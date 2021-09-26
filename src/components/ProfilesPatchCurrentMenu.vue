@@ -37,7 +37,7 @@ export default {
 
     return {
       t,
-      patchProfile: () => store.dispatch('CurKinks/patchCurrentProfile'),
+      patchProfile: () => store.commit('AllKinks/updateUserKinkFormat'),
     };
   },
 };

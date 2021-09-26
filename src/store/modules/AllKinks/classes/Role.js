@@ -12,11 +12,9 @@ export default class Role {
 
   messages;
 
-  preferenceLevel = '';
+  preferenceLevel;
 
-  sideBySide = '';
-
-  debug = false;
+  sideBySide;
 
   /**
    * @constructs Role
@@ -32,8 +30,9 @@ export default class Role {
     preference,
     preferenceLevel,
     sideBySide,
+    debug = false,
   }) {
-    if (this.debug) {
+    if (debug) {
       console.log({
         msg: 'Constructor Role',
         name,
@@ -55,11 +54,23 @@ export default class Role {
 
   // Getter
   /**
+   *
+   */
+  get asListObject() {
+    return {
+      role: this.role,
+      sortKey: this.sortKey,
+      color: this.color,
+      preferenceLevel: this.preferenceLevel,
+    };
+  }
+
+  /**
    * color to use to represent the preferenceLevel
    * @type {string}
    */
   get color() {
-    return this.getColorFromPreferenceLevel(this.preferenceLevel);
+    return Role.getColorFromPreferenceLevel(this.preferenceLevel);
   }
 
   /**
@@ -67,7 +78,7 @@ export default class Role {
    * @type {number}
    */
   get sortKey() {
-    return this.getSortKeyFromPreferenceLevel(this.preferenceLevel);
+    return Role.getSortKeyFromPreferenceLevel(this.preferenceLevel);
   }
 
   /**

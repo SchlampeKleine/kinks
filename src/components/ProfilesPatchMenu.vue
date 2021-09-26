@@ -37,7 +37,7 @@ export default {
   name: 'ProfilesPatchMenu',
   data() {
     return {
-      selectedProfile: '',
+      selectedProfile: 'CURRENT',
     };
   },
   setup() {

@@ -4,19 +4,18 @@
            "
     >
     <KinkCategory
-      v-for="category in curKinks.categories"
-      :id="category.name"
-      :key="'category-'+category.name"
-      :category=category
-      :name="category.name"
-      :subcategories="category.subcategories"
-      :kinds="category.kinds"
+      v-for="categoryName in categoryNames"
+      :id="categoryName"
+      :key="'category-'+categoryName"
+      :name="categoryName"
+      :categoryName="categoryName"
+      :selectedProfile="selectedProfile"
       />
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent, computed } from 'vue';
+import { defineAsyncComponent, computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 import LoaderBar from '@/components/LoaderBar.vue';
@@ -31,10 +30,35 @@ export default {
   },
 
   setup() {
+    const profile = ref('CURRENT');
+
+    // https://learnvue.co/2019/12/mastering-computed-properties-in-vuejs/
+    const selectedProfile = computed({
+      get: () => (
+        profile.value
+      ),
+      set: (value) => {
+        profile.value = value;
+      },
+    });
+
     const store = useStore();
+    const categoryNames = computed({
+      get: () => (
+        store.getters[
+          'AllKinks/getCategoryNamesForUser'
+        ]({ username: selectedProfile.value })
+      ),
+    });
+
+    console.log({
+      categoryNames,
+
+    });
 
     return {
-      curKinks: computed(() => store.getters['AllKinks/getCurKinks']),
+      selectedProfile,
+      categoryNames,
     };
   },
 

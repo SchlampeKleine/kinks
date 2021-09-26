@@ -14,8 +14,7 @@
     <div class="box name is-expanded">
       <h4
         class="title block has-text-primary has-text-centered"
-        >{{ t('name',kink.name) }}
-      </h4>
+        >{{ t('name',kink.name) }}</h4>
         <div v-if="getEditMode" class="block">
         <div class="buttons is-right">
           <LocaleEditor v-model:messages="localKink.messages"/>
@@ -35,11 +34,14 @@
               "
       >
         <KinkVariant
-          v-for="variant in localVariants"
-          :id="id+'-'+variant.name"
-          :key="id+'-'+variant.name"
-          :variant=variant
-          @update:variant="updateVariant"
+          v-for="variantName in variantNames"
+          :id="id+'-'+variantName"
+          :key="id+'-'+variantName"
+          :variantName=variantName
+          :kinkName="kinkName"
+          :categoryName="categoryName"
+          :selectedProfile="selectedProfile"
+          :subcategoryName="subcategoryName"
           />
     </div>
       </template>
@@ -75,7 +77,8 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
+import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
@@ -88,25 +91,23 @@ export default {
   name: 'Kink',
   props: {
 
-    id: {
+    selectedProfile: {
       type: String,
       required: true,
     },
-
-    kink: {
-      type: Object,
+    kinkName: {
+      type: String,
       required: true,
-      // TODO Move to full object, eg an variants key in here
-      variants: {
-        type: Array,
-      },
     },
-
-    variants: {
-      type: Array,
-      default() {
-        return [];
-      },
+    categoryName: {
+      type: String,
+      required: true,
+    },
+    subcategoryName: {
+      type: String,
+    },
+    id: {
+      type: String,
     },
 
   },
@@ -127,8 +128,37 @@ export default {
     },
   },
   setup(props) {
+    const store = useStore();
+
+    const kink = computed(
+      () => store.getters[
+        'AllKinks/getKinkForUser']({
+        username: props.selectedProfile,
+        categoryName: props.categoryName,
+        subcategoryName: props.subcategoryName,
+        kinkName: props.kinkName,
+      }),
+    );
+    const variantNames = computed(() => kink.value.variantNames);
+
+    const updateKink = (val) => store.dispatch('AllKinks/updateKinkForUser',
+      {
+        username: props.selectedProfile,
+        categoryName: props.categoryName,
+        subcategoryName: props.subcategoryName,
+        changedKink: val,
+      });
+
+    const debug = false;
+    if (debug) {
+      console.log({
+        msg: 'Kink.vue',
+        kink,
+        variantNames,
+      });
+    }
     const { t, te } = useI18n({
-      messages: props.kink.messages || { en: { name: props.kink.name } },
+      messages: kink.value.messages || { en: { name: kink.value.name } },
     });
     const { getEditMode } = useEditMode();
 
@@ -136,6 +166,9 @@ export default {
       t,
       te,
       getEditMode,
+      kink,
+      variantNames,
+      updateKink,
     };
   },
 
@@ -195,12 +228,13 @@ export default {
   },
   methods: {
 
-    updateKink(newVal) {
+    /* updateKink(newVal) {
       if (this.debug) {
         console.log({ 'Kink UpdateKink': newVal });
       }
       this.$emit('update:kink', { ...newVal });
     },
+    */
 
     updatePreferences(newVal) {
       console.log({ 'Kink updatePreferences': newVal });
@@ -249,7 +283,8 @@ export default {
       },
       set(newVal) {
         if (this.debug) { console.log({ 'Kink emit update:kink': newVal }); }
-        this.$emit('update:kink', { ...newVal });
+        // this.$emit('update:kink', { ...newVal });
+        this.updateKink(newVal);
       },
     },
 

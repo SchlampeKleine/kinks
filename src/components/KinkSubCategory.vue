@@ -1,4 +1,6 @@
 <template>
+  {{ subcategoryName }}
+  {{ kinkNames }}
   <div
     class="
            column
@@ -23,19 +25,21 @@
              "
       >
       <Kink
-        v-for="kink in kinds"
-        :id="id+'-'+kink.name"
-        :key="'kink-'+kink.name"
-        :kink=kink
-        :variants="kink.variants"
-        @update:kink="updateKink"
+          v-for="kinkName in kinkNames"
+          :id="id+'-'+kinkName"
+          :key="'kink-'+kinkName"
+          :kinkName="kinkName"
+          :categoryName="categoryName"
+          :selectedProfile="selectedProfile"
+          :subcategoryName="subcategoryName"
         />
     </div>
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
+import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import LoaderBar from '@/components/LoaderBar.vue';
 import LocaleEditor from '@/components/LocaleModifier.vue';
@@ -47,33 +51,51 @@ export default {
   props: {
     id: {
       type: String,
-      required: true,
     },
     key: {
       type: String,
     },
-    subcategory: {
-      type: Object,
-      required: true,
-    },
     name: {
       type: String,
     },
-    kinds: {
-      type: Array,
-      default() {
-        return [];
-      },
+    selectedProfile: {
+      type: String,
+      required: true,
+    },
+    categoryName: {
+      type: String,
+      required: true,
+    },
+    subcategoryName: {
+      type: String,
+      required: true,
+    },
+    selectedProfile: {
+      type: String,
     },
   },
   setup(props) {
+    const store = useStore();
+
+    const subcategory = computed(
+      () => store.getters['AllKinks/getSubCategoryForUser'](
+        {
+          username: props.selectedProfile,
+          categoryName: props.categoryName,
+          subcategoryName: props.subcategoryName,
+        },
+      ),
+    );
+
     const { t } = useI18n({
-      messages: props.subcategory.messages || { en: { name: props.subcategory.name } },
+      messages: subcategory.value.messages || { en: { name: subcategory.value.name } },
     });
     const { getEditMode } = useEditMode();
     return {
+      subcategory,
       t,
       getEditMode,
+      kinkNames: computed(() => subcategory.value.kinkNames),
     };
   },
   methods: {

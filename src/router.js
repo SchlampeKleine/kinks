@@ -11,6 +11,7 @@ export default createRouter({
       path: '/',
       name: 'root',
       beforeEnter(to, from, next) {
+        store.commit('updateUserKinkFormat');
         next(store.state.Locale.locale);
       },
     },
@@ -29,6 +30,35 @@ export default createRouter({
         return next({ path: store.state.Locale.locale });
       },
       children: [
+        {
+          path: 'category',
+          name: 'category',
+          components: {
+            UserOptions,
+            default: () => import('@/components/KinkCategory'),
+          },
+          props: {
+            default: {
+              categoryName: 'sex',
+              selectedProfile: 'CURRENT',
+            },
+          },
+          children: [
+            {
+              path: 'sex',
+              name: 'category-sex',
+              components: {
+                default: () => import('@/components/KinkCategory'),
+              },
+              props: {
+                default: {
+                  categoryName: 'sex',
+                  selectedProfile: 'CURRENT',
+                },
+              },
+            },
+          ],
+        },
         {
           path: '',
           name: 'home',

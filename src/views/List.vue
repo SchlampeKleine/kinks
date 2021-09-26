@@ -76,9 +76,20 @@ export default {
   setup() {
     const store = useStore();
 
+    const curKinksList = computed(
+      () => store.getters['AllKinks/getKinksAsListForUser']({
+        username: 'CURRENT',
+      }),
+    );
+
+    console.log({
+      curKinksList
+    });
+
     const { t } = useI18n();
+
     return {
-      curKinksList: store.getters['AllKinks/getKinksAsListForUser']('CURRENT'),
+      curKinksList,
       t,
     };
   },

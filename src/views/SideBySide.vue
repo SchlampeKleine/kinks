@@ -113,7 +113,7 @@ en:
 
 <script>
 import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import Color from 'color-js';
@@ -123,19 +123,24 @@ import ProfileChooser from '@/components/ProfileChooser.vue';
 export default {
   name: 'ListView',
   setup() {
+    const usernameA = ref('CURRENT');
+    const usernameB = ref('CURRENT');
+
     const store = useStore();
 
     const { t } = useI18n();
 
     return {
+      usernameA,
+      usernameB,
       getUsers: computed(() => store.getters['AllKinks/getAvailableUsers']),
       t,
-      getKinksSideBySide: (usernameA, usernameB) => (
+      curKinksList: computed(() => (
         store.getters['AllKinks/getKinksSideBySide'](
-          usernameA,
-          usernameB,
+          usernameA.value,
+          usernameB.value,
         )
-      ),
+      )),
     };
   },
   components: {
@@ -143,8 +148,6 @@ export default {
   },
   data() {
     return {
-      usernameA: '',
-      usernameB: '',
       rows: [
         {
           name: 'category', show: true, sortMode: '',
@@ -267,13 +270,6 @@ export default {
 
   },
   computed: {
-
-    curKinksList: {
-      get() {
-        return this.getKinksSideBySide(this.usernameA, this.usernameB);
-      },
-
-    },
 
     sortedKinkList: {
       get() {
