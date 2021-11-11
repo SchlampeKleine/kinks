@@ -87,13 +87,13 @@ export default class Subcategory {
       .map(
         (o) => (
           o.asList
-          .map(
-            (el) => ({
-              ...el,
-              subcategory: this.subcategory,
-            })
-          )
-        )
+            .map(
+              (el) => ({
+                ...el,
+                subcategory: this.subcategory,
+              }),
+            )
+        ),
       )
       .flat();
   }

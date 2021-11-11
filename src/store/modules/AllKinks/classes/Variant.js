@@ -104,7 +104,6 @@ export default class Variant {
       .flat();
   }
 
-
   // Method
   /**
    * Patch a variant

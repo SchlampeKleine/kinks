@@ -1,6 +1,5 @@
 import Variant from './Variant';
-import Preferences from './Preferences';
-import { defaultPreferences } from './Preferences';
+import Preferences, { defaultPreferences } from './Preferences';
 
 export default class Kink {
   /**
@@ -80,9 +79,9 @@ export default class Kink {
     if (!variants) {
       this.preferences = preferences
         ? new Preferences(
-        preferences
-      )
-      : defaultPreferences;
+          preferences,
+        )
+        : defaultPreferences;
     }
     if (debug) {
       console.log({
@@ -123,8 +122,8 @@ export default class Kink {
   get asList() {
     return (
       this.variants
-      ? this.variantsFlattened
-      : this.preferencesFlattened
+        ? this.variantsFlattened
+        : this.preferencesFlattened
     ).flat();
   }
 
@@ -149,22 +148,22 @@ export default class Kink {
   get variantsFlattened() {
     return this.variants
       ? this.variants
-      .map(
-        (o) => new Variant(o)
-      )
-      .map(
-        (o) => (
-          o.asList
-          .map(
-            (el) => (
-              {
-                kink: this.kink,
-                ...el,
-              }),
-          )
+        .map(
+          (o) => new Variant(o),
         )
-      )
-      .flat()
+        .map(
+          (o) => (
+            o.asList
+              .map(
+                (el) => (
+                  {
+                    kink: this.kink,
+                    ...el,
+                  }),
+              )
+          ),
+        )
+        .flat()
       : [];
   }
 

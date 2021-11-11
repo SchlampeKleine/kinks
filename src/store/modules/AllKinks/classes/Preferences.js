@@ -64,7 +64,7 @@ export default class Preferences {
   get asList() {
     return this.roles
       .map(
-        (o) => new Role(o)
+        (o) => new Role(o),
       )
       .map(
         (o) => ({
@@ -72,7 +72,7 @@ export default class Preferences {
           comment: this.comment,
         }),
       )
-    .flat();
+      .flat();
   }
 
   // Method
@@ -145,8 +145,7 @@ export default class Preferences {
   }
 }
 
-
 export const defaultPreferences = new Preferences({
   roles: defaultRoles,
   comment: '',
-})
+});

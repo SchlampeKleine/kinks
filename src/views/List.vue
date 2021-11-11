@@ -83,7 +83,7 @@ export default {
     );
 
     console.log({
-      curKinksList
+      curKinksList,
     });
 
     const { t } = useI18n();
