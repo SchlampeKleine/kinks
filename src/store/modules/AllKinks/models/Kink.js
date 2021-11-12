@@ -2,7 +2,7 @@
 
 import { Model } from '@vuex-orm/core';
 
-import  VariantModel from './Variant';
+import VariantModel from './Variant';
 
 export default class KinkModel extends Model {
   static entity = 'kinkmodel'
@@ -18,6 +18,3 @@ export default class KinkModel extends Model {
     };
   }
 }
-
-
-

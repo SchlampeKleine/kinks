@@ -9,7 +9,7 @@ export default class Tag extends Model {
 
   static fields() {
     return {
-      //id: this.uid(),
+      // id: this.uid(),
       tag: this.string(''),
     };
   }

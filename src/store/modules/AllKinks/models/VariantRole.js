@@ -5,7 +5,7 @@ import { Model } from '@vuex-orm/core';
 export default class VariantRoleModel extends Model {
   static entity = 'variantrolemodel'
 
-  static primaryKey = [ 'variant', 'role' ]
+  static primaryKey = ['variant', 'role']
 
   static fields() {
     return {
@@ -14,6 +14,3 @@ export default class VariantRoleModel extends Model {
     };
   }
 }
-
-
-

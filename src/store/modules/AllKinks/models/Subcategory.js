@@ -17,6 +17,3 @@ export default class SubcategoryModel extends Model {
     };
   }
 }
-
-
-

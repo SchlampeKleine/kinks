@@ -62,7 +62,6 @@
     {{ this.preferenceRepoAll }}
 </div>
 
-
 <!--    <KinkCategory
       v-for="categoryName in categoryNames"
       :id="categoryName"
@@ -86,8 +85,8 @@ import Variant from '@/models/Variant';
 import PreferenceModel from '@/store/modules/AllKinks/models/Preference';
 
 import kinks from '@/assets/kinks_reduced.yaml';
-import {flattenKinks} from '@/tools/flattenKinks';
-import {getKinkTags} from '@/tools/getKinkTags';
+import { flattenKinks } from '@/tools/flattenKinks';
+import { getKinkTags } from '@/tools/getKinkTags';
 
 import LoaderBar from '@/components/LoaderBar.vue';
 
@@ -101,25 +100,25 @@ export default {
   },
   computed: {
     ...mapRepos({
-    tagVariantRepo: TagVariant,
-    tagRepo: Tag,
-    variantRepo: Variant,
-    preferenceRepo: PreferenceModel,
-  }),
-    preferenceRepoAll () {
-      return this.preferenceRepo.all()
+      tagVariantRepo: TagVariant,
+      tagRepo: Tag,
+      variantRepo: Variant,
+      preferenceRepo: PreferenceModel,
+    }),
+    preferenceRepoAll() {
+      return this.preferenceRepo.all();
     },
-    tagRepoAll () {
-      return this.tagRepo.all()
+    tagRepoAll() {
+      return this.tagRepo.all();
     },
-    variantRepoAll () {
-      return this.variantRepo.all()
+    variantRepoAll() {
+      return this.variantRepo.all();
     },
-    tagVariantRepoAll () {
-      return this.tagVariantRepo.all()
+    tagVariantRepoAll() {
+      return this.tagVariantRepo.all();
     },
-    tagVariantsWithAll () {
-      return this.tagVariantRepo.query().with('tag').with('variant').first()
+    tagVariantsWithAll() {
+      return this.tagVariantRepo.query().with('tag').with('variant').first();
     },
   },
 
@@ -145,7 +144,7 @@ export default {
       ),
     });
 
-    const deleteAll = () => (store.dispatch('entities/deleteAll'))
+    const deleteAll = () => (store.dispatch('entities/deleteAll'));
 
     return {
       selectedProfile,
@@ -155,58 +154,55 @@ export default {
 
   methods: {
 
-    loadAllTags () {
-
+    loadAllTags() {
       const tags = getKinkTags(kinks);
       console.log({
-        tags
+        tags,
       });
       this.tagRepo.save(
-        tags
-        );
-
+        tags,
+      );
     },
 
-    loadAllVariants () {
+    loadAllVariants() {
       const flattened = flattenKinks(kinks);
       this.variantRepo.save(
-        flattened
-      )
-
+        flattened,
+      );
     },
 
-    deleteAllMethod () {
-      this.tagRepo.deleteAll()
-      this.variantRepo.deleteAll()
-      this.tagVariantRepo.deleteAll()
+    deleteAllMethod() {
+      this.tagRepo.deleteAll();
+      this.variantRepo.deleteAll();
+      this.tagVariantRepo.deleteAll();
     },
 
-    initializeTag () {
-      this.tagRepo.save({tag:'test_tag'})
+    initializeTag() {
+      this.tagRepo.save({ tag: 'test_tag' });
     },
 
-    initializeVariant () {
-      this.variantRepo.save({key:'test_variant'})
+    initializeVariant() {
+      this.variantRepo.save({ key: 'test_variant' });
     },
 
-    initializeTagVariantWithObjects () {
+    initializeTagVariantWithObjects() {
       this.tagVariantRepo.save(
         {
-          'tag_key': 'test_tag',
-          'variant_key': 'test_variant',
-          'tag': {tag: 'test_tag'},
-          'variant': {variant: 'test_variant'},
+          tag_key: 'test_tag',
+          variant_key: 'test_variant',
+          tag: { tag: 'test_tag' },
+          variant: { variant: 'test_variant' },
         },
-      )
+      );
     },
 
-    initializeTagVariantWithValues () {
+    initializeTagVariantWithValues() {
       this.tagVariantRepo.save(
         {
-          'tag_key': 'test_tag',
-          'variant_key': 'test_variant'
+          tag_key: 'test_tag',
+          variant_key: 'test_variant',
         },
-      )
+      );
     },
 
   },

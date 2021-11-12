@@ -9,15 +9,13 @@ export default class Variant extends Model {
 
   static fields() {
     return {
-      //id: this.uid(),
+      // id: this.uid(),
       key: this.string(''),
       category: this.string('')
-      .nullable()
-      ,
+        .nullable(),
       subcategory: this.string(null).nullable(),
       kind: this.string('')
-      .nullable()
-      ,
+        .nullable(),
       variant: this.string(null).nullable(),
     };
   }

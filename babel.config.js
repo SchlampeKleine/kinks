@@ -6,6 +6,6 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties'],
   ],
   assumptions: {
-    "setPublicClassFields": true
+    setPublicClassFields: true,
   },
 };

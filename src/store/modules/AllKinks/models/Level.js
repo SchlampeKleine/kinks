@@ -17,6 +17,3 @@ export default class LevelModel extends Model {
     };
   }
 }
-
-
-

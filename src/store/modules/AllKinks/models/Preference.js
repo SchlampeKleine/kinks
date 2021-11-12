@@ -8,7 +8,7 @@ import LevelModel from './Level';
 export default class PreferenceModel extends Model {
   static entity = 'preferencemodel'
 
-  //static primaryKey = ['user']
+  // static primaryKey = ['user']
 
   static fields() {
     return {
@@ -20,10 +20,7 @@ export default class PreferenceModel extends Model {
       variant: this.string(''),
       role: this.string(''),
       variantroleObject: this.belongsTo(VariantRoleModel, 'variantrole'),
-      variantRoleObject: this.belongsTo(VariantRoleModel, ['variant','role']),
+      variantRoleObject: this.belongsTo(VariantRoleModel, ['variant', 'role']),
     };
   }
 }
-
-
-

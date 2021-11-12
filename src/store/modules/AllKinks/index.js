@@ -4,7 +4,7 @@
  */
 
 import defaultKinks from '@/assets/kinks.yaml';
-//import defaultKinks from '@/assets/kinks_reduced.yaml';
+// import defaultKinks from '@/assets/kinks_reduced.yaml';
 //
 
 import Profile from './classes/Profile';

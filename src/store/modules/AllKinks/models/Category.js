@@ -18,6 +18,3 @@ export default class CategoryModel extends Model {
     };
   }
 }
-
-
-

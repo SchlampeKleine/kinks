@@ -19,6 +19,3 @@ export default class VariantModel extends Model {
     };
   }
 }
-
-
-

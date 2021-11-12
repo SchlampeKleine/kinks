@@ -1,9 +1,9 @@
 // check_yaml_keys.js
 
+import { flattenKinks } from './flattenKinks';
+
 const fs = require('fs');
 const yaml = require('js-yaml');
-
-import {flattenKinks} from './flattenKinks';
 
 let data;
 
