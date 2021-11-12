@@ -68,6 +68,14 @@ export default createRouter({
           },
         },
         {
+          path: 'orm',
+          name: 'orm',
+          components: {
+            UserOptions,
+            default: () => import('@/views/KinkORM.vue'),
+          },
+        },
+        {
           name: 'credits',
           path: 'credits',
           components: {

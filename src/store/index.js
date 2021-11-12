@@ -7,6 +7,8 @@
 import { createStore, createLogger } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
+import VuexORM from '@vuex-orm/core';
+
 const debug = process.env.NODE_ENV !== 'production';
 
 // Load all modules.
@@ -36,8 +38,10 @@ const store = createStore({
   strict: false, // process.env.NODE_ENV !== 'production',
   plugins: debug ? [
     createLogger(),
+    VuexORM.install(),
     createPersistedState(),
   ] : [
+    VuexORM.install(),
     createPersistedState(),
   ],
 });

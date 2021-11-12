@@ -90,12 +90,14 @@ export default {
     const subcategoryNames = computed(() => category.value.subcategoryNames);
     const kinkNames = computed(() => category.value.kinkNames);
 
-    console.log({
-      props,
-      category,
-      subcategoryNames,
-      kinkNames,
-    });
+    if (false) {
+      console.log({
+        props,
+        category,
+        subcategoryNames,
+        kinkNames,
+      });
+    }
     const { t } = useI18n({
       messages: category.value.messages || { en: { name: props.categoryName } },
     });
@@ -112,7 +114,7 @@ export default {
   },
   emits: {
     'update:category': (newVal) => {
-      const debug = true;
+      const debug = false;
       if (debug) {
         console.log({ 'KinkCategory emit update:category': newVal });
       }

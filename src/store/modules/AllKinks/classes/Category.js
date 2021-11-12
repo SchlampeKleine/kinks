@@ -1,6 +1,8 @@
 import Kink from './Kink';
 import Subcategory from './Subcategory';
 
+import CategoryModel from '../models/Category';
+
 /**
  * Creates a new category
  * @class
@@ -41,6 +43,13 @@ export default class Category {
     if (!(category || name)) {
       throw new Error('constructing category without naming it');
     }
+
+    /*
+    CategoryModel.save({
+      category: category || name,
+    })
+    */
+
     this.category = category || name;
     if (!(subcategories || kinks || kinds)) {
       throw new Error('constructing category without subcategories or kinks');
