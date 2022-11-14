@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkkinks"]=self["webpackChunkkinks"]||[]).push([[581],{4581:function(n,u,e){e.r(u),e.d(u,{default:function(){return c}});var r=e(6252);function t(n,u,e,t,k,s){return(0,r.wg)(),(0,r.iD)("p",null," 404 SORRY COULDN'T FIND IT!!! ")}var k={name:"NotFound"},s=e(3744);const a=(0,s.Z)(k,[["render",t]]);var c=a}}]);

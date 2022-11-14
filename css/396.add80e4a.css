@@ -1,0 +1,1 @@
+.level:has(:checked) .level-item:not(:has(:checked)){opacity:.4}.level-item .level-item:has(:checked){opacity:1}.level-item label{white-space:nowrap}.kind:not(:has(.variant)){align-self:end}
